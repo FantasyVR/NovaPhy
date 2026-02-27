@@ -1,0 +1,375 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_transform" kind="struct" language="C++" prot="public">
+    <compoundname>novaphy::Transform</compoundname>
+    <includes refid="math__types_8h" local="no">math_types.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnovaphy_1_1_transform_1a074b6b85886aacd125ea8db47cc25f80" prot="public" static="no" mutable="no">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::Transform::position</definition>
+        <argsstring></argsstring>
+        <name>position</name>
+        <qualifiedname>novaphy::Transform::position</qualifiedname>
+        <initializer>= Vec3f::Zero()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Translation component in meters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="39" column="11" bodyfile="include/novaphy/math/math_types.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_transform_1a1a88b660d881eab306cb61d9a3218707" prot="public" static="no" mutable="no">
+        <type>Quatf</type>
+        <definition>Quatf novaphy::Transform::rotation</definition>
+        <argsstring></argsstring>
+        <name>rotation</name>
+        <qualifiedname>novaphy::Transform::rotation</qualifiedname>
+        <initializer>= Quatf::Identity()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Unit quaternion orientation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="40" column="11" bodyfile="include/novaphy/math/math_types.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>novaphy::Transform::Transform</definition>
+        <argsstring>()=default</argsstring>
+        <name>Transform</name>
+        <qualifiedname>novaphy::Transform::Transform</qualifiedname>
+        <briefdescription>
+<para>Construct identity transform. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="43" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_transform_1a9a8a952a1c2061ab6432fde64500cf7f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>novaphy::Transform::Transform</definition>
+        <argsstring>(const Vec3f &amp;p, const Quatf &amp;r)</argsstring>
+        <name>Transform</name>
+        <qualifiedname>novaphy::Transform::Transform</qualifiedname>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>const Quatf &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+<para>Construct transform from translation and quaternion. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">p</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Translation component in meters. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">r</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Orientation quaternion (normalized internally). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="51" column="5" bodyfile="include/novaphy/math/math_types.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_transform_1a4a6f80dd0da43d1152d1cae551103f06" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref></type>
+        <definition>Transform novaphy::Transform::operator*</definition>
+        <argsstring>(const Transform &amp;other) const</argsstring>
+        <name>operator*</name>
+        <qualifiedname>novaphy::Transform::operator*</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Compose two transforms. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Right-hand transform to apply after this one. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Composed transform. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="59" column="15" bodyfile="include/novaphy/math/math_types.h" bodystart="59" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_transform_1a2506c2d754772882891d7a118630d880" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref></type>
+        <definition>Transform novaphy::Transform::inverse</definition>
+        <argsstring>() const</argsstring>
+        <name>inverse</name>
+        <qualifiedname>novaphy::Transform::inverse</qualifiedname>
+        <briefdescription>
+<para>Compute inverse rigid transform. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Inverse transform. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="69" column="15" bodyfile="include/novaphy/math/math_types.h" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_transform_1ab65d8c0cfd3a5c72e1d928e3da4b7573" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::Transform::transform_point</definition>
+        <argsstring>(const Vec3f &amp;p) const</argsstring>
+        <name>transform_point</name>
+        <qualifiedname>novaphy::Transform::transform_point</qualifiedname>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> a point from local to world coordinates. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">p</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Local-space point. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>World-space point in meters. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="80" column="11" bodyfile="include/novaphy/math/math_types.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_transform_1a8275cc9b4000bf0fe6b222f29a73876a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::Transform::transform_vector</definition>
+        <argsstring>(const Vec3f &amp;v) const</argsstring>
+        <name>transform_vector</name>
+        <qualifiedname>novaphy::Transform::transform_vector</qualifiedname>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> a direction vector (rotation only). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Local-space direction. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Rotated world-space direction. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="88" column="11" bodyfile="include/novaphy/math/math_types.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_transform_1a15091736eca0a5250c4c19de64476ad4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat3f</type>
+        <definition>Mat3f novaphy::Transform::rotation_matrix</definition>
+        <argsstring>() const</argsstring>
+        <name>rotation_matrix</name>
+        <qualifiedname>novaphy::Transform::rotation_matrix</qualifiedname>
+        <briefdescription>
+<para>Get rotation matrix equivalent of quaternion orientation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>3x3 rotation matrix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="95" column="11" bodyfile="include/novaphy/math/math_types.h" bodystart="95" bodyend="95"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structnovaphy_1_1_transform_1a44c81dcd76ab81961d385a30b95db3d8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref></type>
+        <definition>static Transform novaphy::Transform::identity</definition>
+        <argsstring>()</argsstring>
+        <name>identity</name>
+        <qualifiedname>novaphy::Transform::identity</qualifiedname>
+        <briefdescription>
+<para>Create identity transform. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Identity transform. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="102" column="22" bodyfile="include/novaphy/math/math_types.h" bodystart="102" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_transform_1a105b726c1889f56ed02f4a869e60b1db" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref></type>
+        <definition>static Transform novaphy::Transform::from_translation</definition>
+        <argsstring>(const Vec3f &amp;t)</argsstring>
+        <name>from_translation</name>
+        <qualifiedname>novaphy::Transform::from_translation</qualifiedname>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>Create translation-only transform. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Translation in meters. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> with identity rotation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="110" column="22" bodyfile="include/novaphy/math/math_types.h" bodystart="110" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_transform_1a4613bcb81c364ccce1934b7abfe5adc7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref></type>
+        <definition>static Transform novaphy::Transform::from_rotation</definition>
+        <argsstring>(const Quatf &amp;q)</argsstring>
+        <name>from_rotation</name>
+        <qualifiedname>novaphy::Transform::from_rotation</qualifiedname>
+        <param>
+          <type>const Quatf &amp;</type>
+          <declname>q</declname>
+        </param>
+        <briefdescription>
+<para>Create rotation-only transform. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Orientation quaternion. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> with zero translation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="120" column="22" bodyfile="include/novaphy/math/math_types.h" bodystart="120" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_transform_1acd6592af62991b48f9ac382d7cdf8968" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref></type>
+        <definition>static Transform novaphy::Transform::from_axis_angle</definition>
+        <argsstring>(const Vec3f &amp;axis, float angle)</argsstring>
+        <name>from_axis_angle</name>
+        <qualifiedname>novaphy::Transform::from_axis_angle</qualifiedname>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+<para>Create transform from axis-angle rotation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rotation axis. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rotation angle in radians. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Rotation-only transform. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="131" column="22" bodyfile="include/novaphy/math/math_types.h" bodystart="131" bodyend="134"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Rigid transform represented by translation and quaternion orientation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><computeroutput><ref refid="structnovaphy_1_1_transform_1a074b6b85886aacd125ea8db47cc25f80" kindref="member">position</ref></computeroutput> is expressed in world coordinates (m). <computeroutput><ref refid="structnovaphy_1_1_transform_1a1a88b660d881eab306cb61d9a3218707" kindref="member">rotation</ref></computeroutput> stores attitude as a unit quaternion for stable composition and interpolation. </para>
+    </detaileddescription>
+    <location file="include/novaphy/math/math_types.h" line="38" column="1" bodyfile="include/novaphy/math/math_types.h" bodystart="38" bodyend="135"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_transform_1acd6592af62991b48f9ac382d7cdf8968" prot="public" virt="non-virtual"><scope>novaphy::Transform</scope><name>from_axis_angle</name></member>
+      <member refid="structnovaphy_1_1_transform_1a4613bcb81c364ccce1934b7abfe5adc7" prot="public" virt="non-virtual"><scope>novaphy::Transform</scope><name>from_rotation</name></member>
+      <member refid="structnovaphy_1_1_transform_1a105b726c1889f56ed02f4a869e60b1db" prot="public" virt="non-virtual"><scope>novaphy::Transform</scope><name>from_translation</name></member>
+      <member refid="structnovaphy_1_1_transform_1a44c81dcd76ab81961d385a30b95db3d8" prot="public" virt="non-virtual"><scope>novaphy::Transform</scope><name>identity</name></member>
+      <member refid="structnovaphy_1_1_transform_1a2506c2d754772882891d7a118630d880" prot="public" virt="non-virtual"><scope>novaphy::Transform</scope><name>inverse</name></member>
+      <member refid="structnovaphy_1_1_transform_1a4a6f80dd0da43d1152d1cae551103f06" prot="public" virt="non-virtual"><scope>novaphy::Transform</scope><name>operator*</name></member>
+      <member refid="structnovaphy_1_1_transform_1a074b6b85886aacd125ea8db47cc25f80" prot="public" virt="non-virtual"><scope>novaphy::Transform</scope><name>position</name></member>
+      <member refid="structnovaphy_1_1_transform_1a1a88b660d881eab306cb61d9a3218707" prot="public" virt="non-virtual"><scope>novaphy::Transform</scope><name>rotation</name></member>
+      <member refid="structnovaphy_1_1_transform_1a15091736eca0a5250c4c19de64476ad4" prot="public" virt="non-virtual"><scope>novaphy::Transform</scope><name>rotation_matrix</name></member>
+      <member refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" prot="public" virt="non-virtual"><scope>novaphy::Transform</scope><name>Transform</name></member>
+      <member refid="structnovaphy_1_1_transform_1a9a8a952a1c2061ab6432fde64500cf7f" prot="public" virt="non-virtual"><scope>novaphy::Transform</scope><name>Transform</name></member>
+      <member refid="structnovaphy_1_1_transform_1ab65d8c0cfd3a5c72e1d928e3da4b7573" prot="public" virt="non-virtual"><scope>novaphy::Transform</scope><name>transform_point</name></member>
+      <member refid="structnovaphy_1_1_transform_1a8275cc9b4000bf0fe6b222f29a73876a" prot="public" virt="non-virtual"><scope>novaphy::Transform</scope><name>transform_vector</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

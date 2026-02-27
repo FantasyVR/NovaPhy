@@ -1,0 +1,44 @@
+\doxysection{featherstone.\+h}
+\hypertarget{featherstone_8h_source}{}\label{featherstone_8h_source}\index{include/novaphy/dynamics/featherstone.h@{include/novaphy/dynamics/featherstone.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/articulation.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/spatial.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\doxymbox{\hyperlink{namespacenovaphy_1_1featherstone}{featherstone}}\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{namespacenovaphy_1_1featherstone_a81fede8c2599e86900042c6e37323256}{forward\_kinematics}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}}\&\ model,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ VecXf\&\ q,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<SpatialTransform>\&\ X\_J,}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<SpatialTransform>\&\ X\_up,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Transform>\&\ X\_world);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00065\ VecXf\ \doxymbox{\hyperlink{namespacenovaphy_1_1featherstone_a1304eda4890f645ebdd6e78c6aedbfcd}{inverse\_dynamics}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}}\&\ model,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ VecXf\&\ q,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ VecXf\&\ qd,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ VecXf\&\ qdd,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vec3f\&\ gravity,}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<SpatialVector>\&\ f\_ext\ =\ \{\});}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00084\ MatXf\ \doxymbox{\hyperlink{namespacenovaphy_1_1featherstone_a010f7ded3d737a60216318841dc15914}{mass\_matrix}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}}\&\ model,}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ VecXf\&\ q);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00104\ VecXf\ \doxymbox{\hyperlink{namespacenovaphy_1_1featherstone_a0fbb3f2e208778bfe14a97c6aeadf858}{forward\_dynamics}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}}\&\ model,}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ VecXf\&\ q,}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ VecXf\&\ qd,}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ VecXf\&\ tau,}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vec3f\&\ gravity,}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<SpatialVector>\&\ f\_ext\ =\ \{\});}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \}\ \ \textcolor{comment}{//\ namespace\ featherstone}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

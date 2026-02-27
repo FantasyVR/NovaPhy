@@ -6,20 +6,29 @@
 
 namespace novaphy {
 
-/// Articulated body solver: wraps Featherstone forward dynamics with integration.
+/**
+ * @brief Time-stepping solver for articulated-body dynamics.
+ *
+ * @details Wraps Featherstone forward dynamics and advances generalized state
+ * using semi-implicit integration. Quaternion state components are normalized
+ * after integration for free/ball joints.
+ */
 class ArticulatedSolver {
 public:
+    /** @brief Construct articulated solver with default settings. */
     ArticulatedSolver() = default;
 
-    /// Step the articulated body forward in time.
-    /// Updates q and qd in-place using semi-implicit Euler.
-    ///
-    /// @param model  Articulation model
-    /// @param q      Generalized positions (updated in-place)
-    /// @param qd     Generalized velocities (updated in-place)
-    /// @param tau    Applied joint torques
-    /// @param gravity Gravity vector
-    /// @param dt     Time step
+    /**
+     * @brief Advance articulated state by one time step.
+     *
+     * @param [in] model Articulation model.
+     * @param [in,out] q Generalized positions, updated in place.
+     * @param [in,out] qd Generalized velocities, updated in place.
+     * @param [in] tau Applied joint efforts (torques/forces).
+     * @param [in] gravity Gravity vector in world frame (m/s^2).
+     * @param [in] dt Time step in seconds.
+     * @return void
+     */
     void step(const Articulation& model,
               VecXf& q,
               VecXf& qd,
@@ -28,7 +37,13 @@ public:
               float dt);
 
 private:
-    /// Normalize quaternions in q for free joints
+    /**
+     * @brief Normalize quaternion state blocks after integration.
+     *
+     * @param [in] model Articulation model.
+     * @param [in,out] q Generalized position vector.
+     * @return void
+     */
     void normalize_quaternions(const Articulation& model, VecXf& q);
 };
 

@@ -14,9 +14,15 @@ from demos.demo_utils import DemoApp
 
 class WallBreakDemo(DemoApp):
     def __init__(self):
+        """Initializes the projectile-versus-wall demo configuration."""
         super().__init__(title="NovaPhy - Wall Break", dt=1.0/120.0)
 
     def build_scene(self):
+        """Builds a box wall and launches a sphere projectile at it.
+
+        Returns:
+            None
+        """
         builder = novaphy.ModelBuilder()
         builder.add_ground_plane(y=0.0, friction=0.5)
 

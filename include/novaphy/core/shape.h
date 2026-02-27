@@ -5,40 +5,60 @@
 
 namespace novaphy {
 
-/// Collision shape types
+/**
+ * @brief Supported collision-shape primitives.
+ */
 enum class ShapeType { Box, Sphere, Plane };
 
-/// Box: defined by half-extents
+/**
+ * @brief Box primitive described by local half extents.
+ */
 struct BoxShape {
-    Vec3f half_extents = Vec3f(0.5f, 0.5f, 0.5f);
+    Vec3f half_extents = Vec3f(0.5f, 0.5f, 0.5f);  /**< Half lengths along local x/y/z axes in meters. */
 };
 
-/// Sphere: defined by radius
+/**
+ * @brief Sphere primitive described by radius.
+ */
 struct SphereShape {
-    float radius = 0.5f;
+    float radius = 0.5f;  /**< Sphere radius in meters. */
 };
 
-/// Infinite plane: defined by normal and distance from origin
+/**
+ * @brief Infinite plane primitive in Hessian form.
+ *
+ * @details Plane equation is n.dot(x) = offset where n is unit length.
+ */
 struct PlaneShape {
-    Vec3f normal = Vec3f(0.0f, 1.0f, 0.0f);
-    float offset = 0.0f;  // distance from origin along normal
+    Vec3f normal = Vec3f(0.0f, 1.0f, 0.0f);  /**< Unit normal in world/local frame according to usage. */
+    float offset = 0.0f;                     /**< Signed distance from origin along normal (m). */
 };
 
-/// A collision shape attached to a body
+/**
+ * @brief Collision-shape descriptor attached to a body or world.
+ *
+ * @details Stores primitive geometry, local pose offset, and contact material
+ * parameters used by the collision and contact-solver pipeline.
+ */
 struct CollisionShape {
-    ShapeType type = ShapeType::Box;
+    ShapeType type = ShapeType::Box;  /**< Active primitive type. */
 
-    BoxShape box;
-    SphereShape sphere;
-    PlaneShape plane;
+    BoxShape box;        /**< Box primitive payload. */
+    SphereShape sphere;  /**< Sphere primitive payload. */
+    PlaneShape plane;    /**< Plane primitive payload. */
 
-    Transform local_transform = Transform::identity();  // shape offset in body frame
-    float friction = 0.5f;
-    float restitution = 0.3f;
+    Transform local_transform = Transform::identity();  /**< Shape pose in parent-body local frame. */
+    float friction = 0.5f;                              /**< Coulomb friction coefficient (dimensionless). */
+    float restitution = 0.3f;                           /**< Restitution coefficient in [0, 1]. */
 
-    int body_index = -1;  // which body this shape belongs to
+    int body_index = -1;  /**< Owning body index, or -1 for world-owned shapes (e.g., planes). */
 
-    /// Compute world-space AABB given the body's world transform
+    /**
+     * @brief Compute a world-space AABB for this shape.
+     *
+     * @param [in] body_transform Parent body world transform.
+     * @return Axis-aligned bounds in world coordinates.
+     */
     AABB compute_aabb(const Transform& body_transform) const {
         Transform world = body_transform * local_transform;
         switch (type) {
@@ -53,7 +73,16 @@ struct CollisionShape {
         return AABB();
     }
 
-    /// Create a box collision shape
+    /**
+     * @brief Create a box collision shape.
+     *
+     * @param [in] half_extents Local half extents in meters.
+     * @param [in] body_idx Owning body index.
+     * @param [in] local Local transform from body frame to shape frame.
+     * @param [in] friction Friction coefficient.
+     * @param [in] restitution Restitution coefficient.
+     * @return Constructed box shape descriptor.
+     */
     static CollisionShape make_box(const Vec3f& half_extents, int body_idx,
                                    const Transform& local = Transform::identity(),
                                    float friction = 0.5f, float restitution = 0.3f) {
@@ -67,7 +96,16 @@ struct CollisionShape {
         return s;
     }
 
-    /// Create a sphere collision shape
+    /**
+     * @brief Create a sphere collision shape.
+     *
+     * @param [in] radius Sphere radius in meters.
+     * @param [in] body_idx Owning body index.
+     * @param [in] local Local transform from body frame to shape frame.
+     * @param [in] friction Friction coefficient.
+     * @param [in] restitution Restitution coefficient.
+     * @return Constructed sphere shape descriptor.
+     */
     static CollisionShape make_sphere(float radius, int body_idx,
                                       const Transform& local = Transform::identity(),
                                       float friction = 0.5f, float restitution = 0.3f) {
@@ -81,7 +119,15 @@ struct CollisionShape {
         return s;
     }
 
-    /// Create an infinite ground plane shape
+    /**
+     * @brief Create an infinite plane collision shape.
+     *
+     * @param [in] normal Plane normal vector (normalized internally).
+     * @param [in] offset Plane offset along normal in meters.
+     * @param [in] friction Friction coefficient.
+     * @param [in] restitution Restitution coefficient.
+     * @return Constructed plane shape descriptor.
+     */
     static CollisionShape make_plane(const Vec3f& normal, float offset,
                                      float friction = 0.5f, float restitution = 0.0f) {
         CollisionShape s;

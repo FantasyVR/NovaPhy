@@ -1,0 +1,56 @@
+\doxysection{joint.\+h}
+\hypertarget{joint_8h_source}{}\label{joint_8h_source}\index{include/novaphy/core/joint.h@{include/novaphy/core/joint.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/spatial.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{enum\ class}\ JointType\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ Revolute,\ \ }
+\DoxyCodeLine{00013\ \ \ \ \ Fixed,\ \ \ \ \ }
+\DoxyCodeLine{00014\ \ \ \ \ Free,\ \ \ \ \ \ }
+\DoxyCodeLine{00015\ \ \ \ \ Slide,\ \ \ \ \ }
+\DoxyCodeLine{00016\ \ \ \ \ Ball,\ \ \ \ \ \ }
+\DoxyCodeLine{00017\ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_joint}{Joint}}\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ JointType\ \doxymbox{\hyperlink{structnovaphy_1_1_joint_a8ef8bd2887657521bba54a9c0a17410a}{type}}\ =\ JointType::Revolute;\ \ }
+\DoxyCodeLine{00027\ \ \ \ \ Vec3f\ \doxymbox{\hyperlink{structnovaphy_1_1_joint_aa18db99137a52ac50ba4611e7bd2c1cd}{axis}}\ =\ Vec3f(0,\ 0,\ 1);\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_joint_a875e8c9ffec82f910303b8f98bcfaab0}{parent}}\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}}\ \doxymbox{\hyperlink{structnovaphy_1_1_joint_a991dcc9b08902a127a32dd0b6cd95cc4}{parent\_to\_joint}}\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::identity}}();\ \ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_joint_a7623d2eb9f83c408254722f1d24a6288}{num\_q}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\doxymbox{\hyperlink{structnovaphy_1_1_joint_a8ef8bd2887657521bba54a9c0a17410a}{type}})\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JointType::Revolute:\ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JointType::Fixed:\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JointType::Free:\ \ \ \ \ \textcolor{keywordflow}{return}\ 7;\ \ \textcolor{comment}{//\ pos(3)\ +\ quat(4)}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JointType::Slide:\ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JointType::Ball:\ \ \ \ \ \textcolor{keywordflow}{return}\ 4;\ \ \textcolor{comment}{//\ quat(4):\ [qx,\ qy,\ qz,\ qw]}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_joint_a2105e94ddf6bcbe5072ff4ce24654bd8}{num\_qd}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\doxymbox{\hyperlink{structnovaphy_1_1_joint_a8ef8bd2887657521bba54a9c0a17410a}{type}})\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JointType::Revolute:\ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JointType::Fixed:\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JointType::Free:\ \ \ \ \ \textcolor{keywordflow}{return}\ 6;\ \ \textcolor{comment}{//\ angular(3)\ +\ linear(3)}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JointType::Slide:\ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JointType::Ball:\ \ \ \ \ \textcolor{keywordflow}{return}\ 3;\ \ \textcolor{comment}{//\ angular(3)}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00073\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}}\ \doxymbox{\hyperlink{structnovaphy_1_1_joint_a7a9310ebd1a8e2688bd12c28c9a74cf9}{joint\_transform}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ q)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{structnovaphy_1_1_joint_a33c6ab405cb743ad094017ed88ba3adf}{motion\_subspace}}(SpatialVector*\ S\_cols)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

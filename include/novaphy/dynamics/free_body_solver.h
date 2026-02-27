@@ -8,22 +8,57 @@
 
 namespace novaphy {
 
-/// Configuration for the Sequential Impulse solver
+/**
+ * @brief Runtime tuning parameters for the free-body contact solver.
+ *
+ * @details These parameters control convergence and stability of the
+ * Projected Gauss-Seidel (Sequential Impulse) contact solve in SI units.
+ * For dense stacks, increasing iteration count and using moderate Baumgarte
+ * stabilization typically reduces jitter and drift.
+ */
 struct SolverSettings {
-    int velocity_iterations = 30;
-    float baumgarte = 0.3f;     // position correction factor
-    float slop = 0.005f;        // penetration slop (allowed before correction)
-    bool warm_starting = true;
+    int velocity_iterations = 30;  /**< Number of PGS velocity iterations per time step. */
+    float baumgarte = 0.3f;        /**< Fraction of position error corrected per step (dimensionless). */
+    float slop = 0.005f;           /**< Penetration allowance before correction in meters. */
+    bool warm_starting = true;     /**< Reuse cached impulses from previous frame to speed convergence. */
 };
 
-/// Sequential Impulse constraint solver for free rigid bodies.
-/// Resolves contact constraints using Projected Gauss-Seidel with
-/// accumulated impulse clamping.
+/**
+ * @brief Sequential Impulse contact solver for unconstrained rigid bodies.
+ *
+ * @details Resolves normal and friction contact constraints using a
+ * Projected Gauss-Seidel loop with accumulated impulse clamping. Contact
+ * impulses are computed in world coordinates and applied to linear velocity
+ * (m/s) and angular velocity (rad/s).
+ *
+ * @note This solver is intended for a single-threaded update loop.
+ * @warning Inputs must be physically consistent (mass in kg, inertia in kg*m^2,
+ * time step in seconds) to avoid instability.
+ */
 class FreeBodySolver {
 public:
+    /**
+     * @brief Construct a contact solver with user-defined settings.
+     *
+     * @param [in] settings Solver iteration and stabilization parameters.
+     */
     explicit FreeBodySolver(SolverSettings settings = {});
 
-    /// Resolve all contacts by applying impulses to velocities.
+    /**
+     * @brief Resolve contact constraints for the current simulation step.
+     *
+     * @details This function precomputes effective masses/bias terms and then
+     * iteratively applies impulses to satisfy non-penetration and Coulomb
+     * friction constraints.
+     *
+     * @param [in,out] contacts Contact points and warm-start impulse cache.
+     * @param [in] bodies Rigid-body mass and inertia properties.
+     * @param [in] transforms Body transforms in world coordinates.
+     * @param [in,out] linear_velocities Body linear velocities in world frame (m/s).
+     * @param [in,out] angular_velocities Body angular velocities in world frame (rad/s).
+     * @param [in] dt Simulation time step in seconds.
+     * @return void
+     */
     void solve(std::vector<ContactPoint>& contacts,
                const std::vector<RigidBody>& bodies,
                const std::vector<Transform>& transforms,
@@ -31,25 +66,43 @@ public:
                std::vector<Vec3f>& angular_velocities,
                float dt);
 
+    /**
+     * @brief Mutable access to current solver settings.
+     *
+     * @return Reference to the internal SolverSettings.
+     */
     SolverSettings& settings() { return settings_; }
 
 private:
     SolverSettings settings_;
 
-    // Pre-computed per-constraint data
+    /**
+     * @brief Cached per-contact quantities reused across solver iterations.
+     */
     struct ConstraintData {
-        Vec3f r_a, r_b;              // contact point relative to body COM
-        float effective_mass_n;       // effective mass along normal
-        float effective_mass_t1;      // effective mass along tangent1
-        float effective_mass_t2;      // effective mass along tangent2
-        Vec3f tangent1, tangent2;     // friction directions
-        float bias;                   // position correction bias
-        Mat3f inv_I_a_world;          // world-frame inverse inertia for body_a
-        Mat3f inv_I_b_world;          // world-frame inverse inertia for body_b
+        Vec3f r_a, r_b;           /**< Contact offset from each body CoM in world frame (m). */
+        float effective_mass_n;   /**< Scalar effective mass along contact normal (kg^-1 inverse form). */
+        float effective_mass_t1;  /**< Scalar effective mass along first friction tangent. */
+        float effective_mass_t2;  /**< Scalar effective mass along second friction tangent. */
+        Vec3f tangent1, tangent2; /**< Orthonormal tangents spanning the contact plane. */
+        float bias;               /**< Velocity-level Baumgarte/restitution bias term (m/s). */
+        Mat3f inv_I_a_world;      /**< Body A inverse inertia tensor in world frame ((kg*m^2)^-1). */
+        Mat3f inv_I_b_world;      /**< Body B inverse inertia tensor in world frame ((kg*m^2)^-1). */
     };
 
     std::vector<ConstraintData> constraint_data_;
 
+    /**
+     * @brief Precompute contact-space quantities before the PGS loop.
+     *
+     * @param [in,out] contacts Contact set for the current step.
+     * @param [in] bodies Rigid-body mass properties.
+     * @param [in] transforms Body transforms in world coordinates.
+     * @param [in] linear_velocities Current body linear velocities in world frame (m/s).
+     * @param [in] angular_velocities Current body angular velocities in world frame (rad/s).
+     * @param [in] dt Simulation time step in seconds.
+     * @return void
+     */
     void pre_step(std::vector<ContactPoint>& contacts,
                   const std::vector<RigidBody>& bodies,
                   const std::vector<Transform>& transforms,
@@ -57,6 +110,15 @@ private:
                   const std::vector<Vec3f>& angular_velocities,
                   float dt);
 
+    /**
+     * @brief Execute one PGS sweep over all contact constraints.
+     *
+     * @param [in,out] contacts Contact set with accumulated impulses.
+     * @param [in] bodies Rigid-body mass properties.
+     * @param [in,out] linear_velocities Body linear velocities in world frame (m/s).
+     * @param [in,out] angular_velocities Body angular velocities in world frame (rad/s).
+     * @return void
+     */
     void solve_velocity(std::vector<ContactPoint>& contacts,
                         const std::vector<RigidBody>& bodies,
                         std::vector<Vec3f>& linear_velocities,

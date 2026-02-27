@@ -1,0 +1,43 @@
+\doxysection{narrowphase.\+h}
+\hypertarget{narrowphase_8h_source}{}\label{narrowphase_8h_source}\index{include/novaphy/collision/narrowphase.h@{include/novaphy/collision/narrowphase.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/contact.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/shape.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }narrowphase\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{bool}\ collide\_sphere\_sphere(\textcolor{keyword}{const}\ CollisionShape\&\ a,\ \textcolor{keyword}{const}\ Transform\&\ ta,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ CollisionShape\&\ b,\ \textcolor{keyword}{const}\ Transform\&\ tb,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<ContactPoint>\&\ contacts);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{bool}\ collide\_sphere\_plane(\textcolor{keyword}{const}\ CollisionShape\&\ sphere,\ \textcolor{keyword}{const}\ Transform\&\ ts,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ CollisionShape\&\ plane,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<ContactPoint>\&\ contacts);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{bool}\ collide\_box\_sphere(\textcolor{keyword}{const}\ CollisionShape\&\ box,\ \textcolor{keyword}{const}\ Transform\&\ tb,}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ CollisionShape\&\ sphere,\ \textcolor{keyword}{const}\ Transform\&\ ts,}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<ContactPoint>\&\ contacts);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{bool}\ collide\_box\_plane(\textcolor{keyword}{const}\ CollisionShape\&\ box,\ \textcolor{keyword}{const}\ Transform\&\ tb,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ CollisionShape\&\ plane,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<ContactPoint>\&\ contacts);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{bool}\ collide\_box\_box(\textcolor{keyword}{const}\ CollisionShape\&\ a,\ \textcolor{keyword}{const}\ Transform\&\ ta,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ CollisionShape\&\ b,\ \textcolor{keyword}{const}\ Transform\&\ tb,}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<ContactPoint>\&\ contacts);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \}\ \ \textcolor{comment}{//\ namespace\ narrowphase}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{bool}\ collide\_shapes(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{CollisionShape}}\&\ a,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}}\&\ ta,}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{CollisionShape}}\&\ b,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}}\&\ tb,}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<ContactPoint>\&\ contacts);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

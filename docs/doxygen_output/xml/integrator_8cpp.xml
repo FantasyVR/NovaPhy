@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="integrator_8cpp" kind="file" language="C++">
+    <compoundname>integrator.cpp</compoundname>
+    <includes refid="integrator_8h" local="yes">novaphy/dynamics/integrator.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>novaphy/dynamics/integrator.h</label>
+        <link refid="integrator_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>novaphy/math/math_types.h</label>
+        <link refid="math__types_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>novaphy/novaphy_types.h</label>
+        <link refid="novaphy__types_8h_source"/>
+      </node>
+      <node id="1">
+        <label>src/dynamics/integrator.cpp</label>
+        <link refid="integrator_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Eigen/Core</label>
+      </node>
+      <node id="5">
+        <label>Eigen/Geometry</label>
+      </node>
+      <node id="6">
+        <label>cmath</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacenovaphy">novaphy</innernamespace>
+    <briefdescription>
+<para>Time integration routines for free rigid-body states. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/dynamics/integrator.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">novaphy<sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_symplectic_euler_1a60fc2b758fa080e645631eb5bf75302a" kindref="member">SymplecticEuler::integrate_velocity</ref>(Vec3f&amp;<sp/>linear_vel,<sp/>Vec3f&amp;<sp/>angular_vel,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>force,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>torque,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>inv_mass,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat3f&amp;<sp/>inv_inertia,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>gravity,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Semi-implicit<sp/>Euler:<sp/>v(t+dt)<sp/>=<sp/>v(t)<sp/>+<sp/>a<sp/>*<sp/>dt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>linear_vel<sp/>+=<sp/>(gravity<sp/>+<sp/>force<sp/>*<sp/>inv_mass)<sp/>*<sp/>dt;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>angular_vel<sp/>+=<sp/>inv_inertia<sp/>*<sp/>torque<sp/>*<sp/>dt;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Gentle<sp/>angular<sp/>damping<sp/>to<sp/>prevent<sp/>numerical<sp/>drift</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>angular_vel<sp/>*=<sp/>0.999f;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_symplectic_euler_1a94d67c264ce2d5c1fb766777c679ff4a" kindref="member">SymplecticEuler::integrate_position</ref>(<ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref>&amp;<sp/>transform,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>linear_vel,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>angular_vel,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Position<sp/>update</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>transform.position<sp/>+=<sp/>linear_vel<sp/>*<sp/>dt;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Orientation<sp/>update<sp/>via<sp/>quaternion<sp/>derivative</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>dq/dt<sp/>=<sp/>0.5<sp/>*<sp/>omega<sp/>*<sp/>q</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>Quatf&amp;<sp/>q<sp/>=<sp/>transform.rotation;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>Quatf<sp/>omega_quat(0,<sp/>angular_vel.x(),<sp/>angular_vel.y(),<sp/>angular_vel.z());</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>Quatf<sp/>dq;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>dq.w()<sp/>=<sp/>0.5f<sp/>*<sp/>(-angular_vel.x()<sp/>*<sp/>q.x()<sp/>-<sp/>angular_vel.y()<sp/>*<sp/>q.y()<sp/>-<sp/>angular_vel.z()<sp/>*<sp/>q.z());</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>dq.x()<sp/>=<sp/>0.5f<sp/>*<sp/>(angular_vel.x()<sp/>*<sp/>q.w()<sp/>+<sp/>angular_vel.z()<sp/>*<sp/>q.y()<sp/>-<sp/>angular_vel.y()<sp/>*<sp/>q.z());</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>dq.y()<sp/>=<sp/>0.5f<sp/>*<sp/>(angular_vel.y()<sp/>*<sp/>q.w()<sp/>-<sp/>angular_vel.z()<sp/>*<sp/>q.x()<sp/>+<sp/>angular_vel.x()<sp/>*<sp/>q.z());</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>dq.z()<sp/>=<sp/>0.5f<sp/>*<sp/>(angular_vel.z()<sp/>*<sp/>q.w()<sp/>+<sp/>angular_vel.y()<sp/>*<sp/>q.x()<sp/>-<sp/>angular_vel.x()<sp/>*<sp/>q.y());</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>q.w()<sp/>+=<sp/>dq.w()<sp/>*<sp/>dt;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>q.x()<sp/>+=<sp/>dq.x()<sp/>*<sp/>dt;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>q.y()<sp/>+=<sp/>dq.y()<sp/>*<sp/>dt;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>q.z()<sp/>+=<sp/>dq.z()<sp/>*<sp/>dt;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>q.normalize();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>novaphy</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/dynamics/integrator.cpp"/>
+  </compounddef>
+</doxygen>

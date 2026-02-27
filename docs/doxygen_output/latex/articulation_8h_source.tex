@@ -1,0 +1,58 @@
+\doxysection{articulation.\+h}
+\hypertarget{articulation_8h_source}{}\label{articulation_8h_source}\index{include/novaphy/core/articulation.h@{include/novaphy/core/articulation.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/body.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/joint.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/spatial.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<Joint>\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a1dfd24ed8cb0dabceddb7bc42f658b40}{joints}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ std::vector<RigidBody>\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a8ef51f9f8da3a9c48cbf90948af07e7d}{bodies}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ std::vector<SpatialMatrix>\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a59d91bc72cc6137a9895b23b03b50705}{I\_body}};\ \ \ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a16cc3fc42eb467cb051f45ee391aa563}{num\_links}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\doxymbox{\hyperlink{structnovaphy_1_1_articulation_a1dfd24ed8cb0dabceddb7bc42f658b40}{joints}}.size());\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_aba76faf294110cbda6a25713861aae88}{total\_q}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ 0;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ j\ :\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a1dfd24ed8cb0dabceddb7bc42f658b40}{joints}})\ n\ +=\ j.num\_q();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ n;}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_af2f575cc176a957d338348fb5d136037}{total\_qd}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ 0;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ j\ :\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a1dfd24ed8cb0dabceddb7bc42f658b40}{joints}})\ n\ +=\ j.num\_qd();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ n;}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_ab8a15318d11e2a2252b08d8907f44135}{q\_start}}(\textcolor{keywordtype}{int}\ link)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ offset\ =\ 0;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ link;\ ++i)\ offset\ +=\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a1dfd24ed8cb0dabceddb7bc42f658b40}{joints}}[i].num\_q();}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ offset;}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a4a8ee23fc680e861bc068e9f76da167e}{qd\_start}}(\textcolor{keywordtype}{int}\ link)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ offset\ =\ 0;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ link;\ ++i)\ offset\ +=\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a1dfd24ed8cb0dabceddb7bc42f658b40}{joints}}[i].num\_qd();}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ offset;}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_aed6ed61a2e7eaefb58d164f413ce18e5}{build\_spatial\_inertias}}()\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a59d91bc72cc6137a9895b23b03b50705}{I\_body}}.resize(\doxymbox{\hyperlink{structnovaphy_1_1_articulation_a16cc3fc42eb467cb051f45ee391aa563}{num\_links}}());}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a16cc3fc42eb467cb051f45ee391aa563}{num\_links}}();\ ++i)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a59d91bc72cc6137a9895b23b03b50705}{I\_body}}[i]\ =\ spatial\_inertia\_matrix(}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a8ef51f9f8da3a9c48cbf90948af07e7d}{bodies}}[i].mass,\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a8ef51f9f8da3a9c48cbf90948af07e7d}{bodies}}[i].com,\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a8ef51f9f8da3a9c48cbf90948af07e7d}{bodies}}[i].inertia);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

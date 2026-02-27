@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_rigid_body" kind="struct" language="C++" prot="public">
+    <compoundname>novaphy::RigidBody</compoundname>
+    <includes refid="body_8h" local="no">body.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnovaphy_1_1_rigid_body_1a4a55d7beadfbc6d08dd44c5727585962" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::RigidBody::mass</definition>
+        <argsstring></argsstring>
+        <name>mass</name>
+        <qualifiedname>novaphy::RigidBody::mass</qualifiedname>
+        <initializer>= 1.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Body mass in kilograms (kg). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/body.h" line="16" column="11" bodyfile="include/novaphy/core/body.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_rigid_body_1a6260dd28637dcf2c2a07c01240c360a0" prot="public" static="no" mutable="no">
+        <type>Mat3f</type>
+        <definition>Mat3f novaphy::RigidBody::inertia</definition>
+        <argsstring></argsstring>
+        <name>inertia</name>
+        <qualifiedname>novaphy::RigidBody::inertia</qualifiedname>
+        <initializer>= Mat3f::Identity()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Body-frame inertia tensor about CoM (kg*m^2). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/body.h" line="17" column="11" bodyfile="include/novaphy/core/body.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_rigid_body_1a602e45796d16a5d13c979ae80f1b9d5c" prot="public" static="no" mutable="no">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::RigidBody::com</definition>
+        <argsstring></argsstring>
+        <name>com</name>
+        <qualifiedname>novaphy::RigidBody::com</qualifiedname>
+        <initializer>= Vec3f::Zero()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Center of mass in body-local coordinates (m). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/body.h" line="18" column="11" bodyfile="include/novaphy/core/body.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnovaphy_1_1_rigid_body_1a65ea7f745251e5494811c8734b95359d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float novaphy::RigidBody::inv_mass</definition>
+        <argsstring>() const</argsstring>
+        <name>inv_mass</name>
+        <qualifiedname>novaphy::RigidBody::inv_mass</qualifiedname>
+        <briefdescription>
+<para>Get inverse mass. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Inverse mass (kg^-1), or zero for static bodies. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/body.h" line="25" column="11" bodyfile="include/novaphy/core/body.h" bodystart="25" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_rigid_body_1aae8faf551aa75b76c7d3746405216d84" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat3f</type>
+        <definition>Mat3f novaphy::RigidBody::inv_inertia</definition>
+        <argsstring>() const</argsstring>
+        <name>inv_inertia</name>
+        <qualifiedname>novaphy::RigidBody::inv_inertia</qualifiedname>
+        <briefdescription>
+<para>Get inverse inertia tensor in body coordinates. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Inverse inertia tensor ((kg*m^2)^-1), or zero matrix for static bodies. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/body.h" line="32" column="11" bodyfile="include/novaphy/core/body.h" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_rigid_body_1a126fd8a4a8f26672728160a8d2689744" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool novaphy::RigidBody::is_static</definition>
+        <argsstring>() const</argsstring>
+        <name>is_static</name>
+        <qualifiedname>novaphy::RigidBody::is_static</qualifiedname>
+        <briefdescription>
+<para>Check whether the body is static. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if mass is non-positive and body is treated as immovable. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/body.h" line="42" column="10" bodyfile="include/novaphy/core/body.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_rigid_body_1aa3b13f19f6bbf060c8e64cd9effdebe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>SpatialMatrix</type>
+        <definition>SpatialMatrix novaphy::RigidBody::spatial_inertia</definition>
+        <argsstring>() const</argsstring>
+        <name>spatial_inertia</name>
+        <qualifiedname>novaphy::RigidBody::spatial_inertia</qualifiedname>
+        <briefdescription>
+<para>Build 6x6 spatial inertia matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Uses body mass, local CoM, and local inertia tensor to produce the spatial inertia at the body-frame origin.</para>
+<para><simplesect kind="return"><para>Spatial inertia matrix in body coordinates. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/body.h" line="52" column="19" bodyfile="include/novaphy/core/body.h" bodystart="52" bodyend="54"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structnovaphy_1_1_rigid_body_1a79004be9129aad62aeaf9f1d84dff054" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref></type>
+        <definition>static RigidBody novaphy::RigidBody::from_box</definition>
+        <argsstring>(float m, const Vec3f &amp;half_extents)</argsstring>
+        <name>from_box</name>
+        <qualifiedname>novaphy::RigidBody::from_box</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>half_extents</declname>
+        </param>
+        <briefdescription>
+<para>Construct a rigid body with box inertia. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">m</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body mass in kilograms. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">half_extents</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Box half extents in meters in local coordinates. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref> with diagonal inertia for a solid box. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/body.h" line="63" column="22" bodyfile="include/novaphy/core/body.h" bodystart="63" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_rigid_body_1a7644cf6fe9f375ed3e09888f140632bd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref></type>
+        <definition>static RigidBody novaphy::RigidBody::from_sphere</definition>
+        <argsstring>(float m, float radius)</argsstring>
+        <name>from_sphere</name>
+        <qualifiedname>novaphy::RigidBody::from_sphere</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+<para>Construct a rigid body with solid-sphere inertia. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">m</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body mass in kilograms. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">radius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sphere radius in meters. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref> with isotropic inertia tensor. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/body.h" line="84" column="22" bodyfile="include/novaphy/core/body.h" bodystart="84" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_rigid_body_1a590034bde697e581ac0e9daabcfa30c5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref></type>
+        <definition>static RigidBody novaphy::RigidBody::make_static</definition>
+        <argsstring>()</argsstring>
+        <name>make_static</name>
+        <qualifiedname>novaphy::RigidBody::make_static</qualifiedname>
+        <briefdescription>
+<para>Construct a static rigid body. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref> with zero mass/inertia that is treated as immovable. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/body.h" line="97" column="22" bodyfile="include/novaphy/core/body.h" bodystart="97" bodyend="102"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Rigid-body inertial properties. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Stores mass, center of mass, and inertia tensor in body-local coordinates. These quantities are used by free-body and articulated dynamics solvers in SI units. </para>
+    </detaileddescription>
+    <location file="include/novaphy/core/body.h" line="15" column="1" bodyfile="include/novaphy/core/body.h" bodystart="15" bodyend="103"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_rigid_body_1a602e45796d16a5d13c979ae80f1b9d5c" prot="public" virt="non-virtual"><scope>novaphy::RigidBody</scope><name>com</name></member>
+      <member refid="structnovaphy_1_1_rigid_body_1a79004be9129aad62aeaf9f1d84dff054" prot="public" virt="non-virtual"><scope>novaphy::RigidBody</scope><name>from_box</name></member>
+      <member refid="structnovaphy_1_1_rigid_body_1a7644cf6fe9f375ed3e09888f140632bd" prot="public" virt="non-virtual"><scope>novaphy::RigidBody</scope><name>from_sphere</name></member>
+      <member refid="structnovaphy_1_1_rigid_body_1a6260dd28637dcf2c2a07c01240c360a0" prot="public" virt="non-virtual"><scope>novaphy::RigidBody</scope><name>inertia</name></member>
+      <member refid="structnovaphy_1_1_rigid_body_1aae8faf551aa75b76c7d3746405216d84" prot="public" virt="non-virtual"><scope>novaphy::RigidBody</scope><name>inv_inertia</name></member>
+      <member refid="structnovaphy_1_1_rigid_body_1a65ea7f745251e5494811c8734b95359d" prot="public" virt="non-virtual"><scope>novaphy::RigidBody</scope><name>inv_mass</name></member>
+      <member refid="structnovaphy_1_1_rigid_body_1a126fd8a4a8f26672728160a8d2689744" prot="public" virt="non-virtual"><scope>novaphy::RigidBody</scope><name>is_static</name></member>
+      <member refid="structnovaphy_1_1_rigid_body_1a590034bde697e581ac0e9daabcfa30c5" prot="public" virt="non-virtual"><scope>novaphy::RigidBody</scope><name>make_static</name></member>
+      <member refid="structnovaphy_1_1_rigid_body_1a4a55d7beadfbc6d08dd44c5727585962" prot="public" virt="non-virtual"><scope>novaphy::RigidBody</scope><name>mass</name></member>
+      <member refid="structnovaphy_1_1_rigid_body_1aa3b13f19f6bbf060c8e64cd9effdebe9" prot="public" virt="non-virtual"><scope>novaphy::RigidBody</scope><name>spatial_inertia</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

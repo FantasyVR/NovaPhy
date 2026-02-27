@@ -12,6 +12,11 @@ except ImportError:
 
 
 def _require_polyscope():
+    """Ensures Polyscope is importable before visualization setup.
+
+    Raises:
+        ImportError: If `polyscope` is not installed in the active environment.
+    """
     if ps is None:
         raise ImportError("polyscope is required for visualization. "
                           "Install with: pip install polyscope")
@@ -21,11 +26,11 @@ def make_box_mesh(half_extents):
     """Generate a box mesh (vertices + face indices).
 
     Args:
-        half_extents: (3,) array of half-extents [hx, hy, hz]
+        half_extents (array-like): Half-extents `[hx, hy, hz]` in meters.
 
     Returns:
-        vertices: (8, 3) float array
-        faces: (12, 3) int array (triangulated)
+        tuple[np.ndarray, np.ndarray]: Vertices `(8, 3)` and triangulated faces
+        `(12, 3)`.
     """
     hx, hy, hz = half_extents
     verts = np.array([
@@ -49,13 +54,13 @@ def make_sphere_mesh(radius, n_lat=16, n_lon=32):
     """Generate a UV sphere mesh.
 
     Args:
-        radius: sphere radius
-        n_lat: number of latitude divisions
-        n_lon: number of longitude divisions
+        radius (float): Sphere radius in meters.
+        n_lat (int): Number of latitude divisions.
+        n_lon (int): Number of longitude divisions.
 
     Returns:
-        vertices: (N, 3) float array
-        faces: (M, 3) int array
+        tuple[np.ndarray, np.ndarray]: Vertices `(N, 3)` and triangular faces
+        `(M, 3)`.
     """
     verts = []
     faces = []
@@ -108,12 +113,12 @@ def make_ground_plane_mesh(size=20.0, y=0.0):
     """Generate a flat ground plane mesh.
 
     Args:
-        size: half-size of the plane
-        y: height of the plane
+        size (float): Half-size of the rendered square plane in meters.
+        y (float): Plane height in world Y (meters).
 
     Returns:
-        vertices: (4, 3) float array
-        faces: (2, 3) int array
+        tuple[np.ndarray, np.ndarray]: Vertices `(4, 3)` and triangular faces
+        `(2, 3)`.
     """
     verts = np.array([
         [-size, y, -size],
@@ -126,7 +131,14 @@ def make_ground_plane_mesh(size=20.0, y=0.0):
 
 
 def quat_to_rotation_matrix(quat_xyzw):
-    """Convert quaternion [x, y, z, w] to 3x3 rotation matrix."""
+    """Converts an `xyzw` quaternion to a 3x3 rotation matrix.
+
+    Args:
+        quat_xyzw (array-like): Quaternion `[x, y, z, w]`.
+
+    Returns:
+        np.ndarray: Rotation matrix with shape `(3, 3)`.
+    """
     x, y, z, w = quat_xyzw
     return np.array([
         [1 - 2*(y*y + z*z),     2*(x*y - z*w),     2*(x*z + y*w)],
@@ -139,11 +151,11 @@ def transform_vertices(verts, transform):
     """Apply a NovaPhy Transform to a set of vertices.
 
     Args:
-        verts: (N, 3) local-space vertices
-        transform: novaphy.Transform object
+        verts (np.ndarray): Local-space vertices with shape `(N, 3)`.
+        transform (novaphy.Transform): Body transform in world coordinates.
 
     Returns:
-        (N, 3) world-space vertices
+        np.ndarray: World-space vertices with shape `(N, 3)`.
     """
     pos = np.array(transform.position, dtype=np.float32)
     quat = np.array(transform.rotation, dtype=np.float32)  # [x, y, z, w]
@@ -152,14 +164,17 @@ def transform_vertices(verts, transform):
 
 
 class SceneVisualizer:
-    """Manages Polyscope visualization for a NovaPhy World."""
+    """Manages Polyscope meshes for a NovaPhy world state."""
 
     def __init__(self, world, ground_size=20.0):
         """Initialize visualizer.
 
         Args:
-            world: novaphy.World instance
-            ground_size: half-size of ground plane mesh
+            world (novaphy.World): Physics world to visualize.
+            ground_size (float): Half-size of generated ground mesh in meters.
+
+        Raises:
+            ImportError: If Polyscope is unavailable.
         """
         _require_polyscope()
         self.world = world
@@ -167,7 +182,11 @@ class SceneVisualizer:
         self._setup_scene(ground_size)
 
     def _setup_scene(self, ground_size):
-        """Create Polyscope meshes for all shapes."""
+        """Creates Polyscope meshes for all model shapes.
+
+        Args:
+            ground_size (float): Half-size of generated plane mesh in meters.
+        """
         model = self.world.model
 
         for i, shape in enumerate(model.shapes):
@@ -194,7 +213,7 @@ class SceneVisualizer:
         self.update()
 
     def update(self):
-        """Update all mesh positions from the World's current state."""
+        """Updates mesh vertex positions from current world transforms."""
         state = self.world.state
 
         for name, local_verts, faces, body_idx in self.meshes:

@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_contact_point" kind="struct" language="C++" prot="public">
+    <compoundname>novaphy::ContactPoint</compoundname>
+    <includes refid="contact_8h" local="no">contact.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_point_1a0853a227e917277ccff0913e471b47d8" prot="public" static="no" mutable="no">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::ContactPoint::position</definition>
+        <argsstring></argsstring>
+        <name>position</name>
+        <qualifiedname>novaphy::ContactPoint::position</qualifiedname>
+        <initializer>= Vec3f::Zero()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Contact position in world coordinates (m). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="15" column="11" bodyfile="include/novaphy/core/contact.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_point_1a20f3f881c9f3536de5a67c4ecc1c9597" prot="public" static="no" mutable="no">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::ContactPoint::normal</definition>
+        <argsstring></argsstring>
+        <name>normal</name>
+        <qualifiedname>novaphy::ContactPoint::normal</qualifiedname>
+        <initializer>= Vec3f::Zero()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Contact normal from body A toward body B. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="16" column="11" bodyfile="include/novaphy/core/contact.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_point_1a1fb19edee8dd6cc4d71e7cb446b2b873" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::ContactPoint::penetration</definition>
+        <argsstring></argsstring>
+        <name>penetration</name>
+        <qualifiedname>novaphy::ContactPoint::penetration</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Penetration depth in meters; positive means overlap. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="17" column="11" bodyfile="include/novaphy/core/contact.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_point_1add0c208cb4c419fb78a708ea10568cd0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int novaphy::ContactPoint::body_a</definition>
+        <argsstring></argsstring>
+        <name>body_a</name>
+        <qualifiedname>novaphy::ContactPoint::body_a</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Body index for side A, or -1 for world/static shape. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="19" column="9" bodyfile="include/novaphy/core/contact.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_point_1ac2c53ff182680de80abb955dd48b45b9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int novaphy::ContactPoint::body_b</definition>
+        <argsstring></argsstring>
+        <name>body_b</name>
+        <qualifiedname>novaphy::ContactPoint::body_b</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Body index for side B, or -1 for world/static shape. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="20" column="9" bodyfile="include/novaphy/core/contact.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_point_1a93002bf853f7db720b2d1adf66e9265a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int novaphy::ContactPoint::shape_a</definition>
+        <argsstring></argsstring>
+        <name>shape_a</name>
+        <qualifiedname>novaphy::ContactPoint::shape_a</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shape index for side A. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="21" column="9" bodyfile="include/novaphy/core/contact.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_point_1ae445e1d532e545048f0a0edb999235e1" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int novaphy::ContactPoint::shape_b</definition>
+        <argsstring></argsstring>
+        <name>shape_b</name>
+        <qualifiedname>novaphy::ContactPoint::shape_b</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shape index for side B. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="22" column="9" bodyfile="include/novaphy/core/contact.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_point_1a56aeed6c4d1d2166905659c455dce085" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::ContactPoint::friction</definition>
+        <argsstring></argsstring>
+        <name>friction</name>
+        <qualifiedname>novaphy::ContactPoint::friction</qualifiedname>
+        <initializer>= 0.5f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Combined friction coefficient (dimensionless). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="24" column="11" bodyfile="include/novaphy/core/contact.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_point_1a0e7344dd307e996b2f48bfb5f8decafb" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::ContactPoint::restitution</definition>
+        <argsstring></argsstring>
+        <name>restitution</name>
+        <qualifiedname>novaphy::ContactPoint::restitution</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Combined restitution coefficient (dimensionless). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="25" column="11" bodyfile="include/novaphy/core/contact.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_point_1ad1d238cd0947380bd13aeedb8c3260b8" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::ContactPoint::accumulated_normal_impulse</definition>
+        <argsstring></argsstring>
+        <name>accumulated_normal_impulse</name>
+        <qualifiedname>novaphy::ContactPoint::accumulated_normal_impulse</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Cached normal impulse for warm starting (N*s). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="27" column="11" bodyfile="include/novaphy/core/contact.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_point_1ab832cea6e71a99ed55b27387ad02cce8" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::ContactPoint::accumulated_tangent_impulse_1</definition>
+        <argsstring></argsstring>
+        <name>accumulated_tangent_impulse_1</name>
+        <qualifiedname>novaphy::ContactPoint::accumulated_tangent_impulse_1</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Cached first tangent impulse for warm starting (N*s). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="28" column="11" bodyfile="include/novaphy/core/contact.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_point_1ad35e7f0efc4c5d1d9743c40675da5585" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::ContactPoint::accumulated_tangent_impulse_2</definition>
+        <argsstring></argsstring>
+        <name>accumulated_tangent_impulse_2</name>
+        <qualifiedname>novaphy::ContactPoint::accumulated_tangent_impulse_2</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Cached second tangent impulse for warm starting (N*s). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="29" column="11" bodyfile="include/novaphy/core/contact.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>One world-space contact sample between two colliders. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Contact normal points from body A toward body B. Penetration depth is positive when shapes overlap. Units follow SI conventions. </para>
+    </detaileddescription>
+    <location file="include/novaphy/core/contact.h" line="14" column="1" bodyfile="include/novaphy/core/contact.h" bodystart="14" bodyend="30"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_contact_point_1ad1d238cd0947380bd13aeedb8c3260b8" prot="public" virt="non-virtual"><scope>novaphy::ContactPoint</scope><name>accumulated_normal_impulse</name></member>
+      <member refid="structnovaphy_1_1_contact_point_1ab832cea6e71a99ed55b27387ad02cce8" prot="public" virt="non-virtual"><scope>novaphy::ContactPoint</scope><name>accumulated_tangent_impulse_1</name></member>
+      <member refid="structnovaphy_1_1_contact_point_1ad35e7f0efc4c5d1d9743c40675da5585" prot="public" virt="non-virtual"><scope>novaphy::ContactPoint</scope><name>accumulated_tangent_impulse_2</name></member>
+      <member refid="structnovaphy_1_1_contact_point_1add0c208cb4c419fb78a708ea10568cd0" prot="public" virt="non-virtual"><scope>novaphy::ContactPoint</scope><name>body_a</name></member>
+      <member refid="structnovaphy_1_1_contact_point_1ac2c53ff182680de80abb955dd48b45b9" prot="public" virt="non-virtual"><scope>novaphy::ContactPoint</scope><name>body_b</name></member>
+      <member refid="structnovaphy_1_1_contact_point_1a56aeed6c4d1d2166905659c455dce085" prot="public" virt="non-virtual"><scope>novaphy::ContactPoint</scope><name>friction</name></member>
+      <member refid="structnovaphy_1_1_contact_point_1a20f3f881c9f3536de5a67c4ecc1c9597" prot="public" virt="non-virtual"><scope>novaphy::ContactPoint</scope><name>normal</name></member>
+      <member refid="structnovaphy_1_1_contact_point_1a1fb19edee8dd6cc4d71e7cb446b2b873" prot="public" virt="non-virtual"><scope>novaphy::ContactPoint</scope><name>penetration</name></member>
+      <member refid="structnovaphy_1_1_contact_point_1a0853a227e917277ccff0913e471b47d8" prot="public" virt="non-virtual"><scope>novaphy::ContactPoint</scope><name>position</name></member>
+      <member refid="structnovaphy_1_1_contact_point_1a0e7344dd307e996b2f48bfb5f8decafb" prot="public" virt="non-virtual"><scope>novaphy::ContactPoint</scope><name>restitution</name></member>
+      <member refid="structnovaphy_1_1_contact_point_1a93002bf853f7db720b2d1adf66e9265a" prot="public" virt="non-virtual"><scope>novaphy::ContactPoint</scope><name>shape_a</name></member>
+      <member refid="structnovaphy_1_1_contact_point_1ae445e1d532e545048f0a0edb999235e1" prot="public" virt="non-virtual"><scope>novaphy::ContactPoint</scope><name>shape_b</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

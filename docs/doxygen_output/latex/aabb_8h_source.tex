@@ -1,0 +1,77 @@
+\doxysection{aabb.\+h}
+\hypertarget{aabb_8h_source}{}\label{aabb_8h_source}\index{include/novaphy/core/aabb.h@{include/novaphy/core/aabb.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ Vec3f\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}\ =\ Vec3f::Constant(std::numeric\_limits<float>::max());\ \ \ }
+\DoxyCodeLine{00015\ \ \ \ \ Vec3f\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}\ =\ Vec3f::Constant(-\/std::numeric\_limits<float>::max());\ \ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00018\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00026\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ae7661ab1d95ead954cc52dd992882253}{AABB}}(\textcolor{keyword}{const}\ Vec3f\&\ min\_pt,\ \textcolor{keyword}{const}\ Vec3f\&\ max\_pt)\ :\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}(min\_pt),\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}(max\_pt)\ \{\}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_accfc234f39efcad30f23c5b9de4dbfaf}{overlaps}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}}\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}.x()\ <=\ other.\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}.x()\ \&\&\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}.x()\ >=\ other.\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}.x())\ \&\&}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}.y()\ <=\ other.\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}.y()\ \&\&\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}.y()\ >=\ other.\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}.y())\ \&\&}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}.z()\ <=\ other.\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}.z()\ \&\&\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}.z()\ >=\ other.\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}.z());}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a7474c2e43989ea97076e01a9c3c76257}{expand}}(\textcolor{keyword}{const}\ Vec3f\&\ point)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}.cwiseMin(point);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}.cwiseMax(point);}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00057\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ad3c3dbd7954bf413feab8ba46f0c9d0d}{merged}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}}\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}}(\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}.cwiseMin(other.\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}),\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}.cwiseMax(other.\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}));}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00067\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a95e6d200decdf08db59039f054a9523d}{expanded}}(\textcolor{keywordtype}{float}\ margin)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ Vec3f\ m(margin,\ margin,\ margin);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}}(\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}\ -\/\ m,\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}\ +\ m);}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00077\ \ \ \ \ Vec3f\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a4486a81cfd4c4c030d44d9f0a7bd6990}{center}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ 0.5f\ *\ (\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}\ +\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}});\ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00084\ \ \ \ \ Vec3f\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ae0c8ef5dbb247a51867960139200312d}{half\_extents}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ 0.5f\ *\ (\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}\ -\/\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}});\ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ad34e0dfdcc907ddd666a13e1db67fe96}{surface\_area}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ Vec3f\ d\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}\ -\/\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2.0f\ *\ (d.x()\ *\ d.y()\ +\ d.y()\ *\ d.z()\ +\ d.z()\ *\ d.x());}
+\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a60315482eab383843646cc7b09ad9b8d}{is\_valid}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}.x()\ <=\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}.x()\ \&\&\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}.y()\ <=\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}.y()\ \&\&\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}}.z()\ <=\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}}.z();}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac79dc6860d4a1a5e1ec25ac35fc609b5}{from\_center\_half\_extents}}(\textcolor{keyword}{const}\ Vec3f\&\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a4486a81cfd4c4c030d44d9f0a7bd6990}{center}},\ \textcolor{keyword}{const}\ Vec3f\&\ half)\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}}(\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a4486a81cfd4c4c030d44d9f0a7bd6990}{center}}\ -\/\ half,\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a4486a81cfd4c4c030d44d9f0a7bd6990}{center}}\ +\ half);}
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a2935ca38a9e622be4d5c760a22495e64}{from\_sphere}}(\textcolor{keyword}{const}\ Vec3f\&\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a4486a81cfd4c4c030d44d9f0a7bd6990}{center}},\ \textcolor{keywordtype}{float}\ radius)\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ Vec3f\ r(radius,\ radius,\ radius);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}}(\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a4486a81cfd4c4c030d44d9f0a7bd6990}{center}}\ -\/\ r,\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a4486a81cfd4c4c030d44d9f0a7bd6990}{center}}\ +\ r);}
+\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_af9de425cc6721c6df8d67fc34c9a6c78}{from\_oriented\_box}}(\textcolor{keyword}{const}\ Vec3f\&\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ae0c8ef5dbb247a51867960139200312d}{half\_extents}},\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}}\&\ t)\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}}\ result;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Transform\ each\ of\ the\ 8\ corners}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 8;\ ++i)\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ Vec3f\ corner(}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (i\ \&\ 1)\ ?\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ae0c8ef5dbb247a51867960139200312d}{half\_extents}}.x()\ :\ -\/\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ae0c8ef5dbb247a51867960139200312d}{half\_extents}}.x(),}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (i\ \&\ 2)\ ?\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ae0c8ef5dbb247a51867960139200312d}{half\_extents}}.y()\ :\ -\/\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ae0c8ef5dbb247a51867960139200312d}{half\_extents}}.y(),}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (i\ \&\ 4)\ ?\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ae0c8ef5dbb247a51867960139200312d}{half\_extents}}.z()\ :\ -\/\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ae0c8ef5dbb247a51867960139200312d}{half\_extents}}.z());}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ result.\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a7474c2e43989ea97076e01a9c3c76257}{expand}}(t.\doxymbox{\hyperlink{structnovaphy_1_1_transform_ab65d8c0cfd3a5c72e1d928e3da4b7573}{transform\_point}}(corner));}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ \};}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

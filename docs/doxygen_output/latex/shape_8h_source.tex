@@ -1,0 +1,95 @@
+\doxysection{shape.\+h}
+\hypertarget{shape_8h_source}{}\label{shape_8h_source}\index{include/novaphy/core/shape.h@{include/novaphy/core/shape.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/aabb.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{enum\ class}\ ShapeType\ \{\ Box,\ Sphere,\ Plane\ \};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_box_shape}{BoxShape}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ Vec3f\ \doxymbox{\hyperlink{structnovaphy_1_1_box_shape_a40bf0c6151226c0509e34b9d4c7bbee1}{half\_extents}}\ =\ Vec3f(0.5f,\ 0.5f,\ 0.5f);\ \ }
+\DoxyCodeLine{00018\ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_sphere_shape}{SphereShape}}\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_sphere_shape_a1e7dd194ab087068798c42e82a518cb8}{radius}}\ =\ 0.5f;\ \ }
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_plane_shape}{PlaneShape}}\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ Vec3f\ \doxymbox{\hyperlink{structnovaphy_1_1_plane_shape_ad1947ccd8615373d16c1cdf394fc3935}{normal}}\ =\ Vec3f(0.0f,\ 1.0f,\ 0.0f);\ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_plane_shape_a7a85e1872ff281519bed5ba736a79297}{offset}}\ =\ 0.0f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{CollisionShape}}\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ ShapeType\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a26781106192b8ded52ef622cc686cf8b}{type}}\ =\ ShapeType::Box;\ \ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_box_shape}{BoxShape}}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a5875fad0082ee71245fa5f8d364adc3f}{box}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_sphere_shape}{SphereShape}}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a06b5ecb75e0f5fc460e432ef90259bf8}{sphere}};\ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_plane_shape}{PlaneShape}}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a299592657513434aa799ea7126a3f22f}{plane}};\ \ \ \ }
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_ad652128cbbc4d588ca540a7af5233d2b}{local\_transform}}\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::identity}}();\ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}}\ =\ 0.5f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}}\ =\ 0.3f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a9a334459be2f732c1270bb65f7dca4b0}{body\_index}}\ =\ -\/1;\ \ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00062\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b}{AABB}}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a265fb555011a3a9cdc14e993229f61a6}{compute\_aabb}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}}\&\ body\_transform)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}}\ world\ =\ body\_transform\ *\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_ad652128cbbc4d588ca540a7af5233d2b}{local\_transform}};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a26781106192b8ded52ef622cc686cf8b}{type}})\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ShapeType::Box:}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_af9de425cc6721c6df8d67fc34c9a6c78}{AABB::from\_oriented\_box}}(\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a5875fad0082ee71245fa5f8d364adc3f}{box}}.half\_extents,\ world);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ShapeType::Sphere:}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a2935ca38a9e622be4d5c760a22495e64}{AABB::from\_sphere}}(world.\doxymbox{\hyperlink{structnovaphy_1_1_transform_a074b6b85886aacd125ea8db47cc25f80}{position}},\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a06b5ecb75e0f5fc460e432ef90259bf8}{sphere}}.radius);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ShapeType::Plane:}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Planes\ are\ infinite;\ use\ a\ very\ large\ AABB}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b}{AABB}}(Vec3f::Constant(-\/1e6f),\ Vec3f::Constant(1e6f));}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b}{AABB}}();}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{CollisionShape}}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af2a0f55b8cc4f01eb6a069b8da7f4b0a}{make\_box}}(\textcolor{keyword}{const}\ Vec3f\&\ half\_extents,\ \textcolor{keywordtype}{int}\ body\_idx,}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}}\&\ local\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::identity}}(),}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}}\ =\ 0.5f,\ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}}\ =\ 0.3f)\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{CollisionShape}}\ s;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a26781106192b8ded52ef622cc686cf8b}{type}}\ =\ ShapeType::Box;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a5875fad0082ee71245fa5f8d364adc3f}{box}}.\doxymbox{\hyperlink{structnovaphy_1_1_box_shape_a40bf0c6151226c0509e34b9d4c7bbee1}{half\_extents}}\ =\ half\_extents;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a9a334459be2f732c1270bb65f7dca4b0}{body\_index}}\ =\ body\_idx;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_ad652128cbbc4d588ca540a7af5233d2b}{local\_transform}}\ =\ local;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}}\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}}\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ s;}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{CollisionShape}}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a7d9ac52a738ae09ac603305e199ff55f}{make\_sphere}}(\textcolor{keywordtype}{float}\ radius,\ \textcolor{keywordtype}{int}\ body\_idx,}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}}\&\ local\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::identity}}(),}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}}\ =\ 0.5f,\ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}}\ =\ 0.3f)\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{CollisionShape}}\ s;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a26781106192b8ded52ef622cc686cf8b}{type}}\ =\ ShapeType::Sphere;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a06b5ecb75e0f5fc460e432ef90259bf8}{sphere}}.\doxymbox{\hyperlink{structnovaphy_1_1_sphere_shape_a1e7dd194ab087068798c42e82a518cb8}{radius}}\ =\ radius;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a9a334459be2f732c1270bb65f7dca4b0}{body\_index}}\ =\ body\_idx;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_ad652128cbbc4d588ca540a7af5233d2b}{local\_transform}}\ =\ local;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}}\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}}\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}};}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ s;}
+\DoxyCodeLine{00120\ \ \ \ \ \}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{CollisionShape}}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af6e69bd49a3f0ad594a7f2963dc25e05}{make\_plane}}(\textcolor{keyword}{const}\ Vec3f\&\ normal,\ \textcolor{keywordtype}{float}\ offset,}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}}\ =\ 0.5f,\ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}}\ =\ 0.0f)\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{CollisionShape}}\ s;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a26781106192b8ded52ef622cc686cf8b}{type}}\ =\ ShapeType::Plane;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a299592657513434aa799ea7126a3f22f}{plane}}.\doxymbox{\hyperlink{structnovaphy_1_1_plane_shape_ad1947ccd8615373d16c1cdf394fc3935}{normal}}\ =\ normal.normalized();}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a299592657513434aa799ea7126a3f22f}{plane}}.\doxymbox{\hyperlink{structnovaphy_1_1_plane_shape_a7a85e1872ff281519bed5ba736a79297}{offset}}\ =\ offset;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a9a334459be2f732c1270bb65f7dca4b0}{body\_index}}\ =\ -\/1;\ \ \textcolor{comment}{//\ planes\ are\ typically\ world-\/owned}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}}\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}};}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ s.\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}}\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}};}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ s;}
+\DoxyCodeLine{00141\ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \};}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

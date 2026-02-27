@@ -1,0 +1,244 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="world_8h" kind="file" language="C++">
+    <compoundname>world.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes refid="broadphase_8h" local="yes">novaphy/collision/broadphase.h</includes>
+    <includes refid="narrowphase_8h" local="yes">novaphy/collision/narrowphase.h</includes>
+    <includes refid="contact_8h" local="yes">novaphy/core/contact.h</includes>
+    <includes refid="model_8h" local="yes">novaphy/core/model.h</includes>
+    <includes refid="free__body__solver_8h" local="yes">novaphy/dynamics/free_body_solver.h</includes>
+    <includes refid="integrator_8h" local="yes">novaphy/dynamics/integrator.h</includes>
+    <includes refid="state_8h" local="yes">novaphy/sim/state.h</includes>
+    <includedby refid="world_8cpp" local="yes">src/sim/world.cpp</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>novaphy/collision/broadphase.h</label>
+        <link refid="broadphase_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>novaphy/collision/narrowphase.h</label>
+        <link refid="narrowphase_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>novaphy/core/aabb.h</label>
+        <link refid="aabb_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>novaphy/core/body.h</label>
+        <link refid="body_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>novaphy/core/contact.h</label>
+        <link refid="contact_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>novaphy/core/model.h</label>
+        <link refid="model_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>novaphy/core/shape.h</label>
+        <link refid="shape_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>novaphy/dynamics/free_body_solver.h</label>
+        <link refid="free__body__solver_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>novaphy/dynamics/integrator.h</label>
+        <link refid="integrator_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>novaphy/math/math_types.h</label>
+        <link refid="math__types_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>novaphy/math/math_utils.h</label>
+        <link refid="math__utils_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>novaphy/math/spatial.h</label>
+        <link refid="spatial_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>novaphy/novaphy_types.h</label>
+        <link refid="novaphy__types_8h_source"/>
+      </node>
+      <node id="21">
+        <label>novaphy/sim/state.h</label>
+        <link refid="state_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/novaphy/sim/world.h</label>
+        <link refid="world_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Eigen/Core</label>
+      </node>
+      <node id="9">
+        <label>Eigen/Geometry</label>
+      </node>
+      <node id="4">
+        <label>algorithm</label>
+      </node>
+      <node id="10">
+        <label>cmath</label>
+      </node>
+      <node id="5">
+        <label>unordered_set</label>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/novaphy/sim/world.h</label>
+        <link refid="world_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/sim/world.cpp</label>
+        <link refid="world_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classnovaphy_1_1_world" prot="public">novaphy::World</innerclass>
+    <innernamespace refid="namespacenovaphy">novaphy</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/collision/broadphase.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/collision/narrowphase.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/core/contact.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/core/model.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/dynamics/free_body_solver.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/dynamics/integrator.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/sim/state.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">novaphy<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classnovaphy_1_1_world" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classnovaphy_1_1_world_1af7b041fe333923310dbcb9f27d11292e" kindref="member">World</ref><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classnovaphy_1_1_world_1af7b041fe333923310dbcb9f27d11292e" kindref="member">World</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_model" kindref="compound">Model</ref>&amp;<sp/><ref refid="classnovaphy_1_1_world_1af6f1a10e8ff40a7c661e3f3954bf9eb9" kindref="member">model</ref>,<sp/><ref refid="structnovaphy_1_1_solver_settings" kindref="compound">SolverSettings</ref><sp/><ref refid="classnovaphy_1_1_world_1aebdf447ce8d58807338d1ce78e4b154e" kindref="member">solver_settings</ref><sp/>=<sp/>{});</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classnovaphy_1_1_world_1abc197156cc4e9344e6a90f2df07c577d" kindref="member">step</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classnovaphy_1_1_world_1a8b2d23b579252bd278d741b51cce54d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classnovaphy_1_1_world_1a8b2d23b579252bd278d741b51cce54d6" kindref="member">set_gravity</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>g)<sp/>{<sp/>gravity_<sp/>=<sp/>g;<sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classnovaphy_1_1_world_1a71408e92a6d0fceada751d0ab1087cda" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/><ref refid="classnovaphy_1_1_world_1a71408e92a6d0fceada751d0ab1087cda" kindref="member">gravity</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>gravity_;<sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classnovaphy_1_1_world_1a59d5373069aa3bd499bf0d99079fd2de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_sim_state" kindref="compound">SimState</ref>&amp;<sp/><ref refid="classnovaphy_1_1_world_1a59d5373069aa3bd499bf0d99079fd2de" kindref="member">state</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_;<sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classnovaphy_1_1_world_1a1197eb4ca0e8043a554970a1fde2e515" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_sim_state" kindref="compound">SimState</ref>&amp;<sp/><ref refid="classnovaphy_1_1_world_1a1197eb4ca0e8043a554970a1fde2e515" kindref="member">state</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_;<sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classnovaphy_1_1_world_1af6f1a10e8ff40a7c661e3f3954bf9eb9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_model" kindref="compound">Model</ref>&amp;<sp/><ref refid="classnovaphy_1_1_world_1af6f1a10e8ff40a7c661e3f3954bf9eb9" kindref="member">model</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>model_;<sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classnovaphy_1_1_world_1aebdf447ce8d58807338d1ce78e4b154e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_solver_settings" kindref="compound">SolverSettings</ref>&amp;<sp/><ref refid="classnovaphy_1_1_world_1aebdf447ce8d58807338d1ce78e4b154e" kindref="member">solver_settings</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>solver_.settings();<sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classnovaphy_1_1_world_1a7adebe1cec37f0a47e25a57423c4c82f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;ContactPoint&gt;&amp;<sp/><ref refid="classnovaphy_1_1_world_1a7adebe1cec37f0a47e25a57423c4c82f" kindref="member">contacts</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>contacts_;<sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classnovaphy_1_1_world_1abcbb90e077101d600671a65e0b89e675" kindref="member">apply_force</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>body_index,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>force);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classnovaphy_1_1_world_1ae3ae5e79bcd64dfc6104a438a332272e" kindref="member">apply_torque</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>body_index,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>torque);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_model" kindref="compound">Model</ref><sp/>model_;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_sim_state" kindref="compound">SimState</ref><sp/>state_;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classnovaphy_1_1_sweep_and_prune" kindref="compound">SweepAndPrune</ref><sp/>broadphase_;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classnovaphy_1_1_free_body_solver" kindref="compound">FreeBodySolver</ref><sp/>solver_;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>Vec3f<sp/>gravity_<sp/>=<sp/>Vec3f(0.0f,<sp/>-9.81f,<sp/>0.0f);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;ContactPoint&gt;<sp/>contacts_;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>novaphy</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/novaphy/sim/world.h"/>
+  </compounddef>
+</doxygen>

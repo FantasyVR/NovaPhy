@@ -1,0 +1,35 @@
+\doxysection{state.\+h}
+\hypertarget{state_8h_source}{}\label{state_8h_source}\index{include/novaphy/sim/state.h@{include/novaphy/sim/state.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_sim_state}{SimState}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ std::vector<Transform>\ \doxymbox{\hyperlink{structnovaphy_1_1_sim_state_ae6b299eaa8225eae8d59ace327fc21f1}{transforms}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ std::vector<Vec3f>\ \doxymbox{\hyperlink{structnovaphy_1_1_sim_state_afb62ebe17edc136a94ff00a1b693e85c}{linear\_velocities}};\ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<Vec3f>\ \doxymbox{\hyperlink{structnovaphy_1_1_sim_state_a0621403b5efc9336391324bce4085395}{angular\_velocities}};\ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ std::vector<Vec3f>\ \doxymbox{\hyperlink{structnovaphy_1_1_sim_state_a72d60a061e349121d090c163bf637e99}{forces}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ std::vector<Vec3f>\ \doxymbox{\hyperlink{structnovaphy_1_1_sim_state_a591be39d02fc2522c22083077481171c}{torques}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{structnovaphy_1_1_sim_state_a493e653253ab6aeb84843a1b837efc6a}{init}}(\textcolor{keywordtype}{int}\ n,\ \textcolor{keyword}{const}\ std::vector<Transform>\&\ initial\_transforms);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{structnovaphy_1_1_sim_state_a4f739212c01ab815312b73299355c060}{clear\_forces}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{structnovaphy_1_1_sim_state_a9ee9f5a5ba4ec31766d67ee4b890b4a6}{set\_linear\_velocity}}(\textcolor{keywordtype}{int}\ body\_index,\ \textcolor{keyword}{const}\ Vec3f\&\ vel);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{structnovaphy_1_1_sim_state_a94c9d89abc48ea3dc40662a89e42cc2a}{set\_angular\_velocity}}(\textcolor{keywordtype}{int}\ body\_index,\ \textcolor{keyword}{const}\ Vec3f\&\ vel);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{structnovaphy_1_1_sim_state_a8831df49aecc6ffb15288a53818f3f40}{apply\_force}}(\textcolor{keywordtype}{int}\ body\_index,\ \textcolor{keyword}{const}\ Vec3f\&\ force);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{structnovaphy_1_1_sim_state_a6a61ef450532803ed09ebb3462a9b1b8}{apply\_torque}}(\textcolor{keywordtype}{int}\ body\_index,\ \textcolor{keyword}{const}\ Vec3f\&\ torque);}
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

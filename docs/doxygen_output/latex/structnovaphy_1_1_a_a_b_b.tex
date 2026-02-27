@@ -1,0 +1,289 @@
+\doxysection{novaphy::\+AABB Struct Reference}
+\hypertarget{structnovaphy_1_1_a_a_b_b}{}\label{structnovaphy_1_1_a_a_b_b}\index{novaphy::AABB@{novaphy::AABB}}
+
+
+Axis-\/aligned bounding box in 3D.  
+
+
+
+
+{\ttfamily \+\#include $<$aabb.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}\label{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af} 
+{\bfseries AABB} ()=default
+\begin{DoxyCompactList}\small\item\em Construct an invalid/\+empty \doxylink{structnovaphy_1_1_a_a_b_b}{AABB}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ae7661ab1d95ead954cc52dd992882253}{AABB}} (const Vec3f \&min\+\_\+pt, const Vec3f \&max\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Construct \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} from corners. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_accfc234f39efcad30f23c5b9de4dbfaf}{overlaps}} (const \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}} \&other) const
+\begin{DoxyCompactList}\small\item\em Test overlap with another \doxylink{structnovaphy_1_1_a_a_b_b}{AABB}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a7474c2e43989ea97076e01a9c3c76257}{expand}} (const Vec3f \&point)
+\begin{DoxyCompactList}\small\item\em Expand this \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} to include a point. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}} \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ad3c3dbd7954bf413feab8ba46f0c9d0d}{merged}} (const \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}} \&other) const
+\begin{DoxyCompactList}\small\item\em Return merged \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} containing this and another box. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}} \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a95e6d200decdf08db59039f054a9523d}{expanded}} (float margin) const
+\begin{DoxyCompactList}\small\item\em Return \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} expanded by uniform margin. \end{DoxyCompactList}\item 
+Vec3f \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a4486a81cfd4c4c030d44d9f0a7bd6990}{center}} () const
+\begin{DoxyCompactList}\small\item\em Compute center point. \end{DoxyCompactList}\item 
+Vec3f \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ae0c8ef5dbb247a51867960139200312d}{half\+\_\+extents}} () const
+\begin{DoxyCompactList}\small\item\em Compute half extents along each axis. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ad34e0dfdcc907ddd666a13e1db67fe96}{surface\+\_\+area}} () const
+\begin{DoxyCompactList}\small\item\em Compute surface area. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a60315482eab383843646cc7b09ad9b8d}{is\+\_\+valid}} () const
+\begin{DoxyCompactList}\small\item\em Check if \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} has valid corner ordering. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}} \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac79dc6860d4a1a5e1ec25ac35fc609b5}{from\+\_\+center\+\_\+half\+\_\+extents}} (const Vec3f \&\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a4486a81cfd4c4c030d44d9f0a7bd6990}{center}}, const Vec3f \&half)
+\begin{DoxyCompactList}\small\item\em Create \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} from center and half extents. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}} \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a2935ca38a9e622be4d5c760a22495e64}{from\+\_\+sphere}} (const Vec3f \&\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a4486a81cfd4c4c030d44d9f0a7bd6990}{center}}, float radius)
+\begin{DoxyCompactList}\small\item\em Create \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} enclosing a sphere. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}} \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_af9de425cc6721c6df8d67fc34c9a6c78}{from\+\_\+oriented\+\_\+box}} (const Vec3f \&\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ae0c8ef5dbb247a51867960139200312d}{half\+\_\+extents}}, const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&t)
+\begin{DoxyCompactList}\small\item\em Create \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} enclosing an oriented box. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Vec3f \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}{min}} = Vec3f::\+\+Constant(std::\+numeric\+\_\+limits$<$float$>$\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{::\+max}}())
+\item 
+Vec3f \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{max}} = Vec3f::\+\+Constant(-\/std::\+numeric\+\_\+limits$<$float$>$::\+max())
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Axis-\/aligned bounding box in 3D. 
+
+Used by broadphase collision culling and spatial queries. Coordinates are expressed in world units (meters). 
+
+\label{doc-constructors}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_ae7661ab1d95ead954cc52dd992882253}\index{novaphy::AABB@{novaphy::AABB}!AABB@{AABB}}
+\index{AABB@{AABB}!novaphy::AABB@{novaphy::AABB}}
+\doxysubsubsection{\texorpdfstring{AABB()}{AABB()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_a_a_b_b_ae7661ab1d95ead954cc52dd992882253} 
+novaphy::\+\+AABB::\+\+AABB (\begin{DoxyParamCaption}\item[{const Vec3f \&}]{min\+\_\+pt}{, }\item[{const Vec3f \&}]{max\+\_\+pt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} from corners. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em min\+\_\+pt} & Minimum corner. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em max\+\_\+pt} & Maximum corner. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_a4486a81cfd4c4c030d44d9f0a7bd6990}\index{novaphy::AABB@{novaphy::AABB}!center@{center}}
+\index{center@{center}!novaphy::AABB@{novaphy::AABB}}
+\doxysubsubsection{\texorpdfstring{center()}{center()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_a_a_b_b_a4486a81cfd4c4c030d44d9f0a7bd6990} 
+Vec3f novaphy::\+\+AABB::\+center (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute center point. 
+
+\begin{DoxyReturn}{Returns}
+Center of \doxylink{structnovaphy_1_1_a_a_b_b}{AABB}. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_a7474c2e43989ea97076e01a9c3c76257}\index{novaphy::AABB@{novaphy::AABB}!expand@{expand}}
+\index{expand@{expand}!novaphy::AABB@{novaphy::AABB}}
+\doxysubsubsection{\texorpdfstring{expand()}{expand()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_a_a_b_b_a7474c2e43989ea97076e01a9c3c76257} 
+void novaphy::\+\+AABB::\+expand (\begin{DoxyParamCaption}\item[{const Vec3f \&}]{point}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Expand this \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} to include a point. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em point} & Point in world coordinates. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_a95e6d200decdf08db59039f054a9523d}\index{novaphy::AABB@{novaphy::AABB}!expanded@{expanded}}
+\index{expanded@{expanded}!novaphy::AABB@{novaphy::AABB}}
+\doxysubsubsection{\texorpdfstring{expanded()}{expanded()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_a_a_b_b_a95e6d200decdf08db59039f054a9523d} 
+\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}} novaphy::\+\+AABB::\+expanded (\begin{DoxyParamCaption}\item[{float}]{margin}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} expanded by uniform margin. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em margin} & Margin in meters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Expanded \doxylink{structnovaphy_1_1_a_a_b_b}{AABB}. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_ac79dc6860d4a1a5e1ec25ac35fc609b5}\index{novaphy::AABB@{novaphy::AABB}!from\_center\_half\_extents@{from\_center\_half\_extents}}
+\index{from\_center\_half\_extents@{from\_center\_half\_extents}!novaphy::AABB@{novaphy::AABB}}
+\doxysubsubsection{\texorpdfstring{from\_center\_half\_extents()}{from\_center\_half\_extents()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_a_a_b_b_ac79dc6860d4a1a5e1ec25ac35fc609b5} 
+\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}} novaphy::\+\+AABB::\+from\+\_\+center\+\_\+half\+\_\+extents (\begin{DoxyParamCaption}\item[{const Vec3f \&}]{center}{, }\item[{const Vec3f \&}]{half}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Create \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} from center and half extents. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em \doxylink{structnovaphy_1_1_a_a_b_b_a4486a81cfd4c4c030d44d9f0a7bd6990}{center}} & Center point. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em half} & Half extents. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{structnovaphy_1_1_a_a_b_b}{AABB} defined by center and extents. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_af9de425cc6721c6df8d67fc34c9a6c78}\index{novaphy::AABB@{novaphy::AABB}!from\_oriented\_box@{from\_oriented\_box}}
+\index{from\_oriented\_box@{from\_oriented\_box}!novaphy::AABB@{novaphy::AABB}}
+\doxysubsubsection{\texorpdfstring{from\_oriented\_box()}{from\_oriented\_box()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_a_a_b_b_af9de425cc6721c6df8d67fc34c9a6c78} 
+\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}} novaphy::\+\+AABB::\+from\+\_\+oriented\+\_\+box (\begin{DoxyParamCaption}\item[{const Vec3f \&}]{half\+\_\+extents}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Create \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} enclosing an oriented box. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em \doxylink{structnovaphy_1_1_a_a_b_b_ae0c8ef5dbb247a51867960139200312d}{half\+\_\+extents}} & Local half extents of box. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em t} & Box world transform. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+World-\/space \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} that contains all eight transformed corners. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_a2935ca38a9e622be4d5c760a22495e64}\index{novaphy::AABB@{novaphy::AABB}!from\_sphere@{from\_sphere}}
+\index{from\_sphere@{from\_sphere}!novaphy::AABB@{novaphy::AABB}}
+\doxysubsubsection{\texorpdfstring{from\_sphere()}{from\_sphere()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_a_a_b_b_a2935ca38a9e622be4d5c760a22495e64} 
+\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}} novaphy::\+\+AABB::\+from\+\_\+sphere (\begin{DoxyParamCaption}\item[{const Vec3f \&}]{center}{, }\item[{float}]{radius}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Create \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} enclosing a sphere. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em \doxylink{structnovaphy_1_1_a_a_b_b_a4486a81cfd4c4c030d44d9f0a7bd6990}{center}} & Sphere center. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em radius} & Sphere radius in meters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Sphere-\/bounding \doxylink{structnovaphy_1_1_a_a_b_b}{AABB}. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_ae0c8ef5dbb247a51867960139200312d}\index{novaphy::AABB@{novaphy::AABB}!half\_extents@{half\_extents}}
+\index{half\_extents@{half\_extents}!novaphy::AABB@{novaphy::AABB}}
+\doxysubsubsection{\texorpdfstring{half\_extents()}{half\_extents()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_a_a_b_b_ae0c8ef5dbb247a51867960139200312d} 
+Vec3f novaphy::\+\+AABB::\+half\+\_\+extents (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute half extents along each axis. 
+
+\begin{DoxyReturn}{Returns}
+Half extents vector. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_a60315482eab383843646cc7b09ad9b8d}\index{novaphy::AABB@{novaphy::AABB}!is\_valid@{is\_valid}}
+\index{is\_valid@{is\_valid}!novaphy::AABB@{novaphy::AABB}}
+\doxysubsubsection{\texorpdfstring{is\_valid()}{is\_valid()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_a_a_b_b_a60315482eab383843646cc7b09ad9b8d} 
+bool novaphy::\+\+AABB::\+is\+\_\+valid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} has valid corner ordering. 
+
+\begin{DoxyReturn}{Returns}
+True if min \texorpdfstring{$<$}{<}= max for all axes. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_ad3c3dbd7954bf413feab8ba46f0c9d0d}\index{novaphy::AABB@{novaphy::AABB}!merged@{merged}}
+\index{merged@{merged}!novaphy::AABB@{novaphy::AABB}}
+\doxysubsubsection{\texorpdfstring{merged()}{merged()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_a_a_b_b_ad3c3dbd7954bf413feab8ba46f0c9d0d} 
+\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}} novaphy::\+\+AABB::\+merged (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return merged \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} containing this and another box. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em other} & Other \doxylink{structnovaphy_1_1_a_a_b_b}{AABB}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Union \doxylink{structnovaphy_1_1_a_a_b_b}{AABB}. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_accfc234f39efcad30f23c5b9de4dbfaf}\index{novaphy::AABB@{novaphy::AABB}!overlaps@{overlaps}}
+\index{overlaps@{overlaps}!novaphy::AABB@{novaphy::AABB}}
+\doxysubsubsection{\texorpdfstring{overlaps()}{overlaps()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_a_a_b_b_accfc234f39efcad30f23c5b9de4dbfaf} 
+bool novaphy::\+\+AABB::\+overlaps (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_a3e92d4d30a549a6b61ca4ed8dd6519af}{AABB}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Test overlap with another \doxylink{structnovaphy_1_1_a_a_b_b}{AABB}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em other} & Other \doxylink{structnovaphy_1_1_a_a_b_b}{AABB}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if boxes overlap on all axes. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_ad34e0dfdcc907ddd666a13e1db67fe96}\index{novaphy::AABB@{novaphy::AABB}!surface\_area@{surface\_area}}
+\index{surface\_area@{surface\_area}!novaphy::AABB@{novaphy::AABB}}
+\doxysubsubsection{\texorpdfstring{surface\_area()}{surface\_area()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_a_a_b_b_ad34e0dfdcc907ddd666a13e1db67fe96} 
+float novaphy::\+\+AABB::\+surface\+\_\+area (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute surface area. 
+
+\begin{DoxyReturn}{Returns}
+Surface area in square meters. 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}\index{novaphy::AABB@{novaphy::AABB}!max@{max}}
+\index{max@{max}!novaphy::AABB@{novaphy::AABB}}
+\doxysubsubsection{\texorpdfstring{max}{max}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705} 
+Vec3f novaphy::\+\+AABB::\+max = Vec3f::\+\+Constant(-\/std::\+numeric\+\_\+limits$<$float$>$::\+max())}
+
+Maximum corner. \Hypertarget{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9}\index{novaphy::AABB@{novaphy::AABB}!min@{min}}
+\index{min@{min}!novaphy::AABB@{novaphy::AABB}}
+\doxysubsubsection{\texorpdfstring{min}{min}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_a_a_b_b_ab25875fb15d44b34697cfca4241d5ab9} 
+Vec3f novaphy::\+\+AABB::\+min = Vec3f::\+\+Constant(std::\+numeric\+\_\+limits$<$float$>$\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b_ac406b2ea8fed454f4a00e48e64ae2705}{::\+max}}())}
+
+Minimum corner. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+core/\+aabb.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_box_shape" kind="struct" language="C++" prot="public">
+    <compoundname>novaphy::BoxShape</compoundname>
+    <includes refid="shape_8h" local="no">shape.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnovaphy_1_1_box_shape_1a40bf0c6151226c0509e34b9d4c7bbee1" prot="public" static="no" mutable="no">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::BoxShape::half_extents</definition>
+        <argsstring></argsstring>
+        <name>half_extents</name>
+        <qualifiedname>novaphy::BoxShape::half_extents</qualifiedname>
+        <initializer>= Vec3f(0.5f, 0.5f, 0.5f)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Half lengths along local x/y/z axes in meters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="17" column="11" bodyfile="include/novaphy/core/shape.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Box primitive described by local half extents. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/novaphy/core/shape.h" line="16" column="1" bodyfile="include/novaphy/core/shape.h" bodystart="16" bodyend="18"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_box_shape_1a40bf0c6151226c0509e34b9d4c7bbee1" prot="public" virt="non-virtual"><scope>novaphy::BoxShape</scope><name>half_extents</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

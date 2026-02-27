@@ -1,0 +1,128 @@
+\doxysection{novaphy::\+Free\+Body\+Solver Class Reference}
+\hypertarget{classnovaphy_1_1_free_body_solver}{}\label{classnovaphy_1_1_free_body_solver}\index{novaphy::FreeBodySolver@{novaphy::FreeBodySolver}}
+
+
+Sequential Impulse contact solver for unconstrained rigid bodies.  
+
+
+
+
+{\ttfamily \+\#include $<$free\+\_\+body\+\_\+solver.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classnovaphy_1_1_free_body_solver_aa6eaa8fe99160b40b470de9aaa735c62}{Free\+Body\+Solver}} (\doxymbox{\hyperlink{structnovaphy_1_1_solver_settings}{Solver\+Settings}} \doxymbox{\hyperlink{classnovaphy_1_1_free_body_solver_a40b701b8676b4199c5b1896018adcc2c}{settings}}=\{\})
+\begin{DoxyCompactList}\small\item\em Construct a contact solver with user-\/defined settings. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classnovaphy_1_1_free_body_solver_a41235442c6b9f0809f97e04cd4b1e180}{solve}} (std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \&contacts, const std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{Rigid\+Body}} $>$ \&bodies, const std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} $>$ \&transforms, std::\+vector$<$ Vec3f $>$ \&linear\+\_\+velocities, std::\+vector$<$ Vec3f $>$ \&angular\+\_\+velocities, float dt)
+\begin{DoxyCompactList}\small\item\em Resolve contact constraints for the current simulation step. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_solver_settings}{Solver\+Settings}} \& \doxymbox{\hyperlink{classnovaphy_1_1_free_body_solver_a40b701b8676b4199c5b1896018adcc2c}{settings}} ()
+\begin{DoxyCompactList}\small\item\em Mutable access to current solver settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sequential Impulse contact solver for unconstrained rigid bodies. 
+
+Resolves normal and friction contact constraints using a Projected Gauss-\/\+Seidel loop with accumulated impulse clamping. Contact impulses are computed in world coordinates and applied to linear velocity (m/\+s) and angular velocity (rad/\+s).
+
+\begin{DoxyNote}{Note}
+This solver is intended for a single-\/threaded update loop. 
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+Inputs must be physically consistent (mass in kg, inertia in kg\texorpdfstring{$\ast$}{*}m\texorpdfstring{$^\wedge$}{\string^}2, time step in seconds) to avoid instability. 
+\end{DoxyWarning}
+
+
+\label{doc-constructors}
+\Hypertarget{classnovaphy_1_1_free_body_solver_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classnovaphy_1_1_free_body_solver_aa6eaa8fe99160b40b470de9aaa735c62}\index{novaphy::FreeBodySolver@{novaphy::FreeBodySolver}!FreeBodySolver@{FreeBodySolver}}
+\index{FreeBodySolver@{FreeBodySolver}!novaphy::FreeBodySolver@{novaphy::FreeBodySolver}}
+\doxysubsubsection{\texorpdfstring{FreeBodySolver()}{FreeBodySolver()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_free_body_solver_aa6eaa8fe99160b40b470de9aaa735c62} 
+novaphy::\+\+Free\+Body\+Solver::\+\+Free\+Body\+Solver (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structnovaphy_1_1_solver_settings}{Solver\+Settings}}}]{settings}{ = {\ttfamily \{\}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct a contact solver with user-\/defined settings. 
+
+Constructs the free-\/body contact solver.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em \doxylink{classnovaphy_1_1_free_body_solver_a40b701b8676b4199c5b1896018adcc2c}{settings}} & Solver iteration and stabilization parameters.\\
+\hline
+\doxymbox{\texttt{in}}  & {\em \doxylink{classnovaphy_1_1_free_body_solver_a40b701b8676b4199c5b1896018adcc2c}{settings}} & Solver iteration counts and stabilization settings. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classnovaphy_1_1_free_body_solver_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classnovaphy_1_1_free_body_solver_a40b701b8676b4199c5b1896018adcc2c}\index{novaphy::FreeBodySolver@{novaphy::FreeBodySolver}!settings@{settings}}
+\index{settings@{settings}!novaphy::FreeBodySolver@{novaphy::FreeBodySolver}}
+\doxysubsubsection{\texorpdfstring{settings()}{settings()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_free_body_solver_a40b701b8676b4199c5b1896018adcc2c} 
+\doxymbox{\hyperlink{structnovaphy_1_1_solver_settings}{Solver\+Settings}} \& novaphy::\+\+Free\+Body\+Solver::\+settings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mutable access to current solver settings. 
+
+\begin{DoxyReturn}{Returns}
+Reference to the internal \doxylink{structnovaphy_1_1_solver_settings}{Solver\+Settings}. 
+\end{DoxyReturn}
+\Hypertarget{classnovaphy_1_1_free_body_solver_a41235442c6b9f0809f97e04cd4b1e180}\index{novaphy::FreeBodySolver@{novaphy::FreeBodySolver}!solve@{solve}}
+\index{solve@{solve}!novaphy::FreeBodySolver@{novaphy::FreeBodySolver}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_free_body_solver_a41235442c6b9f0809f97e04cd4b1e180} 
+void novaphy::\+\+Free\+Body\+Solver::\+solve (\begin{DoxyParamCaption}\item[{std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \&}]{contacts}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{Rigid\+Body}} $>$ \&}]{bodies}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} $>$ \&}]{transforms}{, }\item[{std::\+vector$<$ Vec3f $>$ \&}]{linear\+\_\+velocities}{, }\item[{std::\+vector$<$ Vec3f $>$ \&}]{angular\+\_\+velocities}{, }\item[{float}]{dt}{}\end{DoxyParamCaption})}
+
+
+
+Resolve contact constraints for the current simulation step. 
+
+Solves velocity-\/level contact constraints for the current time step.
+
+This function precomputes effective masses/\+bias terms and then iteratively applies impulses to satisfy non-\/penetration and Coulomb friction constraints.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in,out}}  & {\em contacts} & Contact points and warm-\/start impulse cache. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em bodies} & Rigid-\/body mass and inertia properties. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em transforms} & Body transforms in world coordinates. \\
+\hline
+\doxymbox{\texttt{in,out}}  & {\em linear\+\_\+velocities} & Body linear velocities in world frame (m/\+s). \\
+\hline
+\doxymbox{\texttt{in,out}}  & {\em angular\+\_\+velocities} & Body angular velocities in world frame (rad/\+s). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em dt} & Simulation time step in seconds. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in,out}}  & {\em contacts} & Contact manifold with accumulated impulses. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em bodies} & Rigid-\/body mass and inertia properties. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em transforms} & Body world transforms. \\
+\hline
+\doxymbox{\texttt{in,out}}  & {\em linear\+\_\+velocities} & Body linear velocities in world frame (m/\+s). \\
+\hline
+\doxymbox{\texttt{in,out}}  & {\em angular\+\_\+velocities} & Body angular velocities in world frame (rad/\+s). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em dt} & Fixed simulation time step in seconds. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+dynamics/\+free\+\_\+body\+\_\+solver.\+h\item 
+src/\+dynamics/\+\doxymbox{\hyperlink{free__body__solver_8cpp}{free\+\_\+body\+\_\+solver.\+cpp}}\end{DoxyCompactItemize}

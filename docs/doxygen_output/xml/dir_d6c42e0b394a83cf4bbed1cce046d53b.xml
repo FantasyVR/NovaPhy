@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_d6c42e0b394a83cf4bbed1cce046d53b" kind="dir">
+    <compoundname>include/novaphy/dynamics</compoundname>
+    <innerfile refid="articulated__solver_8h">articulated_solver.h</innerfile>
+    <innerfile refid="featherstone_8h">featherstone.h</innerfile>
+    <innerfile refid="free__body__solver_8h">free_body_solver.h</innerfile>
+    <innerfile refid="integrator_8h">integrator.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/novaphy/dynamics/"/>
+  </compounddef>
+</doxygen>

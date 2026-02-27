@@ -1,0 +1,250 @@
+\doxysection{novaphy::\+Transform Struct Reference}
+\hypertarget{structnovaphy_1_1_transform}{}\label{structnovaphy_1_1_transform}\index{novaphy::Transform@{novaphy::Transform}}
+
+
+Rigid transform represented by translation and quaternion orientation.  
+
+
+
+
+{\ttfamily \+\#include $<$math\+\_\+types.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}\label{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9} 
+{\bfseries Transform} ()=default
+\begin{DoxyCompactList}\small\item\em Construct identity transform. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform_a9a8a952a1c2061ab6432fde64500cf7f}{Transform}} (const Vec3f \&p, const Quatf \&r)
+\begin{DoxyCompactList}\small\item\em Construct transform from translation and quaternion. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}{Transform}} \doxymbox{\hyperlink{structnovaphy_1_1_transform_a4a6f80dd0da43d1152d1cae551103f06}{operator\texorpdfstring{$\ast$}{*}}} (const \doxymbox{\hyperlink{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}{Transform}} \&other) const
+\begin{DoxyCompactList}\small\item\em Compose two transforms. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}{Transform}} \doxymbox{\hyperlink{structnovaphy_1_1_transform_a2506c2d754772882891d7a118630d880}{inverse}} () const
+\begin{DoxyCompactList}\small\item\em Compute inverse rigid transform. \end{DoxyCompactList}\item 
+Vec3f \doxymbox{\hyperlink{structnovaphy_1_1_transform_ab65d8c0cfd3a5c72e1d928e3da4b7573}{transform\+\_\+point}} (const Vec3f \&p) const
+\begin{DoxyCompactList}\small\item\em \doxylink{structnovaphy_1_1_transform}{Transform} a point from local to world coordinates. \end{DoxyCompactList}\item 
+Vec3f \doxymbox{\hyperlink{structnovaphy_1_1_transform_a8275cc9b4000bf0fe6b222f29a73876a}{transform\+\_\+vector}} (const Vec3f \&v) const
+\begin{DoxyCompactList}\small\item\em \doxylink{structnovaphy_1_1_transform}{Transform} a direction vector (rotation only). \end{DoxyCompactList}\item 
+Mat3f \doxymbox{\hyperlink{structnovaphy_1_1_transform_a15091736eca0a5250c4c19de64476ad4}{rotation\+\_\+matrix}} () const
+\begin{DoxyCompactList}\small\item\em Get rotation matrix equivalent of quaternion orientation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}{Transform}} \doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{identity}} ()
+\begin{DoxyCompactList}\small\item\em Create identity transform. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}{Transform}} \doxymbox{\hyperlink{structnovaphy_1_1_transform_a105b726c1889f56ed02f4a869e60b1db}{from\+\_\+translation}} (const Vec3f \&t)
+\begin{DoxyCompactList}\small\item\em Create translation-\/only transform. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}{Transform}} \doxymbox{\hyperlink{structnovaphy_1_1_transform_a4613bcb81c364ccce1934b7abfe5adc7}{from\+\_\+rotation}} (const Quatf \&q)
+\begin{DoxyCompactList}\small\item\em Create rotation-\/only transform. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}{Transform}} \doxymbox{\hyperlink{structnovaphy_1_1_transform_acd6592af62991b48f9ac382d7cdf8968}{from\+\_\+axis\+\_\+angle}} (const Vec3f \&axis, float angle)
+\begin{DoxyCompactList}\small\item\em Create transform from axis-\/angle rotation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Vec3f \doxymbox{\hyperlink{structnovaphy_1_1_transform_a074b6b85886aacd125ea8db47cc25f80}{position}} = Vec3f::\+\+Zero()
+\item 
+Quatf \doxymbox{\hyperlink{structnovaphy_1_1_transform_a1a88b660d881eab306cb61d9a3218707}{rotation}} = Quatf::\+\+Identity()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rigid transform represented by translation and quaternion orientation. 
+
+{\ttfamily \doxylink{structnovaphy_1_1_transform_a074b6b85886aacd125ea8db47cc25f80}{position}} is expressed in world coordinates (m). {\ttfamily \doxylink{structnovaphy_1_1_transform_a1a88b660d881eab306cb61d9a3218707}{rotation}} stores attitude as a unit quaternion for stable composition and interpolation. 
+
+\label{doc-constructors}
+\Hypertarget{structnovaphy_1_1_transform_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structnovaphy_1_1_transform_a9a8a952a1c2061ab6432fde64500cf7f}\index{novaphy::Transform@{novaphy::Transform}!Transform@{Transform}}
+\index{Transform@{Transform}!novaphy::Transform@{novaphy::Transform}}
+\doxysubsubsection{\texorpdfstring{Transform()}{Transform()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_transform_a9a8a952a1c2061ab6432fde64500cf7f} 
+novaphy::\+\+Transform::\+\+Transform (\begin{DoxyParamCaption}\item[{const Vec3f \&}]{p}{, }\item[{const Quatf \&}]{r}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct transform from translation and quaternion. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em p} & Translation component in meters. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em r} & Orientation quaternion (normalized internally). \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{structnovaphy_1_1_transform_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structnovaphy_1_1_transform_acd6592af62991b48f9ac382d7cdf8968}\index{novaphy::Transform@{novaphy::Transform}!from\_axis\_angle@{from\_axis\_angle}}
+\index{from\_axis\_angle@{from\_axis\_angle}!novaphy::Transform@{novaphy::Transform}}
+\doxysubsubsection{\texorpdfstring{from\_axis\_angle()}{from\_axis\_angle()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_transform_acd6592af62991b48f9ac382d7cdf8968} 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}{Transform}} novaphy::\+\+Transform::\+from\+\_\+axis\+\_\+angle (\begin{DoxyParamCaption}\item[{const Vec3f \&}]{axis}{, }\item[{float}]{angle}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Create transform from axis-\/angle rotation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em axis} & Rotation axis. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em angle} & Rotation angle in radians. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Rotation-\/only transform. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_transform_a4613bcb81c364ccce1934b7abfe5adc7}\index{novaphy::Transform@{novaphy::Transform}!from\_rotation@{from\_rotation}}
+\index{from\_rotation@{from\_rotation}!novaphy::Transform@{novaphy::Transform}}
+\doxysubsubsection{\texorpdfstring{from\_rotation()}{from\_rotation()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_transform_a4613bcb81c364ccce1934b7abfe5adc7} 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}{Transform}} novaphy::\+\+Transform::\+from\+\_\+rotation (\begin{DoxyParamCaption}\item[{const Quatf \&}]{q}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Create rotation-\/only transform. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em q} & Orientation quaternion. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{structnovaphy_1_1_transform}{Transform} with zero translation. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_transform_a105b726c1889f56ed02f4a869e60b1db}\index{novaphy::Transform@{novaphy::Transform}!from\_translation@{from\_translation}}
+\index{from\_translation@{from\_translation}!novaphy::Transform@{novaphy::Transform}}
+\doxysubsubsection{\texorpdfstring{from\_translation()}{from\_translation()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_transform_a105b726c1889f56ed02f4a869e60b1db} 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}{Transform}} novaphy::\+\+Transform::\+from\+\_\+translation (\begin{DoxyParamCaption}\item[{const Vec3f \&}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Create translation-\/only transform. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em t} & Translation in meters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{structnovaphy_1_1_transform}{Transform} with identity rotation. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}\index{novaphy::Transform@{novaphy::Transform}!identity@{identity}}
+\index{identity@{identity}!novaphy::Transform@{novaphy::Transform}}
+\doxysubsubsection{\texorpdfstring{identity()}{identity()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8} 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}{Transform}} novaphy::\+\+Transform::\+identity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Create identity transform. 
+
+\begin{DoxyReturn}{Returns}
+Identity transform. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_transform_a2506c2d754772882891d7a118630d880}\index{novaphy::Transform@{novaphy::Transform}!inverse@{inverse}}
+\index{inverse@{inverse}!novaphy::Transform@{novaphy::Transform}}
+\doxysubsubsection{\texorpdfstring{inverse()}{inverse()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_transform_a2506c2d754772882891d7a118630d880} 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}{Transform}} novaphy::\+\+Transform::\+inverse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute inverse rigid transform. 
+
+\begin{DoxyReturn}{Returns}
+Inverse transform. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_transform_a4a6f80dd0da43d1152d1cae551103f06}\index{novaphy::Transform@{novaphy::Transform}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!novaphy::Transform@{novaphy::Transform}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_transform_a4a6f80dd0da43d1152d1cae551103f06} 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}{Transform}} novaphy::\+\+Transform::\+operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform_a0493937b0441b675435096a2f02912f9}{Transform}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compose two transforms. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em other} & Right-\/hand transform to apply after this one. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Composed transform. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_transform_a15091736eca0a5250c4c19de64476ad4}\index{novaphy::Transform@{novaphy::Transform}!rotation\_matrix@{rotation\_matrix}}
+\index{rotation\_matrix@{rotation\_matrix}!novaphy::Transform@{novaphy::Transform}}
+\doxysubsubsection{\texorpdfstring{rotation\_matrix()}{rotation\_matrix()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_transform_a15091736eca0a5250c4c19de64476ad4} 
+Mat3f novaphy::\+\+Transform::\+rotation\+\_\+matrix (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get rotation matrix equivalent of quaternion orientation. 
+
+\begin{DoxyReturn}{Returns}
+3x3 rotation matrix. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_transform_ab65d8c0cfd3a5c72e1d928e3da4b7573}\index{novaphy::Transform@{novaphy::Transform}!transform\_point@{transform\_point}}
+\index{transform\_point@{transform\_point}!novaphy::Transform@{novaphy::Transform}}
+\doxysubsubsection{\texorpdfstring{transform\_point()}{transform\_point()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_transform_ab65d8c0cfd3a5c72e1d928e3da4b7573} 
+Vec3f novaphy::\+\+Transform::\+transform\+\_\+point (\begin{DoxyParamCaption}\item[{const Vec3f \&}]{p}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{structnovaphy_1_1_transform}{Transform} a point from local to world coordinates. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em p} & Local-\/space point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+World-\/space point in meters. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_transform_a8275cc9b4000bf0fe6b222f29a73876a}\index{novaphy::Transform@{novaphy::Transform}!transform\_vector@{transform\_vector}}
+\index{transform\_vector@{transform\_vector}!novaphy::Transform@{novaphy::Transform}}
+\doxysubsubsection{\texorpdfstring{transform\_vector()}{transform\_vector()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_transform_a8275cc9b4000bf0fe6b222f29a73876a} 
+Vec3f novaphy::\+\+Transform::\+transform\+\_\+vector (\begin{DoxyParamCaption}\item[{const Vec3f \&}]{v}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{structnovaphy_1_1_transform}{Transform} a direction vector (rotation only). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em v} & Local-\/space direction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Rotated world-\/space direction. 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{structnovaphy_1_1_transform_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structnovaphy_1_1_transform_a074b6b85886aacd125ea8db47cc25f80}\index{novaphy::Transform@{novaphy::Transform}!position@{position}}
+\index{position@{position}!novaphy::Transform@{novaphy::Transform}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_transform_a074b6b85886aacd125ea8db47cc25f80} 
+Vec3f novaphy::\+\+Transform::\+position = Vec3f::\+\+Zero()}
+
+Translation component in meters. \Hypertarget{structnovaphy_1_1_transform_a1a88b660d881eab306cb61d9a3218707}\index{novaphy::Transform@{novaphy::Transform}!rotation@{rotation}}
+\index{rotation@{rotation}!novaphy::Transform@{novaphy::Transform}}
+\doxysubsubsection{\texorpdfstring{rotation}{rotation}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_transform_a1a88b660d881eab306cb61d9a3218707} 
+Quatf novaphy::\+\+Transform::\+rotation = Quatf::\+\+Identity()}
+
+Unit quaternion orientation. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+math/\+math\+\_\+types.\+h\end{DoxyCompactItemize}

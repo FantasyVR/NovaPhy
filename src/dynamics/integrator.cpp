@@ -1,7 +1,22 @@
+/**
+ * @file integrator.cpp
+ * @brief Time integration routines for free rigid-body states.
+ */
 #include "novaphy/dynamics/integrator.h"
 
 namespace novaphy {
 
+/**
+ * @brief Integrates linear and angular velocity using symplectic Euler.
+ * @param[in,out] linear_vel Linear velocity in world frame (m/s).
+ * @param[in,out] angular_vel Angular velocity in world frame (rad/s).
+ * @param[in] force Net external force in world frame (N).
+ * @param[in] torque Net external torque in world frame (N*m).
+ * @param[in] inv_mass Inverse mass (`0` for static/infinite mass).
+ * @param[in] inv_inertia Inverse world-frame inertia tensor.
+ * @param[in] gravity World gravity acceleration (m/s^2).
+ * @param[in] dt Time step (s).
+ */
 void SymplecticEuler::integrate_velocity(Vec3f& linear_vel, Vec3f& angular_vel,
                                           const Vec3f& force, const Vec3f& torque,
                                           float inv_mass, const Mat3f& inv_inertia,
@@ -14,6 +29,13 @@ void SymplecticEuler::integrate_velocity(Vec3f& linear_vel, Vec3f& angular_vel,
     angular_vel *= 0.999f;
 }
 
+/**
+ * @brief Integrates position and orientation using updated velocities.
+ * @param[in,out] transform Pose in world frame.
+ * @param[in] linear_vel Linear velocity in world frame (m/s).
+ * @param[in] angular_vel Angular velocity in world frame (rad/s).
+ * @param[in] dt Time step (s).
+ */
 void SymplecticEuler::integrate_position(Transform& transform,
                                           const Vec3f& linear_vel,
                                           const Vec3f& angular_vel, float dt) {

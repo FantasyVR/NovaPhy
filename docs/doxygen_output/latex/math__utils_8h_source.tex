@@ -1,0 +1,37 @@
+\doxysection{math\+\_\+utils.\+h}
+\hypertarget{math__utils_8h_source}{}\label{math__utils_8h_source}\index{include/novaphy/math/math\_utils.h@{include/novaphy/math/math\_utils.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{inline}\ Mat3f\ skew(\textcolor{keyword}{const}\ Vec3f\&\ v)\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ Mat3f\ m;}
+\DoxyCodeLine{00016\ \ \ \ \ m\ <<\ 0,\ -\/v.z(),\ v.y(),}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ v.z(),\ 0,\ -\/v.x(),}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ -\/v.y(),\ v.x(),\ 0;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{return}\ m;}
+\DoxyCodeLine{00020\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{inline}\ Quatf\ quat\_from\_axis\_angle(\textcolor{keyword}{const}\ Vec3f\&\ axis,\ \textcolor{keywordtype}{float}\ angle)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{return}\ Quatf(Eigen::AngleAxisf(angle,\ axis.normalized()));}
+\DoxyCodeLine{00030\ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ clampf(\textcolor{keywordtype}{float}\ val,\ \textcolor{keywordtype}{float}\ lo,\ \textcolor{keywordtype}{float}\ hi)\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{return}\ std::max(lo,\ std::min(val,\ hi));}
+\DoxyCodeLine{00041\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ lerpf(\textcolor{keywordtype}{float}\ a,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ t)\ \{\ \textcolor{keywordflow}{return}\ a\ +\ t\ *\ (b\ -\/\ a);\ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ PI\ =\ 3.14159265358979323846f;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ deg2rad(\textcolor{keywordtype}{float}\ deg)\ \{\ \textcolor{keywordflow}{return}\ deg\ *\ PI\ /\ 180.0f;\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ rad2deg(\textcolor{keywordtype}{float}\ rad)\ \{\ \textcolor{keywordflow}{return}\ rad\ *\ 180.0f\ /\ PI;\ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

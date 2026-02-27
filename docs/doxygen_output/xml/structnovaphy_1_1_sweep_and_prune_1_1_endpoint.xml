@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_sweep_and_prune_1_1_endpoint" kind="struct" language="C++" prot="private">
+    <compoundname>novaphy::SweepAndPrune::Endpoint</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnovaphy_1_1_sweep_and_prune_1_1_endpoint_1a47158230567c7aaa2f3cff103cc20a1b" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::SweepAndPrune::Endpoint::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>novaphy::SweepAndPrune::Endpoint::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Endpoint coordinate value along one axis (m). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="68" column="15" bodyfile="include/novaphy/collision/broadphase.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_sweep_and_prune_1_1_endpoint_1ad3381c2bc5f5db048bbf92a55eb3dfab" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int novaphy::SweepAndPrune::Endpoint::body_index</definition>
+        <argsstring></argsstring>
+        <name>body_index</name>
+        <qualifiedname>novaphy::SweepAndPrune::Endpoint::body_index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Index of owning body/shape <ref refid="structnovaphy_1_1_a_a_b_b" kindref="compound">AABB</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="69" column="13" bodyfile="include/novaphy/collision/broadphase.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_sweep_and_prune_1_1_endpoint_1a9f8964b94192f137225f11b42842cc80" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool novaphy::SweepAndPrune::Endpoint::is_min</definition>
+        <argsstring></argsstring>
+        <name>is_min</name>
+        <qualifiedname>novaphy::SweepAndPrune::Endpoint::is_min</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True for minimum bound, false for maximum bound. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="70" column="14" bodyfile="include/novaphy/collision/broadphase.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>One scalar endpoint in a sweep axis list. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/novaphy/collision/broadphase.h" line="67" column="5" bodyfile="include/novaphy/collision/broadphase.h" bodystart="67" bodyend="71"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_sweep_and_prune_1_1_endpoint_1ad3381c2bc5f5db048bbf92a55eb3dfab" prot="public" virt="non-virtual"><scope>novaphy::SweepAndPrune::Endpoint</scope><name>body_index</name></member>
+      <member refid="structnovaphy_1_1_sweep_and_prune_1_1_endpoint_1a9f8964b94192f137225f11b42842cc80" prot="public" virt="non-virtual"><scope>novaphy::SweepAndPrune::Endpoint</scope><name>is_min</name></member>
+      <member refid="structnovaphy_1_1_sweep_and_prune_1_1_endpoint_1a47158230567c7aaa2f3cff103cc20a1b" prot="public" virt="non-virtual"><scope>novaphy::SweepAndPrune::Endpoint</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

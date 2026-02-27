@@ -1,0 +1,66 @@
+\doxysection{free\+\_\+body\+\_\+solver.\+h}
+\hypertarget{free__body__solver_8h_source}{}\label{free__body__solver_8h_source}\index{include/novaphy/dynamics/free\_body\_solver.h@{include/novaphy/dynamics/free\_body\_solver.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/body.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/contact.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_solver_settings}{SolverSettings}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_solver_settings_ad4defdbc236d98d829d81238d67a8ed9}{velocity\_iterations}}\ =\ 30;\ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_solver_settings_a6a2db2b246b0cea4e95c008ec8e2a508}{baumgarte}}\ =\ 0.3f;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_solver_settings_a01ba436c107b609ebad0a8d3a9f79f3d}{slop}}\ =\ 0.005f;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{structnovaphy_1_1_solver_settings_ac2331b22629e3fc5e4d0274276251f8e}{warm\_starting}}\ =\ \textcolor{keyword}{true};\ \ \ \ \ }
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classnovaphy_1_1_free_body_solver_aa6eaa8fe99160b40b470de9aaa735c62}{FreeBodySolver}}\ \{}
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{classnovaphy_1_1_free_body_solver_aa6eaa8fe99160b40b470de9aaa735c62}{FreeBodySolver}}(\doxymbox{\hyperlink{structnovaphy_1_1_solver_settings}{SolverSettings}}\ \doxymbox{\hyperlink{classnovaphy_1_1_free_body_solver_a40b701b8676b4199c5b1896018adcc2c}{settings}}\ =\ \{\});}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classnovaphy_1_1_free_body_solver_a41235442c6b9f0809f97e04cd4b1e180}{solve}}(std::vector<ContactPoint>\&\ contacts,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<RigidBody>\&\ bodies,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Transform>\&\ transforms,}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Vec3f>\&\ linear\_velocities,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Vec3f>\&\ angular\_velocities,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dt);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00074\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_solver_settings}{SolverSettings}}\&\ \doxymbox{\hyperlink{classnovaphy_1_1_free_body_solver_a40b701b8676b4199c5b1896018adcc2c}{settings}}()\ \{\ \textcolor{keywordflow}{return}\ settings\_;\ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00077\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_solver_settings}{SolverSettings}}\ settings\_;}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{struct\ }ConstraintData\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ Vec3f\ r\_a,\ r\_b;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ effective\_mass\_n;\ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ effective\_mass\_t1;\ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ effective\_mass\_t2;\ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ Vec3f\ tangent1,\ tangent2;\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ bias;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ Mat3f\ inv\_I\_a\_world;\ \ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ Mat3f\ inv\_I\_b\_world;\ \ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ std::vector<ConstraintData>\ constraint\_data\_;}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ pre\_step(std::vector<ContactPoint>\&\ contacts,}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<RigidBody>\&\ bodies,}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Transform>\&\ transforms,}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Vec3f>\&\ linear\_velocities,}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Vec3f>\&\ angular\_velocities,}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dt);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ solve\_velocity(std::vector<ContactPoint>\&\ contacts,}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<RigidBody>\&\ bodies,}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Vec3f>\&\ linear\_velocities,}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Vec3f>\&\ angular\_velocities);}
+\DoxyCodeLine{00126\ \};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

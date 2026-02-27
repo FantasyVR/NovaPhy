@@ -1,0 +1,296 @@
+\doxysection{src/\+collision/\+narrowphase.cpp File Reference}
+\hypertarget{narrowphase_8cpp}{}\label{narrowphase_8cpp}\index{src/collision/narrowphase.cpp@{src/collision/narrowphase.cpp}}
+
+
+Narrowphase contact generation between primitive collision shapes.  
+
+
+{\ttfamily \+\#include "{}novaphy/\+collision/\+narrowphase.\+h"{}}\newline
+{\ttfamily \+\#include $<$algorithm$>$}\newline
+{\ttfamily \+\#include $<$cmath$>$}\newline
+{\ttfamily \+\#include "{}novaphy/\+math/\+math\+\_\+utils.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{narrowphase_8h_ae7936adf426cc03fc0c827db38aea9f3}{novaphy::\+narrowphase::\+collide\+\_\+sphere\+\_\+sphere}} (const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&a, const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&ta, const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&b, const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&tb, std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \&contacts)
+\begin{DoxyCompactList}\small\item\em Detect and generate contacts for sphere-\/sphere intersection. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{narrowphase_8h_a115bc4a07ad5b7da65018479501ddf5f}{novaphy::\+narrowphase::\+collide\+\_\+sphere\+\_\+plane}} (const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&sphere, const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&ts, const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&plane, std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \&contacts)
+\begin{DoxyCompactList}\small\item\em Detect and generate contacts for sphere-\/plane intersection. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{narrowphase_8h_ad31cf400a221e92df9c23a1af6b63ce1}{novaphy::\+narrowphase::\+collide\+\_\+box\+\_\+sphere}} (const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&box, const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&tb, const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&sphere, const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&ts, std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \&contacts)
+\begin{DoxyCompactList}\small\item\em Detect and generate contacts for oriented box-\/sphere intersection. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{narrowphase_8h_ab13120065bd7426207d4a92fdce334b9}{novaphy::\+narrowphase::\+collide\+\_\+box\+\_\+plane}} (const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&box, const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&tb, const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&plane, std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \&contacts)
+\begin{DoxyCompactList}\small\item\em Detect and generate contacts for oriented box-\/plane intersection. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{narrowphase_8h_ad3f37e6704d55af35256367212fc01d1}{novaphy::\+narrowphase::\+collide\+\_\+box\+\_\+box}} (const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&a, const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&ta, const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&b, const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&tb, std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \&contacts)
+\begin{DoxyCompactList}\small\item\em Detect and generate contacts for oriented box-\/box intersection. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{narrowphase_8h_a37a3b2596c41b8c21d5843c867833d34}{novaphy::\+collide\+\_\+shapes}} (const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&a, const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&ta, const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&b, const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&tb, std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \&contacts)
+\begin{DoxyCompactList}\small\item\em Dispatch collision test based on shape type pair. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Narrowphase contact generation between primitive collision shapes. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{narrowphase_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{narrowphase_8h_ad3f37e6704d55af35256367212fc01d1}\index{narrowphase.cpp@{narrowphase.cpp}!collide\_box\_box@{collide\_box\_box}}
+\index{collide\_box\_box@{collide\_box\_box}!narrowphase.cpp@{narrowphase.cpp}}
+\doxysubsubsection{\texorpdfstring{collide\_box\_box()}{collide\_box\_box()}}
+{\footnotesize\ttfamily \label{narrowphase_8h_ad3f37e6704d55af35256367212fc01d1} 
+bool novaphy::\+narrowphase::\+collide\+\_\+box\+\_\+box (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&}]{a}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{ta}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&}]{b}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{tb}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \&}]{contacts}{}\end{DoxyParamCaption})}
+
+
+
+Detect and generate contacts for oriented box-\/box intersection. 
+
+Computes contact(s) between two oriented boxes using SAT.
+
+Uses a Separating Axis Theorem (SAT) test and then builds a contact manifold for impulse-\/based solving.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em a} & First box shape. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em ta} & World transform of first box parent body. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em b} & Second box shape. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em tb} & World transform of second box parent body. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em contacts} & Generated world-\/space contact manifold points. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if boxes overlap.
+\end{DoxyReturn}
+Tests 15 separating axes (face normals and edge cross products), then generates a compact face or edge contact set. 
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em a} & Box shape A. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em ta} & World transform of body A. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em b} & Box shape B. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em tb} & World transform of body B. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em contacts} & Appended world-\/space contact manifold entries. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if overlap is detected; otherwise {\ttfamily false}. 
+\end{DoxyReturn}
+\Hypertarget{narrowphase_8h_ab13120065bd7426207d4a92fdce334b9}\index{narrowphase.cpp@{narrowphase.cpp}!collide\_box\_plane@{collide\_box\_plane}}
+\index{collide\_box\_plane@{collide\_box\_plane}!narrowphase.cpp@{narrowphase.cpp}}
+\doxysubsubsection{\texorpdfstring{collide\_box\_plane()}{collide\_box\_plane()}}
+{\footnotesize\ttfamily \label{narrowphase_8h_ab13120065bd7426207d4a92fdce334b9} 
+bool novaphy::\+narrowphase::\+collide\+\_\+box\+\_\+plane (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&}]{box\+\_\+shape}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{tb}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&}]{plane\+\_\+shape}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \&}]{contacts}{}\end{DoxyParamCaption})}
+
+
+
+Detect and generate contacts for oriented box-\/plane intersection. 
+
+Computes contact(s) between an oriented box and an infinite plane.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em box} & Box collision shape. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em tb} & World transform of box parent body. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em plane} & Infinite plane shape. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em contacts} & Generated world-\/space contact points. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the box intersects the plane.
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em box\+\_\+shape} & Box collision shape. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em tb} & World transform of the box body. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em plane\+\_\+shape} & Plane collision shape. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em contacts} & Appended world-\/space contact manifold entries. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} when at least one box corner lies behind the plane. 
+\end{DoxyReturn}
+\Hypertarget{narrowphase_8h_ad31cf400a221e92df9c23a1af6b63ce1}\index{narrowphase.cpp@{narrowphase.cpp}!collide\_box\_sphere@{collide\_box\_sphere}}
+\index{collide\_box\_sphere@{collide\_box\_sphere}!narrowphase.cpp@{narrowphase.cpp}}
+\doxysubsubsection{\texorpdfstring{collide\_box\_sphere()}{collide\_box\_sphere()}}
+{\footnotesize\ttfamily \label{narrowphase_8h_ad31cf400a221e92df9c23a1af6b63ce1} 
+bool novaphy::\+narrowphase::\+collide\+\_\+box\+\_\+sphere (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&}]{box\+\_\+shape}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{tb}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&}]{sphere\+\_\+shape}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{ts}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \&}]{contacts}{}\end{DoxyParamCaption})}
+
+
+
+Detect and generate contacts for oriented box-\/sphere intersection. 
+
+Computes contact(s) between an oriented box and a sphere.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em box} & Box collision shape. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em tb} & World transform of box parent body. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em sphere} & Sphere collision shape. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em ts} & World transform of sphere parent body. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em contacts} & Generated world-\/space contact points. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if shapes overlap.
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em box\+\_\+shape} & Box collision shape. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em tb} & World transform of the box body. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em sphere\+\_\+shape} & Sphere collision shape. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em ts} & World transform of the sphere body. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em contacts} & Appended world-\/space contact manifold entries. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the shapes overlap; otherwise {\ttfamily false}. 
+\end{DoxyReturn}
+\Hypertarget{narrowphase_8h_a37a3b2596c41b8c21d5843c867833d34}\index{narrowphase.cpp@{narrowphase.cpp}!collide\_shapes@{collide\_shapes}}
+\index{collide\_shapes@{collide\_shapes}!narrowphase.cpp@{narrowphase.cpp}}
+\doxysubsubsection{\texorpdfstring{collide\_shapes()}{collide\_shapes()}}
+{\footnotesize\ttfamily \label{narrowphase_8h_a37a3b2596c41b8c21d5843c867833d34} 
+bool novaphy::\+collide\+\_\+shapes (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&}]{a}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{ta}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&}]{b}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{tb}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \&}]{contacts}{}\end{DoxyParamCaption})}
+
+
+
+Dispatch collision test based on shape type pair. 
+
+Dispatches narrowphase collision routines by shape-\/type pair.
+
+Routes to the corresponding narrowphase routine and appends generated world-\/space contact points for subsequent constraint solving.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em a} & First collision shape. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em ta} & World transform of first shape parent body. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em b} & Second collision shape. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em tb} & World transform of second shape parent body. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em contacts} & Generated contact points. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if a collision is detected.
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em a} & Shape A. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em ta} & World transform of A\textquotesingle{}s parent body. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em b} & Shape B. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em tb} & World transform of B\textquotesingle{}s parent body. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em contacts} & Appended world-\/space contact manifold entries. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if at least one contact is generated. 
+\end{DoxyReturn}
+\Hypertarget{narrowphase_8h_a115bc4a07ad5b7da65018479501ddf5f}\index{narrowphase.cpp@{narrowphase.cpp}!collide\_sphere\_plane@{collide\_sphere\_plane}}
+\index{collide\_sphere\_plane@{collide\_sphere\_plane}!narrowphase.cpp@{narrowphase.cpp}}
+\doxysubsubsection{\texorpdfstring{collide\_sphere\_plane()}{collide\_sphere\_plane()}}
+{\footnotesize\ttfamily \label{narrowphase_8h_a115bc4a07ad5b7da65018479501ddf5f} 
+bool novaphy::\+narrowphase::\+collide\+\_\+sphere\+\_\+plane (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&}]{sphere\+\_\+shape}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{ts}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&}]{plane\+\_\+shape}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \&}]{contacts}{}\end{DoxyParamCaption})}
+
+
+
+Detect and generate contacts for sphere-\/plane intersection. 
+
+Computes contact(s) between a sphere and an infinite plane.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em sphere} & Sphere collision shape. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em ts} & World transform of sphere parent body. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em plane} & Infinite plane shape. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em contacts} & Generated world-\/space contact points. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the sphere penetrates or touches the plane.
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em sphere\+\_\+shape} & Sphere collision shape. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em ts} & World transform of the sphere body. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em plane\+\_\+shape} & Plane collision shape. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em contacts} & Appended world-\/space contact manifold entries. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the sphere intersects or penetrates the plane. 
+\end{DoxyReturn}
+\Hypertarget{narrowphase_8h_ae7936adf426cc03fc0c827db38aea9f3}\index{narrowphase.cpp@{narrowphase.cpp}!collide\_sphere\_sphere@{collide\_sphere\_sphere}}
+\index{collide\_sphere\_sphere@{collide\_sphere\_sphere}!narrowphase.cpp@{narrowphase.cpp}}
+\doxysubsubsection{\texorpdfstring{collide\_sphere\_sphere()}{collide\_sphere\_sphere()}}
+{\footnotesize\ttfamily \label{narrowphase_8h_ae7936adf426cc03fc0c827db38aea9f3} 
+bool novaphy::\+narrowphase::\+collide\+\_\+sphere\+\_\+sphere (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&}]{a}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{ta}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&}]{b}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{tb}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \&}]{contacts}{}\end{DoxyParamCaption})}
+
+
+
+Detect and generate contacts for sphere-\/sphere intersection. 
+
+Computes contact(s) between two spheres.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em a} & First sphere shape. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em ta} & World transform of first shape\textquotesingle{}s parent body. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em b} & Second sphere shape. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em tb} & World transform of second shape\textquotesingle{}s parent body. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em contacts} & Generated world-\/space contact points. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if shapes overlap.
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em a} & Sphere shape A. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em ta} & World transform of A\textquotesingle{}s parent body. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em b} & Sphere shape B. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em tb} & World transform of B\textquotesingle{}s parent body. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em contacts} & Appended world-\/space contact manifold entries. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the spheres overlap; otherwise {\ttfamily false}. 
+\end{DoxyReturn}

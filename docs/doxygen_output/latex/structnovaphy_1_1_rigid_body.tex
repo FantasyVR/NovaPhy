@@ -1,0 +1,185 @@
+\doxysection{novaphy::\+Rigid\+Body Struct Reference}
+\hypertarget{structnovaphy_1_1_rigid_body}{}\label{structnovaphy_1_1_rigid_body}\index{novaphy::RigidBody@{novaphy::RigidBody}}
+
+
+Rigid-\/body inertial properties.  
+
+
+
+
+{\ttfamily \+\#include $<$body.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a65ea7f745251e5494811c8734b95359d}{inv\+\_\+mass}} () const
+\begin{DoxyCompactList}\small\item\em Get inverse mass. \end{DoxyCompactList}\item 
+Mat3f \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_aae8faf551aa75b76c7d3746405216d84}{inv\+\_\+inertia}} () const
+\begin{DoxyCompactList}\small\item\em Get inverse inertia tensor in body coordinates. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a126fd8a4a8f26672728160a8d2689744}{is\+\_\+static}} () const
+\begin{DoxyCompactList}\small\item\em Check whether the body is static. \end{DoxyCompactList}\item 
+Spatial\+Matrix \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_aa3b13f19f6bbf060c8e64cd9effdebe9}{spatial\+\_\+inertia}} () const
+\begin{DoxyCompactList}\small\item\em Build 6x6 spatial inertia matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{Rigid\+Body}} \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a79004be9129aad62aeaf9f1d84dff054}{from\+\_\+box}} (float m, const Vec3f \&half\+\_\+extents)
+\begin{DoxyCompactList}\small\item\em Construct a rigid body with box inertia. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{Rigid\+Body}} \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a7644cf6fe9f375ed3e09888f140632bd}{from\+\_\+sphere}} (float m, float radius)
+\begin{DoxyCompactList}\small\item\em Construct a rigid body with solid-\/sphere inertia. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{Rigid\+Body}} \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a590034bde697e581ac0e9daabcfa30c5}{make\+\_\+static}} ()
+\begin{DoxyCompactList}\small\item\em Construct a static rigid body. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a4a55d7beadfbc6d08dd44c5727585962}{mass}} = 1.\+0f
+\item 
+Mat3f \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a6260dd28637dcf2c2a07c01240c360a0}{inertia}} = Mat3f::\+\+Identity()
+\item 
+Vec3f \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a602e45796d16a5d13c979ae80f1b9d5c}{com}} = Vec3f::\+\+Zero()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rigid-\/body inertial properties. 
+
+Stores mass, center of mass, and inertia tensor in body-\/local coordinates. These quantities are used by free-\/body and articulated dynamics solvers in SI units. 
+
+\label{doc-func-members}
+\Hypertarget{structnovaphy_1_1_rigid_body_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structnovaphy_1_1_rigid_body_a79004be9129aad62aeaf9f1d84dff054}\index{novaphy::RigidBody@{novaphy::RigidBody}!from\_box@{from\_box}}
+\index{from\_box@{from\_box}!novaphy::RigidBody@{novaphy::RigidBody}}
+\doxysubsubsection{\texorpdfstring{from\_box()}{from\_box()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_rigid_body_a79004be9129aad62aeaf9f1d84dff054} 
+\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{Rigid\+Body}} novaphy::\+\+Rigid\+Body::\+from\+\_\+box (\begin{DoxyParamCaption}\item[{float}]{m}{, }\item[{const Vec3f \&}]{half\+\_\+extents}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Construct a rigid body with box inertia. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em m} & Body mass in kilograms. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em half\+\_\+extents} & Box half extents in meters in local coordinates. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{structnovaphy_1_1_rigid_body}{Rigid\+Body} with diagonal inertia for a solid box. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_rigid_body_a7644cf6fe9f375ed3e09888f140632bd}\index{novaphy::RigidBody@{novaphy::RigidBody}!from\_sphere@{from\_sphere}}
+\index{from\_sphere@{from\_sphere}!novaphy::RigidBody@{novaphy::RigidBody}}
+\doxysubsubsection{\texorpdfstring{from\_sphere()}{from\_sphere()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_rigid_body_a7644cf6fe9f375ed3e09888f140632bd} 
+\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{Rigid\+Body}} novaphy::\+\+Rigid\+Body::\+from\+\_\+sphere (\begin{DoxyParamCaption}\item[{float}]{m}{, }\item[{float}]{radius}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Construct a rigid body with solid-\/sphere inertia. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em m} & Body mass in kilograms. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em radius} & Sphere radius in meters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{structnovaphy_1_1_rigid_body}{Rigid\+Body} with isotropic inertia tensor. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_rigid_body_aae8faf551aa75b76c7d3746405216d84}\index{novaphy::RigidBody@{novaphy::RigidBody}!inv\_inertia@{inv\_inertia}}
+\index{inv\_inertia@{inv\_inertia}!novaphy::RigidBody@{novaphy::RigidBody}}
+\doxysubsubsection{\texorpdfstring{inv\_inertia()}{inv\_inertia()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_rigid_body_aae8faf551aa75b76c7d3746405216d84} 
+Mat3f novaphy::\+\+Rigid\+Body::\+inv\+\_\+inertia (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get inverse inertia tensor in body coordinates. 
+
+\begin{DoxyReturn}{Returns}
+Inverse inertia tensor ((kg\texorpdfstring{$\ast$}{*}m\texorpdfstring{$^\wedge$}{\string^}2)\texorpdfstring{$^\wedge$}{\string^}-\/1), or zero matrix for static bodies. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_rigid_body_a65ea7f745251e5494811c8734b95359d}\index{novaphy::RigidBody@{novaphy::RigidBody}!inv\_mass@{inv\_mass}}
+\index{inv\_mass@{inv\_mass}!novaphy::RigidBody@{novaphy::RigidBody}}
+\doxysubsubsection{\texorpdfstring{inv\_mass()}{inv\_mass()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_rigid_body_a65ea7f745251e5494811c8734b95359d} 
+float novaphy::\+\+Rigid\+Body::\+inv\+\_\+mass (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get inverse mass. 
+
+\begin{DoxyReturn}{Returns}
+Inverse mass (kg\texorpdfstring{$^\wedge$}{\string^}-\/1), or zero for static bodies. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_rigid_body_a126fd8a4a8f26672728160a8d2689744}\index{novaphy::RigidBody@{novaphy::RigidBody}!is\_static@{is\_static}}
+\index{is\_static@{is\_static}!novaphy::RigidBody@{novaphy::RigidBody}}
+\doxysubsubsection{\texorpdfstring{is\_static()}{is\_static()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_rigid_body_a126fd8a4a8f26672728160a8d2689744} 
+bool novaphy::\+\+Rigid\+Body::\+is\+\_\+static (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check whether the body is static. 
+
+\begin{DoxyReturn}{Returns}
+True if mass is non-\/positive and body is treated as immovable. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_rigid_body_a590034bde697e581ac0e9daabcfa30c5}\index{novaphy::RigidBody@{novaphy::RigidBody}!make\_static@{make\_static}}
+\index{make\_static@{make\_static}!novaphy::RigidBody@{novaphy::RigidBody}}
+\doxysubsubsection{\texorpdfstring{make\_static()}{make\_static()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_rigid_body_a590034bde697e581ac0e9daabcfa30c5} 
+\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{Rigid\+Body}} novaphy::\+\+Rigid\+Body::\+make\+\_\+static (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Construct a static rigid body. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{structnovaphy_1_1_rigid_body}{Rigid\+Body} with zero mass/\+inertia that is treated as immovable. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_rigid_body_aa3b13f19f6bbf060c8e64cd9effdebe9}\index{novaphy::RigidBody@{novaphy::RigidBody}!spatial\_inertia@{spatial\_inertia}}
+\index{spatial\_inertia@{spatial\_inertia}!novaphy::RigidBody@{novaphy::RigidBody}}
+\doxysubsubsection{\texorpdfstring{spatial\_inertia()}{spatial\_inertia()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_rigid_body_aa3b13f19f6bbf060c8e64cd9effdebe9} 
+Spatial\+Matrix novaphy::\+\+Rigid\+Body::\+spatial\+\_\+inertia (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Build 6x6 spatial inertia matrix. 
+
+Uses body mass, local CoM, and local inertia tensor to produce the spatial inertia at the body-\/frame origin.
+
+\begin{DoxyReturn}{Returns}
+Spatial inertia matrix in body coordinates. 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{structnovaphy_1_1_rigid_body_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structnovaphy_1_1_rigid_body_a602e45796d16a5d13c979ae80f1b9d5c}\index{novaphy::RigidBody@{novaphy::RigidBody}!com@{com}}
+\index{com@{com}!novaphy::RigidBody@{novaphy::RigidBody}}
+\doxysubsubsection{\texorpdfstring{com}{com}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_rigid_body_a602e45796d16a5d13c979ae80f1b9d5c} 
+Vec3f novaphy::\+\+Rigid\+Body::\+com = Vec3f::\+\+Zero()}
+
+Center of mass in body-\/local coordinates (m). \Hypertarget{structnovaphy_1_1_rigid_body_a6260dd28637dcf2c2a07c01240c360a0}\index{novaphy::RigidBody@{novaphy::RigidBody}!inertia@{inertia}}
+\index{inertia@{inertia}!novaphy::RigidBody@{novaphy::RigidBody}}
+\doxysubsubsection{\texorpdfstring{inertia}{inertia}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_rigid_body_a6260dd28637dcf2c2a07c01240c360a0} 
+Mat3f novaphy::\+\+Rigid\+Body::\+inertia = Mat3f::\+\+Identity()}
+
+Body-\/frame inertia tensor about CoM (kg\texorpdfstring{$\ast$}{*}m\texorpdfstring{$^\wedge$}{\string^}2). \Hypertarget{structnovaphy_1_1_rigid_body_a4a55d7beadfbc6d08dd44c5727585962}\index{novaphy::RigidBody@{novaphy::RigidBody}!mass@{mass}}
+\index{mass@{mass}!novaphy::RigidBody@{novaphy::RigidBody}}
+\doxysubsubsection{\texorpdfstring{mass}{mass}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_rigid_body_a4a55d7beadfbc6d08dd44c5727585962} 
+float novaphy::\+\+Rigid\+Body::\+mass = 1.\+0f}
+
+Body mass in kilograms (kg). 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+core/\+body.\+h\end{DoxyCompactItemize}

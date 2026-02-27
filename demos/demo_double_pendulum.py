@@ -20,6 +20,17 @@ from novaphy.viz import make_box_mesh, quat_to_rotation_matrix
 
 
 def build_double_pendulum(l1=1.0, l2=1.0, m1=1.0, m2=1.0):
+    """Builds a two-link revolute articulated pendulum model.
+
+    Args:
+        l1 (float): Length of link 1 in meters.
+        l2 (float): Length of link 2 in meters.
+        m1 (float): Mass of link 1 in kilograms.
+        m2 (float): Mass of link 2 in kilograms.
+
+    Returns:
+        novaphy.Articulation: Configured articulated model.
+    """
     art = novaphy.Articulation()
 
     # Joint 0: attached to world origin
@@ -56,7 +67,16 @@ def build_double_pendulum(l1=1.0, l2=1.0, m1=1.0, m2=1.0):
 
 
 def get_link_endpoints(art, q, link_lengths):
-    """Get start/end points of each link for rendering."""
+    """Computes world-space line segments for articulated links.
+
+    Args:
+        art (novaphy.Articulation): Articulation model.
+        q (np.ndarray): Generalized position vector.
+        link_lengths (list[float]): Link lengths in meters.
+
+    Returns:
+        list[tuple[np.ndarray, np.ndarray]]: `(start, end)` endpoints per link.
+    """
     transforms = novaphy.forward_kinematics(art, q)
     endpoints = []
     for i, t in enumerate(transforms):
@@ -68,6 +88,14 @@ def get_link_endpoints(art, q, link_lengths):
 
 
 def run_headless(steps=600):
+    """Runs the demo without visualization and prints sampled state.
+
+    Args:
+        steps (int): Number of simulation steps.
+
+    Returns:
+        None
+    """
     art = build_double_pendulum()
     q = np.array([np.pi / 2, np.pi / 4], dtype=np.float32)
     qd = np.zeros(2, dtype=np.float32)
@@ -86,6 +114,11 @@ def run_headless(steps=600):
 
 
 def run_visual():
+    """Runs the interactive Polyscope visualization loop.
+
+    Returns:
+        None
+    """
     if not HAS_POLYSCOPE:
         run_headless()
         return

@@ -1,0 +1,504 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classnovaphy_1_1_free_body_solver" kind="class" language="C++" prot="public">
+    <compoundname>novaphy::FreeBodySolver</compoundname>
+    <includes refid="free__body__solver_8h" local="no">free_body_solver.h</includes>
+    <innerclass refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data" prot="private">novaphy::FreeBodySolver::ConstraintData</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classnovaphy_1_1_free_body_solver_1ab7d543884088e407e24b41bfc177f5e2" prot="private" static="no" mutable="no">
+        <type><ref refid="structnovaphy_1_1_solver_settings" kindref="compound">SolverSettings</ref></type>
+        <definition>SolverSettings novaphy::FreeBodySolver::settings_</definition>
+        <argsstring></argsstring>
+        <name>settings_</name>
+        <qualifiedname>novaphy::FreeBodySolver::settings_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="77" column="20" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnovaphy_1_1_free_body_solver_1a668515315668ef6558c5cc45e93c3986" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; ConstraintData &gt;</type>
+        <definition>std::vector&lt;ConstraintData&gt; novaphy::FreeBodySolver::constraint_data_</definition>
+        <argsstring></argsstring>
+        <name>constraint_data_</name>
+        <qualifiedname>novaphy::FreeBodySolver::constraint_data_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="93" column="17" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classnovaphy_1_1_free_body_solver_1aa6eaa8fe99160b40b470de9aaa735c62" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>novaphy::FreeBodySolver::FreeBodySolver</definition>
+        <argsstring>(SolverSettings settings={})</argsstring>
+        <name>FreeBodySolver</name>
+        <qualifiedname>novaphy::FreeBodySolver::FreeBodySolver</qualifiedname>
+        <param>
+          <type><ref refid="structnovaphy_1_1_solver_settings" kindref="compound">SolverSettings</ref></type>
+          <declname>settings</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Construct a contact solver with user-defined settings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs the free-body contact solver.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in"><ref refid="classnovaphy_1_1_free_body_solver_1a40b701b8676b4199c5b1896018adcc2c" kindref="member">settings</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Solver iteration and stabilization parameters.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in"><ref refid="classnovaphy_1_1_free_body_solver_1a40b701b8676b4199c5b1896018adcc2c" kindref="member">settings</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Solver iteration counts and stabilization settings. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="45" column="14" bodyfile="src/dynamics/free_body_solver.cpp" bodystart="16" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_free_body_solver_1a41235442c6b9f0809f97e04cd4b1e180" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::FreeBodySolver::solve</definition>
+        <argsstring>(std::vector&lt; ContactPoint &gt; &amp;contacts, const std::vector&lt; RigidBody &gt; &amp;bodies, const std::vector&lt; Transform &gt; &amp;transforms, std::vector&lt; Vec3f &gt; &amp;linear_velocities, std::vector&lt; Vec3f &gt; &amp;angular_velocities, float dt)</argsstring>
+        <name>solve</name>
+        <qualifiedname>novaphy::FreeBodySolver::solve</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="structnovaphy_1_1_contact_point" kindref="compound">ContactPoint</ref> &gt; &amp;</type>
+          <declname>contacts</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref> &gt; &amp;</type>
+          <declname>bodies</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &gt; &amp;</type>
+          <declname>transforms</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; Vec3f &gt; &amp;</type>
+          <declname>linear_velocities</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; Vec3f &gt; &amp;</type>
+          <declname>angular_velocities</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+<para>Resolve contact constraints for the current simulation step. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Solves velocity-level contact constraints for the current time step.</para>
+<para>This function precomputes effective masses/bias terms and then iteratively applies impulses to satisfy non-penetration and Coulomb friction constraints.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Contact points and warm-start impulse cache. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">bodies</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rigid-body mass and inertia properties. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">transforms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body transforms in world coordinates. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">linear_velocities</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body linear velocities in world frame (m/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">angular_velocities</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body angular velocities in world frame (rad/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Simulation time step in seconds. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Contact manifold with accumulated impulses. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">bodies</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rigid-body mass and inertia properties. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">transforms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body world transforms. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">linear_velocities</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body linear velocities in world frame (m/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">angular_velocities</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body angular velocities in world frame (rad/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Fixed simulation time step in seconds. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="62" column="10" bodyfile="src/dynamics/free_body_solver.cpp" bodystart="27" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_free_body_solver_1a40b701b8676b4199c5b1896018adcc2c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_solver_settings" kindref="compound">SolverSettings</ref> &amp;</type>
+        <definition>SolverSettings &amp; novaphy::FreeBodySolver::settings</definition>
+        <argsstring>()</argsstring>
+        <name>settings</name>
+        <qualifiedname>novaphy::FreeBodySolver::settings</qualifiedname>
+        <briefdescription>
+<para>Mutable access to current solver settings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Reference to the internal <ref refid="structnovaphy_1_1_solver_settings" kindref="compound">SolverSettings</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="74" column="20" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classnovaphy_1_1_free_body_solver_1a917421829933de096e8666fd930ec6f2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::FreeBodySolver::pre_step</definition>
+        <argsstring>(std::vector&lt; ContactPoint &gt; &amp;contacts, const std::vector&lt; RigidBody &gt; &amp;bodies, const std::vector&lt; Transform &gt; &amp;transforms, const std::vector&lt; Vec3f &gt; &amp;linear_velocities, const std::vector&lt; Vec3f &gt; &amp;angular_velocities, float dt)</argsstring>
+        <name>pre_step</name>
+        <qualifiedname>novaphy::FreeBodySolver::pre_step</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="structnovaphy_1_1_contact_point" kindref="compound">ContactPoint</ref> &gt; &amp;</type>
+          <declname>contacts</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref> &gt; &amp;</type>
+          <declname>bodies</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &gt; &amp;</type>
+          <declname>transforms</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; Vec3f &gt; &amp;</type>
+          <declname>linear_velocities</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; Vec3f &gt; &amp;</type>
+          <declname>angular_velocities</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+<para>Precompute contact-space quantities before the PGS loop. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Precomputes per-contact effective masses and stabilization terms.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Contact set for the current step. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">bodies</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rigid-body mass properties. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">transforms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body transforms in world coordinates. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">linear_velocities</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current body linear velocities in world frame (m/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">angular_velocities</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current body angular velocities in world frame (rad/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Simulation time step in seconds. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Contact manifold with geometric/contact parameters. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">bodies</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rigid-body mass and inertia properties. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">transforms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body world transforms. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">linear_velocities</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body linear velocities in world frame (m/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">angular_velocities</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body angular velocities in world frame (rad/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Fixed simulation time step in seconds. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="106" column="10" bodyfile="src/dynamics/free_body_solver.cpp" bodystart="73" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_free_body_solver_1aaaf6449124cda9fd8de3834ebcfb2480" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::FreeBodySolver::solve_velocity</definition>
+        <argsstring>(std::vector&lt; ContactPoint &gt; &amp;contacts, const std::vector&lt; RigidBody &gt; &amp;bodies, std::vector&lt; Vec3f &gt; &amp;linear_velocities, std::vector&lt; Vec3f &gt; &amp;angular_velocities)</argsstring>
+        <name>solve_velocity</name>
+        <qualifiedname>novaphy::FreeBodySolver::solve_velocity</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="structnovaphy_1_1_contact_point" kindref="compound">ContactPoint</ref> &gt; &amp;</type>
+          <declname>contacts</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref> &gt; &amp;</type>
+          <declname>bodies</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; Vec3f &gt; &amp;</type>
+          <declname>linear_velocities</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; Vec3f &gt; &amp;</type>
+          <declname>angular_velocities</declname>
+        </param>
+        <briefdescription>
+<para>Execute one PGS sweep over all contact constraints. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Performs one PGS iteration over all contact constraints.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Contact set with accumulated impulses. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">bodies</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rigid-body mass properties. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">linear_velocities</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body linear velocities in world frame (m/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">angular_velocities</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body angular velocities in world frame (rad/s). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Contact manifold with impulse accumulators. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">bodies</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rigid-body mass and inertia properties. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">linear_velocities</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body linear velocities in world frame (m/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">angular_velocities</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body angular velocities in world frame (rad/s). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="122" column="10" bodyfile="src/dynamics/free_body_solver.cpp" bodystart="181" bodyend="293"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Sequential Impulse contact solver for unconstrained rigid bodies. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Resolves normal and friction contact constraints using a Projected Gauss-Seidel loop with accumulated impulse clamping. Contact impulses are computed in world coordinates and applied to linear velocity (m/s) and angular velocity (rad/s).</para>
+<para><simplesect kind="note"><para>This solver is intended for a single-threaded update loop. </para>
+</simplesect>
+<simplesect kind="warning"><para>Inputs must be physically consistent (mass in kg, inertia in kg*m^2, time step in seconds) to avoid instability. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="include/novaphy/dynamics/free_body_solver.h" line="38" column="1" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="38" bodyend="126"/>
+    <listofallmembers>
+      <member refid="classnovaphy_1_1_free_body_solver_1a668515315668ef6558c5cc45e93c3986" prot="private" virt="non-virtual"><scope>novaphy::FreeBodySolver</scope><name>constraint_data_</name></member>
+      <member refid="classnovaphy_1_1_free_body_solver_1aa6eaa8fe99160b40b470de9aaa735c62" prot="public" virt="non-virtual"><scope>novaphy::FreeBodySolver</scope><name>FreeBodySolver</name></member>
+      <member refid="classnovaphy_1_1_free_body_solver_1a917421829933de096e8666fd930ec6f2" prot="private" virt="non-virtual"><scope>novaphy::FreeBodySolver</scope><name>pre_step</name></member>
+      <member refid="classnovaphy_1_1_free_body_solver_1a40b701b8676b4199c5b1896018adcc2c" prot="public" virt="non-virtual"><scope>novaphy::FreeBodySolver</scope><name>settings</name></member>
+      <member refid="classnovaphy_1_1_free_body_solver_1ab7d543884088e407e24b41bfc177f5e2" prot="private" virt="non-virtual"><scope>novaphy::FreeBodySolver</scope><name>settings_</name></member>
+      <member refid="classnovaphy_1_1_free_body_solver_1a41235442c6b9f0809f97e04cd4b1e180" prot="public" virt="non-virtual"><scope>novaphy::FreeBodySolver</scope><name>solve</name></member>
+      <member refid="classnovaphy_1_1_free_body_solver_1aaaf6449124cda9fd8de3834ebcfb2480" prot="private" virt="non-virtual"><scope>novaphy::FreeBodySolver</scope><name>solve_velocity</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

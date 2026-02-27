@@ -1,0 +1,206 @@
+\doxysection{novaphy::\+Collision\+Shape Struct Reference}
+\hypertarget{structnovaphy_1_1_collision_shape}{}\label{structnovaphy_1_1_collision_shape}\index{novaphy::CollisionShape@{novaphy::CollisionShape}}
+
+
+Collision-\/shape descriptor attached to a body or world.  
+
+
+
+
+{\ttfamily \+\#include $<$shape.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b}{AABB}} \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a265fb555011a3a9cdc14e993229f61a6}{compute\+\_\+aabb}} (const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&body\+\_\+transform) const
+\begin{DoxyCompactList}\small\item\em Compute a world-\/space \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} for this shape. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af2a0f55b8cc4f01eb6a069b8da7f4b0a}{make\+\_\+box}} (const Vec3f \&half\+\_\+extents, int body\+\_\+idx, const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&local=\doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::\+identity}}(), float \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}}=0.\+5f, float \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}}=0.\+3f)
+\begin{DoxyCompactList}\small\item\em Create a box collision shape. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a7d9ac52a738ae09ac603305e199ff55f}{make\+\_\+sphere}} (float radius, int body\+\_\+idx, const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&local=\doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::\+identity}}(), float \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}}=0.\+5f, float \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}}=0.\+3f)
+\begin{DoxyCompactList}\small\item\em Create a sphere collision shape. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af6e69bd49a3f0ad594a7f2963dc25e05}{make\+\_\+plane}} (const Vec3f \&normal, float offset, float \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}}=0.\+5f, float \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}}=0.\+0f)
+\begin{DoxyCompactList}\small\item\em Create an infinite plane collision shape. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Shape\+Type \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a26781106192b8ded52ef622cc686cf8b}{type}} = Shape\+Type::\+\+Box
+\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_box_shape}{Box\+Shape}} \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a5875fad0082ee71245fa5f8d364adc3f}{box}}
+\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_sphere_shape}{Sphere\+Shape}} \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a06b5ecb75e0f5fc460e432ef90259bf8}{sphere}}
+\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_plane_shape}{Plane\+Shape}} \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a299592657513434aa799ea7126a3f22f}{plane}}
+\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_ad652128cbbc4d588ca540a7af5233d2b}{local\+\_\+transform}} = \doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::\+identity}}()
+\item 
+float \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}} = 0.\+5f
+\item 
+float \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}} = 0.\+3f
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape_a9a334459be2f732c1270bb65f7dca4b0}{body\+\_\+index}} = -\/1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Collision-\/shape descriptor attached to a body or world. 
+
+Stores primitive geometry, local pose offset, and contact material parameters used by the collision and contact-\/solver pipeline. 
+
+\label{doc-func-members}
+\Hypertarget{structnovaphy_1_1_collision_shape_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structnovaphy_1_1_collision_shape_a265fb555011a3a9cdc14e993229f61a6}\index{novaphy::CollisionShape@{novaphy::CollisionShape}!compute\_aabb@{compute\_aabb}}
+\index{compute\_aabb@{compute\_aabb}!novaphy::CollisionShape@{novaphy::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{compute\_aabb()}{compute\_aabb()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_collision_shape_a265fb555011a3a9cdc14e993229f61a6} 
+\doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b}{AABB}} novaphy::\+\+Collision\+Shape::\+compute\+\_\+aabb (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{body\+\_\+transform}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute a world-\/space \doxylink{structnovaphy_1_1_a_a_b_b}{AABB} for this shape. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em body\+\_\+transform} & Parent body world transform. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Axis-\/aligned bounds in world coordinates. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_collision_shape_af2a0f55b8cc4f01eb6a069b8da7f4b0a}\index{novaphy::CollisionShape@{novaphy::CollisionShape}!make\_box@{make\_box}}
+\index{make\_box@{make\_box}!novaphy::CollisionShape@{novaphy::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{make\_box()}{make\_box()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_collision_shape_af2a0f55b8cc4f01eb6a069b8da7f4b0a} 
+\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} novaphy::\+\+Collision\+Shape::\+make\+\_\+box (\begin{DoxyParamCaption}\item[{const Vec3f \&}]{half\+\_\+extents}{, }\item[{int}]{body\+\_\+idx}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{local}{ = {\ttfamily \doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::\+identity}}()}, }\item[{float}]{friction}{ = {\ttfamily 0.5f}, }\item[{float}]{restitution}{ = {\ttfamily 0.3f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Create a box collision shape. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em half\+\_\+extents} & Local half extents in meters. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em body\+\_\+idx} & Owning body index. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em local} & Local transform from body frame to shape frame. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em \doxylink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}} & Friction coefficient. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em \doxylink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}} & Restitution coefficient. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Constructed box shape descriptor. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_collision_shape_af6e69bd49a3f0ad594a7f2963dc25e05}\index{novaphy::CollisionShape@{novaphy::CollisionShape}!make\_plane@{make\_plane}}
+\index{make\_plane@{make\_plane}!novaphy::CollisionShape@{novaphy::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{make\_plane()}{make\_plane()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_collision_shape_af6e69bd49a3f0ad594a7f2963dc25e05} 
+\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} novaphy::\+\+Collision\+Shape::\+make\+\_\+plane (\begin{DoxyParamCaption}\item[{const Vec3f \&}]{normal}{, }\item[{float}]{offset}{, }\item[{float}]{friction}{ = {\ttfamily 0.5f}, }\item[{float}]{restitution}{ = {\ttfamily 0.0f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Create an infinite plane collision shape. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em normal} & Plane normal vector (normalized internally). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em offset} & Plane offset along normal in meters. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em \doxylink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}} & Friction coefficient. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em \doxylink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}} & Restitution coefficient. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Constructed plane shape descriptor. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_collision_shape_a7d9ac52a738ae09ac603305e199ff55f}\index{novaphy::CollisionShape@{novaphy::CollisionShape}!make\_sphere@{make\_sphere}}
+\index{make\_sphere@{make\_sphere}!novaphy::CollisionShape@{novaphy::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{make\_sphere()}{make\_sphere()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_collision_shape_a7d9ac52a738ae09ac603305e199ff55f} 
+\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} novaphy::\+\+Collision\+Shape::\+make\+\_\+sphere (\begin{DoxyParamCaption}\item[{float}]{radius}{, }\item[{int}]{body\+\_\+idx}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{local}{ = {\ttfamily \doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::\+identity}}()}, }\item[{float}]{friction}{ = {\ttfamily 0.5f}, }\item[{float}]{restitution}{ = {\ttfamily 0.3f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Create a sphere collision shape. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em radius} & Sphere radius in meters. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em body\+\_\+idx} & Owning body index. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em local} & Local transform from body frame to shape frame. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em \doxylink{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}{friction}} & Friction coefficient. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em \doxylink{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}{restitution}} & Restitution coefficient. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Constructed sphere shape descriptor. 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{structnovaphy_1_1_collision_shape_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structnovaphy_1_1_collision_shape_a9a334459be2f732c1270bb65f7dca4b0}\index{novaphy::CollisionShape@{novaphy::CollisionShape}!body\_index@{body\_index}}
+\index{body\_index@{body\_index}!novaphy::CollisionShape@{novaphy::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{body\_index}{body\_index}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_collision_shape_a9a334459be2f732c1270bb65f7dca4b0} 
+int novaphy::\+\+Collision\+Shape::\+body\+\_\+index = -\/1}
+
+Owning body index, or -\/1 for world-\/owned shapes (e.\+g., planes). \Hypertarget{structnovaphy_1_1_collision_shape_a5875fad0082ee71245fa5f8d364adc3f}\index{novaphy::CollisionShape@{novaphy::CollisionShape}!box@{box}}
+\index{box@{box}!novaphy::CollisionShape@{novaphy::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{box}{box}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_collision_shape_a5875fad0082ee71245fa5f8d364adc3f} 
+\doxymbox{\hyperlink{structnovaphy_1_1_box_shape}{Box\+Shape}} novaphy::\+\+Collision\+Shape::\+box}
+
+Box primitive payload. \Hypertarget{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046}\index{novaphy::CollisionShape@{novaphy::CollisionShape}!friction@{friction}}
+\index{friction@{friction}!novaphy::CollisionShape@{novaphy::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{friction}{friction}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_collision_shape_af59f3a069af558e4f318343ea4ee2046} 
+float novaphy::\+\+Collision\+Shape::\+friction = 0.\+5f}
+
+Coulomb friction coefficient (dimensionless). \Hypertarget{structnovaphy_1_1_collision_shape_ad652128cbbc4d588ca540a7af5233d2b}\index{novaphy::CollisionShape@{novaphy::CollisionShape}!local\_transform@{local\_transform}}
+\index{local\_transform@{local\_transform}!novaphy::CollisionShape@{novaphy::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{local\_transform}{local\_transform}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_collision_shape_ad652128cbbc4d588ca540a7af5233d2b} 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} novaphy::\+\+Collision\+Shape::\+local\+\_\+transform = \doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::\+identity}}()}
+
+Shape pose in parent-\/body local frame. \Hypertarget{structnovaphy_1_1_collision_shape_a299592657513434aa799ea7126a3f22f}\index{novaphy::CollisionShape@{novaphy::CollisionShape}!plane@{plane}}
+\index{plane@{plane}!novaphy::CollisionShape@{novaphy::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{plane}{plane}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_collision_shape_a299592657513434aa799ea7126a3f22f} 
+\doxymbox{\hyperlink{structnovaphy_1_1_plane_shape}{Plane\+Shape}} novaphy::\+\+Collision\+Shape::\+plane}
+
+Plane primitive payload. \Hypertarget{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da}\index{novaphy::CollisionShape@{novaphy::CollisionShape}!restitution@{restitution}}
+\index{restitution@{restitution}!novaphy::CollisionShape@{novaphy::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{restitution}{restitution}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_collision_shape_a4832fcca3a8e93cef0b1c95d2cb161da} 
+float novaphy::\+\+Collision\+Shape::\+restitution = 0.\+3f}
+
+Restitution coefficient in \+[0, 1]\+. \Hypertarget{structnovaphy_1_1_collision_shape_a06b5ecb75e0f5fc460e432ef90259bf8}\index{novaphy::CollisionShape@{novaphy::CollisionShape}!sphere@{sphere}}
+\index{sphere@{sphere}!novaphy::CollisionShape@{novaphy::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{sphere}{sphere}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_collision_shape_a06b5ecb75e0f5fc460e432ef90259bf8} 
+\doxymbox{\hyperlink{structnovaphy_1_1_sphere_shape}{Sphere\+Shape}} novaphy::\+\+Collision\+Shape::\+sphere}
+
+Sphere primitive payload. \Hypertarget{structnovaphy_1_1_collision_shape_a26781106192b8ded52ef622cc686cf8b}\index{novaphy::CollisionShape@{novaphy::CollisionShape}!type@{type}}
+\index{type@{type}!novaphy::CollisionShape@{novaphy::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_collision_shape_a26781106192b8ded52ef622cc686cf8b} 
+Shape\+Type novaphy::\+\+Collision\+Shape::\+type = Shape\+Type::\+\+Box}
+
+Active primitive type. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+core/\+shape.\+h\end{DoxyCompactItemize}

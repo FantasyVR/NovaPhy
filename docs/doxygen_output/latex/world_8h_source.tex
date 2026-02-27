@@ -1,0 +1,54 @@
+\doxysection{world.\+h}
+\hypertarget{world_8h_source}{}\label{world_8h_source}\index{include/novaphy/sim/world.h@{include/novaphy/sim/world.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}novaphy/collision/broadphase.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}novaphy/collision/narrowphase.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/contact.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/model.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}novaphy/dynamics/free\_body\_solver.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}novaphy/dynamics/integrator.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}novaphy/sim/state.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classnovaphy_1_1_world_af7b041fe333923310dbcb9f27d11292e}{World}}\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{classnovaphy_1_1_world_af7b041fe333923310dbcb9f27d11292e}{World}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_model}{Model}}\&\ \doxymbox{\hyperlink{classnovaphy_1_1_world_af6f1a10e8ff40a7c661e3f3954bf9eb9}{model}},\ \doxymbox{\hyperlink{structnovaphy_1_1_solver_settings}{SolverSettings}}\ \doxymbox{\hyperlink{classnovaphy_1_1_world_aebdf447ce8d58807338d1ce78e4b154e}{solver\_settings}}\ =\ \{\});}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classnovaphy_1_1_world_abc197156cc4e9344e6a90f2df07c577d}{step}}(\textcolor{keywordtype}{float}\ dt);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classnovaphy_1_1_world_a8b2d23b579252bd278d741b51cce54d6}{set\_gravity}}(\textcolor{keyword}{const}\ Vec3f\&\ g)\ \{\ gravity\_\ =\ g;\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{const}\ Vec3f\&\ \doxymbox{\hyperlink{classnovaphy_1_1_world_a71408e92a6d0fceada751d0ab1087cda}{gravity}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ gravity\_;\ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00060\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_sim_state}{SimState}}\&\ \doxymbox{\hyperlink{classnovaphy_1_1_world_a59d5373069aa3bd499bf0d99079fd2de}{state}}()\ \{\ \textcolor{keywordflow}{return}\ state\_;\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_sim_state}{SimState}}\&\ \doxymbox{\hyperlink{classnovaphy_1_1_world_a1197eb4ca0e8043a554970a1fde2e515}{state}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ state\_;\ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_model}{Model}}\&\ \doxymbox{\hyperlink{classnovaphy_1_1_world_af6f1a10e8ff40a7c661e3f3954bf9eb9}{model}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ model\_;\ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00081\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_solver_settings}{SolverSettings}}\&\ \doxymbox{\hyperlink{classnovaphy_1_1_world_aebdf447ce8d58807338d1ce78e4b154e}{solver\_settings}}()\ \{\ \textcolor{keywordflow}{return}\ solver\_.settings();\ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ContactPoint>\&\ \doxymbox{\hyperlink{classnovaphy_1_1_world_a7adebe1cec37f0a47e25a57423c4c82f}{contacts}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ contacts\_;\ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classnovaphy_1_1_world_abcbb90e077101d600671a65e0b89e675}{apply\_force}}(\textcolor{keywordtype}{int}\ body\_index,\ \textcolor{keyword}{const}\ Vec3f\&\ force);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classnovaphy_1_1_world_ae3ae5e79bcd64dfc6104a438a332272e}{apply\_torque}}(\textcolor{keywordtype}{int}\ body\_index,\ \textcolor{keyword}{const}\ Vec3f\&\ torque);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00109\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_model}{Model}}\ model\_;}
+\DoxyCodeLine{00110\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_sim_state}{SimState}}\ state\_;}
+\DoxyCodeLine{00111\ \ \ \ \ \doxymbox{\hyperlink{classnovaphy_1_1_sweep_and_prune}{SweepAndPrune}}\ broadphase\_;}
+\DoxyCodeLine{00112\ \ \ \ \ \doxymbox{\hyperlink{classnovaphy_1_1_free_body_solver}{FreeBodySolver}}\ solver\_;}
+\DoxyCodeLine{00113\ \ \ \ \ Vec3f\ gravity\_\ =\ Vec3f(0.0f,\ -\/9.81f,\ 0.0f);}
+\DoxyCodeLine{00114\ \ \ \ \ std::vector<ContactPoint>\ contacts\_;}
+\DoxyCodeLine{00115\ \};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

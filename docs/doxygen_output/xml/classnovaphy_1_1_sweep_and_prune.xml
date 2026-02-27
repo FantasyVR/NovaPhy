@@ -1,0 +1,302 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classnovaphy_1_1_sweep_and_prune" kind="class" language="C++" prot="public">
+    <compoundname>novaphy::SweepAndPrune</compoundname>
+    <includes refid="broadphase_8h" local="no">broadphase.h</includes>
+    <innerclass refid="structnovaphy_1_1_sweep_and_prune_1_1_endpoint" prot="private">novaphy::SweepAndPrune::Endpoint</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classnovaphy_1_1_sweep_and_prune_1a1d297acca4d7bdfa16d55afedc6d5bea" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; Endpoint &gt;</type>
+        <definition>std::vector&lt;Endpoint&gt; novaphy::SweepAndPrune::endpoints_x_</definition>
+        <argsstring></argsstring>
+        <name>endpoints_x_</name>
+        <qualifiedname>novaphy::SweepAndPrune::endpoints_x_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="73" column="17" bodyfile="include/novaphy/collision/broadphase.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnovaphy_1_1_sweep_and_prune_1aee6ed446b9a80ab5609dea563135a407" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; Endpoint &gt;</type>
+        <definition>std::vector&lt;Endpoint&gt; novaphy::SweepAndPrune::endpoints_y_</definition>
+        <argsstring></argsstring>
+        <name>endpoints_y_</name>
+        <qualifiedname>novaphy::SweepAndPrune::endpoints_y_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="74" column="17" bodyfile="include/novaphy/collision/broadphase.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnovaphy_1_1_sweep_and_prune_1a8847d3c6f359b443772c9d8ba605f843" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; Endpoint &gt;</type>
+        <definition>std::vector&lt;Endpoint&gt; novaphy::SweepAndPrune::endpoints_z_</definition>
+        <argsstring></argsstring>
+        <name>endpoints_z_</name>
+        <qualifiedname>novaphy::SweepAndPrune::endpoints_z_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="75" column="17" bodyfile="include/novaphy/collision/broadphase.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnovaphy_1_1_sweep_and_prune_1a758ac26f5fa3d7c1474311a99731323d" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structnovaphy_1_1_broad_phase_pair" kindref="compound">BroadPhasePair</ref> &gt;</type>
+        <definition>std::vector&lt;BroadPhasePair&gt; novaphy::SweepAndPrune::pairs_</definition>
+        <argsstring></argsstring>
+        <name>pairs_</name>
+        <qualifiedname>novaphy::SweepAndPrune::pairs_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="76" column="17" bodyfile="include/novaphy/collision/broadphase.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnovaphy_1_1_sweep_and_prune_1a5684c3fecb0da7e704e4a52e3596fae9" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool novaphy::SweepAndPrune::initialized_</definition>
+        <argsstring></argsstring>
+        <name>initialized_</name>
+        <qualifiedname>novaphy::SweepAndPrune::initialized_</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="78" column="10" bodyfile="include/novaphy/collision/broadphase.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classnovaphy_1_1_sweep_and_prune_1a7a26ec2a54a8cfeb5cb762980c7607d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>novaphy::SweepAndPrune::SweepAndPrune</definition>
+        <argsstring>()=default</argsstring>
+        <name>SweepAndPrune</name>
+        <qualifiedname>novaphy::SweepAndPrune::SweepAndPrune</qualifiedname>
+        <briefdescription>
+<para>Construct an empty broadphase accelerator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="44" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_sweep_and_prune_1a2611c0c7fe869ce61f0174f215ee2301" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::SweepAndPrune::update</definition>
+        <argsstring>(const std::vector&lt; AABB &gt; &amp;body_aabbs, const std::vector&lt; bool &gt; &amp;static_mask)</argsstring>
+        <name>update</name>
+        <qualifiedname>novaphy::SweepAndPrune::update</qualifiedname>
+        <param>
+          <type>const std::vector&lt; <ref refid="structnovaphy_1_1_a_a_b_b" kindref="compound">AABB</ref> &gt; &amp;</type>
+          <declname>body_aabbs</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; bool &gt; &amp;</type>
+          <declname>static_mask</declname>
+        </param>
+        <briefdescription>
+<para>Update candidate overlap pairs from current world-space AABBs. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Updates broadphase acceleration structures for current AABBs.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">body_aabbs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis-aligned bounding boxes in world coordinates. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">static_mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Static-body mask used to skip static-static pairs. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">body_aabbs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Per-body world-space AABBs. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">static_mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flags indicating static (non-moving) bodies. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="53" column="10" bodyfile="src/collision/broadphase.cpp" bodystart="16" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_sweep_and_prune_1ab611c0928aeb064445dfbac945612e51" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="structnovaphy_1_1_broad_phase_pair" kindref="compound">BroadPhasePair</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt; BroadPhasePair &gt; &amp; novaphy::SweepAndPrune::get_pairs</definition>
+        <argsstring>() const</argsstring>
+        <name>get_pairs</name>
+        <qualifiedname>novaphy::SweepAndPrune::get_pairs</qualifiedname>
+        <briefdescription>
+<para>Get broadphase overlap candidates from the latest update. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Read-only list of potentially overlapping pairs. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="61" column="23" bodyfile="include/novaphy/collision/broadphase.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classnovaphy_1_1_sweep_and_prune_1a0666ce11643a039604cf5b8683b0723e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::SweepAndPrune::rebuild</definition>
+        <argsstring>(const std::vector&lt; AABB &gt; &amp;aabbs, const std::vector&lt; bool &gt; &amp;static_mask)</argsstring>
+        <name>rebuild</name>
+        <qualifiedname>novaphy::SweepAndPrune::rebuild</qualifiedname>
+        <param>
+          <type>const std::vector&lt; <ref refid="structnovaphy_1_1_a_a_b_b" kindref="compound">AABB</ref> &gt; &amp;</type>
+          <declname>aabbs</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; bool &gt; &amp;</type>
+          <declname>static_mask</declname>
+        </param>
+        <briefdescription>
+<para>Rebuild axis endpoint arrays and refresh overlap pairs. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Rebuilds endpoint arrays and overlapping broadphase pairs.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aabbs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>World-space AABBs. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">static_mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Static-body mask. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+Uses axis sweep on X and interval overlap filtering on Y/Z. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aabbs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Per-body world-space AABBs. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">static_mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flags indicating static (non-moving) bodies. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="87" column="10" bodyfile="src/collision/broadphase.cpp" bodystart="27" bodyend="100"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classnovaphy_1_1_sweep_and_prune_1a026b0b9ece76793f775c09cefe659b92" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::SweepAndPrune::insertion_sort</definition>
+        <argsstring>(std::vector&lt; Endpoint &gt; &amp;eps)</argsstring>
+        <name>insertion_sort</name>
+        <qualifiedname>novaphy::SweepAndPrune::insertion_sort</qualifiedname>
+        <param>
+          <type>std::vector&lt; Endpoint &gt; &amp;</type>
+          <declname>eps</declname>
+        </param>
+        <briefdescription>
+<para>Insertion-sort endpoint array for temporal-coherence-friendly updates. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>In-place insertion sort for temporally coherent endpoint lists.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">eps</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Endpoint list to sort in ascending scalar order. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">eps</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Endpoint array to sort by scalar axis coordinate. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="95" column="17" bodyfile="src/collision/broadphase.cpp" bodystart="106" bodyend="116"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Sweep-and-Prune broadphase collider for axis-aligned bounds. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Maintains sorted min/max endpoints and computes candidate overlap pairs before expensive narrowphase tests. This stage filters impossible collisions and reduces overall contact-detection cost. </para>
+    </detaileddescription>
+    <location file="include/novaphy/collision/broadphase.h" line="39" column="1" bodyfile="include/novaphy/collision/broadphase.h" bodystart="39" bodyend="96"/>
+    <listofallmembers>
+      <member refid="classnovaphy_1_1_sweep_and_prune_1a1d297acca4d7bdfa16d55afedc6d5bea" prot="private" virt="non-virtual"><scope>novaphy::SweepAndPrune</scope><name>endpoints_x_</name></member>
+      <member refid="classnovaphy_1_1_sweep_and_prune_1aee6ed446b9a80ab5609dea563135a407" prot="private" virt="non-virtual"><scope>novaphy::SweepAndPrune</scope><name>endpoints_y_</name></member>
+      <member refid="classnovaphy_1_1_sweep_and_prune_1a8847d3c6f359b443772c9d8ba605f843" prot="private" virt="non-virtual"><scope>novaphy::SweepAndPrune</scope><name>endpoints_z_</name></member>
+      <member refid="classnovaphy_1_1_sweep_and_prune_1ab611c0928aeb064445dfbac945612e51" prot="public" virt="non-virtual"><scope>novaphy::SweepAndPrune</scope><name>get_pairs</name></member>
+      <member refid="classnovaphy_1_1_sweep_and_prune_1a5684c3fecb0da7e704e4a52e3596fae9" prot="private" virt="non-virtual"><scope>novaphy::SweepAndPrune</scope><name>initialized_</name></member>
+      <member refid="classnovaphy_1_1_sweep_and_prune_1a026b0b9ece76793f775c09cefe659b92" prot="private" virt="non-virtual"><scope>novaphy::SweepAndPrune</scope><name>insertion_sort</name></member>
+      <member refid="classnovaphy_1_1_sweep_and_prune_1a758ac26f5fa3d7c1474311a99731323d" prot="private" virt="non-virtual"><scope>novaphy::SweepAndPrune</scope><name>pairs_</name></member>
+      <member refid="classnovaphy_1_1_sweep_and_prune_1a0666ce11643a039604cf5b8683b0723e" prot="private" virt="non-virtual"><scope>novaphy::SweepAndPrune</scope><name>rebuild</name></member>
+      <member refid="classnovaphy_1_1_sweep_and_prune_1a7a26ec2a54a8cfeb5cb762980c7607d9" prot="public" virt="non-virtual"><scope>novaphy::SweepAndPrune</scope><name>SweepAndPrune</name></member>
+      <member refid="classnovaphy_1_1_sweep_and_prune_1a2611c0c7fe869ce61f0174f215ee2301" prot="public" virt="non-virtual"><scope>novaphy::SweepAndPrune</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

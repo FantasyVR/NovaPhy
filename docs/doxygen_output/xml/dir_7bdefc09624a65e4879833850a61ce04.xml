@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_7bdefc09624a65e4879833850a61ce04" kind="dir">
+    <compoundname>src/collision</compoundname>
+    <innerfile refid="broadphase_8cpp">broadphase.cpp</innerfile>
+    <innerfile refid="narrowphase_8cpp">narrowphase.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/collision/"/>
+  </compounddef>
+</doxygen>

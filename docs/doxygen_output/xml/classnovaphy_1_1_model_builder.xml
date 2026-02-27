@@ -1,0 +1,340 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classnovaphy_1_1_model_builder" kind="class" language="C++" prot="public">
+    <compoundname>novaphy::ModelBuilder</compoundname>
+    <includes refid="model__builder_8h" local="no">model_builder.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classnovaphy_1_1_model_builder_1acc40462363f84af2049b19109517e75b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref> &gt;</type>
+        <definition>std::vector&lt;RigidBody&gt; novaphy::ModelBuilder::bodies_</definition>
+        <argsstring></argsstring>
+        <name>bodies_</name>
+        <qualifiedname>novaphy::ModelBuilder::bodies_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Staged body list. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model_builder.h" line="75" column="17" bodyfile="include/novaphy/core/model_builder.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnovaphy_1_1_model_builder_1a8853de110021301454d64b655a94e18d" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &gt;</type>
+        <definition>std::vector&lt;Transform&gt; novaphy::ModelBuilder::initial_transforms_</definition>
+        <argsstring></argsstring>
+        <name>initial_transforms_</name>
+        <qualifiedname>novaphy::ModelBuilder::initial_transforms_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Staged initial transforms. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model_builder.h" line="76" column="17" bodyfile="include/novaphy/core/model_builder.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnovaphy_1_1_model_builder_1a74066a120c1973a0d4425d3a6f5551b3" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &gt;</type>
+        <definition>std::vector&lt;CollisionShape&gt; novaphy::ModelBuilder::shapes_</definition>
+        <argsstring></argsstring>
+        <name>shapes_</name>
+        <qualifiedname>novaphy::ModelBuilder::shapes_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Staged collision shapes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model_builder.h" line="77" column="17" bodyfile="include/novaphy/core/model_builder.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classnovaphy_1_1_model_builder_1a18a63787a9cd3f7b28dc8f95e739fa0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>novaphy::ModelBuilder::ModelBuilder</definition>
+        <argsstring>()=default</argsstring>
+        <name>ModelBuilder</name>
+        <qualifiedname>novaphy::ModelBuilder::ModelBuilder</qualifiedname>
+        <briefdescription>
+<para>Construct an empty model builder. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model_builder.h" line="24" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_model_builder_1a0211a6cb36609ef082320846a7f2a53f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int novaphy::ModelBuilder::add_body</definition>
+        <argsstring>(const RigidBody &amp;body, const Transform &amp;transform=Transform::identity())</argsstring>
+        <name>add_body</name>
+        <qualifiedname>novaphy::ModelBuilder::add_body</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref> &amp;</type>
+          <declname>body</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>transform</declname>
+          <defval><ref refid="structnovaphy_1_1_transform_1a44c81dcd76ab81961d385a30b95db3d8" kindref="member">Transform::identity</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Add a rigid body with initial world transform. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a rigid body with an initial world transform.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">body</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body inertial properties. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">transform</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Initial world transform. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Index of inserted body.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">body</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body inertial and kinematic properties in SI units. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">transform</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Initial world transform of the body frame. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Index of the inserted body in the model body array. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model_builder.h" line="33" column="9" bodyfile="src/core/model_builder.cpp" bodystart="17" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_model_builder_1a33f0c3c4a060e3ea433f3e119112dadf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int novaphy::ModelBuilder::add_shape</definition>
+        <argsstring>(const CollisionShape &amp;shape)</argsstring>
+        <name>add_shape</name>
+        <qualifiedname>novaphy::ModelBuilder::add_shape</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+<para>Add a collision shape. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a collision shape descriptor to the model.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Collision shape descriptor. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Index of inserted shape.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Shape geometry and contact material parameters. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Index of the inserted shape in the model shape array. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model_builder.h" line="41" column="9" bodyfile="src/core/model_builder.cpp" bodystart="29" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_model_builder_1a248f512e3fbab17a40ec5ff1bf910627" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int novaphy::ModelBuilder::add_ground_plane</definition>
+        <argsstring>(float y=0.0f, float friction=0.5f, float restitution=0.0f)</argsstring>
+        <name>add_ground_plane</name>
+        <qualifiedname>novaphy::ModelBuilder::add_ground_plane</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+          <defval>0.0f</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>friction</declname>
+          <defval>0.5f</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>restitution</declname>
+          <defval>0.0f</defval>
+        </param>
+        <briefdescription>
+<para>Add infinite horizontal ground plane. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates and adds an infinite horizontal ground plane.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Plane offset along +Y world axis in meters. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">friction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Friction coefficient. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">restitution</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Restitution coefficient. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Index of inserted plane shape.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Plane offset along world Y in meters. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">friction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Coulomb friction coefficient. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">restitution</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Coefficient of restitution in <computeroutput>[0, 1]</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Index of the inserted plane shape. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model_builder.h" line="51" column="9" bodyfile="src/core/model_builder.cpp" bodystart="42" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_model_builder_1a701cb1f422ee12eaf5f2da43abb8fc6b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_model" kindref="compound">Model</ref></type>
+        <definition>Model novaphy::ModelBuilder::build</definition>
+        <argsstring>() const</argsstring>
+        <name>build</name>
+        <qualifiedname>novaphy::ModelBuilder::build</qualifiedname>
+        <briefdescription>
+<para>Build immutable <computeroutput><ref refid="structnovaphy_1_1_model" kindref="compound">Model</ref></computeroutput> from accumulated entities. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Materializes a <computeroutput><ref refid="structnovaphy_1_1_model" kindref="compound">Model</ref></computeroutput> from the accumulated builder state.</para>
+<para><simplesect kind="return"><para>Immutable scene model.</para>
+</simplesect>
+<simplesect kind="return"><para>Copy of all configured bodies, transforms, and shapes. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model_builder.h" line="58" column="11" bodyfile="src/core/model_builder.cpp" bodystart="52" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_model_builder_1a86288224e44c588411b84b1e55312589" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int novaphy::ModelBuilder::num_bodies</definition>
+        <argsstring>() const</argsstring>
+        <name>num_bodies</name>
+        <qualifiedname>novaphy::ModelBuilder::num_bodies</qualifiedname>
+        <briefdescription>
+<para>Get current number of added bodies. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Body count. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model_builder.h" line="65" column="9" bodyfile="include/novaphy/core/model_builder.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_model_builder_1ad9d35b2367a1a89623981ad3565f44e5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int novaphy::ModelBuilder::num_shapes</definition>
+        <argsstring>() const</argsstring>
+        <name>num_shapes</name>
+        <qualifiedname>novaphy::ModelBuilder::num_shapes</qualifiedname>
+        <briefdescription>
+<para>Get current number of added shapes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Shape count. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model_builder.h" line="72" column="9" bodyfile="include/novaphy/core/model_builder.h" bodystart="72" bodyend="72"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Builder utility for constructing immutable free-body scene models. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Collects rigid bodies, their initial transforms, and collision shapes, then emits a <computeroutput><ref refid="structnovaphy_1_1_model" kindref="compound">Model</ref></computeroutput> snapshot suitable for simulation. </para>
+    </detaileddescription>
+    <location file="include/novaphy/core/model_builder.h" line="21" column="1" bodyfile="include/novaphy/core/model_builder.h" bodystart="21" bodyend="78"/>
+    <listofallmembers>
+      <member refid="classnovaphy_1_1_model_builder_1a0211a6cb36609ef082320846a7f2a53f" prot="public" virt="non-virtual"><scope>novaphy::ModelBuilder</scope><name>add_body</name></member>
+      <member refid="classnovaphy_1_1_model_builder_1a248f512e3fbab17a40ec5ff1bf910627" prot="public" virt="non-virtual"><scope>novaphy::ModelBuilder</scope><name>add_ground_plane</name></member>
+      <member refid="classnovaphy_1_1_model_builder_1a33f0c3c4a060e3ea433f3e119112dadf" prot="public" virt="non-virtual"><scope>novaphy::ModelBuilder</scope><name>add_shape</name></member>
+      <member refid="classnovaphy_1_1_model_builder_1acc40462363f84af2049b19109517e75b" prot="private" virt="non-virtual"><scope>novaphy::ModelBuilder</scope><name>bodies_</name></member>
+      <member refid="classnovaphy_1_1_model_builder_1a701cb1f422ee12eaf5f2da43abb8fc6b" prot="public" virt="non-virtual"><scope>novaphy::ModelBuilder</scope><name>build</name></member>
+      <member refid="classnovaphy_1_1_model_builder_1a8853de110021301454d64b655a94e18d" prot="private" virt="non-virtual"><scope>novaphy::ModelBuilder</scope><name>initial_transforms_</name></member>
+      <member refid="classnovaphy_1_1_model_builder_1a18a63787a9cd3f7b28dc8f95e739fa0c" prot="public" virt="non-virtual"><scope>novaphy::ModelBuilder</scope><name>ModelBuilder</name></member>
+      <member refid="classnovaphy_1_1_model_builder_1a86288224e44c588411b84b1e55312589" prot="public" virt="non-virtual"><scope>novaphy::ModelBuilder</scope><name>num_bodies</name></member>
+      <member refid="classnovaphy_1_1_model_builder_1ad9d35b2367a1a89623981ad3565f44e5" prot="public" virt="non-virtual"><scope>novaphy::ModelBuilder</scope><name>num_shapes</name></member>
+      <member refid="classnovaphy_1_1_model_builder_1a74066a120c1973a0d4425d3a6f5551b3" prot="private" virt="non-virtual"><scope>novaphy::ModelBuilder</scope><name>shapes_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

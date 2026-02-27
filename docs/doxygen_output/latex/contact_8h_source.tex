@@ -1,0 +1,48 @@
+\doxysection{contact.\+h}
+\hypertarget{contact_8h_source}{}\label{contact_8h_source}\index{include/novaphy/core/contact.h@{include/novaphy/core/contact.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{ContactPoint}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ Vec3f\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_a0853a227e917277ccff0913e471b47d8}{position}}\ =\ Vec3f::Zero();\ \ }
+\DoxyCodeLine{00016\ \ \ \ \ Vec3f\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_a20f3f881c9f3536de5a67c4ecc1c9597}{normal}}\ =\ Vec3f::Zero();\ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_a1fb19edee8dd6cc4d71e7cb446b2b873}{penetration}}\ =\ 0.0f;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_add0c208cb4c419fb78a708ea10568cd0}{body\_a}}\ =\ -\/1;\ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_ac2c53ff182680de80abb955dd48b45b9}{body\_b}}\ =\ -\/1;\ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_a93002bf853f7db720b2d1adf66e9265a}{shape\_a}}\ =\ -\/1;\ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_ae445e1d532e545048f0a0edb999235e1}{shape\_b}}\ =\ -\/1;\ \ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_a56aeed6c4d1d2166905659c455dce085}{friction}}\ =\ 0.5f;\ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_a0e7344dd307e996b2f48bfb5f8decafb}{restitution}}\ =\ 0.0f;\ \ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_ad1d238cd0947380bd13aeedb8c3260b8}{accumulated\_normal\_impulse}}\ =\ 0.0f;\ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_ab832cea6e71a99ed55b27387ad02cce8}{accumulated\_tangent\_impulse\_1}}\ =\ 0.0f;\ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_ad35e7f0efc4c5d1d9743c40675da5585}{accumulated\_tangent\_impulse\_2}}\ =\ 0.0f;\ \ \ }
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_contact_manifold}{ContactManifold}}\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_manifold_a942939c352eda95cfa04534237df9733}{shape\_a}}\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_manifold_a19649ac02d2a971a5577d99821af6a29}{shape\_b}}\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_manifold_ab10fc96abcac74bfb8a563a5568fa000}{body\_a}}\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_manifold_a1951c1294a35cfcf92ad3a04491322a4}{body\_b}}\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ std::vector<ContactPoint>\ \doxymbox{\hyperlink{structnovaphy_1_1_contact_manifold_aa213022f5804bf5063969e022e8b4b23}{points}};\ \ }
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ combine\_friction(\textcolor{keywordtype}{float}\ a,\ \textcolor{keywordtype}{float}\ b)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{return}\ std::sqrt(a\ *\ b);}
+\DoxyCodeLine{00055\ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ combine\_restitution(\textcolor{keywordtype}{float}\ a,\ \textcolor{keywordtype}{float}\ b)\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{return}\ std::max(a,\ b);}
+\DoxyCodeLine{00066\ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

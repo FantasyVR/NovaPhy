@@ -1,0 +1,91 @@
+\doxysection{novaphy::\+Model Struct Reference}
+\hypertarget{structnovaphy_1_1_model}{}\label{structnovaphy_1_1_model}\index{novaphy::Model@{novaphy::Model}}
+
+
+Immutable free-\/body scene model.  
+
+
+
+
+{\ttfamily \+\#include $<$model.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_model_ae2ef0d6246938d1a5bf0d152b33f39a5}{num\+\_\+bodies}} () const
+\begin{DoxyCompactList}\small\item\em Get number of bodies in the model. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_model_acb8cbd85157a1e94d2999160d87e3951}{num\+\_\+shapes}} () const
+\begin{DoxyCompactList}\small\item\em Get number of collision shapes in the model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{Rigid\+Body}} $>$ \doxymbox{\hyperlink{structnovaphy_1_1_model_a95b75cce70741092ddd0df717454ed4a}{bodies}}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} $>$ \doxymbox{\hyperlink{structnovaphy_1_1_model_a5fa6564ad266689b5010ca02278144da}{initial\+\_\+transforms}}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} $>$ \doxymbox{\hyperlink{structnovaphy_1_1_model_ad3d0bd0d69a77296f4ae1ef8143e9289}{shapes}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Immutable free-\/body scene model. 
+
+Describes rigid bodies, their initial world transforms, and collision shapes. Instances are typically created with {\ttfamily \doxylink{classnovaphy_1_1_model_builder}{Model\+Builder}}. 
+
+\label{doc-func-members}
+\Hypertarget{structnovaphy_1_1_model_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structnovaphy_1_1_model_ae2ef0d6246938d1a5bf0d152b33f39a5}\index{novaphy::Model@{novaphy::Model}!num\_bodies@{num\_bodies}}
+\index{num\_bodies@{num\_bodies}!novaphy::Model@{novaphy::Model}}
+\doxysubsubsection{\texorpdfstring{num\_bodies()}{num\_bodies()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_model_ae2ef0d6246938d1a5bf0d152b33f39a5} 
+int novaphy::\+\+Model::\+num\+\_\+bodies (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get number of bodies in the model. 
+
+\begin{DoxyReturn}{Returns}
+Body count. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_model_acb8cbd85157a1e94d2999160d87e3951}\index{novaphy::Model@{novaphy::Model}!num\_shapes@{num\_shapes}}
+\index{num\_shapes@{num\_shapes}!novaphy::Model@{novaphy::Model}}
+\doxysubsubsection{\texorpdfstring{num\_shapes()}{num\_shapes()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_model_acb8cbd85157a1e94d2999160d87e3951} 
+int novaphy::\+\+Model::\+num\+\_\+shapes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get number of collision shapes in the model. 
+
+\begin{DoxyReturn}{Returns}
+Shape count. 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{structnovaphy_1_1_model_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structnovaphy_1_1_model_a95b75cce70741092ddd0df717454ed4a}\index{novaphy::Model@{novaphy::Model}!bodies@{bodies}}
+\index{bodies@{bodies}!novaphy::Model@{novaphy::Model}}
+\doxysubsubsection{\texorpdfstring{bodies}{bodies}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_model_a95b75cce70741092ddd0df717454ed4a} 
+std::\+vector$<$\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{Rigid\+Body}}$>$ novaphy::\+\+Model::\+bodies}
+
+Rigid-\/body inertial properties. \Hypertarget{structnovaphy_1_1_model_a5fa6564ad266689b5010ca02278144da}\index{novaphy::Model@{novaphy::Model}!initial\_transforms@{initial\_transforms}}
+\index{initial\_transforms@{initial\_transforms}!novaphy::Model@{novaphy::Model}}
+\doxysubsubsection{\texorpdfstring{initial\_transforms}{initial\_transforms}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_model_a5fa6564ad266689b5010ca02278144da} 
+std::\+vector$<$\doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}}$>$ novaphy::\+\+Model::\+initial\+\_\+transforms}
+
+Initial body transforms in world coordinates. \Hypertarget{structnovaphy_1_1_model_ad3d0bd0d69a77296f4ae1ef8143e9289}\index{novaphy::Model@{novaphy::Model}!shapes@{shapes}}
+\index{shapes@{shapes}!novaphy::Model@{novaphy::Model}}
+\doxysubsubsection{\texorpdfstring{shapes}{shapes}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_model_ad3d0bd0d69a77296f4ae1ef8143e9289} 
+std::\+vector$<$\doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}}$>$ novaphy::\+\+Model::\+shapes}
+
+Collision shapes attached to bodies/\+world. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+core/\+model.\+h\end{DoxyCompactItemize}

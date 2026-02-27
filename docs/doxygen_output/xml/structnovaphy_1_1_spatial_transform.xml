@@ -1,0 +1,299 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_spatial_transform" kind="struct" language="C++" prot="public">
+    <compoundname>novaphy::SpatialTransform</compoundname>
+    <includes refid="spatial_8h" local="no">spatial.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnovaphy_1_1_spatial_transform_1adf9370a843aa6049798c28aaa5752d03" prot="public" static="no" mutable="no">
+        <type>Mat3f</type>
+        <definition>Mat3f novaphy::SpatialTransform::E</definition>
+        <argsstring></argsstring>
+        <name>E</name>
+        <qualifiedname>novaphy::SpatialTransform::E</qualifiedname>
+        <initializer>= Mat3f::Identity()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Rotation from frame B to frame A. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="89" column="11" bodyfile="include/novaphy/math/spatial.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_spatial_transform_1ae53da5bc4b7e4961df7090cea0bcfd27" prot="public" static="no" mutable="no">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::SpatialTransform::r</definition>
+        <argsstring></argsstring>
+        <name>r</name>
+        <qualifiedname>novaphy::SpatialTransform::r</qualifiedname>
+        <initializer>= Vec3f::Zero()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Translation from A origin to B origin, expressed in A (m). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="90" column="11" bodyfile="include/novaphy/math/spatial.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnovaphy_1_1_spatial_transform_1a01d761e4b6ba73da0bb6c7012e998348" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>novaphy::SpatialTransform::SpatialTransform</definition>
+        <argsstring>()=default</argsstring>
+        <name>SpatialTransform</name>
+        <qualifiedname>novaphy::SpatialTransform::SpatialTransform</qualifiedname>
+        <briefdescription>
+<para>Construct identity spatial transform. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="93" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_spatial_transform_1a027d0e5f185d9f2e4f26308920f6b456" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>novaphy::SpatialTransform::SpatialTransform</definition>
+        <argsstring>(const Mat3f &amp;rot, const Vec3f &amp;trans)</argsstring>
+        <name>SpatialTransform</name>
+        <qualifiedname>novaphy::SpatialTransform::SpatialTransform</qualifiedname>
+        <param>
+          <type>const Mat3f &amp;</type>
+          <declname>rot</declname>
+        </param>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>trans</declname>
+        </param>
+        <briefdescription>
+<para>Construct spatial transform from rotation and translation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">rot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rotation from B to A. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Origin of B expressed in A (m). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="101" column="5" bodyfile="include/novaphy/math/spatial.h" bodystart="101" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_spatial_transform_1ad23b35d19fd4c4bb32a62c6c9854004a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>SpatialVector</type>
+        <definition>SpatialVector novaphy::SpatialTransform::apply_motion</definition>
+        <argsstring>(const SpatialVector &amp;v) const</argsstring>
+        <name>apply_motion</name>
+        <qualifiedname>novaphy::SpatialTransform::apply_motion</qualifiedname>
+        <param>
+          <type>const SpatialVector &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Apply transform to a spatial motion vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Motion vector in frame B. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Motion vector expressed in frame A. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="109" column="19" bodyfile="include/novaphy/math/spatial.h" bodystart="109" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_spatial_transform_1adb1820b2d0e0d069647f73a0ac6e96d8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>SpatialVector</type>
+        <definition>SpatialVector novaphy::SpatialTransform::apply_force</definition>
+        <argsstring>(const SpatialVector &amp;f) const</argsstring>
+        <name>apply_force</name>
+        <qualifiedname>novaphy::SpatialTransform::apply_force</qualifiedname>
+        <param>
+          <type>const SpatialVector &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Apply dual transform to a spatial force vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Force vector in frame A dual space. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Force vector mapped consistently with frame transform. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="123" column="19" bodyfile="include/novaphy/math/spatial.h" bodystart="123" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_spatial_transform_1a69c43270b9ced9f2a511c129899c1777" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>SpatialMatrix</type>
+        <definition>SpatialMatrix novaphy::SpatialTransform::to_matrix</definition>
+        <argsstring>() const</argsstring>
+        <name>to_matrix</name>
+        <qualifiedname>novaphy::SpatialTransform::to_matrix</qualifiedname>
+        <briefdescription>
+<para>Convert to 6x6 matrix representation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Spatial transform matrix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="136" column="19" bodyfile="include/novaphy/math/spatial.h" bodystart="136" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_spatial_transform_1aab88d993b84c724e452c9d8e8ce0c25c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_spatial_transform_1a01d761e4b6ba73da0bb6c7012e998348" kindref="member">SpatialTransform</ref></type>
+        <definition>SpatialTransform novaphy::SpatialTransform::inverse</definition>
+        <argsstring>() const</argsstring>
+        <name>inverse</name>
+        <qualifiedname>novaphy::SpatialTransform::inverse</qualifiedname>
+        <briefdescription>
+<para>Compute inverse spatial transform. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Inverse transform X_{B&lt;-A}. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="151" column="22" bodyfile="include/novaphy/math/spatial.h" bodystart="151" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_spatial_transform_1a364ae938903a065dfcc6a40bc38f238a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_spatial_transform_1a01d761e4b6ba73da0bb6c7012e998348" kindref="member">SpatialTransform</ref></type>
+        <definition>SpatialTransform novaphy::SpatialTransform::operator*</definition>
+        <argsstring>(const SpatialTransform &amp;other) const</argsstring>
+        <name>operator*</name>
+        <qualifiedname>novaphy::SpatialTransform::operator*</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_spatial_transform_1a01d761e4b6ba73da0bb6c7012e998348" kindref="member">SpatialTransform</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Compose two spatial transforms. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Right-side transform. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Composed transform. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="162" column="22" bodyfile="include/novaphy/math/spatial.h" bodystart="162" bodyend="164"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structnovaphy_1_1_spatial_transform_1a8e638cee0c56c1e2f342b0e554930fb5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_spatial_transform_1a01d761e4b6ba73da0bb6c7012e998348" kindref="member">SpatialTransform</ref></type>
+        <definition>static SpatialTransform novaphy::SpatialTransform::from_transform</definition>
+        <argsstring>(const Transform &amp;t)</argsstring>
+        <name>from_transform</name>
+        <qualifiedname>novaphy::SpatialTransform::from_transform</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>Create spatial transform from rigid transform. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rigid transform with quaternion rotation and translation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Spatial transform with matching pose. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="172" column="29" bodyfile="include/novaphy/math/spatial.h" bodystart="172" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_spatial_transform_1a652a2e16bdf05a0410196c0c548b2c90" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_spatial_transform_1a01d761e4b6ba73da0bb6c7012e998348" kindref="member">SpatialTransform</ref></type>
+        <definition>static SpatialTransform novaphy::SpatialTransform::identity</definition>
+        <argsstring>()</argsstring>
+        <name>identity</name>
+        <qualifiedname>novaphy::SpatialTransform::identity</qualifiedname>
+        <briefdescription>
+<para>Create identity spatial transform. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Identity transform. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="181" column="29" bodyfile="include/novaphy/math/spatial.h" bodystart="181" bodyend="181"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Spatial rigid transform between coordinate frames. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Represents X_{A&lt;-B} with rotation <computeroutput><ref refid="structnovaphy_1_1_spatial_transform_1adf9370a843aa6049798c28aaa5752d03" kindref="member">E</ref></computeroutput> (B to A) and translation <computeroutput><ref refid="structnovaphy_1_1_spatial_transform_1ae53da5bc4b7e4961df7090cea0bcfd27" kindref="member">r</ref></computeroutput> (origin of B expressed in A, in meters). </para>
+    </detaileddescription>
+    <location file="include/novaphy/math/spatial.h" line="88" column="1" bodyfile="include/novaphy/math/spatial.h" bodystart="88" bodyend="182"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_spatial_transform_1adb1820b2d0e0d069647f73a0ac6e96d8" prot="public" virt="non-virtual"><scope>novaphy::SpatialTransform</scope><name>apply_force</name></member>
+      <member refid="structnovaphy_1_1_spatial_transform_1ad23b35d19fd4c4bb32a62c6c9854004a" prot="public" virt="non-virtual"><scope>novaphy::SpatialTransform</scope><name>apply_motion</name></member>
+      <member refid="structnovaphy_1_1_spatial_transform_1adf9370a843aa6049798c28aaa5752d03" prot="public" virt="non-virtual"><scope>novaphy::SpatialTransform</scope><name>E</name></member>
+      <member refid="structnovaphy_1_1_spatial_transform_1a8e638cee0c56c1e2f342b0e554930fb5" prot="public" virt="non-virtual"><scope>novaphy::SpatialTransform</scope><name>from_transform</name></member>
+      <member refid="structnovaphy_1_1_spatial_transform_1a652a2e16bdf05a0410196c0c548b2c90" prot="public" virt="non-virtual"><scope>novaphy::SpatialTransform</scope><name>identity</name></member>
+      <member refid="structnovaphy_1_1_spatial_transform_1aab88d993b84c724e452c9d8e8ce0c25c" prot="public" virt="non-virtual"><scope>novaphy::SpatialTransform</scope><name>inverse</name></member>
+      <member refid="structnovaphy_1_1_spatial_transform_1a364ae938903a065dfcc6a40bc38f238a" prot="public" virt="non-virtual"><scope>novaphy::SpatialTransform</scope><name>operator*</name></member>
+      <member refid="structnovaphy_1_1_spatial_transform_1ae53da5bc4b7e4961df7090cea0bcfd27" prot="public" virt="non-virtual"><scope>novaphy::SpatialTransform</scope><name>r</name></member>
+      <member refid="structnovaphy_1_1_spatial_transform_1a01d761e4b6ba73da0bb6c7012e998348" prot="public" virt="non-virtual"><scope>novaphy::SpatialTransform</scope><name>SpatialTransform</name></member>
+      <member refid="structnovaphy_1_1_spatial_transform_1a027d0e5f185d9f2e4f26308920f6b456" prot="public" virt="non-virtual"><scope>novaphy::SpatialTransform</scope><name>SpatialTransform</name></member>
+      <member refid="structnovaphy_1_1_spatial_transform_1a69c43270b9ced9f2a511c129899c1777" prot="public" virt="non-virtual"><scope>novaphy::SpatialTransform</scope><name>to_matrix</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

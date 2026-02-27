@@ -1,0 +1,302 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_symplectic_euler" kind="struct" language="C++" prot="public">
+    <compoundname>novaphy::SymplecticEuler</compoundname>
+    <includes refid="integrator_8h" local="no">integrator.h</includes>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structnovaphy_1_1_symplectic_euler_1a60fc2b758fa080e645631eb5bf75302a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::SymplecticEuler::integrate_velocity</definition>
+        <argsstring>(Vec3f &amp;linear_vel, Vec3f &amp;angular_vel, const Vec3f &amp;force, const Vec3f &amp;torque, float inv_mass, const Mat3f &amp;inv_inertia, const Vec3f &amp;gravity, float dt)</argsstring>
+        <name>integrate_velocity</name>
+        <qualifiedname>novaphy::SymplecticEuler::integrate_velocity</qualifiedname>
+        <param>
+          <type>Vec3f &amp;</type>
+          <declname>linear_vel</declname>
+        </param>
+        <param>
+          <type>Vec3f &amp;</type>
+          <declname>angular_vel</declname>
+        </param>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>force</declname>
+        </param>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>torque</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>inv_mass</declname>
+        </param>
+        <param>
+          <type>const Mat3f &amp;</type>
+          <declname>inv_inertia</declname>
+        </param>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>gravity</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+<para>Integrate linear and angular velocities for one time step. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Integrates linear and angular velocity using symplectic Euler.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">linear_vel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Linear velocity in world frame (m/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">angular_vel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Angular velocity in world frame (rad/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">force</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>External force at center of mass in world frame (N). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">torque</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>External torque in world frame (N*m). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">inv_mass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inverse mass (kg^-1). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">inv_inertia</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inverse inertia tensor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">gravity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Gravity vector in world frame (m/s^2). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time step in seconds. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">linear_vel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Linear velocity in world frame (m/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">angular_vel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Angular velocity in world frame (rad/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">force</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Net external force in world frame (N). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">torque</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Net external torque in world frame (N*m). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">inv_mass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inverse mass (<computeroutput>0</computeroutput> for static/infinite mass). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">inv_inertia</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inverse world-frame inertia tensor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">gravity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> gravity acceleration (m/s^2). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time step (s). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/integrator.h" line="27" column="17" bodyfile="src/dynamics/integrator.cpp" bodystart="20" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_symplectic_euler_1a94d67c264ce2d5c1fb766777c679ff4a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::SymplecticEuler::integrate_position</definition>
+        <argsstring>(Transform &amp;transform, const Vec3f &amp;linear_vel, const Vec3f &amp;angular_vel, float dt)</argsstring>
+        <name>integrate_position</name>
+        <qualifiedname>novaphy::SymplecticEuler::integrate_position</qualifiedname>
+        <param>
+          <type><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>transform</declname>
+        </param>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>linear_vel</declname>
+        </param>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>angular_vel</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+<para>Integrate pose from current velocities for one time step. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Integrates position and orientation using updated velocities.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">transform</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body transform (position + quaternion). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">linear_vel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Linear velocity in world frame (m/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">angular_vel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Angular velocity in world frame (rad/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time step in seconds. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">transform</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pose in world frame. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">linear_vel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Linear velocity in world frame (m/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">angular_vel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Angular velocity in world frame (rad/s). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time step (s). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/integrator.h" line="41" column="17" bodyfile="src/dynamics/integrator.cpp" bodystart="39" bodyend="60"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Symplectic-Euler integrator for free rigid-body states. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Uses semi-implicit integration: velocities are updated first from forces, then positions/orientations are advanced using updated velocities. </para>
+    </detaileddescription>
+    <location file="include/novaphy/dynamics/integrator.h" line="13" column="1" bodyfile="include/novaphy/dynamics/integrator.h" bodystart="13" bodyend="44"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_symplectic_euler_1a94d67c264ce2d5c1fb766777c679ff4a" prot="public" virt="non-virtual"><scope>novaphy::SymplecticEuler</scope><name>integrate_position</name></member>
+      <member refid="structnovaphy_1_1_symplectic_euler_1a60fc2b758fa080e645631eb5bf75302a" prot="public" virt="non-virtual"><scope>novaphy::SymplecticEuler</scope><name>integrate_velocity</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

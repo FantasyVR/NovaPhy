@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_657289c220be95c6081988be87b2c7d5" kind="dir">
+    <compoundname>include/novaphy</compoundname>
+    <innerdir refid="dir_2ccc68ca8175d70750b98e0f976c7ed2">include/novaphy/collision</innerdir>
+    <innerdir refid="dir_ca9936b2faf1d1f2a00e07a666739a67">include/novaphy/core</innerdir>
+    <innerdir refid="dir_d6c42e0b394a83cf4bbed1cce046d53b">include/novaphy/dynamics</innerdir>
+    <innerdir refid="dir_3995826e9882df94a148087f8d8cd71c">include/novaphy/math</innerdir>
+    <innerdir refid="dir_83df8c34d8cc15dda9331044e56817ef">include/novaphy/sim</innerdir>
+    <innerfile refid="novaphy_8h">novaphy.h</innerfile>
+    <innerfile refid="novaphy__types_8h">novaphy_types.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/novaphy/"/>
+  </compounddef>
+</doxygen>

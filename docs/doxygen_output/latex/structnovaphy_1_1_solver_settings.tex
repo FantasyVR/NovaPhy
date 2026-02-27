@@ -1,0 +1,61 @@
+\doxysection{novaphy::\+Solver\+Settings Struct Reference}
+\hypertarget{structnovaphy_1_1_solver_settings}{}\label{structnovaphy_1_1_solver_settings}\index{novaphy::SolverSettings@{novaphy::SolverSettings}}
+
+
+Runtime tuning parameters for the free-\/body contact solver.  
+
+
+
+
+{\ttfamily \+\#include $<$free\+\_\+body\+\_\+solver.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_solver_settings_ad4defdbc236d98d829d81238d67a8ed9}{velocity\+\_\+iterations}} = 30
+\item 
+float \doxymbox{\hyperlink{structnovaphy_1_1_solver_settings_a6a2db2b246b0cea4e95c008ec8e2a508}{baumgarte}} = 0.\+3f
+\item 
+float \doxymbox{\hyperlink{structnovaphy_1_1_solver_settings_a01ba436c107b609ebad0a8d3a9f79f3d}{slop}} = 0.\+005f
+\item 
+bool \doxymbox{\hyperlink{structnovaphy_1_1_solver_settings_ac2331b22629e3fc5e4d0274276251f8e}{warm\+\_\+starting}} = true
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Runtime tuning parameters for the free-\/body contact solver. 
+
+These parameters control convergence and stability of the Projected Gauss-\/\+Seidel (Sequential Impulse) contact solve in SI units. For dense stacks, increasing iteration count and using moderate Baumgarte stabilization typically reduces jitter and drift. 
+
+\label{doc-variable-members}
+\Hypertarget{structnovaphy_1_1_solver_settings_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structnovaphy_1_1_solver_settings_a6a2db2b246b0cea4e95c008ec8e2a508}\index{novaphy::SolverSettings@{novaphy::SolverSettings}!baumgarte@{baumgarte}}
+\index{baumgarte@{baumgarte}!novaphy::SolverSettings@{novaphy::SolverSettings}}
+\doxysubsubsection{\texorpdfstring{baumgarte}{baumgarte}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_solver_settings_a6a2db2b246b0cea4e95c008ec8e2a508} 
+float novaphy::\+\+Solver\+Settings::\+baumgarte = 0.\+3f}
+
+Fraction of position error corrected per step (dimensionless). \Hypertarget{structnovaphy_1_1_solver_settings_a01ba436c107b609ebad0a8d3a9f79f3d}\index{novaphy::SolverSettings@{novaphy::SolverSettings}!slop@{slop}}
+\index{slop@{slop}!novaphy::SolverSettings@{novaphy::SolverSettings}}
+\doxysubsubsection{\texorpdfstring{slop}{slop}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_solver_settings_a01ba436c107b609ebad0a8d3a9f79f3d} 
+float novaphy::\+\+Solver\+Settings::\+slop = 0.\+005f}
+
+Penetration allowance before correction in meters. \Hypertarget{structnovaphy_1_1_solver_settings_ad4defdbc236d98d829d81238d67a8ed9}\index{novaphy::SolverSettings@{novaphy::SolverSettings}!velocity\_iterations@{velocity\_iterations}}
+\index{velocity\_iterations@{velocity\_iterations}!novaphy::SolverSettings@{novaphy::SolverSettings}}
+\doxysubsubsection{\texorpdfstring{velocity\_iterations}{velocity\_iterations}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_solver_settings_ad4defdbc236d98d829d81238d67a8ed9} 
+int novaphy::\+\+Solver\+Settings::\+velocity\+\_\+iterations = 30}
+
+Number of PGS velocity iterations per time step. \Hypertarget{structnovaphy_1_1_solver_settings_ac2331b22629e3fc5e4d0274276251f8e}\index{novaphy::SolverSettings@{novaphy::SolverSettings}!warm\_starting@{warm\_starting}}
+\index{warm\_starting@{warm\_starting}!novaphy::SolverSettings@{novaphy::SolverSettings}}
+\doxysubsubsection{\texorpdfstring{warm\_starting}{warm\_starting}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_solver_settings_ac2331b22629e3fc5e4d0274276251f8e} 
+bool novaphy::\+\+Solver\+Settings::\+warm\+\_\+starting = true}
+
+Reuse cached impulses from previous frame to speed convergence. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+dynamics/\+free\+\_\+body\+\_\+solver.\+h\end{DoxyCompactItemize}

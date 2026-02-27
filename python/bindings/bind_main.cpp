@@ -12,9 +12,19 @@ void bind_sim(py::module_& m);
 void bind_dynamics(py::module_& m);
 
 PYBIND11_MODULE(_core, m) {
-    m.doc() = "NovaPhy: A 3D physics engine for embodied intelligence";
+    m.doc() = R"pbdoc(
+        NovaPhy core Python extension module.
 
-    m.def("version", &novaphy::version, "Returns the NovaPhy version string");
+        This module exposes math types, collision detection, free-body simulation,
+        and articulated-body dynamics routines implemented in C++.
+    )pbdoc";
+
+    m.def("version", &novaphy::version, R"pbdoc(
+        Returns the NovaPhy library version string.
+
+        Returns:
+            str: Semantic version string.
+    )pbdoc");
 
     bind_math(m);
     bind_core(m);

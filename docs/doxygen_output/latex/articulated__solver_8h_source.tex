@@ -1,0 +1,30 @@
+\doxysection{articulated\+\_\+solver.\+h}
+\hypertarget{articulated__solver_8h_source}{}\label{articulated__solver_8h_source}\index{include/novaphy/dynamics/articulated\_solver.h@{include/novaphy/dynamics/articulated\_solver.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/articulation.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}novaphy/dynamics/featherstone.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classnovaphy_1_1_articulated_solver_ab2e69a7aa58cc756383b64061338c6ea}{ArticulatedSolver}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \doxymbox{\hyperlink{classnovaphy_1_1_articulated_solver_ab2e69a7aa58cc756383b64061338c6ea}{ArticulatedSolver}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classnovaphy_1_1_articulated_solver_ab71c6df4122ae716836e2eace7ca3f91}{step}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}}\&\ model,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VecXf\&\ q,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VecXf\&\ qd,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ VecXf\&\ tau,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vec3f\&\ gravity,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dt);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ normalize\_quaternions(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}}\&\ model,\ VecXf\&\ q);}
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_broad_phase_pair" kind="struct" language="C++" prot="public">
+    <compoundname>novaphy::BroadPhasePair</compoundname>
+    <includes refid="broadphase_8h" local="no">broadphase.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnovaphy_1_1_broad_phase_pair_1a67bdaf17aa2e7cb0f4de606f1e4b4862" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int novaphy::BroadPhasePair::body_a</definition>
+        <argsstring></argsstring>
+        <name>body_a</name>
+        <qualifiedname>novaphy::BroadPhasePair::body_a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>First index in canonical ascending order. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="18" column="9" bodyfile="include/novaphy/collision/broadphase.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_broad_phase_pair_1ac32b0bf00f5e85129bca204c3535405c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int novaphy::BroadPhasePair::body_b</definition>
+        <argsstring></argsstring>
+        <name>body_b</name>
+        <qualifiedname>novaphy::BroadPhasePair::body_b</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Second index in canonical ascending order. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="19" column="9" bodyfile="include/novaphy/collision/broadphase.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnovaphy_1_1_broad_phase_pair_1aafe85e8bd57d7d04c0839ab426f0a4d6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool novaphy::BroadPhasePair::operator==</definition>
+        <argsstring>(const BroadPhasePair &amp;other) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>novaphy::BroadPhasePair::operator==</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_broad_phase_pair" kindref="compound">BroadPhasePair</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Equality comparison for pair deduplication. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Another broadphase pair. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if both indices match exactly. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/collision/broadphase.h" line="27" column="10" bodyfile="include/novaphy/collision/broadphase.h" bodystart="27" bodyend="29"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Candidate overlap pair produced by broadphase. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Each entry stores indices into the shape/body arrays used by narrowphase contact generation. </para>
+    </detaileddescription>
+    <location file="include/novaphy/collision/broadphase.h" line="17" column="1" bodyfile="include/novaphy/collision/broadphase.h" bodystart="17" bodyend="30"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_broad_phase_pair_1a67bdaf17aa2e7cb0f4de606f1e4b4862" prot="public" virt="non-virtual"><scope>novaphy::BroadPhasePair</scope><name>body_a</name></member>
+      <member refid="structnovaphy_1_1_broad_phase_pair_1ac32b0bf00f5e85129bca204c3535405c" prot="public" virt="non-virtual"><scope>novaphy::BroadPhasePair</scope><name>body_b</name></member>
+      <member refid="structnovaphy_1_1_broad_phase_pair_1aafe85e8bd57d7d04c0839ab426f0a4d6" prot="public" virt="non-virtual"><scope>novaphy::BroadPhasePair</scope><name>operator==</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

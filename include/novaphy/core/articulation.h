@@ -9,45 +9,75 @@
 
 namespace novaphy {
 
-/// An articulated body: a kinematic tree of rigid bodies connected by joints.
-/// Links are topologically sorted so parent index < child index.
+/**
+ * @brief Tree-structured articulated rigid-body model.
+ *
+ * @details Stores per-link joint definitions and inertial properties for use
+ * by Featherstone algorithms. Link order must satisfy parent-before-child.
+ */
 struct Articulation {
-    std::vector<Joint> joints;           // joint[i] connects link i to its parent
-    std::vector<RigidBody> bodies;       // rigid body properties for each link
-    std::vector<SpatialMatrix> I_body;   // spatial inertia for each link (body frame)
+    std::vector<Joint> joints;           /**< Joint list; joint[i] connects link i to parent. */
+    std::vector<RigidBody> bodies;       /**< Rigid-body inertial properties per link. */
+    std::vector<SpatialMatrix> I_body;   /**< Spatial inertia matrix per link in body frame. */
 
-    /// Total number of links
+    /**
+     * @brief Get total number of links.
+     *
+     * @return Number of articulation links.
+     */
     int num_links() const { return static_cast<int>(joints.size()); }
 
-    /// Total position DOFs (sum of all joints' num_q)
+    /**
+     * @brief Get total generalized-position dimension.
+     *
+     * @return Sum of `num_q()` over all joints.
+     */
     int total_q() const {
         int n = 0;
         for (const auto& j : joints) n += j.num_q();
         return n;
     }
 
-    /// Total velocity DOFs (sum of all joints' num_qd)
+    /**
+     * @brief Get total generalized-velocity dimension.
+     *
+     * @return Sum of `num_qd()` over all joints.
+     */
     int total_qd() const {
         int n = 0;
         for (const auto& j : joints) n += j.num_qd();
         return n;
     }
 
-    /// Position DOF offset for link i
+    /**
+     * @brief Compute position-block start index for a link.
+     *
+     * @param [in] link Link index.
+     * @return Start offset in global generalized-position vector q.
+     */
     int q_start(int link) const {
         int offset = 0;
         for (int i = 0; i < link; ++i) offset += joints[i].num_q();
         return offset;
     }
 
-    /// Velocity DOF offset for link i
+    /**
+     * @brief Compute velocity-block start index for a link.
+     *
+     * @param [in] link Link index.
+     * @return Start offset in global generalized-velocity vector qd.
+     */
     int qd_start(int link) const {
         int offset = 0;
         for (int i = 0; i < link; ++i) offset += joints[i].num_qd();
         return offset;
     }
 
-    /// Build spatial inertia matrices from body properties
+    /**
+     * @brief Build per-link spatial inertia matrices from rigid-body properties.
+     *
+     * @return void
+     */
     void build_spatial_inertias() {
         I_body.resize(num_links());
         for (int i = 0; i < num_links(); ++i) {

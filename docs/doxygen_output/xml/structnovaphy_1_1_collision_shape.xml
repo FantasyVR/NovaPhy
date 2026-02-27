@@ -1,0 +1,457 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_collision_shape" kind="struct" language="C++" prot="public">
+    <compoundname>novaphy::CollisionShape</compoundname>
+    <includes refid="shape_8h" local="no">shape.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnovaphy_1_1_collision_shape_1a26781106192b8ded52ef622cc686cf8b" prot="public" static="no" mutable="no">
+        <type>ShapeType</type>
+        <definition>ShapeType novaphy::CollisionShape::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>novaphy::CollisionShape::type</qualifiedname>
+        <initializer>= ShapeType::Box</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Active primitive type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="44" column="15" bodyfile="include/novaphy/core/shape.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_collision_shape_1a5875fad0082ee71245fa5f8d364adc3f" prot="public" static="no" mutable="no">
+        <type><ref refid="structnovaphy_1_1_box_shape" kindref="compound">BoxShape</ref></type>
+        <definition>BoxShape novaphy::CollisionShape::box</definition>
+        <argsstring></argsstring>
+        <name>box</name>
+        <qualifiedname>novaphy::CollisionShape::box</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Box primitive payload. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="46" column="14" bodyfile="include/novaphy/core/shape.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_collision_shape_1a06b5ecb75e0f5fc460e432ef90259bf8" prot="public" static="no" mutable="no">
+        <type><ref refid="structnovaphy_1_1_sphere_shape" kindref="compound">SphereShape</ref></type>
+        <definition>SphereShape novaphy::CollisionShape::sphere</definition>
+        <argsstring></argsstring>
+        <name>sphere</name>
+        <qualifiedname>novaphy::CollisionShape::sphere</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sphere primitive payload. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="47" column="17" bodyfile="include/novaphy/core/shape.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_collision_shape_1a299592657513434aa799ea7126a3f22f" prot="public" static="no" mutable="no">
+        <type><ref refid="structnovaphy_1_1_plane_shape" kindref="compound">PlaneShape</ref></type>
+        <definition>PlaneShape novaphy::CollisionShape::plane</definition>
+        <argsstring></argsstring>
+        <name>plane</name>
+        <qualifiedname>novaphy::CollisionShape::plane</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Plane primitive payload. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="48" column="16" bodyfile="include/novaphy/core/shape.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_collision_shape_1ad652128cbbc4d588ca540a7af5233d2b" prot="public" static="no" mutable="no">
+        <type><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref></type>
+        <definition>Transform novaphy::CollisionShape::local_transform</definition>
+        <argsstring></argsstring>
+        <name>local_transform</name>
+        <qualifiedname>novaphy::CollisionShape::local_transform</qualifiedname>
+        <initializer>= <ref refid="structnovaphy_1_1_transform_1a44c81dcd76ab81961d385a30b95db3d8" kindref="member">Transform::identity</ref>()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shape pose in parent-body local frame. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="50" column="15" bodyfile="include/novaphy/core/shape.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::CollisionShape::friction</definition>
+        <argsstring></argsstring>
+        <name>friction</name>
+        <qualifiedname>novaphy::CollisionShape::friction</qualifiedname>
+        <initializer>= 0.5f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Coulomb friction coefficient (dimensionless). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="51" column="11" bodyfile="include/novaphy/core/shape.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::CollisionShape::restitution</definition>
+        <argsstring></argsstring>
+        <name>restitution</name>
+        <qualifiedname>novaphy::CollisionShape::restitution</qualifiedname>
+        <initializer>= 0.3f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Restitution coefficient in [0, 1]. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="52" column="11" bodyfile="include/novaphy/core/shape.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_collision_shape_1a9a334459be2f732c1270bb65f7dca4b0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int novaphy::CollisionShape::body_index</definition>
+        <argsstring></argsstring>
+        <name>body_index</name>
+        <qualifiedname>novaphy::CollisionShape::body_index</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Owning body index, or -1 for world-owned shapes (e.g., planes). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="54" column="9" bodyfile="include/novaphy/core/shape.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnovaphy_1_1_collision_shape_1a265fb555011a3a9cdc14e993229f61a6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_a_a_b_b" kindref="compound">AABB</ref></type>
+        <definition>AABB novaphy::CollisionShape::compute_aabb</definition>
+        <argsstring>(const Transform &amp;body_transform) const</argsstring>
+        <name>compute_aabb</name>
+        <qualifiedname>novaphy::CollisionShape::compute_aabb</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>body_transform</declname>
+        </param>
+        <briefdescription>
+<para>Compute a world-space <ref refid="structnovaphy_1_1_a_a_b_b" kindref="compound">AABB</ref> for this shape. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">body_transform</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parent body world transform. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Axis-aligned bounds in world coordinates. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="62" column="10" bodyfile="include/novaphy/core/shape.h" bodystart="62" bodyend="74"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structnovaphy_1_1_collision_shape_1af2a0f55b8cc4f01eb6a069b8da7f4b0a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref></type>
+        <definition>static CollisionShape novaphy::CollisionShape::make_box</definition>
+        <argsstring>(const Vec3f &amp;half_extents, int body_idx, const Transform &amp;local=Transform::identity(), float friction=0.5f, float restitution=0.3f)</argsstring>
+        <name>make_box</name>
+        <qualifiedname>novaphy::CollisionShape::make_box</qualifiedname>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>half_extents</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>body_idx</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>local</declname>
+          <defval><ref refid="structnovaphy_1_1_transform_1a44c81dcd76ab81961d385a30b95db3d8" kindref="member">Transform::identity</ref>()</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>friction</declname>
+          <defval>0.5f</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>restitution</declname>
+          <defval>0.3f</defval>
+        </param>
+        <briefdescription>
+<para>Create a box collision shape. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">half_extents</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Local half extents in meters. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">body_idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Owning body index. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">local</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Local transform from body frame to shape frame. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in"><ref refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" kindref="member">friction</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Friction coefficient. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in"><ref refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" kindref="member">restitution</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Restitution coefficient. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Constructed box shape descriptor. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="86" column="27" bodyfile="include/novaphy/core/shape.h" bodystart="86" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_collision_shape_1a7d9ac52a738ae09ac603305e199ff55f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref></type>
+        <definition>static CollisionShape novaphy::CollisionShape::make_sphere</definition>
+        <argsstring>(float radius, int body_idx, const Transform &amp;local=Transform::identity(), float friction=0.5f, float restitution=0.3f)</argsstring>
+        <name>make_sphere</name>
+        <qualifiedname>novaphy::CollisionShape::make_sphere</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>body_idx</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>local</declname>
+          <defval><ref refid="structnovaphy_1_1_transform_1a44c81dcd76ab81961d385a30b95db3d8" kindref="member">Transform::identity</ref>()</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>friction</declname>
+          <defval>0.5f</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>restitution</declname>
+          <defval>0.3f</defval>
+        </param>
+        <briefdescription>
+<para>Create a sphere collision shape. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">radius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sphere radius in meters. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">body_idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Owning body index. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">local</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Local transform from body frame to shape frame. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in"><ref refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" kindref="member">friction</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Friction coefficient. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in"><ref refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" kindref="member">restitution</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Restitution coefficient. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Constructed sphere shape descriptor. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="109" column="27" bodyfile="include/novaphy/core/shape.h" bodystart="109" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_collision_shape_1af6e69bd49a3f0ad594a7f2963dc25e05" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref></type>
+        <definition>static CollisionShape novaphy::CollisionShape::make_plane</definition>
+        <argsstring>(const Vec3f &amp;normal, float offset, float friction=0.5f, float restitution=0.0f)</argsstring>
+        <name>make_plane</name>
+        <qualifiedname>novaphy::CollisionShape::make_plane</qualifiedname>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>normal</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>friction</declname>
+          <defval>0.5f</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>restitution</declname>
+          <defval>0.0f</defval>
+        </param>
+        <briefdescription>
+<para>Create an infinite plane collision shape. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">normal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Plane normal vector (normalized internally). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Plane offset along normal in meters. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in"><ref refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" kindref="member">friction</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Friction coefficient. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in"><ref refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" kindref="member">restitution</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Restitution coefficient. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Constructed plane shape descriptor. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="131" column="27" bodyfile="include/novaphy/core/shape.h" bodystart="131" bodyend="141"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Collision-shape descriptor attached to a body or world. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Stores primitive geometry, local pose offset, and contact material parameters used by the collision and contact-solver pipeline. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>novaphy::BoxShape</label>
+        <link refid="structnovaphy_1_1_box_shape"/>
+      </node>
+      <node id="1">
+        <label>novaphy::CollisionShape</label>
+        <link refid="structnovaphy_1_1_collision_shape"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>box</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>sphere</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>plane</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>local_transform</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>novaphy::PlaneShape</label>
+        <link refid="structnovaphy_1_1_plane_shape"/>
+      </node>
+      <node id="3">
+        <label>novaphy::SphereShape</label>
+        <link refid="structnovaphy_1_1_sphere_shape"/>
+      </node>
+      <node id="5">
+        <label>novaphy::Transform</label>
+        <link refid="structnovaphy_1_1_transform"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/novaphy/core/shape.h" line="43" column="1" bodyfile="include/novaphy/core/shape.h" bodystart="43" bodyend="142"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_collision_shape_1a9a334459be2f732c1270bb65f7dca4b0" prot="public" virt="non-virtual"><scope>novaphy::CollisionShape</scope><name>body_index</name></member>
+      <member refid="structnovaphy_1_1_collision_shape_1a5875fad0082ee71245fa5f8d364adc3f" prot="public" virt="non-virtual"><scope>novaphy::CollisionShape</scope><name>box</name></member>
+      <member refid="structnovaphy_1_1_collision_shape_1a265fb555011a3a9cdc14e993229f61a6" prot="public" virt="non-virtual"><scope>novaphy::CollisionShape</scope><name>compute_aabb</name></member>
+      <member refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" prot="public" virt="non-virtual"><scope>novaphy::CollisionShape</scope><name>friction</name></member>
+      <member refid="structnovaphy_1_1_collision_shape_1ad652128cbbc4d588ca540a7af5233d2b" prot="public" virt="non-virtual"><scope>novaphy::CollisionShape</scope><name>local_transform</name></member>
+      <member refid="structnovaphy_1_1_collision_shape_1af2a0f55b8cc4f01eb6a069b8da7f4b0a" prot="public" virt="non-virtual"><scope>novaphy::CollisionShape</scope><name>make_box</name></member>
+      <member refid="structnovaphy_1_1_collision_shape_1af6e69bd49a3f0ad594a7f2963dc25e05" prot="public" virt="non-virtual"><scope>novaphy::CollisionShape</scope><name>make_plane</name></member>
+      <member refid="structnovaphy_1_1_collision_shape_1a7d9ac52a738ae09ac603305e199ff55f" prot="public" virt="non-virtual"><scope>novaphy::CollisionShape</scope><name>make_sphere</name></member>
+      <member refid="structnovaphy_1_1_collision_shape_1a299592657513434aa799ea7126a3f22f" prot="public" virt="non-virtual"><scope>novaphy::CollisionShape</scope><name>plane</name></member>
+      <member refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" prot="public" virt="non-virtual"><scope>novaphy::CollisionShape</scope><name>restitution</name></member>
+      <member refid="structnovaphy_1_1_collision_shape_1a06b5ecb75e0f5fc460e432ef90259bf8" prot="public" virt="non-virtual"><scope>novaphy::CollisionShape</scope><name>sphere</name></member>
+      <member refid="structnovaphy_1_1_collision_shape_1a26781106192b8ded52ef622cc686cf8b" prot="public" virt="non-virtual"><scope>novaphy::CollisionShape</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -14,9 +14,16 @@ from novaphy.viz import SceneVisualizer
 
 
 class DemoApp:
-    """Base class for NovaPhy demos with Polyscope visualization."""
+    """Base class for NovaPhy demos with optional Polyscope visualization."""
 
     def __init__(self, title="NovaPhy Demo", dt=1.0/120.0, ground_size=20.0):
+        """Initializes shared demo runtime parameters.
+
+        Args:
+            title (str): Window/application title for the demo.
+            dt (float): Fixed simulation step size in seconds.
+            ground_size (float): Half-size of the rendered ground plane (m).
+        """
         self.title = title
         self.dt = dt
         self.ground_size = ground_size
@@ -24,15 +31,22 @@ class DemoApp:
         self.viz = None
 
     def build_scene(self):
-        """Override to build the scene. Must set self.world."""
+        """Builds the simulation scene and assigns `self.world`.
+
+        Raises:
+            NotImplementedError: Must be implemented by subclasses.
+        """
         raise NotImplementedError
 
     def run(self, headless_steps=0):
         """Run the demo.
 
         Args:
-            headless_steps: if > 0, run this many steps without visualization
-                           (useful for testing)
+            headless_steps (int): If positive, runs this many simulation steps
+                without creating a visualization window.
+
+        Returns:
+            None
         """
         self.build_scene()
         assert self.world is not None, "build_scene() must set self.world"

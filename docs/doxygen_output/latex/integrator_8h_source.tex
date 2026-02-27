@@ -1,0 +1,24 @@
+\doxysection{integrator.\+h}
+\hypertarget{integrator_8h_source}{}\label{integrator_8h_source}\index{include/novaphy/dynamics/integrator.h@{include/novaphy/dynamics/integrator.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_symplectic_euler}{SymplecticEuler}}\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{structnovaphy_1_1_symplectic_euler_a60fc2b758fa080e645631eb5bf75302a}{integrate\_velocity}}(Vec3f\&\ linear\_vel,\ Vec3f\&\ angular\_vel,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vec3f\&\ force,\ \textcolor{keyword}{const}\ Vec3f\&\ torque,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ inv\_mass,\ \textcolor{keyword}{const}\ Mat3f\&\ inv\_inertia,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vec3f\&\ gravity,\ \textcolor{keywordtype}{float}\ dt);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{structnovaphy_1_1_symplectic_euler_a94d67c264ce2d5c1fb766777c679ff4a}{integrate\_position}}(\doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}}\&\ transform,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vec3f\&\ linear\_vel,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vec3f\&\ angular\_vel,\ \textcolor{keywordtype}{float}\ dt);}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

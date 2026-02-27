@@ -1,12 +1,25 @@
+/**
+ * @file world.cpp
+ * @brief High-level simulation world stepping pipeline.
+ */
 #include "novaphy/sim/world.h"
 
 namespace novaphy {
 
+/**
+ * @brief Constructs a simulation world from an immutable model.
+ * @param[in] model Rigid-body and collision-shape model definition.
+ * @param[in] solver_settings Contact solver tuning parameters.
+ */
 World::World(const Model& model, SolverSettings solver_settings)
     : model_(model), solver_(solver_settings) {
     state_.init(model_.num_bodies(), model_.initial_transforms);
 }
 
+/**
+ * @brief Advances the world by one fixed time step.
+ * @param[in] dt Simulation step size in seconds.
+ */
 void World::step(float dt) {
     int n = model_.num_bodies();
 
@@ -85,10 +98,20 @@ void World::step(float dt) {
     state_.clear_forces();
 }
 
+/**
+ * @brief Applies an external force to a body for the next step.
+ * @param[in] body_index Body index in model order.
+ * @param[in] force Force vector in world frame (N).
+ */
 void World::apply_force(int body_index, const Vec3f& force) {
     state_.apply_force(body_index, force);
 }
 
+/**
+ * @brief Applies an external torque to a body for the next step.
+ * @param[in] body_index Body index in model order.
+ * @param[in] torque Torque vector in world frame (N*m).
+ */
 void World::apply_torque(int body_index, const Vec3f& torque) {
     state_.apply_torque(body_index, torque);
 }

@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_model" kind="struct" language="C++" prot="public">
+    <compoundname>novaphy::Model</compoundname>
+    <includes refid="model_8h" local="no">model.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnovaphy_1_1_model_1a95b75cce70741092ddd0df717454ed4a" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref> &gt;</type>
+        <definition>std::vector&lt;RigidBody&gt; novaphy::Model::bodies</definition>
+        <argsstring></argsstring>
+        <name>bodies</name>
+        <qualifiedname>novaphy::Model::bodies</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Rigid-body inertial properties. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model.h" line="18" column="17" bodyfile="include/novaphy/core/model.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_model_1a5fa6564ad266689b5010ca02278144da" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &gt;</type>
+        <definition>std::vector&lt;Transform&gt; novaphy::Model::initial_transforms</definition>
+        <argsstring></argsstring>
+        <name>initial_transforms</name>
+        <qualifiedname>novaphy::Model::initial_transforms</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initial body transforms in world coordinates. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model.h" line="19" column="17" bodyfile="include/novaphy/core/model.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_model_1ad3d0bd0d69a77296f4ae1ef8143e9289" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &gt;</type>
+        <definition>std::vector&lt;CollisionShape&gt; novaphy::Model::shapes</definition>
+        <argsstring></argsstring>
+        <name>shapes</name>
+        <qualifiedname>novaphy::Model::shapes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Collision shapes attached to bodies/world. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model.h" line="20" column="17" bodyfile="include/novaphy/core/model.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnovaphy_1_1_model_1ae2ef0d6246938d1a5bf0d152b33f39a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int novaphy::Model::num_bodies</definition>
+        <argsstring>() const</argsstring>
+        <name>num_bodies</name>
+        <qualifiedname>novaphy::Model::num_bodies</qualifiedname>
+        <briefdescription>
+<para>Get number of bodies in the model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Body count. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model.h" line="27" column="9" bodyfile="include/novaphy/core/model.h" bodystart="27" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_model_1acb8cbd85157a1e94d2999160d87e3951" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int novaphy::Model::num_shapes</definition>
+        <argsstring>() const</argsstring>
+        <name>num_shapes</name>
+        <qualifiedname>novaphy::Model::num_shapes</qualifiedname>
+        <briefdescription>
+<para>Get number of collision shapes in the model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Shape count. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/model.h" line="34" column="9" bodyfile="include/novaphy/core/model.h" bodystart="34" bodyend="34"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Immutable free-body scene model. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Describes rigid bodies, their initial world transforms, and collision shapes. Instances are typically created with <computeroutput><ref refid="classnovaphy_1_1_model_builder" kindref="compound">ModelBuilder</ref></computeroutput>. </para>
+    </detaileddescription>
+    <location file="include/novaphy/core/model.h" line="17" column="1" bodyfile="include/novaphy/core/model.h" bodystart="17" bodyend="35"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_model_1a95b75cce70741092ddd0df717454ed4a" prot="public" virt="non-virtual"><scope>novaphy::Model</scope><name>bodies</name></member>
+      <member refid="structnovaphy_1_1_model_1a5fa6564ad266689b5010ca02278144da" prot="public" virt="non-virtual"><scope>novaphy::Model</scope><name>initial_transforms</name></member>
+      <member refid="structnovaphy_1_1_model_1ae2ef0d6246938d1a5bf0d152b33f39a5" prot="public" virt="non-virtual"><scope>novaphy::Model</scope><name>num_bodies</name></member>
+      <member refid="structnovaphy_1_1_model_1acb8cbd85157a1e94d2999160d87e3951" prot="public" virt="non-virtual"><scope>novaphy::Model</scope><name>num_shapes</name></member>
+      <member refid="structnovaphy_1_1_model_1ad3d0bd0d69a77296f4ae1ef8143e9289" prot="public" virt="non-virtual"><scope>novaphy::Model</scope><name>shapes</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

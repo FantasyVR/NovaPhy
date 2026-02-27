@@ -1,0 +1,45 @@
+\doxysection{novaphy::\+Plane\+Shape Struct Reference}
+\hypertarget{structnovaphy_1_1_plane_shape}{}\label{structnovaphy_1_1_plane_shape}\index{novaphy::PlaneShape@{novaphy::PlaneShape}}
+
+
+Infinite plane primitive in Hessian form.  
+
+
+
+
+{\ttfamily \+\#include $<$shape.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Vec3f \doxymbox{\hyperlink{structnovaphy_1_1_plane_shape_ad1947ccd8615373d16c1cdf394fc3935}{normal}} = Vec3f(0.\+0f, 1.\+0f, 0.\+0f)
+\item 
+float \doxymbox{\hyperlink{structnovaphy_1_1_plane_shape_a7a85e1872ff281519bed5ba736a79297}{offset}} = 0.\+0f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Infinite plane primitive in Hessian form. 
+
+Plane equation is n.\+dot(x) = offset where n is unit length. 
+
+\label{doc-variable-members}
+\Hypertarget{structnovaphy_1_1_plane_shape_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structnovaphy_1_1_plane_shape_ad1947ccd8615373d16c1cdf394fc3935}\index{novaphy::PlaneShape@{novaphy::PlaneShape}!normal@{normal}}
+\index{normal@{normal}!novaphy::PlaneShape@{novaphy::PlaneShape}}
+\doxysubsubsection{\texorpdfstring{normal}{normal}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_plane_shape_ad1947ccd8615373d16c1cdf394fc3935} 
+Vec3f novaphy::\+\+Plane\+Shape::\+normal = Vec3f(0.\+0f, 1.\+0f, 0.\+0f)}
+
+Unit normal in world/\+local frame according to usage. \Hypertarget{structnovaphy_1_1_plane_shape_a7a85e1872ff281519bed5ba736a79297}\index{novaphy::PlaneShape@{novaphy::PlaneShape}!offset@{offset}}
+\index{offset@{offset}!novaphy::PlaneShape@{novaphy::PlaneShape}}
+\doxysubsubsection{\texorpdfstring{offset}{offset}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_plane_shape_a7a85e1872ff281519bed5ba736a79297} 
+float novaphy::\+\+Plane\+Shape::\+offset = 0.\+0f}
+
+Signed distance from origin along normal (m). 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+core/\+shape.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,27 @@
+\doxysection{model.\+h}
+\hypertarget{model_8h_source}{}\label{model_8h_source}\index{include/novaphy/core/model.h@{include/novaphy/core/model.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/body.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/shape.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_model}{Model}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ std::vector<RigidBody>\ \doxymbox{\hyperlink{structnovaphy_1_1_model_a95b75cce70741092ddd0df717454ed4a}{bodies}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<Transform>\ \doxymbox{\hyperlink{structnovaphy_1_1_model_a5fa6564ad266689b5010ca02278144da}{initial\_transforms}};\ \ }
+\DoxyCodeLine{00020\ \ \ \ \ std::vector<CollisionShape>\ \doxymbox{\hyperlink{structnovaphy_1_1_model_ad3d0bd0d69a77296f4ae1ef8143e9289}{shapes}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_model_ae2ef0d6246938d1a5bf0d152b33f39a5}{num\_bodies}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\doxymbox{\hyperlink{structnovaphy_1_1_model_a95b75cce70741092ddd0df717454ed4a}{bodies}}.size());\ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_model_acb8cbd85157a1e94d2999160d87e3951}{num\_shapes}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\doxymbox{\hyperlink{structnovaphy_1_1_model_ad3d0bd0d69a77296f4ae1ef8143e9289}{shapes}}.size());\ \}}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

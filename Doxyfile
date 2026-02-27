@@ -1,0 +1,21 @@
+# Doxygen configuration for NovaPhy / PhysicsEngine
+
+PROJECT_NAME           = "PhysicsEngine"
+OUTPUT_DIRECTORY       = docs/doxygen_output
+
+INPUT                  = include src
+FILE_PATTERNS          = *.h *.hpp *.hh *.hxx *.c *.cc *.cpp *.cxx
+RECURSIVE              = YES
+
+EXTRACT_ALL            = NO
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = NO
+
+GENERATE_HTML          = NO
+GENERATE_XML           = YES
+XML_OUTPUT             = xml
+
+QUIET                  = YES
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES

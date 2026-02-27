@@ -1,0 +1,79 @@
+\doxysection{novaphy::\+Sweep\+And\+Prune Class Reference}
+\hypertarget{classnovaphy_1_1_sweep_and_prune}{}\label{classnovaphy_1_1_sweep_and_prune}\index{novaphy::SweepAndPrune@{novaphy::SweepAndPrune}}
+
+
+Sweep-\/and-\/\+Prune broadphase collider for axis-\/aligned bounds.  
+
+
+
+
+{\ttfamily \+\#include $<$broadphase.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classnovaphy_1_1_sweep_and_prune_a7a26ec2a54a8cfeb5cb762980c7607d9}\label{classnovaphy_1_1_sweep_and_prune_a7a26ec2a54a8cfeb5cb762980c7607d9} 
+{\bfseries Sweep\+And\+Prune} ()=default
+\begin{DoxyCompactList}\small\item\em Construct an empty broadphase accelerator. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classnovaphy_1_1_sweep_and_prune_a2611c0c7fe869ce61f0174f215ee2301}{update}} (const std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b}{AABB}} $>$ \&body\+\_\+aabbs, const std::\+vector$<$ bool $>$ \&static\+\_\+mask)
+\begin{DoxyCompactList}\small\item\em Update candidate overlap pairs from current world-\/space AABBs. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair}{Broad\+Phase\+Pair}} $>$ \& \doxymbox{\hyperlink{classnovaphy_1_1_sweep_and_prune_ab611c0928aeb064445dfbac945612e51}{get\+\_\+pairs}} () const
+\begin{DoxyCompactList}\small\item\em Get broadphase overlap candidates from the latest update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sweep-\/and-\/\+Prune broadphase collider for axis-\/aligned bounds. 
+
+Maintains sorted min/\+max endpoints and computes candidate overlap pairs before expensive narrowphase tests. This stage filters impossible collisions and reduces overall contact-\/detection cost. 
+
+\label{doc-func-members}
+\Hypertarget{classnovaphy_1_1_sweep_and_prune_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classnovaphy_1_1_sweep_and_prune_ab611c0928aeb064445dfbac945612e51}\index{novaphy::SweepAndPrune@{novaphy::SweepAndPrune}!get\_pairs@{get\_pairs}}
+\index{get\_pairs@{get\_pairs}!novaphy::SweepAndPrune@{novaphy::SweepAndPrune}}
+\doxysubsubsection{\texorpdfstring{get\_pairs()}{get\_pairs()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_sweep_and_prune_ab611c0928aeb064445dfbac945612e51} 
+const std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair}{Broad\+Phase\+Pair}} $>$ \& novaphy::\+\+Sweep\+And\+Prune::\+get\+\_\+pairs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get broadphase overlap candidates from the latest update. 
+
+\begin{DoxyReturn}{Returns}
+Read-\/only list of potentially overlapping pairs. 
+\end{DoxyReturn}
+\Hypertarget{classnovaphy_1_1_sweep_and_prune_a2611c0c7fe869ce61f0174f215ee2301}\index{novaphy::SweepAndPrune@{novaphy::SweepAndPrune}!update@{update}}
+\index{update@{update}!novaphy::SweepAndPrune@{novaphy::SweepAndPrune}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_sweep_and_prune_a2611c0c7fe869ce61f0174f215ee2301} 
+void novaphy::\+\+Sweep\+And\+Prune::\+update (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_a_a_b_b}{AABB}} $>$ \&}]{body\+\_\+aabbs}{, }\item[{const std::\+vector$<$ bool $>$ \&}]{static\+\_\+mask}{}\end{DoxyParamCaption})}
+
+
+
+Update candidate overlap pairs from current world-\/space AABBs. 
+
+Updates broadphase acceleration structures for current AABBs.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em body\+\_\+aabbs} & Axis-\/aligned bounding boxes in world coordinates. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em static\+\_\+mask} & Static-\/body mask used to skip static-\/static pairs. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em body\+\_\+aabbs} & Per-\/body world-\/space AABBs. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em static\+\_\+mask} & Flags indicating static (non-\/moving) bodies. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+collision/\+broadphase.\+h\item 
+src/\+collision/\+\doxymbox{\hyperlink{broadphase_8cpp}{broadphase.\+cpp}}\end{DoxyCompactItemize}

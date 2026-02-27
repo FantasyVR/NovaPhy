@@ -1,3 +1,7 @@
+/**
+ * @file free_body_solver.cpp
+ * @brief Iterative projected Gauss-Seidel contact solver for free rigid bodies.
+ */
 #include "novaphy/dynamics/free_body_solver.h"
 
 #include <algorithm>
@@ -5,8 +9,21 @@
 
 namespace novaphy {
 
+/**
+ * @brief Constructs the free-body contact solver.
+ * @param[in] settings Solver iteration counts and stabilization settings.
+ */
 FreeBodySolver::FreeBodySolver(SolverSettings settings) : settings_(settings) {}
 
+/**
+ * @brief Solves velocity-level contact constraints for the current time step.
+ * @param[in,out] contacts Contact manifold with accumulated impulses.
+ * @param[in] bodies Rigid-body mass and inertia properties.
+ * @param[in] transforms Body world transforms.
+ * @param[in,out] linear_velocities Body linear velocities in world frame (m/s).
+ * @param[in,out] angular_velocities Body angular velocities in world frame (rad/s).
+ * @param[in] dt Fixed simulation time step in seconds.
+ */
 void FreeBodySolver::solve(std::vector<ContactPoint>& contacts,
                             const std::vector<RigidBody>& bodies,
                             const std::vector<Transform>& transforms,
@@ -44,6 +61,15 @@ void FreeBodySolver::solve(std::vector<ContactPoint>& contacts,
     }
 }
 
+/**
+ * @brief Precomputes per-contact effective masses and stabilization terms.
+ * @param[in,out] contacts Contact manifold with geometric/contact parameters.
+ * @param[in] bodies Rigid-body mass and inertia properties.
+ * @param[in] transforms Body world transforms.
+ * @param[in] linear_velocities Body linear velocities in world frame (m/s).
+ * @param[in] angular_velocities Body angular velocities in world frame (rad/s).
+ * @param[in] dt Fixed simulation time step in seconds.
+ */
 void FreeBodySolver::pre_step(std::vector<ContactPoint>& contacts,
                                const std::vector<RigidBody>& bodies,
                                const std::vector<Transform>& transforms,
@@ -145,6 +171,13 @@ void FreeBodySolver::pre_step(std::vector<ContactPoint>& contacts,
     }
 }
 
+/**
+ * @brief Performs one PGS iteration over all contact constraints.
+ * @param[in,out] contacts Contact manifold with impulse accumulators.
+ * @param[in] bodies Rigid-body mass and inertia properties.
+ * @param[in,out] linear_velocities Body linear velocities in world frame (m/s).
+ * @param[in,out] angular_velocities Body angular velocities in world frame (rad/s).
+ */
 void FreeBodySolver::solve_velocity(std::vector<ContactPoint>& contacts,
                                      const std::vector<RigidBody>& bodies,
                                      std::vector<Vec3f>& linear_velocities,

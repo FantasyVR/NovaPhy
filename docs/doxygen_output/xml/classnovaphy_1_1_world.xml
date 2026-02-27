@@ -1,0 +1,483 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classnovaphy_1_1_world" kind="class" language="C++" prot="public">
+    <compoundname>novaphy::World</compoundname>
+    <includes refid="world_8h" local="no">world.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classnovaphy_1_1_world_1a019a38c2ae9e6515d1faac18fe78deeb" prot="private" static="no" mutable="no">
+        <type><ref refid="structnovaphy_1_1_model" kindref="compound">Model</ref></type>
+        <definition>Model novaphy::World::model_</definition>
+        <argsstring></argsstring>
+        <name>model_</name>
+        <qualifiedname>novaphy::World::model_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="109" column="11" bodyfile="include/novaphy/sim/world.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnovaphy_1_1_world_1ac8fca7365c15a82db768cf7dea9baa13" prot="private" static="no" mutable="no">
+        <type><ref refid="structnovaphy_1_1_sim_state" kindref="compound">SimState</ref></type>
+        <definition>SimState novaphy::World::state_</definition>
+        <argsstring></argsstring>
+        <name>state_</name>
+        <qualifiedname>novaphy::World::state_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="110" column="14" bodyfile="include/novaphy/sim/world.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnovaphy_1_1_world_1ac218c405fca65bbc74eab8b4e76c23e6" prot="private" static="no" mutable="no">
+        <type><ref refid="classnovaphy_1_1_sweep_and_prune" kindref="compound">SweepAndPrune</ref></type>
+        <definition>SweepAndPrune novaphy::World::broadphase_</definition>
+        <argsstring></argsstring>
+        <name>broadphase_</name>
+        <qualifiedname>novaphy::World::broadphase_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="111" column="19" bodyfile="include/novaphy/sim/world.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnovaphy_1_1_world_1a8b1a3475d616dce763980a8e9e41b946" prot="private" static="no" mutable="no">
+        <type><ref refid="classnovaphy_1_1_free_body_solver" kindref="compound">FreeBodySolver</ref></type>
+        <definition>FreeBodySolver novaphy::World::solver_</definition>
+        <argsstring></argsstring>
+        <name>solver_</name>
+        <qualifiedname>novaphy::World::solver_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="112" column="20" bodyfile="include/novaphy/sim/world.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnovaphy_1_1_world_1a508b236c59540287f2cc96241e315e4a" prot="private" static="no" mutable="no">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::World::gravity_</definition>
+        <argsstring></argsstring>
+        <name>gravity_</name>
+        <qualifiedname>novaphy::World::gravity_</qualifiedname>
+        <initializer>= Vec3f(0.0f, -9.81f, 0.0f)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="113" column="11" bodyfile="include/novaphy/sim/world.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnovaphy_1_1_world_1a1cb3ef58f802a580db4c84d0a2f6b5f2" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structnovaphy_1_1_contact_point" kindref="compound">ContactPoint</ref> &gt;</type>
+        <definition>std::vector&lt;ContactPoint&gt; novaphy::World::contacts_</definition>
+        <argsstring></argsstring>
+        <name>contacts_</name>
+        <qualifiedname>novaphy::World::contacts_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="114" column="17" bodyfile="include/novaphy/sim/world.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classnovaphy_1_1_world_1af7b041fe333923310dbcb9f27d11292e" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>novaphy::World::World</definition>
+        <argsstring>(const Model &amp;model, SolverSettings solver_settings={})</argsstring>
+        <name>World</name>
+        <qualifiedname>novaphy::World::World</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_model" kindref="compound">Model</ref> &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type><ref refid="structnovaphy_1_1_solver_settings" kindref="compound">SolverSettings</ref></type>
+          <declname>solver_settings</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Construct a simulation world from an immutable model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a simulation world from an immutable model.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in"><ref refid="classnovaphy_1_1_world_1af6f1a10e8ff40a7c661e3f3954bf9eb9" kindref="member">model</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Immutable body/shape model definition. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in"><ref refid="classnovaphy_1_1_world_1aebdf447ce8d58807338d1ce78e4b154e" kindref="member">solver_settings</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Contact-solver tuning parameters.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in"><ref refid="classnovaphy_1_1_world_1af6f1a10e8ff40a7c661e3f3954bf9eb9" kindref="member">model</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rigid-body and collision-shape model definition. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in"><ref refid="classnovaphy_1_1_world_1aebdf447ce8d58807338d1ce78e4b154e" kindref="member">solver_settings</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Contact solver tuning parameters. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="30" column="14" bodyfile="src/sim/world.cpp" bodystart="14" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_world_1abc197156cc4e9344e6a90f2df07c577d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::World::step</definition>
+        <argsstring>(float dt)</argsstring>
+        <name>step</name>
+        <qualifiedname>novaphy::World::step</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+<para>Advance the simulation by one time step. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Advances the world by one fixed time step.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time step in seconds. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Simulation step size in seconds. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="38" column="10" bodyfile="src/sim/world.cpp" bodystart="23" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_world_1a8b2d23b579252bd278d741b51cce54d6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::World::set_gravity</definition>
+        <argsstring>(const Vec3f &amp;g)</argsstring>
+        <name>set_gravity</name>
+        <qualifiedname>novaphy::World::set_gravity</qualifiedname>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>g</declname>
+        </param>
+        <briefdescription>
+<para>Set the world gravity vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">g</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Gravity in world frame (m/s^2). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="46" column="10" bodyfile="include/novaphy/sim/world.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_world_1a71408e92a6d0fceada751d0ab1087cda" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const Vec3f &amp;</type>
+        <definition>const Vec3f &amp; novaphy::World::gravity</definition>
+        <argsstring>() const</argsstring>
+        <name>gravity</name>
+        <qualifiedname>novaphy::World::gravity</qualifiedname>
+        <briefdescription>
+<para>Get the current world gravity vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Gravity in world frame (m/s^2). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="53" column="17" bodyfile="include/novaphy/sim/world.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_world_1a59d5373069aa3bd499bf0d99079fd2de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_sim_state" kindref="compound">SimState</ref> &amp;</type>
+        <definition>SimState &amp; novaphy::World::state</definition>
+        <argsstring>()</argsstring>
+        <name>state</name>
+        <qualifiedname>novaphy::World::state</qualifiedname>
+        <briefdescription>
+<para>Mutable access to simulation state buffers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Reference to <ref refid="structnovaphy_1_1_sim_state" kindref="compound">SimState</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="60" column="14" bodyfile="include/novaphy/sim/world.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_world_1a1197eb4ca0e8043a554970a1fde2e515" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="structnovaphy_1_1_sim_state" kindref="compound">SimState</ref> &amp;</type>
+        <definition>const SimState &amp; novaphy::World::state</definition>
+        <argsstring>() const</argsstring>
+        <name>state</name>
+        <qualifiedname>novaphy::World::state</qualifiedname>
+        <briefdescription>
+<para>Read-only access to simulation state buffers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Const reference to <ref refid="structnovaphy_1_1_sim_state" kindref="compound">SimState</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="67" column="20" bodyfile="include/novaphy/sim/world.h" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_world_1af6f1a10e8ff40a7c661e3f3954bf9eb9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="structnovaphy_1_1_model" kindref="compound">Model</ref> &amp;</type>
+        <definition>const Model &amp; novaphy::World::model</definition>
+        <argsstring>() const</argsstring>
+        <name>model</name>
+        <qualifiedname>novaphy::World::model</qualifiedname>
+        <briefdescription>
+<para>Access the immutable model definition. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Const reference to the model. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="74" column="17" bodyfile="include/novaphy/sim/world.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_world_1aebdf447ce8d58807338d1ce78e4b154e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_solver_settings" kindref="compound">SolverSettings</ref> &amp;</type>
+        <definition>SolverSettings &amp; novaphy::World::solver_settings</definition>
+        <argsstring>()</argsstring>
+        <name>solver_settings</name>
+        <qualifiedname>novaphy::World::solver_settings</qualifiedname>
+        <briefdescription>
+<para>Mutable access to contact-solver settings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Reference to solver settings. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="81" column="20" bodyfile="include/novaphy/sim/world.h" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_world_1a7adebe1cec37f0a47e25a57423c4c82f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="structnovaphy_1_1_contact_point" kindref="compound">ContactPoint</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt; ContactPoint &gt; &amp; novaphy::World::contacts</definition>
+        <argsstring>() const</argsstring>
+        <name>contacts</name>
+        <qualifiedname>novaphy::World::contacts</qualifiedname>
+        <briefdescription>
+<para>Contact points generated in the most recent <computeroutput><ref refid="classnovaphy_1_1_world_1abc197156cc4e9344e6a90f2df07c577d" kindref="member">step()</ref></computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Const reference to world-space contact list. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="88" column="23" bodyfile="include/novaphy/sim/world.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_world_1abcbb90e077101d600671a65e0b89e675" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::World::apply_force</definition>
+        <argsstring>(int body_index, const Vec3f &amp;force)</argsstring>
+        <name>apply_force</name>
+        <qualifiedname>novaphy::World::apply_force</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>body_index</declname>
+        </param>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>force</declname>
+        </param>
+        <briefdescription>
+<para>Accumulate an external force for the next integration step. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Applies an external force to a body for the next step.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">body_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body index. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">force</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Force in world frame (N). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">body_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body index in model order. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">force</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Force vector in world frame (N). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="97" column="10" bodyfile="src/sim/world.cpp" bodystart="106" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_world_1ae3ae5e79bcd64dfc6104a438a332272e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::World::apply_torque</definition>
+        <argsstring>(int body_index, const Vec3f &amp;torque)</argsstring>
+        <name>apply_torque</name>
+        <qualifiedname>novaphy::World::apply_torque</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>body_index</declname>
+        </param>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>torque</declname>
+        </param>
+        <briefdescription>
+<para>Accumulate an external torque for the next integration step. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Applies an external torque to a body for the next step.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">body_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body index. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">torque</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Torque in world frame (N*m). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">body_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body index in model order. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">torque</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Torque vector in world frame (N*m). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/sim/world.h" line="106" column="10" bodyfile="src/sim/world.cpp" bodystart="115" bodyend="117"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>High-level free-rigid-body simulation container. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Owns model topology, mutable simulation state, broadphase collision detector, and contact solver. <computeroutput><ref refid="classnovaphy_1_1_world_1abc197156cc4e9344e6a90f2df07c577d" kindref="member">step()</ref></computeroutput> advances one fixed-size time step in SI units using gravity, collision detection, and impulse-based resolution. </para>
+    </detaileddescription>
+    <location file="include/novaphy/sim/world.h" line="22" column="1" bodyfile="include/novaphy/sim/world.h" bodystart="22" bodyend="115"/>
+    <listofallmembers>
+      <member refid="classnovaphy_1_1_world_1abcbb90e077101d600671a65e0b89e675" prot="public" virt="non-virtual"><scope>novaphy::World</scope><name>apply_force</name></member>
+      <member refid="classnovaphy_1_1_world_1ae3ae5e79bcd64dfc6104a438a332272e" prot="public" virt="non-virtual"><scope>novaphy::World</scope><name>apply_torque</name></member>
+      <member refid="classnovaphy_1_1_world_1ac218c405fca65bbc74eab8b4e76c23e6" prot="private" virt="non-virtual"><scope>novaphy::World</scope><name>broadphase_</name></member>
+      <member refid="classnovaphy_1_1_world_1a7adebe1cec37f0a47e25a57423c4c82f" prot="public" virt="non-virtual"><scope>novaphy::World</scope><name>contacts</name></member>
+      <member refid="classnovaphy_1_1_world_1a1cb3ef58f802a580db4c84d0a2f6b5f2" prot="private" virt="non-virtual"><scope>novaphy::World</scope><name>contacts_</name></member>
+      <member refid="classnovaphy_1_1_world_1a71408e92a6d0fceada751d0ab1087cda" prot="public" virt="non-virtual"><scope>novaphy::World</scope><name>gravity</name></member>
+      <member refid="classnovaphy_1_1_world_1a508b236c59540287f2cc96241e315e4a" prot="private" virt="non-virtual"><scope>novaphy::World</scope><name>gravity_</name></member>
+      <member refid="classnovaphy_1_1_world_1af6f1a10e8ff40a7c661e3f3954bf9eb9" prot="public" virt="non-virtual"><scope>novaphy::World</scope><name>model</name></member>
+      <member refid="classnovaphy_1_1_world_1a019a38c2ae9e6515d1faac18fe78deeb" prot="private" virt="non-virtual"><scope>novaphy::World</scope><name>model_</name></member>
+      <member refid="classnovaphy_1_1_world_1a8b2d23b579252bd278d741b51cce54d6" prot="public" virt="non-virtual"><scope>novaphy::World</scope><name>set_gravity</name></member>
+      <member refid="classnovaphy_1_1_world_1a8b1a3475d616dce763980a8e9e41b946" prot="private" virt="non-virtual"><scope>novaphy::World</scope><name>solver_</name></member>
+      <member refid="classnovaphy_1_1_world_1aebdf447ce8d58807338d1ce78e4b154e" prot="public" virt="non-virtual"><scope>novaphy::World</scope><name>solver_settings</name></member>
+      <member refid="classnovaphy_1_1_world_1a59d5373069aa3bd499bf0d99079fd2de" prot="public" virt="non-virtual"><scope>novaphy::World</scope><name>state</name></member>
+      <member refid="classnovaphy_1_1_world_1a1197eb4ca0e8043a554970a1fde2e515" prot="public" virt="non-virtual"><scope>novaphy::World</scope><name>state</name></member>
+      <member refid="classnovaphy_1_1_world_1ac8fca7365c15a82db768cf7dea9baa13" prot="private" virt="non-virtual"><scope>novaphy::World</scope><name>state_</name></member>
+      <member refid="classnovaphy_1_1_world_1abc197156cc4e9344e6a90f2df07c577d" prot="public" virt="non-virtual"><scope>novaphy::World</scope><name>step</name></member>
+      <member refid="classnovaphy_1_1_world_1af7b041fe333923310dbcb9f27d11292e" prot="public" virt="non-virtual"><scope>novaphy::World</scope><name>World</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

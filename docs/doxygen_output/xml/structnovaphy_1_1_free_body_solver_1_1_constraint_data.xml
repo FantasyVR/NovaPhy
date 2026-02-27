@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_free_body_solver_1_1_constraint_data" kind="struct" language="C++" prot="private">
+    <compoundname>novaphy::FreeBodySolver::ConstraintData</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1ac831837aa20169d882c133646a9e628b" prot="public" static="no" mutable="no">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::FreeBodySolver::ConstraintData::r_a</definition>
+        <argsstring></argsstring>
+        <name>r_a</name>
+        <qualifiedname>novaphy::FreeBodySolver::ConstraintData::r_a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="83" column="15" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a7940e9ce264c44ae93753715f24a5731" prot="public" static="no" mutable="no">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::FreeBodySolver::ConstraintData::r_b</definition>
+        <argsstring></argsstring>
+        <name>r_b</name>
+        <qualifiedname>novaphy::FreeBodySolver::ConstraintData::r_b</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Contact offset from each body CoM in world frame (m). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="83" column="19" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a10f4dac796eec25c8e7877cdf8a9977a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::FreeBodySolver::ConstraintData::effective_mass_n</definition>
+        <argsstring></argsstring>
+        <name>effective_mass_n</name>
+        <qualifiedname>novaphy::FreeBodySolver::ConstraintData::effective_mass_n</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scalar effective mass along contact normal (kg^-1 inverse form). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="84" column="15" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1aa0cd82301be14727b3200340bd7e2dc9" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::FreeBodySolver::ConstraintData::effective_mass_t1</definition>
+        <argsstring></argsstring>
+        <name>effective_mass_t1</name>
+        <qualifiedname>novaphy::FreeBodySolver::ConstraintData::effective_mass_t1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scalar effective mass along first friction tangent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="85" column="15" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a026f7f48906b7ee40baafdebe217aa3c" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::FreeBodySolver::ConstraintData::effective_mass_t2</definition>
+        <argsstring></argsstring>
+        <name>effective_mass_t2</name>
+        <qualifiedname>novaphy::FreeBodySolver::ConstraintData::effective_mass_t2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scalar effective mass along second friction tangent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="86" column="15" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a3f5bb5918a5792a702b7d981f358511e" prot="public" static="no" mutable="no">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::FreeBodySolver::ConstraintData::tangent1</definition>
+        <argsstring></argsstring>
+        <name>tangent1</name>
+        <qualifiedname>novaphy::FreeBodySolver::ConstraintData::tangent1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="87" column="15" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1ad6fbded9647b75ebf261376b6fd569fc" prot="public" static="no" mutable="no">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::FreeBodySolver::ConstraintData::tangent2</definition>
+        <argsstring></argsstring>
+        <name>tangent2</name>
+        <qualifiedname>novaphy::FreeBodySolver::ConstraintData::tangent2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Orthonormal tangents spanning the contact plane. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="87" column="24" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1abc7cafdbabacfd1316553abc66795b5e" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::FreeBodySolver::ConstraintData::bias</definition>
+        <argsstring></argsstring>
+        <name>bias</name>
+        <qualifiedname>novaphy::FreeBodySolver::ConstraintData::bias</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Velocity-level Baumgarte/restitution bias term (m/s). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="88" column="15" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a8e0cd3502e90e2a4321579dd3d0aad98" prot="public" static="no" mutable="no">
+        <type>Mat3f</type>
+        <definition>Mat3f novaphy::FreeBodySolver::ConstraintData::inv_I_a_world</definition>
+        <argsstring></argsstring>
+        <name>inv_I_a_world</name>
+        <qualifiedname>novaphy::FreeBodySolver::ConstraintData::inv_I_a_world</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Body A inverse inertia tensor in world frame ((kg*m^2)^-1). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="89" column="15" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a763c350895c40adc4d99ecdc9f4b904a" prot="public" static="no" mutable="no">
+        <type>Mat3f</type>
+        <definition>Mat3f novaphy::FreeBodySolver::ConstraintData::inv_I_b_world</definition>
+        <argsstring></argsstring>
+        <name>inv_I_b_world</name>
+        <qualifiedname>novaphy::FreeBodySolver::ConstraintData::inv_I_b_world</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Body B inverse inertia tensor in world frame ((kg*m^2)^-1). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/free_body_solver.h" line="90" column="15" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Cached per-contact quantities reused across solver iterations. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/novaphy/dynamics/free_body_solver.h" line="82" column="5" bodyfile="include/novaphy/dynamics/free_body_solver.h" bodystart="82" bodyend="91"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1abc7cafdbabacfd1316553abc66795b5e" prot="public" virt="non-virtual"><scope>novaphy::FreeBodySolver::ConstraintData</scope><name>bias</name></member>
+      <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a10f4dac796eec25c8e7877cdf8a9977a" prot="public" virt="non-virtual"><scope>novaphy::FreeBodySolver::ConstraintData</scope><name>effective_mass_n</name></member>
+      <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1aa0cd82301be14727b3200340bd7e2dc9" prot="public" virt="non-virtual"><scope>novaphy::FreeBodySolver::ConstraintData</scope><name>effective_mass_t1</name></member>
+      <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a026f7f48906b7ee40baafdebe217aa3c" prot="public" virt="non-virtual"><scope>novaphy::FreeBodySolver::ConstraintData</scope><name>effective_mass_t2</name></member>
+      <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a8e0cd3502e90e2a4321579dd3d0aad98" prot="public" virt="non-virtual"><scope>novaphy::FreeBodySolver::ConstraintData</scope><name>inv_I_a_world</name></member>
+      <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a763c350895c40adc4d99ecdc9f4b904a" prot="public" virt="non-virtual"><scope>novaphy::FreeBodySolver::ConstraintData</scope><name>inv_I_b_world</name></member>
+      <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1ac831837aa20169d882c133646a9e628b" prot="public" virt="non-virtual"><scope>novaphy::FreeBodySolver::ConstraintData</scope><name>r_a</name></member>
+      <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a7940e9ce264c44ae93753715f24a5731" prot="public" virt="non-virtual"><scope>novaphy::FreeBodySolver::ConstraintData</scope><name>r_b</name></member>
+      <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a3f5bb5918a5792a702b7d981f358511e" prot="public" virt="non-virtual"><scope>novaphy::FreeBodySolver::ConstraintData</scope><name>tangent1</name></member>
+      <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1ad6fbded9647b75ebf261376b6fd569fc" prot="public" virt="non-virtual"><scope>novaphy::FreeBodySolver::ConstraintData</scope><name>tangent2</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,80 @@
+\doxysection{novaphy::\+Articulated\+Solver Class Reference}
+\hypertarget{classnovaphy_1_1_articulated_solver}{}\label{classnovaphy_1_1_articulated_solver}\index{novaphy::ArticulatedSolver@{novaphy::ArticulatedSolver}}
+
+
+Time-\/stepping solver for articulated-\/body dynamics.  
+
+
+
+
+{\ttfamily \+\#include $<$articulated\+\_\+solver.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classnovaphy_1_1_articulated_solver_ab2e69a7aa58cc756383b64061338c6ea}\label{classnovaphy_1_1_articulated_solver_ab2e69a7aa58cc756383b64061338c6ea} 
+{\bfseries Articulated\+Solver} ()=default
+\begin{DoxyCompactList}\small\item\em Construct articulated solver with default settings. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classnovaphy_1_1_articulated_solver_ab71c6df4122ae716836e2eace7ca3f91}{step}} (const \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}} \&model, Vec\+Xf \&q, Vec\+Xf \&qd, const Vec\+Xf \&tau, const Vec3f \&gravity, float dt)
+\begin{DoxyCompactList}\small\item\em Advance articulated state by one time step. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Time-\/stepping solver for articulated-\/body dynamics. 
+
+Wraps Featherstone forward dynamics and advances generalized state using semi-\/implicit integration. Quaternion state components are normalized after integration for free/\+ball joints. 
+
+\label{doc-func-members}
+\Hypertarget{classnovaphy_1_1_articulated_solver_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classnovaphy_1_1_articulated_solver_ab71c6df4122ae716836e2eace7ca3f91}\index{novaphy::ArticulatedSolver@{novaphy::ArticulatedSolver}!step@{step}}
+\index{step@{step}!novaphy::ArticulatedSolver@{novaphy::ArticulatedSolver}}
+\doxysubsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_articulated_solver_ab71c6df4122ae716836e2eace7ca3f91} 
+void novaphy::\+\+Articulated\+Solver::\+step (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}} \&}]{model}{, }\item[{Vec\+Xf \&}]{q}{, }\item[{Vec\+Xf \&}]{qd}{, }\item[{const Vec\+Xf \&}]{tau}{, }\item[{const Vec3f \&}]{gravity}{, }\item[{float}]{dt}{}\end{DoxyParamCaption})}
+
+
+
+Advance articulated state by one time step. 
+
+Advances articulated generalized state by one fixed time step.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em model} & \doxylink{structnovaphy_1_1_articulation}{Articulation} model. \\
+\hline
+\doxymbox{\texttt{in,out}}  & {\em q} & Generalized positions, updated in place. \\
+\hline
+\doxymbox{\texttt{in,out}}  & {\em qd} & Generalized velocities, updated in place. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em tau} & Applied joint efforts (torques/\+forces). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em gravity} & Gravity vector in world frame (m/\+s\texorpdfstring{$^\wedge$}{\string^}2). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em dt} & Time step in seconds. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em model} & \doxylink{structnovaphy_1_1_articulation}{Articulation} model and joint topology. \\
+\hline
+\doxymbox{\texttt{in,out}}  & {\em q} & Generalized positions (including quaternion states). \\
+\hline
+\doxymbox{\texttt{in,out}}  & {\em qd} & Generalized velocities. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em tau} & Applied generalized efforts. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em gravity} & \doxylink{classnovaphy_1_1_world}{World} gravity acceleration (m/\+s\texorpdfstring{$^\wedge$}{\string^}2). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em dt} & Time step in seconds. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+dynamics/\+articulated\+\_\+solver.\+h\item 
+src/\+dynamics/\+\doxymbox{\hyperlink{articulated__solver_8cpp}{articulated\+\_\+solver.\+cpp}}\end{DoxyCompactItemize}

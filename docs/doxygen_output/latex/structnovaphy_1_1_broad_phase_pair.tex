@@ -1,0 +1,73 @@
+\doxysection{novaphy::\+Broad\+Phase\+Pair Struct Reference}
+\hypertarget{structnovaphy_1_1_broad_phase_pair}{}\label{structnovaphy_1_1_broad_phase_pair}\index{novaphy::BroadPhasePair@{novaphy::BroadPhasePair}}
+
+
+Candidate overlap pair produced by broadphase.  
+
+
+
+
+{\ttfamily \+\#include $<$broadphase.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair_aafe85e8bd57d7d04c0839ab426f0a4d6}{operator==}} (const \doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair}{Broad\+Phase\+Pair}} \&other) const
+\begin{DoxyCompactList}\small\item\em Equality comparison for pair deduplication. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair_a67bdaf17aa2e7cb0f4de606f1e4b4862}{body\+\_\+a}}
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair_ac32b0bf00f5e85129bca204c3535405c}{body\+\_\+b}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Candidate overlap pair produced by broadphase. 
+
+Each entry stores indices into the shape/\+body arrays used by narrowphase contact generation. 
+
+\label{doc-func-members}
+\Hypertarget{structnovaphy_1_1_broad_phase_pair_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structnovaphy_1_1_broad_phase_pair_aafe85e8bd57d7d04c0839ab426f0a4d6}\index{novaphy::BroadPhasePair@{novaphy::BroadPhasePair}!operator==@{operator==}}
+\index{operator==@{operator==}!novaphy::BroadPhasePair@{novaphy::BroadPhasePair}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_broad_phase_pair_aafe85e8bd57d7d04c0839ab426f0a4d6} 
+bool novaphy::\+\+Broad\+Phase\+Pair::\+operator== (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair}{Broad\+Phase\+Pair}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Equality comparison for pair deduplication. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em other} & Another broadphase pair. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if both indices match exactly. 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{structnovaphy_1_1_broad_phase_pair_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structnovaphy_1_1_broad_phase_pair_a67bdaf17aa2e7cb0f4de606f1e4b4862}\index{novaphy::BroadPhasePair@{novaphy::BroadPhasePair}!body\_a@{body\_a}}
+\index{body\_a@{body\_a}!novaphy::BroadPhasePair@{novaphy::BroadPhasePair}}
+\doxysubsubsection{\texorpdfstring{body\_a}{body\_a}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_broad_phase_pair_a67bdaf17aa2e7cb0f4de606f1e4b4862} 
+int novaphy::\+\+Broad\+Phase\+Pair::\+body\+\_\+a}
+
+First index in canonical ascending order. \Hypertarget{structnovaphy_1_1_broad_phase_pair_ac32b0bf00f5e85129bca204c3535405c}\index{novaphy::BroadPhasePair@{novaphy::BroadPhasePair}!body\_b@{body\_b}}
+\index{body\_b@{body\_b}!novaphy::BroadPhasePair@{novaphy::BroadPhasePair}}
+\doxysubsubsection{\texorpdfstring{body\_b}{body\_b}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_broad_phase_pair_ac32b0bf00f5e85129bca204c3535405c} 
+int novaphy::\+\+Broad\+Phase\+Pair::\+body\+\_\+b}
+
+Second index in canonical ascending order. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+collision/\+broadphase.\+h\end{DoxyCompactItemize}

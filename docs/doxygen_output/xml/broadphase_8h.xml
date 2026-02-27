@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="broadphase_8h" kind="file" language="C++">
+    <compoundname>broadphase.h</compoundname>
+    <includes local="no">algorithm</includes>
+    <includes local="no">unordered_set</includes>
+    <includes local="no">vector</includes>
+    <includes refid="aabb_8h" local="yes">novaphy/core/aabb.h</includes>
+    <includedby refid="world_8h" local="yes">include/novaphy/sim/world.h</includedby>
+    <includedby refid="broadphase_8cpp" local="yes">src/collision/broadphase.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/novaphy/collision/broadphase.h</label>
+        <link refid="broadphase_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>novaphy/core/aabb.h</label>
+        <link refid="aabb_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>novaphy/math/math_types.h</label>
+        <link refid="math__types_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>novaphy/novaphy_types.h</label>
+        <link refid="novaphy__types_8h_source"/>
+      </node>
+      <node id="7">
+        <label>Eigen/Core</label>
+      </node>
+      <node id="8">
+        <label>Eigen/Geometry</label>
+      </node>
+      <node id="2">
+        <label>algorithm</label>
+      </node>
+      <node id="9">
+        <label>cmath</label>
+      </node>
+      <node id="3">
+        <label>unordered_set</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/novaphy/collision/broadphase.h</label>
+        <link refid="broadphase_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/novaphy/sim/world.h</label>
+        <link refid="world_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/collision/broadphase.cpp</label>
+        <link refid="broadphase_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/sim/world.cpp</label>
+        <link refid="world_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structnovaphy_1_1_broad_phase_pair" prot="public">novaphy::BroadPhasePair</innerclass>
+    <innerclass refid="classnovaphy_1_1_sweep_and_prune" prot="public">novaphy::SweepAndPrune</innerclass>
+    <innerclass refid="structnovaphy_1_1_sweep_and_prune_1_1_endpoint" prot="private">novaphy::SweepAndPrune::Endpoint</innerclass>
+    <innernamespace refid="namespacenovaphy">novaphy</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/core/aabb.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">novaphy<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="structnovaphy_1_1_broad_phase_pair" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structnovaphy_1_1_broad_phase_pair" kindref="compound">BroadPhasePair</ref><sp/>{</highlight></codeline>
+<codeline lineno="18" refid="structnovaphy_1_1_broad_phase_pair_1a67bdaf17aa2e7cb0f4de606f1e4b4862" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_broad_phase_pair_1a67bdaf17aa2e7cb0f4de606f1e4b4862" kindref="member">body_a</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="19" refid="structnovaphy_1_1_broad_phase_pair_1ac32b0bf00f5e85129bca204c3535405c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_broad_phase_pair_1ac32b0bf00f5e85129bca204c3535405c" kindref="member">body_b</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="structnovaphy_1_1_broad_phase_pair_1aafe85e8bd57d7d04c0839ab426f0a4d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_broad_phase_pair_1aafe85e8bd57d7d04c0839ab426f0a4d6" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_broad_phase_pair" kindref="compound">BroadPhasePair</ref>&amp;<sp/>other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_broad_phase_pair_1a67bdaf17aa2e7cb0f4de606f1e4b4862" kindref="member">body_a</ref><sp/>==<sp/>other.<ref refid="structnovaphy_1_1_broad_phase_pair_1a67bdaf17aa2e7cb0f4de606f1e4b4862" kindref="member">body_a</ref><sp/>&amp;&amp;<sp/><ref refid="structnovaphy_1_1_broad_phase_pair_1ac32b0bf00f5e85129bca204c3535405c" kindref="member">body_b</ref><sp/>==<sp/>other.<ref refid="structnovaphy_1_1_broad_phase_pair_1ac32b0bf00f5e85129bca204c3535405c" kindref="member">body_b</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classnovaphy_1_1_sweep_and_prune" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classnovaphy_1_1_sweep_and_prune_1a7a26ec2a54a8cfeb5cb762980c7607d9" kindref="member">SweepAndPrune</ref><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="44" refid="classnovaphy_1_1_sweep_and_prune_1a7a26ec2a54a8cfeb5cb762980c7607d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classnovaphy_1_1_sweep_and_prune_1a7a26ec2a54a8cfeb5cb762980c7607d9" kindref="member">SweepAndPrune</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classnovaphy_1_1_sweep_and_prune_1a2611c0c7fe869ce61f0174f215ee2301" kindref="member">update</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;AABB&gt;&amp;<sp/>body_aabbs,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;bool&gt;&amp;<sp/>static_mask);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classnovaphy_1_1_sweep_and_prune_1ab611c0928aeb064445dfbac945612e51" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;BroadPhasePair&gt;&amp;<sp/><ref refid="classnovaphy_1_1_sweep_and_prune_1ab611c0928aeb064445dfbac945612e51" kindref="member">get_pairs</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pairs_;<sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">Endpoint<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>value;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>body_index;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_min;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Endpoint&gt;<sp/>endpoints_x_;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Endpoint&gt;<sp/>endpoints_y_;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Endpoint&gt;<sp/>endpoints_z_;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;BroadPhasePair&gt;<sp/>pairs_;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialized_<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rebuild(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;AABB&gt;&amp;<sp/>aabbs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;bool&gt;&amp;<sp/>static_mask);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>insertion_sort(std::vector&lt;Endpoint&gt;&amp;<sp/>eps);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>novaphy</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/novaphy/collision/broadphase.h"/>
+  </compounddef>
+</doxygen>

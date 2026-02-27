@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="shape_8h" kind="file" language="C++">
+    <compoundname>shape.h</compoundname>
+    <includes refid="aabb_8h" local="yes">novaphy/core/aabb.h</includes>
+    <includes refid="math__types_8h" local="yes">novaphy/math/math_types.h</includes>
+    <includedby refid="narrowphase_8h" local="yes">include/novaphy/collision/narrowphase.h</includedby>
+    <includedby refid="model_8h" local="yes">include/novaphy/core/model.h</includedby>
+    <includedby refid="model__builder_8h" local="yes">include/novaphy/core/model_builder.h</includedby>
+    <includedby refid="shape_8cpp" local="yes">src/core/shape.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>novaphy/core/aabb.h</label>
+        <link refid="aabb_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/novaphy/core/shape.h</label>
+        <link refid="shape_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>novaphy/math/math_types.h</label>
+        <link refid="math__types_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>novaphy/novaphy_types.h</label>
+        <link refid="novaphy__types_8h_source"/>
+      </node>
+      <node id="4">
+        <label>Eigen/Core</label>
+      </node>
+      <node id="5">
+        <label>Eigen/Geometry</label>
+      </node>
+      <node id="6">
+        <label>cmath</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/novaphy/collision/narrowphase.h</label>
+        <link refid="narrowphase_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/novaphy/core/model.h</label>
+        <link refid="model_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/novaphy/core/model_builder.h</label>
+        <link refid="model__builder_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/novaphy/core/shape.h</label>
+        <link refid="shape_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/novaphy/sim/world.h</label>
+        <link refid="world_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/collision/narrowphase.cpp</label>
+        <link refid="narrowphase_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/core/model_builder.cpp</label>
+        <link refid="model__builder_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/core/shape.cpp</label>
+        <link refid="shape_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/sim/world.cpp</label>
+        <link refid="world_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structnovaphy_1_1_box_shape" prot="public">novaphy::BoxShape</innerclass>
+    <innerclass refid="structnovaphy_1_1_sphere_shape" prot="public">novaphy::SphereShape</innerclass>
+    <innerclass refid="structnovaphy_1_1_plane_shape" prot="public">novaphy::PlaneShape</innerclass>
+    <innerclass refid="structnovaphy_1_1_collision_shape" prot="public">novaphy::CollisionShape</innerclass>
+    <innernamespace refid="namespacenovaphy">novaphy</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/core/aabb.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/math/math_types.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">novaphy<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>ShapeType<sp/>{<sp/>Box,<sp/>Sphere,<sp/>Plane<sp/>};</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="structnovaphy_1_1_box_shape" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structnovaphy_1_1_box_shape" kindref="compound">BoxShape</ref><sp/>{</highlight></codeline>
+<codeline lineno="17" refid="structnovaphy_1_1_box_shape_1a40bf0c6151226c0509e34b9d4c7bbee1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Vec3f<sp/><ref refid="structnovaphy_1_1_box_shape_1a40bf0c6151226c0509e34b9d4c7bbee1" kindref="member">half_extents</ref><sp/>=<sp/>Vec3f(0.5f,<sp/>0.5f,<sp/>0.5f);<sp/><sp/></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="structnovaphy_1_1_sphere_shape" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structnovaphy_1_1_sphere_shape" kindref="compound">SphereShape</ref><sp/>{</highlight></codeline>
+<codeline lineno="24" refid="structnovaphy_1_1_sphere_shape_1a1e7dd194ab087068798c42e82a518cb8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_sphere_shape_1a1e7dd194ab087068798c42e82a518cb8" kindref="member">radius</ref><sp/>=<sp/>0.5f;<sp/><sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="structnovaphy_1_1_plane_shape" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structnovaphy_1_1_plane_shape" kindref="compound">PlaneShape</ref><sp/>{</highlight></codeline>
+<codeline lineno="33" refid="structnovaphy_1_1_plane_shape_1ad1947ccd8615373d16c1cdf394fc3935" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Vec3f<sp/><ref refid="structnovaphy_1_1_plane_shape_1ad1947ccd8615373d16c1cdf394fc3935" kindref="member">normal</ref><sp/>=<sp/>Vec3f(0.0f,<sp/>1.0f,<sp/>0.0f);<sp/><sp/></highlight></codeline>
+<codeline lineno="34" refid="structnovaphy_1_1_plane_shape_1a7a85e1872ff281519bed5ba736a79297" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_plane_shape_1a7a85e1872ff281519bed5ba736a79297" kindref="member">offset</ref><sp/>=<sp/>0.0f;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="structnovaphy_1_1_collision_shape" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref><sp/>{</highlight></codeline>
+<codeline lineno="44" refid="structnovaphy_1_1_collision_shape_1a26781106192b8ded52ef622cc686cf8b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>ShapeType<sp/><ref refid="structnovaphy_1_1_collision_shape_1a26781106192b8ded52ef622cc686cf8b" kindref="member">type</ref><sp/>=<sp/>ShapeType::Box;<sp/><sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="structnovaphy_1_1_collision_shape_1a5875fad0082ee71245fa5f8d364adc3f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_box_shape" kindref="compound">BoxShape</ref><sp/><ref refid="structnovaphy_1_1_collision_shape_1a5875fad0082ee71245fa5f8d364adc3f" kindref="member">box</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="47" refid="structnovaphy_1_1_collision_shape_1a06b5ecb75e0f5fc460e432ef90259bf8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_sphere_shape" kindref="compound">SphereShape</ref><sp/><ref refid="structnovaphy_1_1_collision_shape_1a06b5ecb75e0f5fc460e432ef90259bf8" kindref="member">sphere</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="48" refid="structnovaphy_1_1_collision_shape_1a299592657513434aa799ea7126a3f22f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_plane_shape" kindref="compound">PlaneShape</ref><sp/><ref refid="structnovaphy_1_1_collision_shape_1a299592657513434aa799ea7126a3f22f" kindref="member">plane</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="structnovaphy_1_1_collision_shape_1ad652128cbbc4d588ca540a7af5233d2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref><sp/><ref refid="structnovaphy_1_1_collision_shape_1ad652128cbbc4d588ca540a7af5233d2b" kindref="member">local_transform</ref><sp/>=<sp/><ref refid="structnovaphy_1_1_transform_1a44c81dcd76ab81961d385a30b95db3d8" kindref="member">Transform::identity</ref>();<sp/><sp/></highlight></codeline>
+<codeline lineno="51" refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" kindref="member">friction</ref><sp/>=<sp/>0.5f;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52" refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" kindref="member">restitution</ref><sp/>=<sp/>0.3f;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="structnovaphy_1_1_collision_shape_1a9a334459be2f732c1270bb65f7dca4b0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_collision_shape_1a9a334459be2f732c1270bb65f7dca4b0" kindref="member">body_index</ref><sp/>=<sp/>-1;<sp/><sp/></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="structnovaphy_1_1_collision_shape_1a265fb555011a3a9cdc14e993229f61a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_a_a_b_b" kindref="compound">AABB</ref><sp/><ref refid="structnovaphy_1_1_collision_shape_1a265fb555011a3a9cdc14e993229f61a6" kindref="member">compute_aabb</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref>&amp;<sp/>body_transform)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref><sp/>world<sp/>=<sp/>body_transform<sp/>*<sp/><ref refid="structnovaphy_1_1_collision_shape_1ad652128cbbc4d588ca540a7af5233d2b" kindref="member">local_transform</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<ref refid="structnovaphy_1_1_collision_shape_1a26781106192b8ded52ef622cc686cf8b" kindref="member">type</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ShapeType::Box:</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1af9de425cc6721c6df8d67fc34c9a6c78" kindref="member">AABB::from_oriented_box</ref>(<ref refid="structnovaphy_1_1_collision_shape_1a5875fad0082ee71245fa5f8d364adc3f" kindref="member">box</ref>.half_extents,<sp/>world);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ShapeType::Sphere:</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a2935ca38a9e622be4d5c760a22495e64" kindref="member">AABB::from_sphere</ref>(world.<ref refid="structnovaphy_1_1_transform_1a074b6b85886aacd125ea8db47cc25f80" kindref="member">position</ref>,<sp/><ref refid="structnovaphy_1_1_collision_shape_1a06b5ecb75e0f5fc460e432ef90259bf8" kindref="member">sphere</ref>.radius);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ShapeType::Plane:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Planes<sp/>are<sp/>infinite;<sp/>use<sp/>a<sp/>very<sp/>large<sp/>AABB</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b" kindref="compound">AABB</ref>(Vec3f::Constant(-1e6f),<sp/>Vec3f::Constant(1e6f));</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b" kindref="compound">AABB</ref>();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="structnovaphy_1_1_collision_shape_1af2a0f55b8cc4f01eb6a069b8da7f4b0a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref><sp/><ref refid="structnovaphy_1_1_collision_shape_1af2a0f55b8cc4f01eb6a069b8da7f4b0a" kindref="member">make_box</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>half_extents,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>body_idx,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref>&amp;<sp/>local<sp/>=<sp/><ref refid="structnovaphy_1_1_transform_1a44c81dcd76ab81961d385a30b95db3d8" kindref="member">Transform::identity</ref>(),</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" kindref="member">friction</ref><sp/>=<sp/>0.5f,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" kindref="member">restitution</ref><sp/>=<sp/>0.3f)<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref><sp/>s;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1a26781106192b8ded52ef622cc686cf8b" kindref="member">type</ref><sp/>=<sp/>ShapeType::Box;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1a5875fad0082ee71245fa5f8d364adc3f" kindref="member">box</ref>.<ref refid="structnovaphy_1_1_box_shape_1a40bf0c6151226c0509e34b9d4c7bbee1" kindref="member">half_extents</ref><sp/>=<sp/>half_extents;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1a9a334459be2f732c1270bb65f7dca4b0" kindref="member">body_index</ref><sp/>=<sp/>body_idx;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1ad652128cbbc4d588ca540a7af5233d2b" kindref="member">local_transform</ref><sp/>=<sp/>local;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" kindref="member">friction</ref><sp/>=<sp/><ref refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" kindref="member">friction</ref>;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" kindref="member">restitution</ref><sp/>=<sp/><ref refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" kindref="member">restitution</ref>;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="structnovaphy_1_1_collision_shape_1a7d9ac52a738ae09ac603305e199ff55f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref><sp/><ref refid="structnovaphy_1_1_collision_shape_1a7d9ac52a738ae09ac603305e199ff55f" kindref="member">make_sphere</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>body_idx,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref>&amp;<sp/>local<sp/>=<sp/><ref refid="structnovaphy_1_1_transform_1a44c81dcd76ab81961d385a30b95db3d8" kindref="member">Transform::identity</ref>(),</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" kindref="member">friction</ref><sp/>=<sp/>0.5f,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" kindref="member">restitution</ref><sp/>=<sp/>0.3f)<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref><sp/>s;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1a26781106192b8ded52ef622cc686cf8b" kindref="member">type</ref><sp/>=<sp/>ShapeType::Sphere;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1a06b5ecb75e0f5fc460e432ef90259bf8" kindref="member">sphere</ref>.<ref refid="structnovaphy_1_1_sphere_shape_1a1e7dd194ab087068798c42e82a518cb8" kindref="member">radius</ref><sp/>=<sp/>radius;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1a9a334459be2f732c1270bb65f7dca4b0" kindref="member">body_index</ref><sp/>=<sp/>body_idx;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1ad652128cbbc4d588ca540a7af5233d2b" kindref="member">local_transform</ref><sp/>=<sp/>local;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" kindref="member">friction</ref><sp/>=<sp/><ref refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" kindref="member">friction</ref>;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" kindref="member">restitution</ref><sp/>=<sp/><ref refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" kindref="member">restitution</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="structnovaphy_1_1_collision_shape_1af6e69bd49a3f0ad594a7f2963dc25e05" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref><sp/><ref refid="structnovaphy_1_1_collision_shape_1af6e69bd49a3f0ad594a7f2963dc25e05" kindref="member">make_plane</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>normal,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>offset,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" kindref="member">friction</ref><sp/>=<sp/>0.5f,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" kindref="member">restitution</ref><sp/>=<sp/>0.0f)<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref><sp/>s;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1a26781106192b8ded52ef622cc686cf8b" kindref="member">type</ref><sp/>=<sp/>ShapeType::Plane;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1a299592657513434aa799ea7126a3f22f" kindref="member">plane</ref>.<ref refid="structnovaphy_1_1_plane_shape_1ad1947ccd8615373d16c1cdf394fc3935" kindref="member">normal</ref><sp/>=<sp/>normal.normalized();</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1a299592657513434aa799ea7126a3f22f" kindref="member">plane</ref>.<ref refid="structnovaphy_1_1_plane_shape_1a7a85e1872ff281519bed5ba736a79297" kindref="member">offset</ref><sp/>=<sp/>offset;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1a9a334459be2f732c1270bb65f7dca4b0" kindref="member">body_index</ref><sp/>=<sp/>-1;<sp/><sp/></highlight><highlight class="comment">//<sp/>planes<sp/>are<sp/>typically<sp/>world-owned</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" kindref="member">friction</ref><sp/>=<sp/><ref refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" kindref="member">friction</ref>;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" kindref="member">restitution</ref><sp/>=<sp/><ref refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" kindref="member">restitution</ref>;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>novaphy</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/novaphy/core/shape.h"/>
+  </compounddef>
+</doxygen>

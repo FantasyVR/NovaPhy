@@ -1,0 +1,62 @@
+\doxysection{body.\+h}
+\hypertarget{body_8h_source}{}\label{body_8h_source}\index{include/novaphy/core/body.h@{include/novaphy/core/body.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/spatial.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{RigidBody}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a4a55d7beadfbc6d08dd44c5727585962}{mass}}\ =\ 1.0f;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ Mat3f\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a6260dd28637dcf2c2a07c01240c360a0}{inertia}}\ =\ Mat3f::Identity();\ \ }
+\DoxyCodeLine{00018\ \ \ \ \ Vec3f\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a602e45796d16a5d13c979ae80f1b9d5c}{com}}\ =\ Vec3f::Zero();\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a65ea7f745251e5494811c8734b95359d}{inv\_mass}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a4a55d7beadfbc6d08dd44c5727585962}{mass}}\ >\ 0.0f\ ?\ 1.0f\ /\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a4a55d7beadfbc6d08dd44c5727585962}{mass}}\ :\ 0.0f;\ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00032\ \ \ \ \ Mat3f\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_aae8faf551aa75b76c7d3746405216d84}{inv\_inertia}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a4a55d7beadfbc6d08dd44c5727585962}{mass}}\ <=\ 0.0f)\ \textcolor{keywordflow}{return}\ Mat3f::Zero();}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a6260dd28637dcf2c2a07c01240c360a0}{inertia}}.inverse();}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a126fd8a4a8f26672728160a8d2689744}{is\_static}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a4a55d7beadfbc6d08dd44c5727585962}{mass}}\ <=\ 0.0f;\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00052\ \ \ \ \ SpatialMatrix\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_aa3b13f19f6bbf060c8e64cd9effdebe9}{spatial\_inertia}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ spatial\_inertia\_matrix(\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a4a55d7beadfbc6d08dd44c5727585962}{mass}},\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a602e45796d16a5d13c979ae80f1b9d5c}{com}},\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a6260dd28637dcf2c2a07c01240c360a0}{inertia}});}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{RigidBody}}\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a79004be9129aad62aeaf9f1d84dff054}{from\_box}}(\textcolor{keywordtype}{float}\ m,\ \textcolor{keyword}{const}\ Vec3f\&\ half\_extents)\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{RigidBody}}\ b;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ b.\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a4a55d7beadfbc6d08dd44c5727585962}{mass}}\ =\ m;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ 2.0f\ *\ half\_extents.x();}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ h\ =\ 2.0f\ *\ half\_extents.y();}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ d\ =\ 2.0f\ *\ half\_extents.z();}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ c\ =\ m\ /\ 12.0f;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ b.\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a6260dd28637dcf2c2a07c01240c360a0}{inertia}}\ =\ Mat3f::Zero();}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ b.\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a6260dd28637dcf2c2a07c01240c360a0}{inertia}}(0,\ 0)\ =\ c\ *\ (h\ *\ h\ +\ d\ *\ d);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ b.\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a6260dd28637dcf2c2a07c01240c360a0}{inertia}}(1,\ 1)\ =\ c\ *\ (w\ *\ w\ +\ d\ *\ d);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ b.\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a6260dd28637dcf2c2a07c01240c360a0}{inertia}}(2,\ 2)\ =\ c\ *\ (w\ *\ w\ +\ h\ *\ h);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ b;}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{RigidBody}}\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a7644cf6fe9f375ed3e09888f140632bd}{from\_sphere}}(\textcolor{keywordtype}{float}\ m,\ \textcolor{keywordtype}{float}\ radius)\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{RigidBody}}\ b;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ b.\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a4a55d7beadfbc6d08dd44c5727585962}{mass}}\ =\ m;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ I\ =\ (2.0f\ /\ 5.0f)\ *\ m\ *\ radius\ *\ radius;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ b.\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a6260dd28637dcf2c2a07c01240c360a0}{inertia}}\ =\ Mat3f::Identity()\ *\ I;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ b;}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{RigidBody}}\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a590034bde697e581ac0e9daabcfa30c5}{make\_static}}()\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{RigidBody}}\ b;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ b.\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a4a55d7beadfbc6d08dd44c5727585962}{mass}}\ =\ 0.0f;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ b.\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body_a6260dd28637dcf2c2a07c01240c360a0}{inertia}}\ =\ Mat3f::Zero();}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ b;}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

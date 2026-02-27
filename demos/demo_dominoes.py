@@ -14,9 +14,15 @@ from demos.demo_utils import DemoApp
 
 class DominoesDemo(DemoApp):
     def __init__(self):
+        """Initializes the domino chain reaction demo configuration."""
         super().__init__(title="NovaPhy - Dominoes", dt=1.0/120.0)
 
     def build_scene(self):
+        """Builds a line of dominoes and applies an initial angular kick.
+
+        Returns:
+            None
+        """
         builder = novaphy.ModelBuilder()
         builder.add_ground_plane(y=0.0, friction=0.5)
 

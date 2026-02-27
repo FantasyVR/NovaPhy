@@ -1,0 +1,69 @@
+\doxysection{novaphy::\+Contact\+Manifold Struct Reference}
+\hypertarget{structnovaphy_1_1_contact_manifold}{}\label{structnovaphy_1_1_contact_manifold}\index{novaphy::ContactManifold@{novaphy::ContactManifold}}
+
+
+Contact manifold grouping points for one shape pair.  
+
+
+
+
+{\ttfamily \+\#include $<$contact.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_contact_manifold_a942939c352eda95cfa04534237df9733}{shape\+\_\+a}} = -\/1
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_contact_manifold_a19649ac02d2a971a5577d99821af6a29}{shape\+\_\+b}} = -\/1
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_contact_manifold_ab10fc96abcac74bfb8a563a5568fa000}{body\+\_\+a}} = -\/1
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_contact_manifold_a1951c1294a35cfcf92ad3a04491322a4}{body\+\_\+b}} = -\/1
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_manifold_aa213022f5804bf5063969e022e8b4b23}{points}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contact manifold grouping points for one shape pair. 
+
+Multiple points from the same interacting pair improve stacking stability and friction torque approximation. 
+
+\label{doc-variable-members}
+\Hypertarget{structnovaphy_1_1_contact_manifold_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structnovaphy_1_1_contact_manifold_ab10fc96abcac74bfb8a563a5568fa000}\index{novaphy::ContactManifold@{novaphy::ContactManifold}!body\_a@{body\_a}}
+\index{body\_a@{body\_a}!novaphy::ContactManifold@{novaphy::ContactManifold}}
+\doxysubsubsection{\texorpdfstring{body\_a}{body\_a}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_manifold_ab10fc96abcac74bfb8a563a5568fa000} 
+int novaphy::\+\+Contact\+Manifold::\+body\+\_\+a = -\/1}
+
+Body index for side A. \Hypertarget{structnovaphy_1_1_contact_manifold_a1951c1294a35cfcf92ad3a04491322a4}\index{novaphy::ContactManifold@{novaphy::ContactManifold}!body\_b@{body\_b}}
+\index{body\_b@{body\_b}!novaphy::ContactManifold@{novaphy::ContactManifold}}
+\doxysubsubsection{\texorpdfstring{body\_b}{body\_b}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_manifold_a1951c1294a35cfcf92ad3a04491322a4} 
+int novaphy::\+\+Contact\+Manifold::\+body\+\_\+b = -\/1}
+
+Body index for side B. \Hypertarget{structnovaphy_1_1_contact_manifold_aa213022f5804bf5063969e022e8b4b23}\index{novaphy::ContactManifold@{novaphy::ContactManifold}!points@{points}}
+\index{points@{points}!novaphy::ContactManifold@{novaphy::ContactManifold}}
+\doxysubsubsection{\texorpdfstring{points}{points}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_manifold_aa213022f5804bf5063969e022e8b4b23} 
+std::\+vector$<$\doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}}$>$ novaphy::\+\+Contact\+Manifold::\+points}
+
+Contact points in this manifold. \Hypertarget{structnovaphy_1_1_contact_manifold_a942939c352eda95cfa04534237df9733}\index{novaphy::ContactManifold@{novaphy::ContactManifold}!shape\_a@{shape\_a}}
+\index{shape\_a@{shape\_a}!novaphy::ContactManifold@{novaphy::ContactManifold}}
+\doxysubsubsection{\texorpdfstring{shape\_a}{shape\_a}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_manifold_a942939c352eda95cfa04534237df9733} 
+int novaphy::\+\+Contact\+Manifold::\+shape\+\_\+a = -\/1}
+
+Shape index for side A. \Hypertarget{structnovaphy_1_1_contact_manifold_a19649ac02d2a971a5577d99821af6a29}\index{novaphy::ContactManifold@{novaphy::ContactManifold}!shape\_b@{shape\_b}}
+\index{shape\_b@{shape\_b}!novaphy::ContactManifold@{novaphy::ContactManifold}}
+\doxysubsubsection{\texorpdfstring{shape\_b}{shape\_b}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_manifold_a19649ac02d2a971a5577d99821af6a29} 
+int novaphy::\+\+Contact\+Manifold::\+shape\+\_\+b = -\/1}
+
+Shape index for side B. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+core/\+contact.\+h\end{DoxyCompactItemize}

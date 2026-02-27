@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_contact_manifold" kind="struct" language="C++" prot="public">
+    <compoundname>novaphy::ContactManifold</compoundname>
+    <includes refid="contact_8h" local="no">contact.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_manifold_1a942939c352eda95cfa04534237df9733" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int novaphy::ContactManifold::shape_a</definition>
+        <argsstring></argsstring>
+        <name>shape_a</name>
+        <qualifiedname>novaphy::ContactManifold::shape_a</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shape index for side A. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="39" column="9" bodyfile="include/novaphy/core/contact.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_manifold_1a19649ac02d2a971a5577d99821af6a29" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int novaphy::ContactManifold::shape_b</definition>
+        <argsstring></argsstring>
+        <name>shape_b</name>
+        <qualifiedname>novaphy::ContactManifold::shape_b</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shape index for side B. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="40" column="9" bodyfile="include/novaphy/core/contact.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_manifold_1ab10fc96abcac74bfb8a563a5568fa000" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int novaphy::ContactManifold::body_a</definition>
+        <argsstring></argsstring>
+        <name>body_a</name>
+        <qualifiedname>novaphy::ContactManifold::body_a</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Body index for side A. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="41" column="9" bodyfile="include/novaphy/core/contact.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_manifold_1a1951c1294a35cfcf92ad3a04491322a4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int novaphy::ContactManifold::body_b</definition>
+        <argsstring></argsstring>
+        <name>body_b</name>
+        <qualifiedname>novaphy::ContactManifold::body_b</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Body index for side B. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="42" column="9" bodyfile="include/novaphy/core/contact.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_contact_manifold_1aa213022f5804bf5063969e022e8b4b23" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structnovaphy_1_1_contact_point" kindref="compound">ContactPoint</ref> &gt;</type>
+        <definition>std::vector&lt;ContactPoint&gt; novaphy::ContactManifold::points</definition>
+        <argsstring></argsstring>
+        <name>points</name>
+        <qualifiedname>novaphy::ContactManifold::points</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Contact points in this manifold. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="43" column="17" bodyfile="include/novaphy/core/contact.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Contact manifold grouping points for one shape pair. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Multiple points from the same interacting pair improve stacking stability and friction torque approximation. </para>
+    </detaileddescription>
+    <location file="include/novaphy/core/contact.h" line="38" column="1" bodyfile="include/novaphy/core/contact.h" bodystart="38" bodyend="44"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_contact_manifold_1ab10fc96abcac74bfb8a563a5568fa000" prot="public" virt="non-virtual"><scope>novaphy::ContactManifold</scope><name>body_a</name></member>
+      <member refid="structnovaphy_1_1_contact_manifold_1a1951c1294a35cfcf92ad3a04491322a4" prot="public" virt="non-virtual"><scope>novaphy::ContactManifold</scope><name>body_b</name></member>
+      <member refid="structnovaphy_1_1_contact_manifold_1aa213022f5804bf5063969e022e8b4b23" prot="public" virt="non-virtual"><scope>novaphy::ContactManifold</scope><name>points</name></member>
+      <member refid="structnovaphy_1_1_contact_manifold_1a942939c352eda95cfa04534237df9733" prot="public" virt="non-virtual"><scope>novaphy::ContactManifold</scope><name>shape_a</name></member>
+      <member refid="structnovaphy_1_1_contact_manifold_1a19649ac02d2a971a5577d99821af6a29" prot="public" virt="non-virtual"><scope>novaphy::ContactManifold</scope><name>shape_b</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

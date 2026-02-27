@@ -16,9 +16,15 @@ from demos.demo_utils import DemoApp
 
 class NewtonsCradleDemo(DemoApp):
     def __init__(self):
+        """Initializes the Newton's cradle demo configuration."""
         super().__init__(title="NovaPhy - Newton's Cradle", dt=1.0/120.0)
 
     def build_scene(self):
+        """Builds a 5-sphere cradle with near-elastic collisions.
+
+        Returns:
+            None
+        """
         builder = novaphy.ModelBuilder()
         builder.add_ground_plane(y=-2.0, friction=0.3)
 

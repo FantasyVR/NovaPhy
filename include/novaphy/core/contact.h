@@ -5,41 +5,62 @@
 
 namespace novaphy {
 
-/// A single contact point between two bodies
+/**
+ * @brief One world-space contact sample between two colliders.
+ *
+ * @details Contact normal points from body A toward body B. Penetration depth
+ * is positive when shapes overlap. Units follow SI conventions.
+ */
 struct ContactPoint {
-    Vec3f position = Vec3f::Zero();   // world-space contact point
-    Vec3f normal = Vec3f::Zero();     // contact normal (from body_a toward body_b)
-    float penetration = 0.0f;         // positive = overlapping
+    Vec3f position = Vec3f::Zero();  /**< Contact position in world coordinates (m). */
+    Vec3f normal = Vec3f::Zero();    /**< Contact normal from body A toward body B. */
+    float penetration = 0.0f;        /**< Penetration depth in meters; positive means overlap. */
 
-    int body_a = -1;                  // body index (or -1 for world)
-    int body_b = -1;                  // body index (or -1 for world)
-    int shape_a = -1;                 // shape index
-    int shape_b = -1;                 // shape index
+    int body_a = -1;   /**< Body index for side A, or -1 for world/static shape. */
+    int body_b = -1;   /**< Body index for side B, or -1 for world/static shape. */
+    int shape_a = -1;  /**< Shape index for side A. */
+    int shape_b = -1;  /**< Shape index for side B. */
 
-    float friction = 0.5f;            // combined friction coefficient
-    float restitution = 0.0f;         // combined restitution coefficient
+    float friction = 0.5f;     /**< Combined friction coefficient (dimensionless). */
+    float restitution = 0.0f;  /**< Combined restitution coefficient (dimensionless). */
 
-    // Solver cache (warm starting)
-    float accumulated_normal_impulse = 0.0f;
-    float accumulated_tangent_impulse_1 = 0.0f;
-    float accumulated_tangent_impulse_2 = 0.0f;
+    float accumulated_normal_impulse = 0.0f;      /**< Cached normal impulse for warm starting (N*s). */
+    float accumulated_tangent_impulse_1 = 0.0f;   /**< Cached first tangent impulse for warm starting (N*s). */
+    float accumulated_tangent_impulse_2 = 0.0f;   /**< Cached second tangent impulse for warm starting (N*s). */
 };
 
-/// A contact manifold: a set of contact points between the same pair of shapes
+/**
+ * @brief Contact manifold grouping points for one shape pair.
+ *
+ * @details Multiple points from the same interacting pair improve stacking
+ * stability and friction torque approximation.
+ */
 struct ContactManifold {
-    int shape_a = -1;
-    int shape_b = -1;
-    int body_a = -1;
-    int body_b = -1;
-    std::vector<ContactPoint> points;
+    int shape_a = -1;                  /**< Shape index for side A. */
+    int shape_b = -1;                  /**< Shape index for side B. */
+    int body_a = -1;                   /**< Body index for side A. */
+    int body_b = -1;                   /**< Body index for side B. */
+    std::vector<ContactPoint> points;  /**< Contact points in this manifold. */
 };
 
-/// Combine friction coefficients (geometric mean)
+/**
+ * @brief Combine two friction coefficients.
+ *
+ * @param [in] a Friction coefficient from material A.
+ * @param [in] b Friction coefficient from material B.
+ * @return Geometric-mean combined friction coefficient.
+ */
 inline float combine_friction(float a, float b) {
     return std::sqrt(a * b);
 }
 
-/// Combine restitution coefficients (maximum)
+/**
+ * @brief Combine two restitution coefficients.
+ *
+ * @param [in] a Restitution coefficient from material A.
+ * @param [in] b Restitution coefficient from material B.
+ * @return Maximum of both coefficients.
+ */
 inline float combine_restitution(float a, float b) {
     return std::max(a, b);
 }

@@ -1,5 +1,8 @@
-// Spatial algebra implementations
-// Most functions are inline in the header, but this file exists
-// for any non-trivial implementations that may be added later.
+/**
+ * @file spatial.cpp
+ * @brief Translation unit for spatial algebra routines.
+ * @details Most spatial operators are header-inline; this file is preserved
+ *          as a stable extension point for heavier implementations.
+ */
 
 #include "novaphy/math/spatial.h"

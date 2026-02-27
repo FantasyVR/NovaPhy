@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="model_8h" kind="file" language="C++">
+    <compoundname>model.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes refid="body_8h" local="yes">novaphy/core/body.h</includes>
+    <includes refid="shape_8h" local="yes">novaphy/core/shape.h</includes>
+    <includes refid="math__types_8h" local="yes">novaphy/math/math_types.h</includes>
+    <includedby refid="world_8h" local="yes">include/novaphy/sim/world.h</includedby>
+    <includedby refid="model__builder_8cpp" local="yes">src/core/model_builder.cpp</includedby>
+    <incdepgraph>
+      <node id="12">
+        <label>novaphy/core/aabb.h</label>
+        <link refid="aabb_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>novaphy/core/body.h</label>
+        <link refid="body_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/novaphy/core/model.h</label>
+        <link refid="model_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>novaphy/core/shape.h</label>
+        <link refid="shape_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>novaphy/math/math_types.h</label>
+        <link refid="math__types_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>novaphy/math/math_utils.h</label>
+        <link refid="math__utils_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>novaphy/math/spatial.h</label>
+        <link refid="spatial_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>novaphy/novaphy_types.h</label>
+        <link refid="novaphy__types_8h_source"/>
+      </node>
+      <node id="5">
+        <label>Eigen/Core</label>
+      </node>
+      <node id="6">
+        <label>Eigen/Geometry</label>
+      </node>
+      <node id="7">
+        <label>cmath</label>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/novaphy/core/model.h</label>
+        <link refid="model_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/novaphy/sim/world.h</label>
+        <link refid="world_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/core/model_builder.cpp</label>
+        <link refid="model__builder_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/sim/world.cpp</label>
+        <link refid="world_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structnovaphy_1_1_model" prot="public">novaphy::Model</innerclass>
+    <innernamespace refid="namespacenovaphy">novaphy</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/core/body.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/core/shape.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/math/math_types.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">novaphy<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="structnovaphy_1_1_model" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structnovaphy_1_1_model" kindref="compound">Model</ref><sp/>{</highlight></codeline>
+<codeline lineno="18" refid="structnovaphy_1_1_model_1a95b75cce70741092ddd0df717454ed4a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;RigidBody&gt;<sp/><ref refid="structnovaphy_1_1_model_1a95b75cce70741092ddd0df717454ed4a" kindref="member">bodies</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="19" refid="structnovaphy_1_1_model_1a5fa6564ad266689b5010ca02278144da" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Transform&gt;<sp/><ref refid="structnovaphy_1_1_model_1a5fa6564ad266689b5010ca02278144da" kindref="member">initial_transforms</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="20" refid="structnovaphy_1_1_model_1ad3d0bd0d69a77296f4ae1ef8143e9289" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;CollisionShape&gt;<sp/><ref refid="structnovaphy_1_1_model_1ad3d0bd0d69a77296f4ae1ef8143e9289" kindref="member">shapes</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="structnovaphy_1_1_model_1ae2ef0d6246938d1a5bf0d152b33f39a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_model_1ae2ef0d6246938d1a5bf0d152b33f39a5" kindref="member">num_bodies</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="structnovaphy_1_1_model_1a95b75cce70741092ddd0df717454ed4a" kindref="member">bodies</ref>.size());<sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="structnovaphy_1_1_model_1acb8cbd85157a1e94d2999160d87e3951" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_model_1acb8cbd85157a1e94d2999160d87e3951" kindref="member">num_shapes</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="structnovaphy_1_1_model_1ad3d0bd0d69a77296f4ae1ef8143e9289" kindref="member">shapes</ref>.size());<sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>novaphy</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/novaphy/core/model.h"/>
+  </compounddef>
+</doxygen>

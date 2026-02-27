@@ -1,0 +1,110 @@
+\doxysection{spatial.\+h}
+\hypertarget{spatial_8h_source}{}\label{spatial_8h_source}\index{include/novaphy/math/spatial.h@{include/novaphy/math/spatial.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_utils.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{using\ }SpatialVector\ =\ Eigen::Matrix<float,\ 6,\ 1>;}
+\DoxyCodeLine{00015\ \textcolor{keyword}{using\ }SpatialMatrix\ =\ Eigen::Matrix<float,\ 6,\ 6>;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{inline}\ Vec3f\ spatial\_angular(\textcolor{keyword}{const}\ SpatialVector\&\ v)\ \{\ \textcolor{keywordflow}{return}\ v.head<3>();\ \}}
+\DoxyCodeLine{00030\ \textcolor{keyword}{inline}\ Vec3f\ spatial\_linear(\textcolor{keyword}{const}\ SpatialVector\&\ v)\ \{\ \textcolor{keywordflow}{return}\ v.tail<3>();\ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{inline}\ SpatialVector\ make\_spatial(\textcolor{keyword}{const}\ Vec3f\&\ angular,\ \textcolor{keyword}{const}\ Vec3f\&\ linear)\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ SpatialVector\ v;}
+\DoxyCodeLine{00041\ \ \ \ \ v.head<3>()\ =\ angular;}
+\DoxyCodeLine{00042\ \ \ \ \ v.tail<3>()\ =\ linear;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{00044\ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{inline}\ SpatialVector\ spatial\_cross\_motion(\textcolor{keyword}{const}\ SpatialVector\&\ v,\ \textcolor{keyword}{const}\ SpatialVector\&\ u)\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ Vec3f\ w\ =\ spatial\_angular(v);}
+\DoxyCodeLine{00058\ \ \ \ \ Vec3f\ vl\ =\ spatial\_linear(v);}
+\DoxyCodeLine{00059\ \ \ \ \ Vec3f\ wp\ =\ spatial\_angular(u);}
+\DoxyCodeLine{00060\ \ \ \ \ Vec3f\ vp\ =\ spatial\_linear(u);}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{return}\ make\_spatial(w.cross(wp),\ w.cross(vp)\ +\ vl.cross(wp));}
+\DoxyCodeLine{00062\ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00074\ \textcolor{keyword}{inline}\ SpatialVector\ spatial\_cross\_force(\textcolor{keyword}{const}\ SpatialVector\&\ v,\ \textcolor{keyword}{const}\ SpatialVector\&\ f)\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ Vec3f\ w\ =\ spatial\_angular(v);}
+\DoxyCodeLine{00076\ \ \ \ \ Vec3f\ vl\ =\ spatial\_linear(v);}
+\DoxyCodeLine{00077\ \ \ \ \ Vec3f\ n\ =\ spatial\_angular(f);}
+\DoxyCodeLine{00078\ \ \ \ \ Vec3f\ fl\ =\ spatial\_linear(f);}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{return}\ make\_spatial(w.cross(n)\ +\ vl.cross(fl),\ w.cross(fl));}
+\DoxyCodeLine{00080\ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{SpatialTransform}}\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ Mat3f\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}}\ =\ Mat3f::Identity();\ \ }
+\DoxyCodeLine{00090\ \ \ \ \ Vec3f\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_ae53da5bc4b7e4961df7090cea0bcfd27}{r}}\ =\ Vec3f::Zero();\ \ \ \ \ \ }
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00093\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{SpatialTransform}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00101\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a027d0e5f185d9f2e4f26308920f6b456}{SpatialTransform}}(\textcolor{keyword}{const}\ Mat3f\&\ rot,\ \textcolor{keyword}{const}\ Vec3f\&\ trans)\ :\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}}(rot),\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_ae53da5bc4b7e4961df7090cea0bcfd27}{r}}(trans)\ \{\}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00109\ \ \ \ \ SpatialVector\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_ad23b35d19fd4c4bb32a62c6c9854004a}{apply\_motion}}(\textcolor{keyword}{const}\ SpatialVector\&\ v)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ Vec3f\ w\ =\ spatial\_angular(v);}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ Vec3f\ vl\ =\ spatial\_linear(v);}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ Vec3f\ w\_new\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}}\ *\ w;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ Vec3f\ v\_new\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}}\ *\ vl\ +\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_ae53da5bc4b7e4961df7090cea0bcfd27}{r}}.cross(\doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}}\ *\ w);}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ make\_spatial(w\_new,\ v\_new);}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00123\ \ \ \ \ SpatialVector\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adb1820b2d0e0d069647f73a0ac6e96d8}{apply\_force}}(\textcolor{keyword}{const}\ SpatialVector\&\ f)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ Vec3f\ n\ =\ spatial\_angular(f);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ Vec3f\ fl\ =\ spatial\_linear(f);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ Vec3f\ fl\_new\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}}.transpose()\ *\ fl;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ Vec3f\ n\_new\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}}.transpose()\ *\ (n\ -\/\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_ae53da5bc4b7e4961df7090cea0bcfd27}{r}}.cross(fl));}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ make\_spatial(n\_new,\ fl\_new);}
+\DoxyCodeLine{00129\ \ \ \ \ \}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00136\ \ \ \ \ SpatialMatrix\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a69c43270b9ced9f2a511c129899c1777}{to\_matrix}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ Mat3f\ rx\ =\ skew(\doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_ae53da5bc4b7e4961df7090cea0bcfd27}{r}});}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ SpatialMatrix\ X;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ X.topLeftCorner<3,\ 3>()\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}};}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ X.topRightCorner<3,\ 3>()\ =\ Mat3f::Zero();}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ X.bottomLeftCorner<3,\ 3>()\ =\ rx\ *\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}};}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ X.bottomRightCorner<3,\ 3>()\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}};}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ X;}
+\DoxyCodeLine{00144\ \ \ \ \ \}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00151\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{SpatialTransform}}\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_aab88d993b84c724e452c9d8e8ce0c25c}{inverse}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ Mat3f\ Et\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}}.transpose();}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{SpatialTransform}}(Et,\ -\/Et\ *\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_ae53da5bc4b7e4961df7090cea0bcfd27}{r}});}
+\DoxyCodeLine{00154\ \ \ \ \ \}}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00162\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{SpatialTransform}}\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a364ae938903a065dfcc6a40bc38f238a}{operator*}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{SpatialTransform}}\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{SpatialTransform}}(\doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}}\ *\ other.\doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}},\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_ae53da5bc4b7e4961df7090cea0bcfd27}{r}}\ +\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}}\ *\ other.\doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_ae53da5bc4b7e4961df7090cea0bcfd27}{r}});}
+\DoxyCodeLine{00164\ \ \ \ \ \}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{SpatialTransform}}\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a8e638cee0c56c1e2f342b0e554930fb5}{from\_transform}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}}\&\ t)\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{SpatialTransform}}(t.\doxymbox{\hyperlink{structnovaphy_1_1_transform_a15091736eca0a5250c4c19de64476ad4}{rotation\_matrix}}(),\ t.\doxymbox{\hyperlink{structnovaphy_1_1_transform_a074b6b85886aacd125ea8db47cc25f80}{position}});}
+\DoxyCodeLine{00174\ \ \ \ \ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{SpatialTransform}}\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a652a2e16bdf05a0410196c0c548b2c90}{identity}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{SpatialTransform}}();\ \}}
+\DoxyCodeLine{00182\ \};}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00198\ \textcolor{keyword}{inline}\ SpatialMatrix\ spatial\_inertia\_matrix(\textcolor{keywordtype}{float}\ mass,\ \textcolor{keyword}{const}\ Vec3f\&\ com,}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Mat3f\&\ I\_rot)\ \{}
+\DoxyCodeLine{00200\ \ \ \ \ Mat3f\ cx\ =\ skew(com);}
+\DoxyCodeLine{00201\ \ \ \ \ SpatialMatrix\ I;}
+\DoxyCodeLine{00202\ \ \ \ \ I.topLeftCorner<3,\ 3>()\ =\ I\_rot\ +\ mass\ *\ cx.transpose()\ *\ cx;}
+\DoxyCodeLine{00203\ \ \ \ \ I.topRightCorner<3,\ 3>()\ =\ mass\ *\ cx.transpose();}
+\DoxyCodeLine{00204\ \ \ \ \ I.bottomLeftCorner<3,\ 3>()\ =\ mass\ *\ cx;}
+\DoxyCodeLine{00205\ \ \ \ \ I.bottomRightCorner<3,\ 3>()\ =\ mass\ *\ Mat3f::Identity();}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keywordflow}{return}\ I;}
+\DoxyCodeLine{00207\ \}}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00216\ \textcolor{keyword}{inline}\ SpatialMatrix\ transform\_spatial\_inertia(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform}{SpatialTransform}}\&\ X,}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ SpatialMatrix\&\ I)\ \{}
+\DoxyCodeLine{00218\ \ \ \ \ SpatialMatrix\ Xm\ =\ X.to\_matrix();}
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keywordflow}{return}\ Xm\ *\ I\ *\ Xm.transpose();}
+\DoxyCodeLine{00220\ \}}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

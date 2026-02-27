@@ -1,0 +1,225 @@
+\doxysection{novaphy::\+featherstone Namespace Reference}
+\hypertarget{namespacenovaphy_1_1featherstone}{}\label{namespacenovaphy_1_1featherstone}\index{novaphy::featherstone@{novaphy::featherstone}}
+
+
+Featherstone-\/family rigid-\/body dynamics algorithms.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{namespacenovaphy_1_1featherstone_a81fede8c2599e86900042c6e37323256}{forward\+\_\+kinematics}} (const \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}} \&model, const Vec\+Xf \&q, std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform}{Spatial\+Transform}} $>$ \&X\+\_\+J, std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform}{Spatial\+Transform}} $>$ \&X\+\_\+up, std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} $>$ \&X\+\_\+world)
+\begin{DoxyCompactList}\small\item\em Compute per-\/link poses from generalized positions. \end{DoxyCompactList}\item 
+Vec\+Xf \doxymbox{\hyperlink{namespacenovaphy_1_1featherstone_a1304eda4890f645ebdd6e78c6aedbfcd}{inverse\+\_\+dynamics}} (const \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}} \&model, const Vec\+Xf \&q, const Vec\+Xf \&qd, const Vec\+Xf \&qdd, const Vec3f \&gravity, const std::\+vector$<$ Spatial\+Vector $>$ \&f\+\_\+ext=\{\})
+\begin{DoxyCompactList}\small\item\em Compute generalized forces using RNEA (inverse dynamics). \end{DoxyCompactList}\item 
+Mat\+Xf \doxymbox{\hyperlink{namespacenovaphy_1_1featherstone_a010f7ded3d737a60216318841dc15914}{mass\+\_\+matrix}} (const \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}} \&model, const Vec\+Xf \&q)
+\begin{DoxyCompactList}\small\item\em Assemble the joint-\/space inertia matrix using CRBA. \end{DoxyCompactList}\item 
+Vec\+Xf \doxymbox{\hyperlink{namespacenovaphy_1_1featherstone_a0fbb3f2e208778bfe14a97c6aeadf858}{forward\+\_\+dynamics}} (const \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}} \&model, const Vec\+Xf \&q, const Vec\+Xf \&qd, const Vec\+Xf \&tau, const Vec3f \&gravity, const std::\+vector$<$ Spatial\+Vector $>$ \&f\+\_\+ext=\{\})
+\begin{DoxyCompactList}\small\item\em Compute generalized accelerations from applied efforts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Featherstone-\/family rigid-\/body dynamics algorithms. 
+
+This namespace provides forward kinematics, inverse dynamics (RNEA), mass-\/matrix assembly (CRBA), and forward dynamics for a single tree-\/structured articulation.
+
+Spatial-\/vector convention is \+[angular; linear]\+, and computations follow standard rigid-\/body dynamics in SI units (m, kg, s, N, rad). 
+
+\label{doc-func-members}
+\Hypertarget{namespacenovaphy_1_1featherstone_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacenovaphy_1_1featherstone_a0fbb3f2e208778bfe14a97c6aeadf858}\index{novaphy::featherstone@{novaphy::featherstone}!forward\_dynamics@{forward\_dynamics}}
+\index{forward\_dynamics@{forward\_dynamics}!novaphy::featherstone@{novaphy::featherstone}}
+\doxysubsubsection{\texorpdfstring{forward\_dynamics()}{forward\_dynamics()}}
+{\footnotesize\ttfamily \label{namespacenovaphy_1_1featherstone_a0fbb3f2e208778bfe14a97c6aeadf858} 
+Vec\+Xf novaphy::\+featherstone::\+forward\+\_\+dynamics (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}} \&}]{model}{, }\item[{const Vec\+Xf \&}]{q}{, }\item[{const Vec\+Xf \&}]{qd}{, }\item[{const Vec\+Xf \&}]{tau}{, }\item[{const Vec3f \&}]{gravity}{, }\item[{const std::\+vector$<$ Spatial\+Vector $>$ \&}]{f\+\_\+ext}{ = {\ttfamily \{\}}}\end{DoxyParamCaption})}
+
+
+
+Compute generalized accelerations from applied efforts. 
+
+Solves forward dynamics {\ttfamily qdd = H\texorpdfstring{$^\wedge$}{\string^}\{-\/1\}(tau -\/ C)}.
+
+Solves qdd = H(q)\texorpdfstring{$^\wedge$}{\string^}-\/1 \texorpdfstring{$\ast$}{*} (tau -\/ C(q, qd)), where C is obtained from inverse dynamics with zero acceleration.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em model} & \doxylink{structnovaphy_1_1_articulation}{Articulation} graph and inertial properties. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em q} & Generalized positions. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em qd} & Generalized velocities. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em tau} & Applied joint efforts (torques/\+forces). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em gravity} & Gravity vector in world frame (m/\+s\texorpdfstring{$^\wedge$}{\string^}2). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em f\+\_\+ext} & Optional external spatial forces per link in link-\/local frame (N, N\texorpdfstring{$\ast$}{*}m). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Generalized acceleration vector qdd.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This API is commonly used for simulation stepping and inverse-\/control validation.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em model} & \doxylink{structnovaphy_1_1_articulation}{Articulation} model. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em q} & Generalized coordinates. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em qd} & Generalized velocities. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em tau} & Applied generalized forces. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em gravity} & \doxylink{classnovaphy_1_1_world}{World} gravity vector in m/\+s\texorpdfstring{$^\wedge$}{\string^}2. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em f\+\_\+ext} & Optional external spatial forces per link. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Generalized accelerations. 
+\end{DoxyReturn}
+\Hypertarget{namespacenovaphy_1_1featherstone_a81fede8c2599e86900042c6e37323256}\index{novaphy::featherstone@{novaphy::featherstone}!forward\_kinematics@{forward\_kinematics}}
+\index{forward\_kinematics@{forward\_kinematics}!novaphy::featherstone@{novaphy::featherstone}}
+\doxysubsubsection{\texorpdfstring{forward\_kinematics()}{forward\_kinematics()}}
+{\footnotesize\ttfamily \label{namespacenovaphy_1_1featherstone_a81fede8c2599e86900042c6e37323256} 
+void novaphy::\+featherstone::\+forward\+\_\+kinematics (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}} \&}]{model}{, }\item[{const Vec\+Xf \&}]{q}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform}{Spatial\+Transform}} $>$ \&}]{X\+\_\+J}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform}{Spatial\+Transform}} $>$ \&}]{X\+\_\+up}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} $>$ \&}]{X\+\_\+world}{}\end{DoxyParamCaption})}
+
+
+
+Compute per-\/link poses from generalized positions. 
+
+Computes articulated link transforms from generalized positions.
+
+Performs a kinematic traversal from root to leaves to assemble:\+ joint transforms, parent-\/relative transforms, and world transforms for each link in the articulation.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em model} & \doxylink{structnovaphy_1_1_articulation}{Articulation} graph and joint definitions. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em q} & Generalized position vector, length = model.\+total\+\_\+q(). \\
+\hline
+\doxymbox{\texttt{out}}  & {\em X\+\_\+J} & Joint-\/motion transforms, one per link. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em X\+\_\+up} & Parent-\/to-\/child spatial transforms, one per link. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em X\+\_\+world} & World-\/frame rigid transforms (position + quaternion), one per link. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Output transforms are expressed in world coordinates for rendering and downstream dynamics calls. 
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+Input dimensions must match model topology.
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em model} & \doxylink{structnovaphy_1_1_articulation}{Articulation} model containing joint tree topology. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em q} & Generalized coordinates. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em X\+\_\+J} & Per-\/link joint transforms. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em X\+\_\+up} & Per-\/link parent transforms in spatial form. \\
+\hline
+\doxymbox{\texttt{out}}  & {\em X\+\_\+world} & Per-\/link world transforms for visualization/\+queries. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacenovaphy_1_1featherstone_a1304eda4890f645ebdd6e78c6aedbfcd}\index{novaphy::featherstone@{novaphy::featherstone}!inverse\_dynamics@{inverse\_dynamics}}
+\index{inverse\_dynamics@{inverse\_dynamics}!novaphy::featherstone@{novaphy::featherstone}}
+\doxysubsubsection{\texorpdfstring{inverse\_dynamics()}{inverse\_dynamics()}}
+{\footnotesize\ttfamily \label{namespacenovaphy_1_1featherstone_a1304eda4890f645ebdd6e78c6aedbfcd} 
+Vec\+Xf novaphy::\+featherstone::\+inverse\+\_\+dynamics (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}} \&}]{model}{, }\item[{const Vec\+Xf \&}]{q}{, }\item[{const Vec\+Xf \&}]{qd}{, }\item[{const Vec\+Xf \&}]{qdd}{, }\item[{const Vec3f \&}]{gravity}{, }\item[{const std::\+vector$<$ Spatial\+Vector $>$ \&}]{f\+\_\+ext}{ = {\ttfamily \{\}}}\end{DoxyParamCaption})}
+
+
+
+Compute generalized forces using RNEA (inverse dynamics). 
+
+Computes inverse dynamics using recursive Newton-\/\+Euler passes.
+
+Recursive Newton-\/\+Euler Algorithm evaluates the joint efforts required to realize a prescribed motion state (q, qd, qdd), optionally including external link forces.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em model} & \doxylink{structnovaphy_1_1_articulation}{Articulation} graph and inertial properties. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em q} & Generalized positions. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em qd} & Generalized velocities. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em qdd} & Generalized accelerations. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em gravity} & Gravity vector in world frame (m/\+s\texorpdfstring{$^\wedge$}{\string^}2). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em f\+\_\+ext} & Optional external spatial forces per link in link-\/local frame (N, N\texorpdfstring{$\ast$}{*}m). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Generalized force vector tau (joint torques/\+forces in SI units).
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Time complexity is O(n) for n links. 
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+If provided, f\+\_\+ext must contain one entry per link.
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em model} & \doxylink{structnovaphy_1_1_articulation}{Articulation} model. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em q} & Generalized coordinates. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em qd} & Generalized velocities. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em qdd} & Generalized accelerations. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em gravity} & \doxylink{classnovaphy_1_1_world}{World} gravity vector in m/\+s\texorpdfstring{$^\wedge$}{\string^}2. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em f\+\_\+ext} & Optional external spatial forces per link. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{structnovaphy_1_1_joint}{Joint} generalized forces/\+torques in SI units. 
+\end{DoxyReturn}
+\Hypertarget{namespacenovaphy_1_1featherstone_a010f7ded3d737a60216318841dc15914}\index{novaphy::featherstone@{novaphy::featherstone}!mass\_matrix@{mass\_matrix}}
+\index{mass\_matrix@{mass\_matrix}!novaphy::featherstone@{novaphy::featherstone}}
+\doxysubsubsection{\texorpdfstring{mass\_matrix()}{mass\_matrix()}}
+{\footnotesize\ttfamily \label{namespacenovaphy_1_1featherstone_a010f7ded3d737a60216318841dc15914} 
+Mat\+Xf novaphy::\+featherstone::\+mass\+\_\+matrix (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}} \&}]{model}{, }\item[{const Vec\+Xf \&}]{q}{}\end{DoxyParamCaption})}
+
+
+
+Assemble the joint-\/space inertia matrix using CRBA. 
+
+Computes the articulated mass matrix using CRBA.
+
+Composite Rigid Body Algorithm computes H(q), the configuration-\/ dependent mass matrix used in forward dynamics and model-\/based control.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em model} & \doxylink{structnovaphy_1_1_articulation}{Articulation} graph and inertial properties. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em q} & Generalized positions. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Joint-\/space inertia matrix H(q), size nv x nv, symmetric positive definite.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Typical complexity is O(n\texorpdfstring{$^\wedge$}{\string^}2) for tree articulations.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em model} & \doxylink{structnovaphy_1_1_articulation}{Articulation} model. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em q} & Generalized coordinates. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Symmetric positive-\/definite mass matrix {\ttfamily H(q)}. 
+\end{DoxyReturn}

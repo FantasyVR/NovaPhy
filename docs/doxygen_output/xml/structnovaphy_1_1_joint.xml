@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_joint" kind="struct" language="C++" prot="public">
+    <compoundname>novaphy::Joint</compoundname>
+    <includes refid="joint_8h" local="no">joint.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnovaphy_1_1_joint_1a8ef8bd2887657521bba54a9c0a17410a" prot="public" static="no" mutable="no">
+        <type>JointType</type>
+        <definition>JointType novaphy::Joint::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>novaphy::Joint::type</qualifiedname>
+        <initializer>= JointType::Revolute</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="structnovaphy_1_1_joint" kindref="compound">Joint</ref> type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/joint.h" line="26" column="15" bodyfile="include/novaphy/core/joint.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_joint_1aa18db99137a52ac50ba4611e7bd2c1cd" prot="public" static="no" mutable="no">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::Joint::axis</definition>
+        <argsstring></argsstring>
+        <name>axis</name>
+        <qualifiedname>novaphy::Joint::axis</qualifiedname>
+        <initializer>= Vec3f(0, 0, 1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="structnovaphy_1_1_joint" kindref="compound">Joint</ref> axis for revolute/slide joints. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/joint.h" line="27" column="11" bodyfile="include/novaphy/core/joint.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_joint_1a875e8c9ffec82f910303b8f98bcfaab0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int novaphy::Joint::parent</definition>
+        <argsstring></argsstring>
+        <name>parent</name>
+        <qualifiedname>novaphy::Joint::parent</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parent link index, or -1 for world root. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/joint.h" line="28" column="9" bodyfile="include/novaphy/core/joint.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_joint_1a991dcc9b08902a127a32dd0b6cd95cc4" prot="public" static="no" mutable="no">
+        <type><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref></type>
+        <definition>Transform novaphy::Joint::parent_to_joint</definition>
+        <argsstring></argsstring>
+        <name>parent_to_joint</name>
+        <qualifiedname>novaphy::Joint::parent_to_joint</qualifiedname>
+        <initializer>= <ref refid="structnovaphy_1_1_transform_1a44c81dcd76ab81961d385a30b95db3d8" kindref="member">Transform::identity</ref>()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constant transform from parent frame to joint frame. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/joint.h" line="30" column="15" bodyfile="include/novaphy/core/joint.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnovaphy_1_1_joint_1a7623d2eb9f83c408254722f1d24a6288" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int novaphy::Joint::num_q</definition>
+        <argsstring>() const</argsstring>
+        <name>num_q</name>
+        <qualifiedname>novaphy::Joint::num_q</qualifiedname>
+        <briefdescription>
+<para>Get number of generalized position coordinates for this joint. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Position DOF count. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/joint.h" line="37" column="9" bodyfile="include/novaphy/core/joint.h" bodystart="37" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_joint_1a2105e94ddf6bcbe5072ff4ce24654bd8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int novaphy::Joint::num_qd</definition>
+        <argsstring>() const</argsstring>
+        <name>num_qd</name>
+        <qualifiedname>novaphy::Joint::num_qd</qualifiedname>
+        <briefdescription>
+<para>Get number of generalized velocity coordinates for this joint. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Velocity DOF count. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/joint.h" line="53" column="9" bodyfile="include/novaphy/core/joint.h" bodystart="53" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_joint_1a7a9310ebd1a8e2688bd12c28c9a74cf9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref></type>
+        <definition>Transform novaphy::Joint::joint_transform</definition>
+        <argsstring>(const float *q) const</argsstring>
+        <name>joint_transform</name>
+        <qualifiedname>novaphy::Joint::joint_transform</qualifiedname>
+        <param>
+          <type>const float *</type>
+          <declname>q</declname>
+        </param>
+        <briefdescription>
+<para>Compute joint transform from generalized position coordinates. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes a joint transform from generalized coordinates.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to this joint&apos;s coordinate block in the global q vector. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structnovaphy_1_1_joint" kindref="compound">Joint</ref> transform from joint frame to child-link frame.</para>
+</simplesect>
+<simplesect kind="note"><para><computeroutput>q</computeroutput> layout depends on joint type: revolute/slide: scalar, ball: quaternion, free: translation + quaternion.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the joint configuration vector for this joint type. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Rigid transform mapping the parent joint frame to the child frame. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/joint.h" line="73" column="15" bodyfile="src/core/joint.cpp" bodystart="16" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_joint_1a33c6ab405cb743ad094017ed88ba3adf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::Joint::motion_subspace</definition>
+        <argsstring>(SpatialVector *S_cols) const</argsstring>
+        <name>motion_subspace</name>
+        <qualifiedname>novaphy::Joint::motion_subspace</qualifiedname>
+        <param>
+          <type>SpatialVector *</type>
+          <declname>S_cols</declname>
+        </param>
+        <briefdescription>
+<para>Compute motion subspace columns for this joint. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Fills the joint motion-subspace basis vectors.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">S_cols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output array of spatial motion columns, length = <ref refid="structnovaphy_1_1_joint_1a2105e94ddf6bcbe5072ff4ce24654bd8" kindref="member">num_qd()</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+Columns follow Featherstone convention [angular; linear].</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">S_cols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output spatial basis columns, sized by <computeroutput>dof()</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/joint.h" line="83" column="10" bodyfile="src/core/joint.cpp" bodystart="50" bodyend="77"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para><ref refid="structnovaphy_1_1_joint" kindref="compound">Joint</ref> descriptor connecting one link to its parent. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Defines joint kinematics and motion subspace used by Featherstone forward/inverse dynamics. Axes are expressed in the joint-local frame. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>novaphy::Joint</label>
+        <link refid="structnovaphy_1_1_joint"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>parent_to_joint</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>novaphy::Transform</label>
+        <link refid="structnovaphy_1_1_transform"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/novaphy/core/joint.h" line="25" column="1" bodyfile="include/novaphy/core/joint.h" bodystart="25" bodyend="84"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_joint_1aa18db99137a52ac50ba4611e7bd2c1cd" prot="public" virt="non-virtual"><scope>novaphy::Joint</scope><name>axis</name></member>
+      <member refid="structnovaphy_1_1_joint_1a7a9310ebd1a8e2688bd12c28c9a74cf9" prot="public" virt="non-virtual"><scope>novaphy::Joint</scope><name>joint_transform</name></member>
+      <member refid="structnovaphy_1_1_joint_1a33c6ab405cb743ad094017ed88ba3adf" prot="public" virt="non-virtual"><scope>novaphy::Joint</scope><name>motion_subspace</name></member>
+      <member refid="structnovaphy_1_1_joint_1a7623d2eb9f83c408254722f1d24a6288" prot="public" virt="non-virtual"><scope>novaphy::Joint</scope><name>num_q</name></member>
+      <member refid="structnovaphy_1_1_joint_1a2105e94ddf6bcbe5072ff4ce24654bd8" prot="public" virt="non-virtual"><scope>novaphy::Joint</scope><name>num_qd</name></member>
+      <member refid="structnovaphy_1_1_joint_1a875e8c9ffec82f910303b8f98bcfaab0" prot="public" virt="non-virtual"><scope>novaphy::Joint</scope><name>parent</name></member>
+      <member refid="structnovaphy_1_1_joint_1a991dcc9b08902a127a32dd0b6cd95cc4" prot="public" virt="non-virtual"><scope>novaphy::Joint</scope><name>parent_to_joint</name></member>
+      <member refid="structnovaphy_1_1_joint_1a8ef8bd2887657521bba54a9c0a17410a" prot="public" virt="non-virtual"><scope>novaphy::Joint</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,595 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="namespacenovaphy_1_1narrowphase" kind="namespace" language="C++">
+    <compoundname>novaphy::narrowphase</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="narrowphase_8h_1ae7936adf426cc03fc0c827db38aea9f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool novaphy::narrowphase::collide_sphere_sphere</definition>
+        <argsstring>(const CollisionShape &amp;a, const Transform &amp;ta, const CollisionShape &amp;b, const Transform &amp;tb, std::vector&lt; ContactPoint &gt; &amp;contacts)</argsstring>
+        <name>collide_sphere_sphere</name>
+        <qualifiedname>novaphy::narrowphase::collide_sphere_sphere</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>ta</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>tb</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structnovaphy_1_1_contact_point" kindref="compound">ContactPoint</ref> &gt; &amp;</type>
+          <declname>contacts</declname>
+        </param>
+        <briefdescription>
+<para>Detect and generate contacts for sphere-sphere intersection. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes contact(s) between two spheres.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First sphere shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of first shape&apos;s parent body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second sphere shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of second shape&apos;s parent body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generated world-space contact points. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if shapes overlap.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sphere shape A. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of A&apos;s parent body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sphere shape B. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of B&apos;s parent body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appended world-space contact manifold entries. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the spheres overlap; otherwise <computeroutput>false</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/collision/narrowphase.cpp" line="25" column="6" bodyfile="src/collision/narrowphase.cpp" bodystart="25" bodyend="57" declfile="include/novaphy/collision/narrowphase.h" declline="21" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="narrowphase_8h_1a115bc4a07ad5b7da65018479501ddf5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool novaphy::narrowphase::collide_sphere_plane</definition>
+        <argsstring>(const CollisionShape &amp;sphere, const Transform &amp;ts, const CollisionShape &amp;plane, std::vector&lt; ContactPoint &gt; &amp;contacts)</argsstring>
+        <name>collide_sphere_plane</name>
+        <qualifiedname>novaphy::narrowphase::collide_sphere_plane</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &amp;</type>
+          <declname>sphere</declname>
+          <defname>sphere_shape</defname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>ts</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &amp;</type>
+          <declname>plane</declname>
+          <defname>plane_shape</defname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structnovaphy_1_1_contact_point" kindref="compound">ContactPoint</ref> &gt; &amp;</type>
+          <declname>contacts</declname>
+        </param>
+        <briefdescription>
+<para>Detect and generate contacts for sphere-plane intersection. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes contact(s) between a sphere and an infinite plane.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sphere</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sphere collision shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of sphere parent body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">plane</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Infinite plane shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generated world-space contact points. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the sphere penetrates or touches the plane.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sphere_shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sphere collision shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of the sphere body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">plane_shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Plane collision shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appended world-space contact manifold entries. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the sphere intersects or penetrates the plane. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/collision/narrowphase.cpp" line="68" column="6" bodyfile="src/collision/narrowphase.cpp" bodystart="68" bodyend="91" declfile="include/novaphy/collision/narrowphase.h" declline="34" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="narrowphase_8h_1ad31cf400a221e92df9c23a1af6b63ce1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool novaphy::narrowphase::collide_box_sphere</definition>
+        <argsstring>(const CollisionShape &amp;box, const Transform &amp;tb, const CollisionShape &amp;sphere, const Transform &amp;ts, std::vector&lt; ContactPoint &gt; &amp;contacts)</argsstring>
+        <name>collide_box_sphere</name>
+        <qualifiedname>novaphy::narrowphase::collide_box_sphere</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &amp;</type>
+          <declname>box</declname>
+          <defname>box_shape</defname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>tb</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &amp;</type>
+          <declname>sphere</declname>
+          <defname>sphere_shape</defname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>ts</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structnovaphy_1_1_contact_point" kindref="compound">ContactPoint</ref> &gt; &amp;</type>
+          <declname>contacts</declname>
+        </param>
+        <briefdescription>
+<para>Detect and generate contacts for oriented box-sphere intersection. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes contact(s) between an oriented box and a sphere.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">box</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Box collision shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of box parent body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">sphere</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sphere collision shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of sphere parent body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generated world-space contact points. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if shapes overlap.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">box_shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Box collision shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of the box body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">sphere_shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sphere collision shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of the sphere body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appended world-space contact manifold entries. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the shapes overlap; otherwise <computeroutput>false</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/collision/narrowphase.cpp" line="103" column="6" bodyfile="src/collision/narrowphase.cpp" bodystart="103" bodyend="157" declfile="include/novaphy/collision/narrowphase.h" declline="48" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="narrowphase_8h_1ab13120065bd7426207d4a92fdce334b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool novaphy::narrowphase::collide_box_plane</definition>
+        <argsstring>(const CollisionShape &amp;box, const Transform &amp;tb, const CollisionShape &amp;plane, std::vector&lt; ContactPoint &gt; &amp;contacts)</argsstring>
+        <name>collide_box_plane</name>
+        <qualifiedname>novaphy::narrowphase::collide_box_plane</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &amp;</type>
+          <declname>box</declname>
+          <defname>box_shape</defname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>tb</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &amp;</type>
+          <declname>plane</declname>
+          <defname>plane_shape</defname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structnovaphy_1_1_contact_point" kindref="compound">ContactPoint</ref> &gt; &amp;</type>
+          <declname>contacts</declname>
+        </param>
+        <briefdescription>
+<para>Detect and generate contacts for oriented box-plane intersection. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes contact(s) between an oriented box and an infinite plane.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">box</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Box collision shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of box parent body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">plane</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Infinite plane shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generated world-space contact points. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the box intersects the plane.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">box_shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Box collision shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of the box body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">plane_shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Plane collision shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appended world-space contact manifold entries. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> when at least one box corner lies behind the plane. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/collision/narrowphase.cpp" line="168" column="6" bodyfile="src/collision/narrowphase.cpp" bodystart="168" bodyend="203" declfile="include/novaphy/collision/narrowphase.h" declline="61" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="narrowphase_8h_1ad3f37e6704d55af35256367212fc01d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool novaphy::narrowphase::collide_box_box</definition>
+        <argsstring>(const CollisionShape &amp;a, const Transform &amp;ta, const CollisionShape &amp;b, const Transform &amp;tb, std::vector&lt; ContactPoint &gt; &amp;contacts)</argsstring>
+        <name>collide_box_box</name>
+        <qualifiedname>novaphy::narrowphase::collide_box_box</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>ta</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>tb</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structnovaphy_1_1_contact_point" kindref="compound">ContactPoint</ref> &gt; &amp;</type>
+          <declname>contacts</declname>
+        </param>
+        <briefdescription>
+<para>Detect and generate contacts for oriented box-box intersection. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes contact(s) between two oriented boxes using SAT.</para>
+<para>Uses a Separating Axis Theorem (SAT) test and then builds a contact manifold for impulse-based solving.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First box shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of first box parent body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second box shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of second box parent body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generated world-space contact manifold points. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if boxes overlap.</para>
+</simplesect>
+Tests 15 separating axes (face normals and edge cross products), then generates a compact face or edge contact set. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Box shape A. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of body A. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Box shape B. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of body B. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appended world-space contact manifold entries. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if overlap is detected; otherwise <computeroutput>false</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/collision/narrowphase.cpp" line="218" column="6" bodyfile="src/collision/narrowphase.cpp" bodystart="218" bodyend="379" declfile="include/novaphy/collision/narrowphase.h" declline="78" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/novaphy/collision/narrowphase.h" line="9" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,9 +1,22 @@
+/**
+ * @file articulated_solver.cpp
+ * @brief Time stepping for articulated systems using Featherstone dynamics.
+ */
 #include "novaphy/dynamics/articulated_solver.h"
 
 #include <cmath>
 
 namespace novaphy {
 
+/**
+ * @brief Advances articulated generalized state by one fixed time step.
+ * @param[in] model Articulation model and joint topology.
+ * @param[in,out] q Generalized positions (including quaternion states).
+ * @param[in,out] qd Generalized velocities.
+ * @param[in] tau Applied generalized efforts.
+ * @param[in] gravity World gravity acceleration (m/s^2).
+ * @param[in] dt Time step in seconds.
+ */
 void ArticulatedSolver::step(const Articulation& model,
                               VecXf& q,
                               VecXf& qd,
@@ -97,6 +110,11 @@ void ArticulatedSolver::step(const Articulation& model,
     qd *= 0.999f;
 }
 
+/**
+ * @brief Renormalizes quaternion state blocks in generalized positions.
+ * @param[in] model Articulation model and joint topology.
+ * @param[in,out] q Generalized positions containing quaternion entries.
+ */
 void ArticulatedSolver::normalize_quaternions(const Articulation& model, VecXf& q) {
     for (int i = 0; i < model.num_links(); ++i) {
         const auto& joint = model.joints[i];

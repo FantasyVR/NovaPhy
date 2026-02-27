@@ -1,0 +1,504 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="namespacenovaphy_1_1featherstone" kind="namespace" language="C++">
+    <compoundname>novaphy::featherstone</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacenovaphy_1_1featherstone_1a81fede8c2599e86900042c6e37323256" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::featherstone::forward_kinematics</definition>
+        <argsstring>(const Articulation &amp;model, const VecXf &amp;q, std::vector&lt; SpatialTransform &gt; &amp;X_J, std::vector&lt; SpatialTransform &gt; &amp;X_up, std::vector&lt; Transform &gt; &amp;X_world)</argsstring>
+        <name>forward_kinematics</name>
+        <qualifiedname>novaphy::featherstone::forward_kinematics</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type>const VecXf &amp;</type>
+          <declname>q</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structnovaphy_1_1_spatial_transform" kindref="compound">SpatialTransform</ref> &gt; &amp;</type>
+          <declname>X_J</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structnovaphy_1_1_spatial_transform" kindref="compound">SpatialTransform</ref> &gt; &amp;</type>
+          <declname>X_up</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &gt; &amp;</type>
+          <declname>X_world</declname>
+        </param>
+        <briefdescription>
+<para>Compute per-link poses from generalized positions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes articulated link transforms from generalized positions.</para>
+<para>Performs a kinematic traversal from root to leaves to assemble: joint transforms, parent-relative transforms, and world transforms for each link in the articulation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> graph and joint definitions. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized position vector, length = model.total_q(). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">X_J</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Joint-motion transforms, one per link. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">X_up</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parent-to-child spatial transforms, one per link. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">X_world</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>World-frame rigid transforms (position + quaternion), one per link. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+<simplesect kind="note"><para>Output transforms are expressed in world coordinates for rendering and downstream dynamics calls. </para>
+</simplesect>
+<simplesect kind="warning"><para>Input dimensions must match model topology.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> model containing joint tree topology. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized coordinates. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">X_J</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Per-link joint transforms. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">X_up</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Per-link parent transforms in spatial form. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">X_world</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Per-link world transforms for visualization/queries. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dynamics/featherstone.cpp" line="21" column="6" bodyfile="src/dynamics/featherstone.cpp" bodystart="21" bodyend="67" declfile="include/novaphy/dynamics/featherstone.h" declline="41" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacenovaphy_1_1featherstone_1a1304eda4890f645ebdd6e78c6aedbfcd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VecXf</type>
+        <definition>VecXf novaphy::featherstone::inverse_dynamics</definition>
+        <argsstring>(const Articulation &amp;model, const VecXf &amp;q, const VecXf &amp;qd, const VecXf &amp;qdd, const Vec3f &amp;gravity, const std::vector&lt; SpatialVector &gt; &amp;f_ext={})</argsstring>
+        <name>inverse_dynamics</name>
+        <qualifiedname>novaphy::featherstone::inverse_dynamics</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type>const VecXf &amp;</type>
+          <declname>q</declname>
+        </param>
+        <param>
+          <type>const VecXf &amp;</type>
+          <declname>qd</declname>
+        </param>
+        <param>
+          <type>const VecXf &amp;</type>
+          <declname>qdd</declname>
+        </param>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>gravity</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; SpatialVector &gt; &amp;</type>
+          <declname>f_ext</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Compute generalized forces using RNEA (inverse dynamics). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes inverse dynamics using recursive Newton-Euler passes.</para>
+<para>Recursive Newton-Euler Algorithm evaluates the joint efforts required to realize a prescribed motion state (q, qd, qdd), optionally including external link forces.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> graph and inertial properties. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized positions. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">qd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized velocities. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">qdd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized accelerations. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">gravity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Gravity vector in world frame (m/s^2). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">f_ext</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional external spatial forces per link in link-local frame (N, N*m). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Generalized force vector tau (joint torques/forces in SI units).</para>
+</simplesect>
+<simplesect kind="note"><para>Time complexity is O(n) for n links. </para>
+</simplesect>
+<simplesect kind="warning"><para>If provided, f_ext must contain one entry per link.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> model. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized coordinates. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">qd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized velocities. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">qdd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized accelerations. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">gravity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> gravity vector in m/s^2. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">f_ext</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional external spatial forces per link. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structnovaphy_1_1_joint" kindref="compound">Joint</ref> generalized forces/torques in SI units. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dynamics/featherstone.cpp" line="79" column="7" bodyfile="src/dynamics/featherstone.cpp" bodystart="79" bodyend="170" declfile="include/novaphy/dynamics/featherstone.h" declline="65" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacenovaphy_1_1featherstone_1a010f7ded3d737a60216318841dc15914" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>MatXf</type>
+        <definition>MatXf novaphy::featherstone::mass_matrix</definition>
+        <argsstring>(const Articulation &amp;model, const VecXf &amp;q)</argsstring>
+        <name>mass_matrix</name>
+        <qualifiedname>novaphy::featherstone::mass_matrix</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type>const VecXf &amp;</type>
+          <declname>q</declname>
+        </param>
+        <briefdescription>
+<para>Assemble the joint-space inertia matrix using CRBA. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the articulated mass matrix using CRBA.</para>
+<para>Composite Rigid Body Algorithm computes H(q), the configuration- dependent mass matrix used in forward dynamics and model-based control.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> graph and inertial properties. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized positions. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Joint-space inertia matrix H(q), size nv x nv, symmetric positive definite.</para>
+</simplesect>
+<simplesect kind="note"><para>Typical complexity is O(n^2) for tree articulations.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> model. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized coordinates. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Symmetric positive-definite mass matrix <computeroutput>H(q)</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dynamics/featherstone.cpp" line="178" column="7" bodyfile="src/dynamics/featherstone.cpp" bodystart="178" bodyend="257" declfile="include/novaphy/dynamics/featherstone.h" declline="84" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacenovaphy_1_1featherstone_1a0fbb3f2e208778bfe14a97c6aeadf858" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VecXf</type>
+        <definition>VecXf novaphy::featherstone::forward_dynamics</definition>
+        <argsstring>(const Articulation &amp;model, const VecXf &amp;q, const VecXf &amp;qd, const VecXf &amp;tau, const Vec3f &amp;gravity, const std::vector&lt; SpatialVector &gt; &amp;f_ext={})</argsstring>
+        <name>forward_dynamics</name>
+        <qualifiedname>novaphy::featherstone::forward_dynamics</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type>const VecXf &amp;</type>
+          <declname>q</declname>
+        </param>
+        <param>
+          <type>const VecXf &amp;</type>
+          <declname>qd</declname>
+        </param>
+        <param>
+          <type>const VecXf &amp;</type>
+          <declname>tau</declname>
+        </param>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>gravity</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; SpatialVector &gt; &amp;</type>
+          <declname>f_ext</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Compute generalized accelerations from applied efforts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Solves forward dynamics <computeroutput>qdd = H^{-1}(tau - C)</computeroutput>.</para>
+<para>Solves qdd = H(q)^-1 * (tau - C(q, qd)), where C is obtained from inverse dynamics with zero acceleration.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> graph and inertial properties. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized positions. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">qd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized velocities. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tau</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Applied joint efforts (torques/forces). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">gravity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Gravity vector in world frame (m/s^2). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">f_ext</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional external spatial forces per link in link-local frame (N, N*m). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Generalized acceleration vector qdd.</para>
+</simplesect>
+<simplesect kind="note"><para>This API is commonly used for simulation stepping and inverse-control validation.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> model. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized coordinates. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">qd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized velocities. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tau</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Applied generalized forces. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">gravity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> gravity vector in m/s^2. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">f_ext</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional external spatial forces per link. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Generalized accelerations. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dynamics/featherstone.cpp" line="269" column="7" bodyfile="src/dynamics/featherstone.cpp" bodystart="269" bodyend="290" declfile="include/novaphy/dynamics/featherstone.h" declline="104" declcolumn="7"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Featherstone-family rigid-body dynamics algorithms. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This namespace provides forward kinematics, inverse dynamics (RNEA), mass-matrix assembly (CRBA), and forward dynamics for a single tree-structured articulation.</para>
+<para>Spatial-vector convention is [angular; linear], and computations follow standard rigid-body dynamics in SI units (m, kg, s, N, rad). </para>
+    </detaileddescription>
+    <location file="include/novaphy/dynamics/featherstone.h" line="21" column="1"/>
+  </compounddef>
+</doxygen>

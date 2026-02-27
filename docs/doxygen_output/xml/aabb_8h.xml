@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="aabb_8h" kind="file" language="C++">
+    <compoundname>aabb.h</compoundname>
+    <includes refid="math__types_8h" local="yes">novaphy/math/math_types.h</includes>
+    <includedby refid="broadphase_8h" local="yes">include/novaphy/collision/broadphase.h</includedby>
+    <includedby refid="shape_8h" local="yes">include/novaphy/core/shape.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/novaphy/core/aabb.h</label>
+        <link refid="aabb_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>novaphy/math/math_types.h</label>
+        <link refid="math__types_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>novaphy/novaphy_types.h</label>
+        <link refid="novaphy__types_8h_source"/>
+      </node>
+      <node id="3">
+        <label>Eigen/Core</label>
+      </node>
+      <node id="4">
+        <label>Eigen/Geometry</label>
+      </node>
+      <node id="5">
+        <label>cmath</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/novaphy/collision/broadphase.h</label>
+        <link refid="broadphase_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>include/novaphy/collision/narrowphase.h</label>
+        <link refid="narrowphase_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/novaphy/core/aabb.h</label>
+        <link refid="aabb_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/novaphy/core/model.h</label>
+        <link refid="model_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>include/novaphy/core/model_builder.h</label>
+        <link refid="model__builder_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/novaphy/core/shape.h</label>
+        <link refid="shape_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/novaphy/sim/world.h</label>
+        <link refid="world_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/collision/broadphase.cpp</label>
+        <link refid="broadphase_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/collision/narrowphase.cpp</label>
+        <link refid="narrowphase_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/core/model_builder.cpp</label>
+        <link refid="model__builder_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/core/shape.cpp</label>
+        <link refid="shape_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/sim/world.cpp</label>
+        <link refid="world_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structnovaphy_1_1_a_a_b_b" prot="public">novaphy::AABB</innerclass>
+    <innernamespace refid="namespacenovaphy">novaphy</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/math/math_types.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">novaphy<sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="structnovaphy_1_1_a_a_b_b" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kindref="member">AABB</ref><sp/>{</highlight></codeline>
+<codeline lineno="14" refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Vec3f<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref><sp/>=<sp/>Vec3f::Constant(std::numeric_limits&lt;float&gt;::max());<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="15" refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Vec3f<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref><sp/>=<sp/>Vec3f::Constant(-std::numeric_limits&lt;float&gt;::max());<sp/><sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kindref="member">AABB</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="structnovaphy_1_1_a_a_b_b_1ae7661ab1d95ead954cc52dd992882253" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ae7661ab1d95ead954cc52dd992882253" kindref="member">AABB</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>min_pt,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>max_pt)<sp/>:<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>(min_pt),<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref>(max_pt)<sp/>{}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="structnovaphy_1_1_a_a_b_b_1accfc234f39efcad30f23c5b9de4dbfaf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1accfc234f39efcad30f23c5b9de4dbfaf" kindref="member">overlaps</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kindref="member">AABB</ref>&amp;<sp/>other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>.x()<sp/>&lt;=<sp/>other.<ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref>.x()<sp/>&amp;&amp;<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref>.x()<sp/>&gt;=<sp/>other.<ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>.x())<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>.y()<sp/>&lt;=<sp/>other.<ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref>.y()<sp/>&amp;&amp;<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref>.y()<sp/>&gt;=<sp/>other.<ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>.y())<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>.z()<sp/>&lt;=<sp/>other.<ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref>.z()<sp/>&amp;&amp;<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref>.z()<sp/>&gt;=<sp/>other.<ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>.z());</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="structnovaphy_1_1_a_a_b_b_1a7474c2e43989ea97076e01a9c3c76257" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a7474c2e43989ea97076e01a9c3c76257" kindref="member">expand</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>point)<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref><sp/>=<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>.cwiseMin(point);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref><sp/>=<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref>.cwiseMax(point);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="structnovaphy_1_1_a_a_b_b_1ad3c3dbd7954bf413feab8ba46f0c9d0d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kindref="member">AABB</ref><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ad3c3dbd7954bf413feab8ba46f0c9d0d" kindref="member">merged</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kindref="member">AABB</ref>&amp;<sp/>other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kindref="member">AABB</ref>(<ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>.cwiseMin(other.<ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>),<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref>.cwiseMax(other.<ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref>));</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="structnovaphy_1_1_a_a_b_b_1a95e6d200decdf08db59039f054a9523d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kindref="member">AABB</ref><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a95e6d200decdf08db59039f054a9523d" kindref="member">expanded</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>margin)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3f<sp/>m(margin,<sp/>margin,<sp/>margin);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kindref="member">AABB</ref>(<ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref><sp/>-<sp/>m,<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref><sp/>+<sp/>m);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="structnovaphy_1_1_a_a_b_b_1a4486a81cfd4c4c030d44d9f0a7bd6990" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Vec3f<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a4486a81cfd4c4c030d44d9f0a7bd6990" kindref="member">center</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.5f<sp/>*<sp/>(<ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref><sp/>+<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="structnovaphy_1_1_a_a_b_b_1ae0c8ef5dbb247a51867960139200312d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Vec3f<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ae0c8ef5dbb247a51867960139200312d" kindref="member">half_extents</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.5f<sp/>*<sp/>(<ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref><sp/>-<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="structnovaphy_1_1_a_a_b_b_1ad34e0dfdcc907ddd666a13e1db67fe96" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ad34e0dfdcc907ddd666a13e1db67fe96" kindref="member">surface_area</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3f<sp/>d<sp/>=<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref><sp/>-<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2.0f<sp/>*<sp/>(d.x()<sp/>*<sp/>d.y()<sp/>+<sp/>d.y()<sp/>*<sp/>d.z()<sp/>+<sp/>d.z()<sp/>*<sp/>d.x());</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="structnovaphy_1_1_a_a_b_b_1a60315482eab383843646cc7b09ad9b8d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a60315482eab383843646cc7b09ad9b8d" kindref="member">is_valid</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>.x()<sp/>&lt;=<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref>.x()<sp/>&amp;&amp;<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>.y()<sp/>&lt;=<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref>.y()<sp/>&amp;&amp;<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kindref="member">min</ref>.z()<sp/>&lt;=<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kindref="member">max</ref>.z();</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="structnovaphy_1_1_a_a_b_b_1ac79dc6860d4a1a5e1ec25ac35fc609b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kindref="member">AABB</ref><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ac79dc6860d4a1a5e1ec25ac35fc609b5" kindref="member">from_center_half_extents</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a4486a81cfd4c4c030d44d9f0a7bd6990" kindref="member">center</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>half)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kindref="member">AABB</ref>(<ref refid="structnovaphy_1_1_a_a_b_b_1a4486a81cfd4c4c030d44d9f0a7bd6990" kindref="member">center</ref><sp/>-<sp/>half,<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a4486a81cfd4c4c030d44d9f0a7bd6990" kindref="member">center</ref><sp/>+<sp/>half);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="structnovaphy_1_1_a_a_b_b_1a2935ca38a9e622be4d5c760a22495e64" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kindref="member">AABB</ref><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a2935ca38a9e622be4d5c760a22495e64" kindref="member">from_sphere</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a4486a81cfd4c4c030d44d9f0a7bd6990" kindref="member">center</ref>,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius)<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3f<sp/>r(radius,<sp/>radius,<sp/>radius);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kindref="member">AABB</ref>(<ref refid="structnovaphy_1_1_a_a_b_b_1a4486a81cfd4c4c030d44d9f0a7bd6990" kindref="member">center</ref><sp/>-<sp/>r,<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a4486a81cfd4c4c030d44d9f0a7bd6990" kindref="member">center</ref><sp/>+<sp/>r);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="structnovaphy_1_1_a_a_b_b_1af9de425cc6721c6df8d67fc34c9a6c78" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kindref="member">AABB</ref><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1af9de425cc6721c6df8d67fc34c9a6c78" kindref="member">from_oriented_box</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ae0c8ef5dbb247a51867960139200312d" kindref="member">half_extents</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref>&amp;<sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kindref="member">AABB</ref><sp/>result;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Transform<sp/>each<sp/>of<sp/>the<sp/>8<sp/>corners</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>8;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vec3f<sp/>corner(</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(i<sp/>&amp;<sp/>1)<sp/>?<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ae0c8ef5dbb247a51867960139200312d" kindref="member">half_extents</ref>.x()<sp/>:<sp/>-<ref refid="structnovaphy_1_1_a_a_b_b_1ae0c8ef5dbb247a51867960139200312d" kindref="member">half_extents</ref>.x(),</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(i<sp/>&amp;<sp/>2)<sp/>?<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ae0c8ef5dbb247a51867960139200312d" kindref="member">half_extents</ref>.y()<sp/>:<sp/>-<ref refid="structnovaphy_1_1_a_a_b_b_1ae0c8ef5dbb247a51867960139200312d" kindref="member">half_extents</ref>.y(),</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(i<sp/>&amp;<sp/>4)<sp/>?<sp/><ref refid="structnovaphy_1_1_a_a_b_b_1ae0c8ef5dbb247a51867960139200312d" kindref="member">half_extents</ref>.z()<sp/>:<sp/>-<ref refid="structnovaphy_1_1_a_a_b_b_1ae0c8ef5dbb247a51867960139200312d" kindref="member">half_extents</ref>.z());</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.<ref refid="structnovaphy_1_1_a_a_b_b_1a7474c2e43989ea97076e01a9c3c76257" kindref="member">expand</ref>(t.<ref refid="structnovaphy_1_1_transform_1ab65d8c0cfd3a5c72e1d928e3da4b7573" kindref="member">transform_point</ref>(corner));</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>novaphy</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/novaphy/core/aabb.h"/>
+  </compounddef>
+</doxygen>

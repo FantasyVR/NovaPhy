@@ -1,0 +1,161 @@
+\doxysection{novaphy::\+Articulation Struct Reference}
+\hypertarget{structnovaphy_1_1_articulation}{}\label{structnovaphy_1_1_articulation}\index{novaphy::Articulation@{novaphy::Articulation}}
+
+
+Tree-\/structured articulated rigid-\/body model.  
+
+
+
+
+{\ttfamily \+\#include $<$articulation.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a16cc3fc42eb467cb051f45ee391aa563}{num\+\_\+links}} () const
+\begin{DoxyCompactList}\small\item\em Get total number of links. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_articulation_aba76faf294110cbda6a25713861aae88}{total\+\_\+q}} () const
+\begin{DoxyCompactList}\small\item\em Get total generalized-\/position dimension. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_articulation_af2f575cc176a957d338348fb5d136037}{total\+\_\+qd}} () const
+\begin{DoxyCompactList}\small\item\em Get total generalized-\/velocity dimension. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_articulation_ab8a15318d11e2a2252b08d8907f44135}{q\+\_\+start}} (int link) const
+\begin{DoxyCompactList}\small\item\em Compute position-\/block start index for a link. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a4a8ee23fc680e861bc068e9f76da167e}{qd\+\_\+start}} (int link) const
+\begin{DoxyCompactList}\small\item\em Compute velocity-\/block start index for a link. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{structnovaphy_1_1_articulation_aed6ed61a2e7eaefb58d164f413ce18e5}{build\+\_\+spatial\+\_\+inertias}} ()
+\begin{DoxyCompactList}\small\item\em Build per-\/link spatial inertia matrices from rigid-\/body properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_joint}{Joint}} $>$ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a1dfd24ed8cb0dabceddb7bc42f658b40}{joints}}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{Rigid\+Body}} $>$ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a8ef51f9f8da3a9c48cbf90948af07e7d}{bodies}}
+\item 
+std::\+vector$<$ Spatial\+Matrix $>$ \doxymbox{\hyperlink{structnovaphy_1_1_articulation_a59d91bc72cc6137a9895b23b03b50705}{I\+\_\+body}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Tree-\/structured articulated rigid-\/body model. 
+
+Stores per-\/link joint definitions and inertial properties for use by Featherstone algorithms. Link order must satisfy parent-\/before-\/child. 
+
+\label{doc-func-members}
+\Hypertarget{structnovaphy_1_1_articulation_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structnovaphy_1_1_articulation_aed6ed61a2e7eaefb58d164f413ce18e5}\index{novaphy::Articulation@{novaphy::Articulation}!build\_spatial\_inertias@{build\_spatial\_inertias}}
+\index{build\_spatial\_inertias@{build\_spatial\_inertias}!novaphy::Articulation@{novaphy::Articulation}}
+\doxysubsubsection{\texorpdfstring{build\_spatial\_inertias()}{build\_spatial\_inertias()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_articulation_aed6ed61a2e7eaefb58d164f413ce18e5} 
+void novaphy::\+\+Articulation::\+build\+\_\+spatial\+\_\+inertias (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Build per-\/link spatial inertia matrices from rigid-\/body properties. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_articulation_a16cc3fc42eb467cb051f45ee391aa563}\index{novaphy::Articulation@{novaphy::Articulation}!num\_links@{num\_links}}
+\index{num\_links@{num\_links}!novaphy::Articulation@{novaphy::Articulation}}
+\doxysubsubsection{\texorpdfstring{num\_links()}{num\_links()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_articulation_a16cc3fc42eb467cb051f45ee391aa563} 
+int novaphy::\+\+Articulation::\+num\+\_\+links (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get total number of links. 
+
+\begin{DoxyReturn}{Returns}
+Number of articulation links. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_articulation_ab8a15318d11e2a2252b08d8907f44135}\index{novaphy::Articulation@{novaphy::Articulation}!q\_start@{q\_start}}
+\index{q\_start@{q\_start}!novaphy::Articulation@{novaphy::Articulation}}
+\doxysubsubsection{\texorpdfstring{q\_start()}{q\_start()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_articulation_ab8a15318d11e2a2252b08d8907f44135} 
+int novaphy::\+\+Articulation::\+q\+\_\+start (\begin{DoxyParamCaption}\item[{int}]{link}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute position-\/block start index for a link. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em link} & Link index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Start offset in global generalized-\/position vector q. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_articulation_a4a8ee23fc680e861bc068e9f76da167e}\index{novaphy::Articulation@{novaphy::Articulation}!qd\_start@{qd\_start}}
+\index{qd\_start@{qd\_start}!novaphy::Articulation@{novaphy::Articulation}}
+\doxysubsubsection{\texorpdfstring{qd\_start()}{qd\_start()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_articulation_a4a8ee23fc680e861bc068e9f76da167e} 
+int novaphy::\+\+Articulation::\+qd\+\_\+start (\begin{DoxyParamCaption}\item[{int}]{link}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute velocity-\/block start index for a link. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em link} & Link index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Start offset in global generalized-\/velocity vector qd. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_articulation_aba76faf294110cbda6a25713861aae88}\index{novaphy::Articulation@{novaphy::Articulation}!total\_q@{total\_q}}
+\index{total\_q@{total\_q}!novaphy::Articulation@{novaphy::Articulation}}
+\doxysubsubsection{\texorpdfstring{total\_q()}{total\_q()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_articulation_aba76faf294110cbda6a25713861aae88} 
+int novaphy::\+\+Articulation::\+total\+\_\+q (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get total generalized-\/position dimension. 
+
+\begin{DoxyReturn}{Returns}
+Sum of {\ttfamily num\+\_\+q()} over all joints. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_articulation_af2f575cc176a957d338348fb5d136037}\index{novaphy::Articulation@{novaphy::Articulation}!total\_qd@{total\_qd}}
+\index{total\_qd@{total\_qd}!novaphy::Articulation@{novaphy::Articulation}}
+\doxysubsubsection{\texorpdfstring{total\_qd()}{total\_qd()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_articulation_af2f575cc176a957d338348fb5d136037} 
+int novaphy::\+\+Articulation::\+total\+\_\+qd (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get total generalized-\/velocity dimension. 
+
+\begin{DoxyReturn}{Returns}
+Sum of {\ttfamily num\+\_\+qd()} over all joints. 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{structnovaphy_1_1_articulation_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structnovaphy_1_1_articulation_a8ef51f9f8da3a9c48cbf90948af07e7d}\index{novaphy::Articulation@{novaphy::Articulation}!bodies@{bodies}}
+\index{bodies@{bodies}!novaphy::Articulation@{novaphy::Articulation}}
+\doxysubsubsection{\texorpdfstring{bodies}{bodies}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_articulation_a8ef51f9f8da3a9c48cbf90948af07e7d} 
+std::\+vector$<$\doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{Rigid\+Body}}$>$ novaphy::\+\+Articulation::\+bodies}
+
+Rigid-\/body inertial properties per link. \Hypertarget{structnovaphy_1_1_articulation_a59d91bc72cc6137a9895b23b03b50705}\index{novaphy::Articulation@{novaphy::Articulation}!I\_body@{I\_body}}
+\index{I\_body@{I\_body}!novaphy::Articulation@{novaphy::Articulation}}
+\doxysubsubsection{\texorpdfstring{I\_body}{I\_body}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_articulation_a59d91bc72cc6137a9895b23b03b50705} 
+std::\+vector$<$Spatial\+Matrix$>$ novaphy::\+\+Articulation::\+\+I\+\_\+body}
+
+Spatial inertia matrix per link in body frame. \Hypertarget{structnovaphy_1_1_articulation_a1dfd24ed8cb0dabceddb7bc42f658b40}\index{novaphy::Articulation@{novaphy::Articulation}!joints@{joints}}
+\index{joints@{joints}!novaphy::Articulation@{novaphy::Articulation}}
+\doxysubsubsection{\texorpdfstring{joints}{joints}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_articulation_a1dfd24ed8cb0dabceddb7bc42f658b40} 
+std::\+vector$<$\doxymbox{\hyperlink{structnovaphy_1_1_joint}{Joint}}$>$ novaphy::\+\+Articulation::\+joints}
+
+\doxylink{structnovaphy_1_1_joint}{Joint} list; joint\+[i]\+ connects link i to parent. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+core/\+articulation.\+h\end{DoxyCompactItemize}

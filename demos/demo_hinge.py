@@ -20,6 +20,18 @@ from novaphy.viz import make_box_mesh, quat_to_rotation_matrix
 
 
 def build_hinge_door(width=1.5, height=2.0, thickness=0.08, mass=5.0):
+    """Builds a single-link revolute articulation representing a door.
+
+    Args:
+        width (float): Door width in meters.
+        height (float): Door height in meters.
+        thickness (float): Door thickness in meters.
+        mass (float): Door mass in kilograms.
+
+    Returns:
+        tuple[novaphy.Articulation, tuple[float, float, float]]: Articulation
+        model and `(width, height, thickness)` dimensions.
+    """
     art = novaphy.Articulation()
 
     # Revolute joint about Y axis (vertical hinge)
@@ -48,6 +60,14 @@ def build_hinge_door(width=1.5, height=2.0, thickness=0.08, mass=5.0):
 
 
 def run_headless(steps=600):
+    """Runs the hinge demo without visualization and logs angle samples.
+
+    Args:
+        steps (int): Number of simulation steps.
+
+    Returns:
+        None
+    """
     art, dims = build_hinge_door()
     q = np.array([np.pi / 6], dtype=np.float32)  # start slightly open
     qd = np.array([2.0], dtype=np.float32)        # initial angular velocity
@@ -64,6 +84,11 @@ def run_headless(steps=600):
 
 
 def run_visual():
+    """Runs the interactive Polyscope hinge-door visualization.
+
+    Returns:
+        None
+    """
     if not HAS_POLYSCOPE:
         run_headless()
         return

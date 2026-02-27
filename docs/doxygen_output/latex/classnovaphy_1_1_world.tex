@@ -1,0 +1,259 @@
+\doxysection{novaphy::\+World Class Reference}
+\hypertarget{classnovaphy_1_1_world}{}\label{classnovaphy_1_1_world}\index{novaphy::World@{novaphy::World}}
+
+
+High-\/level free-\/rigid-\/body simulation container.  
+
+
+
+
+{\ttfamily \+\#include $<$world.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classnovaphy_1_1_world_af7b041fe333923310dbcb9f27d11292e}{World}} (const \doxymbox{\hyperlink{structnovaphy_1_1_model}{Model}} \&\doxymbox{\hyperlink{classnovaphy_1_1_world_af6f1a10e8ff40a7c661e3f3954bf9eb9}{model}}, \doxymbox{\hyperlink{structnovaphy_1_1_solver_settings}{Solver\+Settings}} \doxymbox{\hyperlink{classnovaphy_1_1_world_aebdf447ce8d58807338d1ce78e4b154e}{solver\+\_\+settings}}=\{\})
+\begin{DoxyCompactList}\small\item\em Construct a simulation world from an immutable model. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classnovaphy_1_1_world_abc197156cc4e9344e6a90f2df07c577d}{step}} (float dt)
+\begin{DoxyCompactList}\small\item\em Advance the simulation by one time step. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classnovaphy_1_1_world_a8b2d23b579252bd278d741b51cce54d6}{set\+\_\+gravity}} (const Vec3f \&g)
+\begin{DoxyCompactList}\small\item\em Set the world gravity vector. \end{DoxyCompactList}\item 
+const Vec3f \& \doxymbox{\hyperlink{classnovaphy_1_1_world_a71408e92a6d0fceada751d0ab1087cda}{gravity}} () const
+\begin{DoxyCompactList}\small\item\em Get the current world gravity vector. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_sim_state}{Sim\+State}} \& \doxymbox{\hyperlink{classnovaphy_1_1_world_a59d5373069aa3bd499bf0d99079fd2de}{state}} ()
+\begin{DoxyCompactList}\small\item\em Mutable access to simulation state buffers. \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{structnovaphy_1_1_sim_state}{Sim\+State}} \& \doxymbox{\hyperlink{classnovaphy_1_1_world_a1197eb4ca0e8043a554970a1fde2e515}{state}} () const
+\begin{DoxyCompactList}\small\item\em Read-\/only access to simulation state buffers. \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{structnovaphy_1_1_model}{Model}} \& \doxymbox{\hyperlink{classnovaphy_1_1_world_af6f1a10e8ff40a7c661e3f3954bf9eb9}{model}} () const
+\begin{DoxyCompactList}\small\item\em Access the immutable model definition. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_solver_settings}{Solver\+Settings}} \& \doxymbox{\hyperlink{classnovaphy_1_1_world_aebdf447ce8d58807338d1ce78e4b154e}{solver\+\_\+settings}} ()
+\begin{DoxyCompactList}\small\item\em Mutable access to contact-\/solver settings. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \& \doxymbox{\hyperlink{classnovaphy_1_1_world_a7adebe1cec37f0a47e25a57423c4c82f}{contacts}} () const
+\begin{DoxyCompactList}\small\item\em Contact points generated in the most recent {\ttfamily \doxylink{classnovaphy_1_1_world_abc197156cc4e9344e6a90f2df07c577d}{step()}}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classnovaphy_1_1_world_abcbb90e077101d600671a65e0b89e675}{apply\+\_\+force}} (int body\+\_\+index, const Vec3f \&force)
+\begin{DoxyCompactList}\small\item\em Accumulate an external force for the next integration step. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classnovaphy_1_1_world_ae3ae5e79bcd64dfc6104a438a332272e}{apply\+\_\+torque}} (int body\+\_\+index, const Vec3f \&torque)
+\begin{DoxyCompactList}\small\item\em Accumulate an external torque for the next integration step. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+High-\/level free-\/rigid-\/body simulation container. 
+
+Owns model topology, mutable simulation state, broadphase collision detector, and contact solver. {\ttfamily \doxylink{classnovaphy_1_1_world_abc197156cc4e9344e6a90f2df07c577d}{step()}} advances one fixed-\/size time step in SI units using gravity, collision detection, and impulse-\/based resolution. 
+
+\label{doc-constructors}
+\Hypertarget{classnovaphy_1_1_world_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classnovaphy_1_1_world_af7b041fe333923310dbcb9f27d11292e}\index{novaphy::World@{novaphy::World}!World@{World}}
+\index{World@{World}!novaphy::World@{novaphy::World}}
+\doxysubsubsection{\texorpdfstring{World()}{World()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_world_af7b041fe333923310dbcb9f27d11292e} 
+novaphy::\+\+World::\+\+World (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_model}{Model}} \&}]{model}{, }\item[{\doxymbox{\hyperlink{structnovaphy_1_1_solver_settings}{Solver\+Settings}}}]{solver\+\_\+settings}{ = {\ttfamily \{\}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct a simulation world from an immutable model. 
+
+Constructs a simulation world from an immutable model.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em \doxylink{classnovaphy_1_1_world_af6f1a10e8ff40a7c661e3f3954bf9eb9}{model}} & Immutable body/\+shape model definition. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em \doxylink{classnovaphy_1_1_world_aebdf447ce8d58807338d1ce78e4b154e}{solver\+\_\+settings}} & Contact-\/solver tuning parameters.\\
+\hline
+\doxymbox{\texttt{in}}  & {\em \doxylink{classnovaphy_1_1_world_af6f1a10e8ff40a7c661e3f3954bf9eb9}{model}} & Rigid-\/body and collision-\/shape model definition. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em \doxylink{classnovaphy_1_1_world_aebdf447ce8d58807338d1ce78e4b154e}{solver\+\_\+settings}} & Contact solver tuning parameters. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classnovaphy_1_1_world_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classnovaphy_1_1_world_abcbb90e077101d600671a65e0b89e675}\index{novaphy::World@{novaphy::World}!apply\_force@{apply\_force}}
+\index{apply\_force@{apply\_force}!novaphy::World@{novaphy::World}}
+\doxysubsubsection{\texorpdfstring{apply\_force()}{apply\_force()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_world_abcbb90e077101d600671a65e0b89e675} 
+void novaphy::\+\+World::\+apply\+\_\+force (\begin{DoxyParamCaption}\item[{int}]{body\+\_\+index}{, }\item[{const Vec3f \&}]{force}{}\end{DoxyParamCaption})}
+
+
+
+Accumulate an external force for the next integration step. 
+
+Applies an external force to a body for the next step.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em body\+\_\+index} & Body index. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em force} & Force in world frame (N). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em body\+\_\+index} & Body index in model order. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em force} & Force vector in world frame (N). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classnovaphy_1_1_world_ae3ae5e79bcd64dfc6104a438a332272e}\index{novaphy::World@{novaphy::World}!apply\_torque@{apply\_torque}}
+\index{apply\_torque@{apply\_torque}!novaphy::World@{novaphy::World}}
+\doxysubsubsection{\texorpdfstring{apply\_torque()}{apply\_torque()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_world_ae3ae5e79bcd64dfc6104a438a332272e} 
+void novaphy::\+\+World::\+apply\+\_\+torque (\begin{DoxyParamCaption}\item[{int}]{body\+\_\+index}{, }\item[{const Vec3f \&}]{torque}{}\end{DoxyParamCaption})}
+
+
+
+Accumulate an external torque for the next integration step. 
+
+Applies an external torque to a body for the next step.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em body\+\_\+index} & Body index. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em torque} & Torque in world frame (N\texorpdfstring{$\ast$}{*}m). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em body\+\_\+index} & Body index in model order. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em torque} & Torque vector in world frame (N\texorpdfstring{$\ast$}{*}m). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classnovaphy_1_1_world_a7adebe1cec37f0a47e25a57423c4c82f}\index{novaphy::World@{novaphy::World}!contacts@{contacts}}
+\index{contacts@{contacts}!novaphy::World@{novaphy::World}}
+\doxysubsubsection{\texorpdfstring{contacts()}{contacts()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_world_a7adebe1cec37f0a47e25a57423c4c82f} 
+const std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_contact_point}{Contact\+Point}} $>$ \& novaphy::\+\+World::\+contacts (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Contact points generated in the most recent {\ttfamily \doxylink{classnovaphy_1_1_world_abc197156cc4e9344e6a90f2df07c577d}{step()}}. 
+
+\begin{DoxyReturn}{Returns}
+Const reference to world-\/space contact list. 
+\end{DoxyReturn}
+\Hypertarget{classnovaphy_1_1_world_a71408e92a6d0fceada751d0ab1087cda}\index{novaphy::World@{novaphy::World}!gravity@{gravity}}
+\index{gravity@{gravity}!novaphy::World@{novaphy::World}}
+\doxysubsubsection{\texorpdfstring{gravity()}{gravity()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_world_a71408e92a6d0fceada751d0ab1087cda} 
+const Vec3f \& novaphy::\+\+World::\+gravity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the current world gravity vector. 
+
+\begin{DoxyReturn}{Returns}
+Gravity in world frame (m/\+s\texorpdfstring{$^\wedge$}{\string^}2). 
+\end{DoxyReturn}
+\Hypertarget{classnovaphy_1_1_world_af6f1a10e8ff40a7c661e3f3954bf9eb9}\index{novaphy::World@{novaphy::World}!model@{model}}
+\index{model@{model}!novaphy::World@{novaphy::World}}
+\doxysubsubsection{\texorpdfstring{model()}{model()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_world_af6f1a10e8ff40a7c661e3f3954bf9eb9} 
+const \doxymbox{\hyperlink{structnovaphy_1_1_model}{Model}} \& novaphy::\+\+World::\+model (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access the immutable model definition. 
+
+\begin{DoxyReturn}{Returns}
+Const reference to the model. 
+\end{DoxyReturn}
+\Hypertarget{classnovaphy_1_1_world_a8b2d23b579252bd278d741b51cce54d6}\index{novaphy::World@{novaphy::World}!set\_gravity@{set\_gravity}}
+\index{set\_gravity@{set\_gravity}!novaphy::World@{novaphy::World}}
+\doxysubsubsection{\texorpdfstring{set\_gravity()}{set\_gravity()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_world_a8b2d23b579252bd278d741b51cce54d6} 
+void novaphy::\+\+World::\+set\+\_\+gravity (\begin{DoxyParamCaption}\item[{const Vec3f \&}]{g}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the world gravity vector. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em g} & Gravity in world frame (m/\+s\texorpdfstring{$^\wedge$}{\string^}2). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classnovaphy_1_1_world_aebdf447ce8d58807338d1ce78e4b154e}\index{novaphy::World@{novaphy::World}!solver\_settings@{solver\_settings}}
+\index{solver\_settings@{solver\_settings}!novaphy::World@{novaphy::World}}
+\doxysubsubsection{\texorpdfstring{solver\_settings()}{solver\_settings()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_world_aebdf447ce8d58807338d1ce78e4b154e} 
+\doxymbox{\hyperlink{structnovaphy_1_1_solver_settings}{Solver\+Settings}} \& novaphy::\+\+World::\+solver\+\_\+settings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mutable access to contact-\/solver settings. 
+
+\begin{DoxyReturn}{Returns}
+Reference to solver settings. 
+\end{DoxyReturn}
+\Hypertarget{classnovaphy_1_1_world_a59d5373069aa3bd499bf0d99079fd2de}\index{novaphy::World@{novaphy::World}!state@{state}}
+\index{state@{state}!novaphy::World@{novaphy::World}}
+\doxysubsubsection{\texorpdfstring{state()}{state()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_world_a59d5373069aa3bd499bf0d99079fd2de} 
+\doxymbox{\hyperlink{structnovaphy_1_1_sim_state}{Sim\+State}} \& novaphy::\+\+World::\+state (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mutable access to simulation state buffers. 
+
+\begin{DoxyReturn}{Returns}
+Reference to \doxylink{structnovaphy_1_1_sim_state}{Sim\+State}. 
+\end{DoxyReturn}
+\Hypertarget{classnovaphy_1_1_world_a1197eb4ca0e8043a554970a1fde2e515}\index{novaphy::World@{novaphy::World}!state@{state}}
+\index{state@{state}!novaphy::World@{novaphy::World}}
+\doxysubsubsection{\texorpdfstring{state()}{state()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_world_a1197eb4ca0e8043a554970a1fde2e515} 
+const \doxymbox{\hyperlink{structnovaphy_1_1_sim_state}{Sim\+State}} \& novaphy::\+\+World::\+state (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Read-\/only access to simulation state buffers. 
+
+\begin{DoxyReturn}{Returns}
+Const reference to \doxylink{structnovaphy_1_1_sim_state}{Sim\+State}. 
+\end{DoxyReturn}
+\Hypertarget{classnovaphy_1_1_world_abc197156cc4e9344e6a90f2df07c577d}\index{novaphy::World@{novaphy::World}!step@{step}}
+\index{step@{step}!novaphy::World@{novaphy::World}}
+\doxysubsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_world_abc197156cc4e9344e6a90f2df07c577d} 
+void novaphy::\+\+World::\+step (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})}
+
+
+
+Advance the simulation by one time step. 
+
+Advances the world by one fixed time step.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em dt} & Time step in seconds. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em dt} & Simulation step size in seconds. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+sim/\+world.\+h\item 
+src/\+sim/\+\doxymbox{\hyperlink{world_8cpp}{world.\+cpp}}\end{DoxyCompactItemize}

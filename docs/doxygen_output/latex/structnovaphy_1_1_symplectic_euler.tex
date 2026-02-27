@@ -1,0 +1,124 @@
+\doxysection{novaphy::\+Symplectic\+Euler Struct Reference}
+\hypertarget{structnovaphy_1_1_symplectic_euler}{}\label{structnovaphy_1_1_symplectic_euler}\index{novaphy::SymplecticEuler@{novaphy::SymplecticEuler}}
+
+
+Symplectic-\/\+Euler integrator for free rigid-\/body states.  
+
+
+
+
+{\ttfamily \+\#include $<$integrator.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{structnovaphy_1_1_symplectic_euler_a60fc2b758fa080e645631eb5bf75302a}{integrate\+\_\+velocity}} (Vec3f \&linear\+\_\+vel, Vec3f \&angular\+\_\+vel, const Vec3f \&force, const Vec3f \&torque, float inv\+\_\+mass, const Mat3f \&inv\+\_\+inertia, const Vec3f \&gravity, float dt)
+\begin{DoxyCompactList}\small\item\em Integrate linear and angular velocities for one time step. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{structnovaphy_1_1_symplectic_euler_a94d67c264ce2d5c1fb766777c679ff4a}{integrate\+\_\+position}} (\doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&transform, const Vec3f \&linear\+\_\+vel, const Vec3f \&angular\+\_\+vel, float dt)
+\begin{DoxyCompactList}\small\item\em Integrate pose from current velocities for one time step. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Symplectic-\/\+Euler integrator for free rigid-\/body states. 
+
+Uses semi-\/implicit integration:\+ velocities are updated first from forces, then positions/\+orientations are advanced using updated velocities. 
+
+\label{doc-func-members}
+\Hypertarget{structnovaphy_1_1_symplectic_euler_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structnovaphy_1_1_symplectic_euler_a94d67c264ce2d5c1fb766777c679ff4a}\index{novaphy::SymplecticEuler@{novaphy::SymplecticEuler}!integrate\_position@{integrate\_position}}
+\index{integrate\_position@{integrate\_position}!novaphy::SymplecticEuler@{novaphy::SymplecticEuler}}
+\doxysubsubsection{\texorpdfstring{integrate\_position()}{integrate\_position()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_symplectic_euler_a94d67c264ce2d5c1fb766777c679ff4a} 
+void novaphy::\+\+Symplectic\+Euler::\+integrate\+\_\+position (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{transform}{, }\item[{const Vec3f \&}]{linear\+\_\+vel}{, }\item[{const Vec3f \&}]{angular\+\_\+vel}{, }\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Integrate pose from current velocities for one time step. 
+
+Integrates position and orientation using updated velocities.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in,out}}  & {\em transform} & Body transform (position + quaternion). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em linear\+\_\+vel} & Linear velocity in world frame (m/\+s). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em angular\+\_\+vel} & Angular velocity in world frame (rad/\+s). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em dt} & Time step in seconds. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in,out}}  & {\em transform} & Pose in world frame. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em linear\+\_\+vel} & Linear velocity in world frame (m/\+s). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em angular\+\_\+vel} & Angular velocity in world frame (rad/\+s). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em dt} & Time step (s). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{structnovaphy_1_1_symplectic_euler_a60fc2b758fa080e645631eb5bf75302a}\index{novaphy::SymplecticEuler@{novaphy::SymplecticEuler}!integrate\_velocity@{integrate\_velocity}}
+\index{integrate\_velocity@{integrate\_velocity}!novaphy::SymplecticEuler@{novaphy::SymplecticEuler}}
+\doxysubsubsection{\texorpdfstring{integrate\_velocity()}{integrate\_velocity()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_symplectic_euler_a60fc2b758fa080e645631eb5bf75302a} 
+void novaphy::\+\+Symplectic\+Euler::\+integrate\+\_\+velocity (\begin{DoxyParamCaption}\item[{Vec3f \&}]{linear\+\_\+vel}{, }\item[{Vec3f \&}]{angular\+\_\+vel}{, }\item[{const Vec3f \&}]{force}{, }\item[{const Vec3f \&}]{torque}{, }\item[{float}]{inv\+\_\+mass}{, }\item[{const Mat3f \&}]{inv\+\_\+inertia}{, }\item[{const Vec3f \&}]{gravity}{, }\item[{float}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Integrate linear and angular velocities for one time step. 
+
+Integrates linear and angular velocity using symplectic Euler.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in,out}}  & {\em linear\+\_\+vel} & Linear velocity in world frame (m/\+s). \\
+\hline
+\doxymbox{\texttt{in,out}}  & {\em angular\+\_\+vel} & Angular velocity in world frame (rad/\+s). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em force} & External force at center of mass in world frame (N). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em torque} & External torque in world frame (N\texorpdfstring{$\ast$}{*}m). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em inv\+\_\+mass} & Inverse mass (kg\texorpdfstring{$^\wedge$}{\string^}-\/1). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em inv\+\_\+inertia} & Inverse inertia tensor. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em gravity} & Gravity vector in world frame (m/\+s\texorpdfstring{$^\wedge$}{\string^}2). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em dt} & Time step in seconds. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in,out}}  & {\em linear\+\_\+vel} & Linear velocity in world frame (m/\+s). \\
+\hline
+\doxymbox{\texttt{in,out}}  & {\em angular\+\_\+vel} & Angular velocity in world frame (rad/\+s). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em force} & Net external force in world frame (N). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em torque} & Net external torque in world frame (N\texorpdfstring{$\ast$}{*}m). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em inv\+\_\+mass} & Inverse mass ({\ttfamily 0} for static/\+infinite mass). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em inv\+\_\+inertia} & Inverse world-\/frame inertia tensor. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em gravity} & \doxylink{classnovaphy_1_1_world}{World} gravity acceleration (m/\+s\texorpdfstring{$^\wedge$}{\string^}2). \\
+\hline
+\doxymbox{\texttt{in}}  & {\em dt} & Time step (s). \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+dynamics/\+integrator.\+h\item 
+src/\+dynamics/\+\doxymbox{\hyperlink{integrator_8cpp}{integrator.\+cpp}}\end{DoxyCompactItemize}

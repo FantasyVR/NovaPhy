@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classnovaphy_1_1_articulated_solver" kind="class" language="C++" prot="public">
+    <compoundname>novaphy::ArticulatedSolver</compoundname>
+    <includes refid="articulated__solver_8h" local="no">articulated_solver.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classnovaphy_1_1_articulated_solver_1ab2e69a7aa58cc756383b64061338c6ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>novaphy::ArticulatedSolver::ArticulatedSolver</definition>
+        <argsstring>()=default</argsstring>
+        <name>ArticulatedSolver</name>
+        <qualifiedname>novaphy::ArticulatedSolver::ArticulatedSolver</qualifiedname>
+        <briefdescription>
+<para>Construct articulated solver with default settings. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/articulated_solver.h" line="19" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classnovaphy_1_1_articulated_solver_1ab71c6df4122ae716836e2eace7ca3f91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::ArticulatedSolver::step</definition>
+        <argsstring>(const Articulation &amp;model, VecXf &amp;q, VecXf &amp;qd, const VecXf &amp;tau, const Vec3f &amp;gravity, float dt)</argsstring>
+        <name>step</name>
+        <qualifiedname>novaphy::ArticulatedSolver::step</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type>VecXf &amp;</type>
+          <declname>q</declname>
+        </param>
+        <param>
+          <type>VecXf &amp;</type>
+          <declname>qd</declname>
+        </param>
+        <param>
+          <type>const VecXf &amp;</type>
+          <declname>tau</declname>
+        </param>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>gravity</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+<para>Advance articulated state by one time step. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Advances articulated generalized state by one fixed time step.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> model. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized positions, updated in place. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">qd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized velocities, updated in place. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tau</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Applied joint efforts (torques/forces). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">gravity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Gravity vector in world frame (m/s^2). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time step in seconds. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> model and joint topology. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized positions (including quaternion states). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">qd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized velocities. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tau</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Applied generalized efforts. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">gravity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> gravity acceleration (m/s^2). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time step in seconds. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/articulated_solver.h" line="32" column="10" bodyfile="src/dynamics/articulated_solver.cpp" bodystart="20" bodyend="111"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classnovaphy_1_1_articulated_solver_1af6f96eea6548a7f7cd1e27917c6d401f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::ArticulatedSolver::normalize_quaternions</definition>
+        <argsstring>(const Articulation &amp;model, VecXf &amp;q)</argsstring>
+        <name>normalize_quaternions</name>
+        <qualifiedname>novaphy::ArticulatedSolver::normalize_quaternions</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type>VecXf &amp;</type>
+          <declname>q</declname>
+        </param>
+        <briefdescription>
+<para>Normalize quaternion state blocks after integration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Renormalizes quaternion state blocks in generalized positions.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> model. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized position vector. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">model</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structnovaphy_1_1_articulation" kindref="compound">Articulation</ref> model and joint topology. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generalized positions containing quaternion entries. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/dynamics/articulated_solver.h" line="47" column="10" bodyfile="src/dynamics/articulated_solver.cpp" bodystart="118" bodyend="147"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Time-stepping solver for articulated-body dynamics. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Wraps Featherstone forward dynamics and advances generalized state using semi-implicit integration. Quaternion state components are normalized after integration for free/ball joints. </para>
+    </detaileddescription>
+    <location file="include/novaphy/dynamics/articulated_solver.h" line="16" column="1" bodyfile="include/novaphy/dynamics/articulated_solver.h" bodystart="16" bodyend="48"/>
+    <listofallmembers>
+      <member refid="classnovaphy_1_1_articulated_solver_1ab2e69a7aa58cc756383b64061338c6ea" prot="public" virt="non-virtual"><scope>novaphy::ArticulatedSolver</scope><name>ArticulatedSolver</name></member>
+      <member refid="classnovaphy_1_1_articulated_solver_1af6f96eea6548a7f7cd1e27917c6d401f" prot="private" virt="non-virtual"><scope>novaphy::ArticulatedSolver</scope><name>normalize_quaternions</name></member>
+      <member refid="classnovaphy_1_1_articulated_solver_1ab71c6df4122ae716836e2eace7ca3f91" prot="public" virt="non-virtual"><scope>novaphy::ArticulatedSolver</scope><name>step</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

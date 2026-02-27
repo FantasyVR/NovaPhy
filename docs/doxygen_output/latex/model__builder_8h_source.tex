@@ -1,0 +1,42 @@
+\doxysection{model\+\_\+builder.\+h}
+\hypertarget{model__builder_8h_source}{}\label{model__builder_8h_source}\index{include/novaphy/core/model\_builder.h@{include/novaphy/core/model\_builder.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/body.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/shape.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}novaphy/math/math\_types.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_model}{Model}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classnovaphy_1_1_model_builder_a18a63787a9cd3f7b28dc8f95e739fa0c}{ModelBuilder}}\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \doxymbox{\hyperlink{classnovaphy_1_1_model_builder_a18a63787a9cd3f7b28dc8f95e739fa0c}{ModelBuilder}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classnovaphy_1_1_model_builder_a0211a6cb36609ef082320846a7f2a53f}{add\_body}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{RigidBody}}\&\ body,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}}\&\ transform\ =\ \doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::identity}}());}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classnovaphy_1_1_model_builder_a33f0c3c4a060e3ea433f3e119112dadf}{add\_shape}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{CollisionShape}}\&\ shape);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classnovaphy_1_1_model_builder_a248f512e3fbab17a40ec5ff1bf910627}{add\_ground\_plane}}(\textcolor{keywordtype}{float}\ y\ =\ 0.0f,\ \textcolor{keywordtype}{float}\ friction\ =\ 0.5f,\ \textcolor{keywordtype}{float}\ restitution\ =\ 0.0f);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00058\ \ \ \ \ \doxymbox{\hyperlink{structnovaphy_1_1_model}{Model}}\ \doxymbox{\hyperlink{classnovaphy_1_1_model_builder_a701cb1f422ee12eaf5f2da43abb8fc6b}{build}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classnovaphy_1_1_model_builder_a86288224e44c588411b84b1e55312589}{num\_bodies}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(bodies\_.size());\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classnovaphy_1_1_model_builder_ad9d35b2367a1a89623981ad3565f44e5}{num\_shapes}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(shapes\_.size());\ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00075\ \ \ \ \ std::vector<RigidBody>\ bodies\_;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ std::vector<Transform>\ initial\_transforms\_;\ \ }
+\DoxyCodeLine{00077\ \ \ \ \ std::vector<CollisionShape>\ shapes\_;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00078\ \};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

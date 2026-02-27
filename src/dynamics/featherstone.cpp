@@ -1,3 +1,7 @@
+/**
+ * @file featherstone.cpp
+ * @brief Featherstone-style articulated rigid-body dynamics algorithms.
+ */
 #include "novaphy/dynamics/featherstone.h"
 
 #include <Eigen/Dense>
@@ -6,6 +10,14 @@
 namespace novaphy {
 namespace featherstone {
 
+/**
+ * @brief Computes articulated link transforms from generalized positions.
+ * @param[in] model Articulation model containing joint tree topology.
+ * @param[in] q Generalized coordinates.
+ * @param[out] X_J Per-link joint transforms.
+ * @param[out] X_up Per-link parent transforms in spatial form.
+ * @param[out] X_world Per-link world transforms for visualization/queries.
+ */
 void forward_kinematics(const Articulation& model,
                         const VecXf& q,
                         std::vector<SpatialTransform>& X_J,
@@ -54,6 +66,16 @@ void forward_kinematics(const Articulation& model,
     }
 }
 
+/**
+ * @brief Computes inverse dynamics using recursive Newton-Euler passes.
+ * @param[in] model Articulation model.
+ * @param[in] q Generalized coordinates.
+ * @param[in] qd Generalized velocities.
+ * @param[in] qdd Generalized accelerations.
+ * @param[in] gravity World gravity vector in m/s^2.
+ * @param[in] f_ext Optional external spatial forces per link.
+ * @return Joint generalized forces/torques in SI units.
+ */
 VecXf inverse_dynamics(const Articulation& model,
                        const VecXf& q,
                        const VecXf& qd,
@@ -147,6 +169,12 @@ VecXf inverse_dynamics(const Articulation& model,
     return tau;
 }
 
+/**
+ * @brief Computes the articulated mass matrix using CRBA.
+ * @param[in] model Articulation model.
+ * @param[in] q Generalized coordinates.
+ * @return Symmetric positive-definite mass matrix `H(q)`.
+ */
 MatXf mass_matrix(const Articulation& model,
                   const VecXf& q) {
     int n = model.num_links();
@@ -228,6 +256,16 @@ MatXf mass_matrix(const Articulation& model,
     return H;
 }
 
+/**
+ * @brief Solves forward dynamics `qdd = H^{-1}(tau - C)`.
+ * @param[in] model Articulation model.
+ * @param[in] q Generalized coordinates.
+ * @param[in] qd Generalized velocities.
+ * @param[in] tau Applied generalized forces.
+ * @param[in] gravity World gravity vector in m/s^2.
+ * @param[in] f_ext Optional external spatial forces per link.
+ * @return Generalized accelerations.
+ */
 VecXf forward_dynamics(const Articulation& model,
                        const VecXf& q,
                        const VecXf& qd,
@@ -239,7 +277,7 @@ VecXf forward_dynamics(const Articulation& model,
     // H = CRBA(q)
     MatXf H = mass_matrix(model, q);
 
-    // C = RNEA(q, qd, 0) — bias forces (gravity + Coriolis + centrifugal)
+    // C = RNEA(q, qd, 0), bias forces (gravity + Coriolis + centrifugal).
     VecXf qdd_zero = VecXf::Zero(nv);
     VecXf C = inverse_dynamics(model, q, qd, qdd_zero, gravity, f_ext);
 
@@ -253,3 +291,4 @@ VecXf forward_dynamics(const Articulation& model,
 
 }  // namespace featherstone
 }  // namespace novaphy
+

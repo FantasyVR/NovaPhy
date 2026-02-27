@@ -10,17 +10,44 @@ using namespace novaphy;
 
 void bind_collision(py::module_& m) {
     // --- BroadPhasePair ---
-    py::class_<BroadPhasePair>(m, "BroadPhasePair")
-        .def(py::init<>())
-        .def_readwrite("body_a", &BroadPhasePair::body_a)
-        .def_readwrite("body_b", &BroadPhasePair::body_b);
+    py::class_<BroadPhasePair>(m, "BroadPhasePair", R"pbdoc(
+        Candidate overlap pair produced by broadphase culling.
+    )pbdoc")
+        .def(py::init<>(), R"pbdoc(
+            Creates an empty broadphase pair.
+        )pbdoc")
+        .def_readwrite("body_a", &BroadPhasePair::body_a, R"pbdoc(
+            int: First body/shape index of the overlap pair.
+        )pbdoc")
+        .def_readwrite("body_b", &BroadPhasePair::body_b, R"pbdoc(
+            int: Second body/shape index of the overlap pair.
+        )pbdoc");
 
     // --- SweepAndPrune ---
-    py::class_<SweepAndPrune>(m, "SweepAndPrune")
-        .def(py::init<>())
+    py::class_<SweepAndPrune>(m, "SweepAndPrune", R"pbdoc(
+        Sweep-and-Prune broadphase collision detector.
+    )pbdoc")
+        .def(py::init<>(), R"pbdoc(
+            Creates an empty broadphase accelerator.
+        )pbdoc")
         .def("update", &SweepAndPrune::update,
-             py::arg("body_aabbs"), py::arg("static_mask"))
-        .def("get_pairs", &SweepAndPrune::get_pairs);
+             py::arg("body_aabbs"), py::arg("static_mask"),
+             R"pbdoc(
+                 Updates overlap candidates from current world-space AABBs.
+
+                 Args:
+                     body_aabbs (list[AABB]): Per-body world-space AABBs.
+                     static_mask (list[bool]): Static-body mask for pruning static-static pairs.
+
+                 Returns:
+                     None
+             )pbdoc")
+        .def("get_pairs", &SweepAndPrune::get_pairs, R"pbdoc(
+            Returns candidate overlap pairs from the latest update.
+
+            Returns:
+                list[BroadPhasePair]: Potentially overlapping body/shape pairs.
+        )pbdoc");
 
     // --- Collision dispatcher ---
     // Return (bool, list[ContactPoint]) tuple instead of passing contacts by reference
@@ -33,5 +60,17 @@ void bind_collision(py::module_& m) {
           },
           py::arg("shape_a"), py::arg("transform_a"),
           py::arg("shape_b"), py::arg("transform_b"),
-          "Test collision between two shapes. Returns (hit, contacts).");
+          R"pbdoc(
+              Tests collision between two shapes and returns contact data.
+
+              Args:
+                  shape_a (CollisionShape): First shape.
+                  transform_a (Transform): World transform for shape A parent body.
+                  shape_b (CollisionShape): Second shape.
+                  transform_b (Transform): World transform for shape B parent body.
+
+              Returns:
+                  tuple[bool, list[ContactPoint]]: `(hit, contacts)` where `hit`
+                  indicates overlap and `contacts` stores world-space manifold points.
+          )pbdoc");
 }

@@ -1,0 +1,162 @@
+\doxysection{novaphy::\+Joint Struct Reference}
+\hypertarget{structnovaphy_1_1_joint}{}\label{structnovaphy_1_1_joint}\index{novaphy::Joint@{novaphy::Joint}}
+
+
+\doxylink{structnovaphy_1_1_joint}{Joint} descriptor connecting one link to its parent.  
+
+
+
+
+{\ttfamily \+\#include $<$joint.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_joint_a7623d2eb9f83c408254722f1d24a6288}{num\+\_\+q}} () const
+\begin{DoxyCompactList}\small\item\em Get number of generalized position coordinates for this joint. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_joint_a2105e94ddf6bcbe5072ff4ce24654bd8}{num\+\_\+qd}} () const
+\begin{DoxyCompactList}\small\item\em Get number of generalized velocity coordinates for this joint. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \doxymbox{\hyperlink{structnovaphy_1_1_joint_a7a9310ebd1a8e2688bd12c28c9a74cf9}{joint\+\_\+transform}} (const float \texorpdfstring{$\ast$}{*}q) const
+\begin{DoxyCompactList}\small\item\em Compute joint transform from generalized position coordinates. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{structnovaphy_1_1_joint_a33c6ab405cb743ad094017ed88ba3adf}{motion\+\_\+subspace}} (Spatial\+Vector \texorpdfstring{$\ast$}{*}S\+\_\+cols) const
+\begin{DoxyCompactList}\small\item\em Compute motion subspace columns for this joint. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Joint\+Type \doxymbox{\hyperlink{structnovaphy_1_1_joint_a8ef8bd2887657521bba54a9c0a17410a}{type}} = Joint\+Type::\+\+Revolute
+\item 
+Vec3f \doxymbox{\hyperlink{structnovaphy_1_1_joint_aa18db99137a52ac50ba4611e7bd2c1cd}{axis}} = Vec3f(0, 0, 1)
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_joint_a875e8c9ffec82f910303b8f98bcfaab0}{parent}} = -\/1
+\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \doxymbox{\hyperlink{structnovaphy_1_1_joint_a991dcc9b08902a127a32dd0b6cd95cc4}{parent\+\_\+to\+\_\+joint}} = \doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::\+identity}}()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{structnovaphy_1_1_joint}{Joint} descriptor connecting one link to its parent. 
+
+Defines joint kinematics and motion subspace used by Featherstone forward/\+inverse dynamics. Axes are expressed in the joint-\/local frame. 
+
+\label{doc-func-members}
+\Hypertarget{structnovaphy_1_1_joint_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structnovaphy_1_1_joint_a7a9310ebd1a8e2688bd12c28c9a74cf9}\index{novaphy::Joint@{novaphy::Joint}!joint\_transform@{joint\_transform}}
+\index{joint\_transform@{joint\_transform}!novaphy::Joint@{novaphy::Joint}}
+\doxysubsubsection{\texorpdfstring{joint\_transform()}{joint\_transform()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_joint_a7a9310ebd1a8e2688bd12c28c9a74cf9} 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} novaphy::\+\+Joint::\+joint\+\_\+transform (\begin{DoxyParamCaption}\item[{const float \texorpdfstring{$\ast$}{*}}]{q}{}\end{DoxyParamCaption}) const}
+
+
+
+Compute joint transform from generalized position coordinates. 
+
+Computes a joint transform from generalized coordinates.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em q} & Pointer to this joint\textquotesingle{}s coordinate block in the global q vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{structnovaphy_1_1_joint}{Joint} transform from joint frame to child-\/link frame.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+{\ttfamily q} layout depends on joint type:\+ revolute/\+slide:\+ scalar, ball:\+ quaternion, free:\+ translation + quaternion.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em q} & Pointer to the joint configuration vector for this joint type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Rigid transform mapping the parent joint frame to the child frame. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_joint_a33c6ab405cb743ad094017ed88ba3adf}\index{novaphy::Joint@{novaphy::Joint}!motion\_subspace@{motion\_subspace}}
+\index{motion\_subspace@{motion\_subspace}!novaphy::Joint@{novaphy::Joint}}
+\doxysubsubsection{\texorpdfstring{motion\_subspace()}{motion\_subspace()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_joint_a33c6ab405cb743ad094017ed88ba3adf} 
+void novaphy::\+\+Joint::\+motion\+\_\+subspace (\begin{DoxyParamCaption}\item[{Spatial\+Vector \texorpdfstring{$\ast$}{*}}]{S\+\_\+cols}{}\end{DoxyParamCaption}) const}
+
+
+
+Compute motion subspace columns for this joint. 
+
+Fills the joint motion-\/subspace basis vectors.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{out}}  & {\em S\+\_\+cols} & Output array of spatial motion columns, length = \doxylink{structnovaphy_1_1_joint_a2105e94ddf6bcbe5072ff4ce24654bd8}{num\+\_\+qd()}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Columns follow Featherstone convention \+[angular; linear]\+.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{out}}  & {\em S\+\_\+cols} & Output spatial basis columns, sized by {\ttfamily dof()}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{structnovaphy_1_1_joint_a7623d2eb9f83c408254722f1d24a6288}\index{novaphy::Joint@{novaphy::Joint}!num\_q@{num\_q}}
+\index{num\_q@{num\_q}!novaphy::Joint@{novaphy::Joint}}
+\doxysubsubsection{\texorpdfstring{num\_q()}{num\_q()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_joint_a7623d2eb9f83c408254722f1d24a6288} 
+int novaphy::\+\+Joint::\+num\+\_\+q (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get number of generalized position coordinates for this joint. 
+
+\begin{DoxyReturn}{Returns}
+Position DOF count. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_joint_a2105e94ddf6bcbe5072ff4ce24654bd8}\index{novaphy::Joint@{novaphy::Joint}!num\_qd@{num\_qd}}
+\index{num\_qd@{num\_qd}!novaphy::Joint@{novaphy::Joint}}
+\doxysubsubsection{\texorpdfstring{num\_qd()}{num\_qd()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_joint_a2105e94ddf6bcbe5072ff4ce24654bd8} 
+int novaphy::\+\+Joint::\+num\+\_\+qd (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get number of generalized velocity coordinates for this joint. 
+
+\begin{DoxyReturn}{Returns}
+Velocity DOF count. 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{structnovaphy_1_1_joint_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structnovaphy_1_1_joint_aa18db99137a52ac50ba4611e7bd2c1cd}\index{novaphy::Joint@{novaphy::Joint}!axis@{axis}}
+\index{axis@{axis}!novaphy::Joint@{novaphy::Joint}}
+\doxysubsubsection{\texorpdfstring{axis}{axis}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_joint_aa18db99137a52ac50ba4611e7bd2c1cd} 
+Vec3f novaphy::\+\+Joint::\+axis = Vec3f(0, 0, 1)}
+
+\doxylink{structnovaphy_1_1_joint}{Joint} axis for revolute/\+slide joints. \Hypertarget{structnovaphy_1_1_joint_a875e8c9ffec82f910303b8f98bcfaab0}\index{novaphy::Joint@{novaphy::Joint}!parent@{parent}}
+\index{parent@{parent}!novaphy::Joint@{novaphy::Joint}}
+\doxysubsubsection{\texorpdfstring{parent}{parent}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_joint_a875e8c9ffec82f910303b8f98bcfaab0} 
+int novaphy::\+\+Joint::\+parent = -\/1}
+
+Parent link index, or -\/1 for world root. \Hypertarget{structnovaphy_1_1_joint_a991dcc9b08902a127a32dd0b6cd95cc4}\index{novaphy::Joint@{novaphy::Joint}!parent\_to\_joint@{parent\_to\_joint}}
+\index{parent\_to\_joint@{parent\_to\_joint}!novaphy::Joint@{novaphy::Joint}}
+\doxysubsubsection{\texorpdfstring{parent\_to\_joint}{parent\_to\_joint}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_joint_a991dcc9b08902a127a32dd0b6cd95cc4} 
+\doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} novaphy::\+\+Joint::\+parent\+\_\+to\+\_\+joint = \doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::\+identity}}()}
+
+Constant transform from parent frame to joint frame. \Hypertarget{structnovaphy_1_1_joint_a8ef8bd2887657521bba54a9c0a17410a}\index{novaphy::Joint@{novaphy::Joint}!type@{type}}
+\index{type@{type}!novaphy::Joint@{novaphy::Joint}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_joint_a8ef8bd2887657521bba54a9c0a17410a} 
+Joint\+Type novaphy::\+\+Joint::\+type = Joint\+Type::\+\+Revolute}
+
+\doxylink{structnovaphy_1_1_joint}{Joint} type. 
+
+The documentation for this struct was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+core/\+joint.\+h\item 
+src/\+core/\+\doxymbox{\hyperlink{joint_8cpp}{joint.\+cpp}}\end{DoxyCompactItemize}

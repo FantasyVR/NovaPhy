@@ -1,0 +1,31 @@
+\doxysection{src/\+dynamics/\+featherstone.cpp File Reference}
+\hypertarget{featherstone_8cpp}{}\label{featherstone_8cpp}\index{src/dynamics/featherstone.cpp@{src/dynamics/featherstone.cpp}}
+
+
+Featherstone-\/style articulated rigid-\/body dynamics algorithms.  
+
+
+{\ttfamily \+\#include "{}novaphy/\+dynamics/\+featherstone.\+h"{}}\newline
+{\ttfamily \+\#include $<$Eigen/\+\+Dense$>$}\newline
+{\ttfamily \+\#include $<$cmath$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \doxymbox{\hyperlink{namespacenovaphy_1_1featherstone}{novaphy::\+featherstone}}
+\begin{DoxyCompactList}\small\item\em Featherstone-\/family rigid-\/body dynamics algorithms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{namespacenovaphy_1_1featherstone_a81fede8c2599e86900042c6e37323256}{novaphy::\+featherstone::\+forward\+\_\+kinematics}} (const \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}} \&model, const Vec\+Xf \&q, std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform}{Spatial\+Transform}} $>$ \&X\+\_\+J, std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform}{Spatial\+Transform}} $>$ \&X\+\_\+up, std::\+vector$<$ \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} $>$ \&X\+\_\+world)
+\begin{DoxyCompactList}\small\item\em Compute per-\/link poses from generalized positions. \end{DoxyCompactList}\item 
+Vec\+Xf \doxymbox{\hyperlink{namespacenovaphy_1_1featherstone_a1304eda4890f645ebdd6e78c6aedbfcd}{novaphy::\+featherstone::\+inverse\+\_\+dynamics}} (const \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}} \&model, const Vec\+Xf \&q, const Vec\+Xf \&qd, const Vec\+Xf \&qdd, const Vec3f \&gravity, const std::\+vector$<$ Spatial\+Vector $>$ \&f\+\_\+ext=\{\})
+\begin{DoxyCompactList}\small\item\em Compute generalized forces using RNEA (inverse dynamics). \end{DoxyCompactList}\item 
+Mat\+Xf \doxymbox{\hyperlink{namespacenovaphy_1_1featherstone_a010f7ded3d737a60216318841dc15914}{novaphy::\+featherstone::\+mass\+\_\+matrix}} (const \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}} \&model, const Vec\+Xf \&q)
+\begin{DoxyCompactList}\small\item\em Assemble the joint-\/space inertia matrix using CRBA. \end{DoxyCompactList}\item 
+Vec\+Xf \doxymbox{\hyperlink{namespacenovaphy_1_1featherstone_a0fbb3f2e208778bfe14a97c6aeadf858}{novaphy::\+featherstone::\+forward\+\_\+dynamics}} (const \doxymbox{\hyperlink{structnovaphy_1_1_articulation}{Articulation}} \&model, const Vec\+Xf \&q, const Vec\+Xf \&qd, const Vec\+Xf \&tau, const Vec3f \&gravity, const std::\+vector$<$ Spatial\+Vector $>$ \&f\+\_\+ext=\{\})
+\begin{DoxyCompactList}\small\item\em Compute generalized accelerations from applied efforts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Featherstone-\/style articulated rigid-\/body dynamics algorithms. 
+

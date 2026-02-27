@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="stub_8cpp" kind="file" language="C++">
+    <compoundname>stub.cpp</compoundname>
+    <includes refid="novaphy_8h" local="yes">novaphy/novaphy.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>novaphy/novaphy.h</label>
+        <link refid="novaphy_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/stub.cpp</label>
+        <link refid="stub_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>Placeholder translation unit for minimal CMake targets. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Kept for compatibility with build configurations that expect at least one concrete source file in the root <computeroutput>src</computeroutput> directory. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/novaphy.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/stub.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,125 @@
+\doxysection{novaphy::\+Contact\+Point Struct Reference}
+\hypertarget{structnovaphy_1_1_contact_point}{}\label{structnovaphy_1_1_contact_point}\index{novaphy::ContactPoint@{novaphy::ContactPoint}}
+
+
+One world-\/space contact sample between two colliders.  
+
+
+
+
+{\ttfamily \+\#include $<$contact.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Vec3f \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_a0853a227e917277ccff0913e471b47d8}{position}} = Vec3f::\+\+Zero()
+\item 
+Vec3f \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_a20f3f881c9f3536de5a67c4ecc1c9597}{normal}} = Vec3f::\+\+Zero()
+\item 
+float \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_a1fb19edee8dd6cc4d71e7cb446b2b873}{penetration}} = 0.\+0f
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_add0c208cb4c419fb78a708ea10568cd0}{body\+\_\+a}} = -\/1
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_ac2c53ff182680de80abb955dd48b45b9}{body\+\_\+b}} = -\/1
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_a93002bf853f7db720b2d1adf66e9265a}{shape\+\_\+a}} = -\/1
+\item 
+int \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_ae445e1d532e545048f0a0edb999235e1}{shape\+\_\+b}} = -\/1
+\item 
+float \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_a56aeed6c4d1d2166905659c455dce085}{friction}} = 0.\+5f
+\item 
+float \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_a0e7344dd307e996b2f48bfb5f8decafb}{restitution}} = 0.\+0f
+\item 
+float \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_ad1d238cd0947380bd13aeedb8c3260b8}{accumulated\+\_\+normal\+\_\+impulse}} = 0.\+0f
+\item 
+float \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_ab832cea6e71a99ed55b27387ad02cce8}{accumulated\+\_\+tangent\+\_\+impulse\+\_\+1}} = 0.\+0f
+\item 
+float \doxymbox{\hyperlink{structnovaphy_1_1_contact_point_ad35e7f0efc4c5d1d9743c40675da5585}{accumulated\+\_\+tangent\+\_\+impulse\+\_\+2}} = 0.\+0f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+One world-\/space contact sample between two colliders. 
+
+Contact normal points from body A toward body B. Penetration depth is positive when shapes overlap. Units follow SI conventions. 
+
+\label{doc-variable-members}
+\Hypertarget{structnovaphy_1_1_contact_point_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structnovaphy_1_1_contact_point_ad1d238cd0947380bd13aeedb8c3260b8}\index{novaphy::ContactPoint@{novaphy::ContactPoint}!accumulated\_normal\_impulse@{accumulated\_normal\_impulse}}
+\index{accumulated\_normal\_impulse@{accumulated\_normal\_impulse}!novaphy::ContactPoint@{novaphy::ContactPoint}}
+\doxysubsubsection{\texorpdfstring{accumulated\_normal\_impulse}{accumulated\_normal\_impulse}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_point_ad1d238cd0947380bd13aeedb8c3260b8} 
+float novaphy::\+\+Contact\+Point::\+accumulated\+\_\+normal\+\_\+impulse = 0.\+0f}
+
+Cached normal impulse for warm starting (N\texorpdfstring{$\ast$}{*}s). \Hypertarget{structnovaphy_1_1_contact_point_ab832cea6e71a99ed55b27387ad02cce8}\index{novaphy::ContactPoint@{novaphy::ContactPoint}!accumulated\_tangent\_impulse\_1@{accumulated\_tangent\_impulse\_1}}
+\index{accumulated\_tangent\_impulse\_1@{accumulated\_tangent\_impulse\_1}!novaphy::ContactPoint@{novaphy::ContactPoint}}
+\doxysubsubsection{\texorpdfstring{accumulated\_tangent\_impulse\_1}{accumulated\_tangent\_impulse\_1}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_point_ab832cea6e71a99ed55b27387ad02cce8} 
+float novaphy::\+\+Contact\+Point::\+accumulated\+\_\+tangent\+\_\+impulse\+\_\+1 = 0.\+0f}
+
+Cached first tangent impulse for warm starting (N\texorpdfstring{$\ast$}{*}s). \Hypertarget{structnovaphy_1_1_contact_point_ad35e7f0efc4c5d1d9743c40675da5585}\index{novaphy::ContactPoint@{novaphy::ContactPoint}!accumulated\_tangent\_impulse\_2@{accumulated\_tangent\_impulse\_2}}
+\index{accumulated\_tangent\_impulse\_2@{accumulated\_tangent\_impulse\_2}!novaphy::ContactPoint@{novaphy::ContactPoint}}
+\doxysubsubsection{\texorpdfstring{accumulated\_tangent\_impulse\_2}{accumulated\_tangent\_impulse\_2}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_point_ad35e7f0efc4c5d1d9743c40675da5585} 
+float novaphy::\+\+Contact\+Point::\+accumulated\+\_\+tangent\+\_\+impulse\+\_\+2 = 0.\+0f}
+
+Cached second tangent impulse for warm starting (N\texorpdfstring{$\ast$}{*}s). \Hypertarget{structnovaphy_1_1_contact_point_add0c208cb4c419fb78a708ea10568cd0}\index{novaphy::ContactPoint@{novaphy::ContactPoint}!body\_a@{body\_a}}
+\index{body\_a@{body\_a}!novaphy::ContactPoint@{novaphy::ContactPoint}}
+\doxysubsubsection{\texorpdfstring{body\_a}{body\_a}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_point_add0c208cb4c419fb78a708ea10568cd0} 
+int novaphy::\+\+Contact\+Point::\+body\+\_\+a = -\/1}
+
+Body index for side A, or -\/1 for world/\+static shape. \Hypertarget{structnovaphy_1_1_contact_point_ac2c53ff182680de80abb955dd48b45b9}\index{novaphy::ContactPoint@{novaphy::ContactPoint}!body\_b@{body\_b}}
+\index{body\_b@{body\_b}!novaphy::ContactPoint@{novaphy::ContactPoint}}
+\doxysubsubsection{\texorpdfstring{body\_b}{body\_b}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_point_ac2c53ff182680de80abb955dd48b45b9} 
+int novaphy::\+\+Contact\+Point::\+body\+\_\+b = -\/1}
+
+Body index for side B, or -\/1 for world/\+static shape. \Hypertarget{structnovaphy_1_1_contact_point_a56aeed6c4d1d2166905659c455dce085}\index{novaphy::ContactPoint@{novaphy::ContactPoint}!friction@{friction}}
+\index{friction@{friction}!novaphy::ContactPoint@{novaphy::ContactPoint}}
+\doxysubsubsection{\texorpdfstring{friction}{friction}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_point_a56aeed6c4d1d2166905659c455dce085} 
+float novaphy::\+\+Contact\+Point::\+friction = 0.\+5f}
+
+Combined friction coefficient (dimensionless). \Hypertarget{structnovaphy_1_1_contact_point_a20f3f881c9f3536de5a67c4ecc1c9597}\index{novaphy::ContactPoint@{novaphy::ContactPoint}!normal@{normal}}
+\index{normal@{normal}!novaphy::ContactPoint@{novaphy::ContactPoint}}
+\doxysubsubsection{\texorpdfstring{normal}{normal}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_point_a20f3f881c9f3536de5a67c4ecc1c9597} 
+Vec3f novaphy::\+\+Contact\+Point::\+normal = Vec3f::\+\+Zero()}
+
+Contact normal from body A toward body B. \Hypertarget{structnovaphy_1_1_contact_point_a1fb19edee8dd6cc4d71e7cb446b2b873}\index{novaphy::ContactPoint@{novaphy::ContactPoint}!penetration@{penetration}}
+\index{penetration@{penetration}!novaphy::ContactPoint@{novaphy::ContactPoint}}
+\doxysubsubsection{\texorpdfstring{penetration}{penetration}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_point_a1fb19edee8dd6cc4d71e7cb446b2b873} 
+float novaphy::\+\+Contact\+Point::\+penetration = 0.\+0f}
+
+Penetration depth in meters; positive means overlap. \Hypertarget{structnovaphy_1_1_contact_point_a0853a227e917277ccff0913e471b47d8}\index{novaphy::ContactPoint@{novaphy::ContactPoint}!position@{position}}
+\index{position@{position}!novaphy::ContactPoint@{novaphy::ContactPoint}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_point_a0853a227e917277ccff0913e471b47d8} 
+Vec3f novaphy::\+\+Contact\+Point::\+position = Vec3f::\+\+Zero()}
+
+Contact position in world coordinates (m). \Hypertarget{structnovaphy_1_1_contact_point_a0e7344dd307e996b2f48bfb5f8decafb}\index{novaphy::ContactPoint@{novaphy::ContactPoint}!restitution@{restitution}}
+\index{restitution@{restitution}!novaphy::ContactPoint@{novaphy::ContactPoint}}
+\doxysubsubsection{\texorpdfstring{restitution}{restitution}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_point_a0e7344dd307e996b2f48bfb5f8decafb} 
+float novaphy::\+\+Contact\+Point::\+restitution = 0.\+0f}
+
+Combined restitution coefficient (dimensionless). \Hypertarget{structnovaphy_1_1_contact_point_a93002bf853f7db720b2d1adf66e9265a}\index{novaphy::ContactPoint@{novaphy::ContactPoint}!shape\_a@{shape\_a}}
+\index{shape\_a@{shape\_a}!novaphy::ContactPoint@{novaphy::ContactPoint}}
+\doxysubsubsection{\texorpdfstring{shape\_a}{shape\_a}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_point_a93002bf853f7db720b2d1adf66e9265a} 
+int novaphy::\+\+Contact\+Point::\+shape\+\_\+a = -\/1}
+
+Shape index for side A. \Hypertarget{structnovaphy_1_1_contact_point_ae445e1d532e545048f0a0edb999235e1}\index{novaphy::ContactPoint@{novaphy::ContactPoint}!shape\_b@{shape\_b}}
+\index{shape\_b@{shape\_b}!novaphy::ContactPoint@{novaphy::ContactPoint}}
+\doxysubsubsection{\texorpdfstring{shape\_b}{shape\_b}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_contact_point_ae445e1d532e545048f0a0edb999235e1} 
+int novaphy::\+\+Contact\+Point::\+shape\+\_\+b = -\/1}
+
+Shape index for side B. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+core/\+contact.\+h\end{DoxyCompactItemize}

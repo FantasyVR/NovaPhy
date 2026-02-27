@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_articulation" kind="struct" language="C++" prot="public">
+    <compoundname>novaphy::Articulation</compoundname>
+    <includes refid="articulation_8h" local="no">articulation.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnovaphy_1_1_articulation_1a1dfd24ed8cb0dabceddb7bc42f658b40" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structnovaphy_1_1_joint" kindref="compound">Joint</ref> &gt;</type>
+        <definition>std::vector&lt;Joint&gt; novaphy::Articulation::joints</definition>
+        <argsstring></argsstring>
+        <name>joints</name>
+        <qualifiedname>novaphy::Articulation::joints</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="structnovaphy_1_1_joint" kindref="compound">Joint</ref> list; joint[i] connects link i to parent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/articulation.h" line="19" column="17" bodyfile="include/novaphy/core/articulation.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_articulation_1a8ef51f9f8da3a9c48cbf90948af07e7d" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref> &gt;</type>
+        <definition>std::vector&lt;RigidBody&gt; novaphy::Articulation::bodies</definition>
+        <argsstring></argsstring>
+        <name>bodies</name>
+        <qualifiedname>novaphy::Articulation::bodies</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Rigid-body inertial properties per link. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/articulation.h" line="20" column="17" bodyfile="include/novaphy/core/articulation.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_articulation_1a59d91bc72cc6137a9895b23b03b50705" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; SpatialMatrix &gt;</type>
+        <definition>std::vector&lt;SpatialMatrix&gt; novaphy::Articulation::I_body</definition>
+        <argsstring></argsstring>
+        <name>I_body</name>
+        <qualifiedname>novaphy::Articulation::I_body</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Spatial inertia matrix per link in body frame. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/articulation.h" line="21" column="17" bodyfile="include/novaphy/core/articulation.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structnovaphy_1_1_articulation_1a16cc3fc42eb467cb051f45ee391aa563" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int novaphy::Articulation::num_links</definition>
+        <argsstring>() const</argsstring>
+        <name>num_links</name>
+        <qualifiedname>novaphy::Articulation::num_links</qualifiedname>
+        <briefdescription>
+<para>Get total number of links. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of articulation links. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/articulation.h" line="28" column="9" bodyfile="include/novaphy/core/articulation.h" bodystart="28" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_articulation_1aba76faf294110cbda6a25713861aae88" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int novaphy::Articulation::total_q</definition>
+        <argsstring>() const</argsstring>
+        <name>total_q</name>
+        <qualifiedname>novaphy::Articulation::total_q</qualifiedname>
+        <briefdescription>
+<para>Get total generalized-position dimension. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Sum of <computeroutput>num_q()</computeroutput> over all joints. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/articulation.h" line="35" column="9" bodyfile="include/novaphy/core/articulation.h" bodystart="35" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_articulation_1af2f575cc176a957d338348fb5d136037" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int novaphy::Articulation::total_qd</definition>
+        <argsstring>() const</argsstring>
+        <name>total_qd</name>
+        <qualifiedname>novaphy::Articulation::total_qd</qualifiedname>
+        <briefdescription>
+<para>Get total generalized-velocity dimension. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Sum of <computeroutput>num_qd()</computeroutput> over all joints. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/articulation.h" line="46" column="9" bodyfile="include/novaphy/core/articulation.h" bodystart="46" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_articulation_1ab8a15318d11e2a2252b08d8907f44135" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int novaphy::Articulation::q_start</definition>
+        <argsstring>(int link) const</argsstring>
+        <name>q_start</name>
+        <qualifiedname>novaphy::Articulation::q_start</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>link</declname>
+        </param>
+        <briefdescription>
+<para>Compute position-block start index for a link. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Link index. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Start offset in global generalized-position vector q. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/articulation.h" line="58" column="9" bodyfile="include/novaphy/core/articulation.h" bodystart="58" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_articulation_1a4a8ee23fc680e861bc068e9f76da167e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int novaphy::Articulation::qd_start</definition>
+        <argsstring>(int link) const</argsstring>
+        <name>qd_start</name>
+        <qualifiedname>novaphy::Articulation::qd_start</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>link</declname>
+        </param>
+        <briefdescription>
+<para>Compute velocity-block start index for a link. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Link index. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Start offset in global generalized-velocity vector qd. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/articulation.h" line="70" column="9" bodyfile="include/novaphy/core/articulation.h" bodystart="70" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="structnovaphy_1_1_articulation_1aed6ed61a2e7eaefb58d164f413ce18e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void novaphy::Articulation::build_spatial_inertias</definition>
+        <argsstring>()</argsstring>
+        <name>build_spatial_inertias</name>
+        <qualifiedname>novaphy::Articulation::build_spatial_inertias</qualifiedname>
+        <briefdescription>
+<para>Build per-link spatial inertia matrices from rigid-body properties. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>void </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/articulation.h" line="81" column="10" bodyfile="include/novaphy/core/articulation.h" bodystart="81" bodyend="87"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Tree-structured articulated rigid-body model. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Stores per-link joint definitions and inertial properties for use by Featherstone algorithms. Link order must satisfy parent-before-child. </para>
+    </detaileddescription>
+    <location file="include/novaphy/core/articulation.h" line="18" column="1" bodyfile="include/novaphy/core/articulation.h" bodystart="18" bodyend="88"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_articulation_1a8ef51f9f8da3a9c48cbf90948af07e7d" prot="public" virt="non-virtual"><scope>novaphy::Articulation</scope><name>bodies</name></member>
+      <member refid="structnovaphy_1_1_articulation_1aed6ed61a2e7eaefb58d164f413ce18e5" prot="public" virt="non-virtual"><scope>novaphy::Articulation</scope><name>build_spatial_inertias</name></member>
+      <member refid="structnovaphy_1_1_articulation_1a59d91bc72cc6137a9895b23b03b50705" prot="public" virt="non-virtual"><scope>novaphy::Articulation</scope><name>I_body</name></member>
+      <member refid="structnovaphy_1_1_articulation_1a1dfd24ed8cb0dabceddb7bc42f658b40" prot="public" virt="non-virtual"><scope>novaphy::Articulation</scope><name>joints</name></member>
+      <member refid="structnovaphy_1_1_articulation_1a16cc3fc42eb467cb051f45ee391aa563" prot="public" virt="non-virtual"><scope>novaphy::Articulation</scope><name>num_links</name></member>
+      <member refid="structnovaphy_1_1_articulation_1ab8a15318d11e2a2252b08d8907f44135" prot="public" virt="non-virtual"><scope>novaphy::Articulation</scope><name>q_start</name></member>
+      <member refid="structnovaphy_1_1_articulation_1a4a8ee23fc680e861bc068e9f76da167e" prot="public" virt="non-virtual"><scope>novaphy::Articulation</scope><name>qd_start</name></member>
+      <member refid="structnovaphy_1_1_articulation_1aba76faf294110cbda6a25713861aae88" prot="public" virt="non-virtual"><scope>novaphy::Articulation</scope><name>total_q</name></member>
+      <member refid="structnovaphy_1_1_articulation_1af2f575cc176a957d338348fb5d136037" prot="public" virt="non-virtual"><scope>novaphy::Articulation</scope><name>total_qd</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

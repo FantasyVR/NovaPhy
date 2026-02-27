@@ -20,6 +20,16 @@ from novaphy.viz import make_box_mesh, quat_to_rotation_matrix
 
 
 def build_chain(num_links=6, link_length=0.6, link_mass=0.5):
+    """Builds a multi-link articulated chain with alternating hinge axes.
+
+    Args:
+        num_links (int): Number of links.
+        link_length (float): Link length in meters.
+        link_mass (float): Mass per link in kilograms.
+
+    Returns:
+        novaphy.Articulation: Configured articulated model.
+    """
     art = novaphy.Articulation()
     joints = []
     bodies = []
@@ -59,6 +69,14 @@ def build_chain(num_links=6, link_length=0.6, link_mass=0.5):
 
 
 def run_headless(steps=600):
+    """Runs the chain demo without visualization and logs tip position.
+
+    Args:
+        steps (int): Number of simulation steps.
+
+    Returns:
+        None
+    """
     num_links = 6
     link_len = 0.6
     art = build_chain(num_links, link_len)
@@ -82,6 +100,11 @@ def run_headless(steps=600):
 
 
 def run_visual():
+    """Runs the interactive Polyscope articulated-chain visualization.
+
+    Returns:
+        None
+    """
     if not HAS_POLYSCOPE:
         run_headless()
         return

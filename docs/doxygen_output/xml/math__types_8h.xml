@@ -1,0 +1,374 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="math__types_8h" kind="file" language="C++">
+    <compoundname>math_types.h</compoundname>
+    <includes local="no">Eigen/Core</includes>
+    <includes local="no">Eigen/Geometry</includes>
+    <includes local="no">cmath</includes>
+    <includes refid="novaphy__types_8h" local="yes">novaphy/novaphy_types.h</includes>
+    <includedby refid="aabb_8h" local="yes">include/novaphy/core/aabb.h</includedby>
+    <includedby refid="articulation_8h" local="yes">include/novaphy/core/articulation.h</includedby>
+    <includedby refid="body_8h" local="yes">include/novaphy/core/body.h</includedby>
+    <includedby refid="contact_8h" local="yes">include/novaphy/core/contact.h</includedby>
+    <includedby refid="joint_8h" local="yes">include/novaphy/core/joint.h</includedby>
+    <includedby refid="model_8h" local="yes">include/novaphy/core/model.h</includedby>
+    <includedby refid="model__builder_8h" local="yes">include/novaphy/core/model_builder.h</includedby>
+    <includedby refid="shape_8h" local="yes">include/novaphy/core/shape.h</includedby>
+    <includedby refid="articulated__solver_8h" local="yes">include/novaphy/dynamics/articulated_solver.h</includedby>
+    <includedby refid="featherstone_8h" local="yes">include/novaphy/dynamics/featherstone.h</includedby>
+    <includedby refid="free__body__solver_8h" local="yes">include/novaphy/dynamics/free_body_solver.h</includedby>
+    <includedby refid="integrator_8h" local="yes">include/novaphy/dynamics/integrator.h</includedby>
+    <includedby refid="math__utils_8h" local="yes">include/novaphy/math/math_utils.h</includedby>
+    <includedby refid="spatial_8h" local="yes">include/novaphy/math/spatial.h</includedby>
+    <includedby refid="state_8h" local="yes">include/novaphy/sim/state.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/novaphy/math/math_types.h</label>
+        <link refid="math__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>novaphy/novaphy_types.h</label>
+        <link refid="novaphy__types_8h_source"/>
+      </node>
+      <node id="2">
+        <label>Eigen/Core</label>
+      </node>
+      <node id="3">
+        <label>Eigen/Geometry</label>
+      </node>
+      <node id="4">
+        <label>cmath</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>include/novaphy/collision/broadphase.h</label>
+        <link refid="broadphase_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/novaphy/collision/narrowphase.h</label>
+        <link refid="narrowphase_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/novaphy/core/aabb.h</label>
+        <link refid="aabb_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>include/novaphy/core/articulation.h</label>
+        <link refid="articulation_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>include/novaphy/core/body.h</label>
+        <link refid="body_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>include/novaphy/core/contact.h</label>
+        <link refid="contact_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>include/novaphy/core/joint.h</label>
+        <link refid="joint_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/novaphy/core/model.h</label>
+        <link refid="model_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>include/novaphy/core/model_builder.h</label>
+        <link refid="model__builder_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>include/novaphy/core/shape.h</label>
+        <link refid="shape_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>include/novaphy/dynamics/articulated_solver.h</label>
+        <link refid="articulated__solver_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>include/novaphy/dynamics/featherstone.h</label>
+        <link refid="featherstone_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>include/novaphy/dynamics/free_body_solver.h</label>
+        <link refid="free__body__solver_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>include/novaphy/dynamics/integrator.h</label>
+        <link refid="integrator_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/novaphy/math/math_types.h</label>
+        <link refid="math__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>include/novaphy/math/math_utils.h</label>
+        <link refid="math__utils_8h_source"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>include/novaphy/math/spatial.h</label>
+        <link refid="spatial_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>include/novaphy/sim/state.h</label>
+        <link refid="state_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/novaphy/sim/world.h</label>
+        <link refid="world_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/collision/broadphase.cpp</label>
+        <link refid="broadphase_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/collision/narrowphase.cpp</label>
+        <link refid="narrowphase_8cpp"/>
+      </node>
+      <node id="22">
+        <label>src/core/body.cpp</label>
+        <link refid="body_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/core/joint.cpp</label>
+        <link refid="joint_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/core/model_builder.cpp</label>
+        <link refid="model__builder_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/core/shape.cpp</label>
+        <link refid="shape_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/dynamics/articulated_solver.cpp</label>
+        <link refid="articulated__solver_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/dynamics/featherstone.cpp</label>
+        <link refid="featherstone_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/dynamics/free_body_solver.cpp</label>
+        <link refid="free__body__solver_8cpp"/>
+      </node>
+      <node id="27">
+        <label>src/dynamics/integrator.cpp</label>
+        <link refid="integrator_8cpp"/>
+      </node>
+      <node id="31">
+        <label>src/math/math_utils.cpp</label>
+        <link refid="math__utils_8cpp"/>
+      </node>
+      <node id="30">
+        <label>src/math/spatial.cpp</label>
+        <link refid="spatial_8cpp"/>
+      </node>
+      <node id="33">
+        <label>src/sim/state.cpp</label>
+        <link refid="state_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/sim/world.cpp</label>
+        <link refid="world_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structnovaphy_1_1_transform" prot="public">novaphy::Transform</innerclass>
+    <innernamespace refid="namespacenovaphy">novaphy</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Eigen/Core&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Eigen/Geometry&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/novaphy_types.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">novaphy<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Vec2f<sp/>=<sp/>Eigen::Vector2f;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Vec3f<sp/>=<sp/>Eigen::Vector3f;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Vec4f<sp/>=<sp/>Eigen::Vector4f;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">VecXf<sp/>=<sp/>Eigen::VectorXf;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Mat3f<sp/>=<sp/>Eigen::Matrix3f;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Mat4f<sp/>=<sp/>Eigen::Matrix4f;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">MatXf<sp/>=<sp/>Eigen::MatrixXf;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Mat6f<sp/>=<sp/>Eigen::Matrix&lt;float,<sp/>6,<sp/>6&gt;;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Quatf<sp/>=<sp/>Eigen::Quaternionf;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="structnovaphy_1_1_transform" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref><sp/>{</highlight></codeline>
+<codeline lineno="39" refid="structnovaphy_1_1_transform_1a074b6b85886aacd125ea8db47cc25f80" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Vec3f<sp/><ref refid="structnovaphy_1_1_transform_1a074b6b85886aacd125ea8db47cc25f80" kindref="member">position</ref><sp/>=<sp/>Vec3f::Zero();<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40" refid="structnovaphy_1_1_transform_1a1a88b660d881eab306cb61d9a3218707" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Quatf<sp/><ref refid="structnovaphy_1_1_transform_1a1a88b660d881eab306cb61d9a3218707" kindref="member">rotation</ref><sp/>=<sp/>Quatf::Identity();<sp/><sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="structnovaphy_1_1_transform_1a9a8a952a1c2061ab6432fde64500cf7f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_transform_1a9a8a952a1c2061ab6432fde64500cf7f" kindref="member">Transform</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>p,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Quatf&amp;<sp/>r)<sp/>:<sp/><ref refid="structnovaphy_1_1_transform_1a074b6b85886aacd125ea8db47cc25f80" kindref="member">position</ref>(p),<sp/><ref refid="structnovaphy_1_1_transform_1a1a88b660d881eab306cb61d9a3218707" kindref="member">rotation</ref>(r.normalized())<sp/>{}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="structnovaphy_1_1_transform_1a4a6f80dd0da43d1152d1cae551103f06" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref><sp/><ref refid="structnovaphy_1_1_transform_1a4a6f80dd0da43d1152d1cae551103f06" kindref="member">operator*</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref>&amp;<sp/>other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref>(<ref refid="structnovaphy_1_1_transform_1a074b6b85886aacd125ea8db47cc25f80" kindref="member">position</ref><sp/>+<sp/><ref refid="structnovaphy_1_1_transform_1a1a88b660d881eab306cb61d9a3218707" kindref="member">rotation</ref><sp/>*<sp/>other.<ref refid="structnovaphy_1_1_transform_1a074b6b85886aacd125ea8db47cc25f80" kindref="member">position</ref>,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_transform_1a1a88b660d881eab306cb61d9a3218707" kindref="member">rotation</ref><sp/>*<sp/>other.<ref refid="structnovaphy_1_1_transform_1a1a88b660d881eab306cb61d9a3218707" kindref="member">rotation</ref>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="structnovaphy_1_1_transform_1a2506c2d754772882891d7a118630d880" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref><sp/><ref refid="structnovaphy_1_1_transform_1a2506c2d754772882891d7a118630d880" kindref="member">inverse</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Quatf<sp/>inv_rot<sp/>=<sp/><ref refid="structnovaphy_1_1_transform_1a1a88b660d881eab306cb61d9a3218707" kindref="member">rotation</ref>.conjugate();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref>(inv_rot<sp/>*<sp/>(-<ref refid="structnovaphy_1_1_transform_1a074b6b85886aacd125ea8db47cc25f80" kindref="member">position</ref>),<sp/>inv_rot);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="structnovaphy_1_1_transform_1ab65d8c0cfd3a5c72e1d928e3da4b7573" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Vec3f<sp/><ref refid="structnovaphy_1_1_transform_1ab65d8c0cfd3a5c72e1d928e3da4b7573" kindref="member">transform_point</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>p)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform_1a074b6b85886aacd125ea8db47cc25f80" kindref="member">position</ref><sp/>+<sp/><ref refid="structnovaphy_1_1_transform_1a1a88b660d881eab306cb61d9a3218707" kindref="member">rotation</ref><sp/>*<sp/>p;<sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="structnovaphy_1_1_transform_1a8275cc9b4000bf0fe6b222f29a73876a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Vec3f<sp/><ref refid="structnovaphy_1_1_transform_1a8275cc9b4000bf0fe6b222f29a73876a" kindref="member">transform_vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>v)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform_1a1a88b660d881eab306cb61d9a3218707" kindref="member">rotation</ref><sp/>*<sp/>v;<sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="structnovaphy_1_1_transform_1a15091736eca0a5250c4c19de64476ad4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Mat3f<sp/><ref refid="structnovaphy_1_1_transform_1a15091736eca0a5250c4c19de64476ad4" kindref="member">rotation_matrix</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform_1a1a88b660d881eab306cb61d9a3218707" kindref="member">rotation</ref>.toRotationMatrix();<sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="structnovaphy_1_1_transform_1a44c81dcd76ab81961d385a30b95db3d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref><sp/><ref refid="structnovaphy_1_1_transform_1a44c81dcd76ab81961d385a30b95db3d8" kindref="member">identity</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="structnovaphy_1_1_transform_1a105b726c1889f56ed02f4a869e60b1db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref><sp/><ref refid="structnovaphy_1_1_transform_1a105b726c1889f56ed02f4a869e60b1db" kindref="member">from_translation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref>(t,<sp/>Quatf::Identity());</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120" refid="structnovaphy_1_1_transform_1a4613bcb81c364ccce1934b7abfe5adc7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref><sp/><ref refid="structnovaphy_1_1_transform_1a4613bcb81c364ccce1934b7abfe5adc7" kindref="member">from_rotation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Quatf&amp;<sp/>q)<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref>(Vec3f::Zero(),<sp/>q);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="structnovaphy_1_1_transform_1acd6592af62991b48f9ac382d7cdf8968" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref><sp/><ref refid="structnovaphy_1_1_transform_1acd6592af62991b48f9ac382d7cdf8968" kindref="member">from_axis_angle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>axis,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>angle)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kindref="member">Transform</ref>(Vec3f::Zero(),</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Quatf(Eigen::AngleAxisf(angle,<sp/>axis.normalized())));</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>novaphy</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/novaphy/math/math_types.h"/>
+  </compounddef>
+</doxygen>

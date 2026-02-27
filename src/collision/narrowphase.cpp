@@ -1,3 +1,7 @@
+/**
+ * @file narrowphase.cpp
+ * @brief Narrowphase contact generation between primitive collision shapes.
+ */
 #include "novaphy/collision/narrowphase.h"
 
 #include <algorithm>
@@ -9,6 +13,15 @@ namespace novaphy {
 namespace narrowphase {
 
 // ---- Sphere vs Sphere ----
+/**
+ * @brief Computes contact(s) between two spheres.
+ * @param[in] a Sphere shape A.
+ * @param[in] ta World transform of A's parent body.
+ * @param[in] b Sphere shape B.
+ * @param[in] tb World transform of B's parent body.
+ * @param[out] contacts Appended world-space contact manifold entries.
+ * @return `true` if the spheres overlap; otherwise `false`.
+ */
 bool collide_sphere_sphere(const CollisionShape& a, const Transform& ta,
                            const CollisionShape& b, const Transform& tb,
                            std::vector<ContactPoint>& contacts) {
@@ -44,6 +57,14 @@ bool collide_sphere_sphere(const CollisionShape& a, const Transform& ta,
 }
 
 // ---- Sphere vs Plane ----
+/**
+ * @brief Computes contact(s) between a sphere and an infinite plane.
+ * @param[in] sphere_shape Sphere collision shape.
+ * @param[in] ts World transform of the sphere body.
+ * @param[in] plane_shape Plane collision shape.
+ * @param[out] contacts Appended world-space contact manifold entries.
+ * @return `true` if the sphere intersects or penetrates the plane.
+ */
 bool collide_sphere_plane(const CollisionShape& sphere_shape, const Transform& ts,
                           const CollisionShape& plane_shape,
                           std::vector<ContactPoint>& contacts) {
@@ -70,6 +91,15 @@ bool collide_sphere_plane(const CollisionShape& sphere_shape, const Transform& t
 }
 
 // ---- Box vs Sphere ----
+/**
+ * @brief Computes contact(s) between an oriented box and a sphere.
+ * @param[in] box_shape Box collision shape.
+ * @param[in] tb World transform of the box body.
+ * @param[in] sphere_shape Sphere collision shape.
+ * @param[in] ts World transform of the sphere body.
+ * @param[out] contacts Appended world-space contact manifold entries.
+ * @return `true` if the shapes overlap; otherwise `false`.
+ */
 bool collide_box_sphere(const CollisionShape& box_shape, const Transform& tb,
                         const CollisionShape& sphere_shape, const Transform& ts,
                         std::vector<ContactPoint>& contacts) {
@@ -127,6 +157,14 @@ bool collide_box_sphere(const CollisionShape& box_shape, const Transform& tb,
 }
 
 // ---- Box vs Plane ----
+/**
+ * @brief Computes contact(s) between an oriented box and an infinite plane.
+ * @param[in] box_shape Box collision shape.
+ * @param[in] tb World transform of the box body.
+ * @param[in] plane_shape Plane collision shape.
+ * @param[out] contacts Appended world-space contact manifold entries.
+ * @return `true` when at least one box corner lies behind the plane.
+ */
 bool collide_box_plane(const CollisionShape& box_shape, const Transform& tb,
                        const CollisionShape& plane_shape,
                        std::vector<ContactPoint>& contacts) {
@@ -166,6 +204,17 @@ bool collide_box_plane(const CollisionShape& box_shape, const Transform& tb,
 
 // ---- Box vs Box (SAT) ----
 // Separating Axis Theorem with contact point generation
+/**
+ * @brief Computes contact(s) between two oriented boxes using SAT.
+ * @details Tests 15 separating axes (face normals and edge cross products),
+ *          then generates a compact face or edge contact set.
+ * @param[in] a Box shape A.
+ * @param[in] ta World transform of body A.
+ * @param[in] b Box shape B.
+ * @param[in] tb World transform of body B.
+ * @param[out] contacts Appended world-space contact manifold entries.
+ * @return `true` if overlap is detected; otherwise `false`.
+ */
 bool collide_box_box(const CollisionShape& a, const Transform& ta,
                      const CollisionShape& b, const Transform& tb,
                      std::vector<ContactPoint>& contacts) {
@@ -332,6 +381,15 @@ bool collide_box_box(const CollisionShape& a, const Transform& ta,
 }  // namespace narrowphase
 
 // ---- Collision Dispatcher ----
+/**
+ * @brief Dispatches narrowphase collision routines by shape-type pair.
+ * @param[in] a Shape A.
+ * @param[in] ta World transform of A's parent body.
+ * @param[in] b Shape B.
+ * @param[in] tb World transform of B's parent body.
+ * @param[out] contacts Appended world-space contact manifold entries.
+ * @return `true` if at least one contact is generated.
+ */
 bool collide_shapes(const CollisionShape& a, const Transform& ta,
                     const CollisionShape& b, const Transform& tb,
                     std::vector<ContactPoint>& contacts) {

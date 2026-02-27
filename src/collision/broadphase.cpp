@@ -1,14 +1,29 @@
+/**
+ * @file broadphase.cpp
+ * @brief Sweep-and-prune broadphase collision detection.
+ */
 #include "novaphy/collision/broadphase.h"
 
 #include <algorithm>
 
 namespace novaphy {
 
+/**
+ * @brief Updates broadphase acceleration structures for current AABBs.
+ * @param[in] body_aabbs Per-body world-space AABBs.
+ * @param[in] static_mask Flags indicating static (non-moving) bodies.
+ */
 void SweepAndPrune::update(const std::vector<AABB>& body_aabbs,
                             const std::vector<bool>& static_mask) {
     rebuild(body_aabbs, static_mask);
 }
 
+/**
+ * @brief Rebuilds endpoint arrays and overlapping broadphase pairs.
+ * @details Uses axis sweep on X and interval overlap filtering on Y/Z.
+ * @param[in] aabbs Per-body world-space AABBs.
+ * @param[in] static_mask Flags indicating static (non-moving) bodies.
+ */
 void SweepAndPrune::rebuild(const std::vector<AABB>& aabbs,
                              const std::vector<bool>& static_mask) {
     int n = static_cast<int>(aabbs.size());
@@ -84,6 +99,10 @@ void SweepAndPrune::rebuild(const std::vector<AABB>& aabbs,
     pairs_.erase(std::unique(pairs_.begin(), pairs_.end()), pairs_.end());
 }
 
+/**
+ * @brief In-place insertion sort for temporally coherent endpoint lists.
+ * @param[in,out] eps Endpoint array to sort by scalar axis coordinate.
+ */
 void SweepAndPrune::insertion_sort(std::vector<Endpoint>& eps) {
     for (int i = 1; i < static_cast<int>(eps.size()); ++i) {
         Endpoint key = eps[i];

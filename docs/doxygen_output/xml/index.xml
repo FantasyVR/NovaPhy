@@ -1,0 +1,388 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.16.1" xml:lang="en-US">
+  <compound refid="structnovaphy_1_1_a_a_b_b" kind="struct"><name>novaphy::AABB</name>
+    <member refid="structnovaphy_1_1_a_a_b_b_1ab25875fb15d44b34697cfca4241d5ab9" kind="variable"><name>min</name></member>
+    <member refid="structnovaphy_1_1_a_a_b_b_1ac406b2ea8fed454f4a00e48e64ae2705" kind="variable"><name>max</name></member>
+    <member refid="structnovaphy_1_1_a_a_b_b_1a3e92d4d30a549a6b61ca4ed8dd6519af" kind="function"><name>AABB</name></member>
+    <member refid="structnovaphy_1_1_a_a_b_b_1ae7661ab1d95ead954cc52dd992882253" kind="function"><name>AABB</name></member>
+    <member refid="structnovaphy_1_1_a_a_b_b_1accfc234f39efcad30f23c5b9de4dbfaf" kind="function"><name>overlaps</name></member>
+    <member refid="structnovaphy_1_1_a_a_b_b_1a7474c2e43989ea97076e01a9c3c76257" kind="function"><name>expand</name></member>
+    <member refid="structnovaphy_1_1_a_a_b_b_1ad3c3dbd7954bf413feab8ba46f0c9d0d" kind="function"><name>merged</name></member>
+    <member refid="structnovaphy_1_1_a_a_b_b_1a95e6d200decdf08db59039f054a9523d" kind="function"><name>expanded</name></member>
+    <member refid="structnovaphy_1_1_a_a_b_b_1a4486a81cfd4c4c030d44d9f0a7bd6990" kind="function"><name>center</name></member>
+    <member refid="structnovaphy_1_1_a_a_b_b_1ae0c8ef5dbb247a51867960139200312d" kind="function"><name>half_extents</name></member>
+    <member refid="structnovaphy_1_1_a_a_b_b_1ad34e0dfdcc907ddd666a13e1db67fe96" kind="function"><name>surface_area</name></member>
+    <member refid="structnovaphy_1_1_a_a_b_b_1a60315482eab383843646cc7b09ad9b8d" kind="function"><name>is_valid</name></member>
+    <member refid="structnovaphy_1_1_a_a_b_b_1ac79dc6860d4a1a5e1ec25ac35fc609b5" kind="function"><name>from_center_half_extents</name></member>
+    <member refid="structnovaphy_1_1_a_a_b_b_1a2935ca38a9e622be4d5c760a22495e64" kind="function"><name>from_sphere</name></member>
+    <member refid="structnovaphy_1_1_a_a_b_b_1af9de425cc6721c6df8d67fc34c9a6c78" kind="function"><name>from_oriented_box</name></member>
+  </compound>
+  <compound refid="classnovaphy_1_1_articulated_solver" kind="class"><name>novaphy::ArticulatedSolver</name>
+    <member refid="classnovaphy_1_1_articulated_solver_1ab2e69a7aa58cc756383b64061338c6ea" kind="function"><name>ArticulatedSolver</name></member>
+    <member refid="classnovaphy_1_1_articulated_solver_1ab71c6df4122ae716836e2eace7ca3f91" kind="function"><name>step</name></member>
+    <member refid="classnovaphy_1_1_articulated_solver_1af6f96eea6548a7f7cd1e27917c6d401f" kind="function"><name>normalize_quaternions</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_articulation" kind="struct"><name>novaphy::Articulation</name>
+    <member refid="structnovaphy_1_1_articulation_1a1dfd24ed8cb0dabceddb7bc42f658b40" kind="variable"><name>joints</name></member>
+    <member refid="structnovaphy_1_1_articulation_1a8ef51f9f8da3a9c48cbf90948af07e7d" kind="variable"><name>bodies</name></member>
+    <member refid="structnovaphy_1_1_articulation_1a59d91bc72cc6137a9895b23b03b50705" kind="variable"><name>I_body</name></member>
+    <member refid="structnovaphy_1_1_articulation_1a16cc3fc42eb467cb051f45ee391aa563" kind="function"><name>num_links</name></member>
+    <member refid="structnovaphy_1_1_articulation_1aba76faf294110cbda6a25713861aae88" kind="function"><name>total_q</name></member>
+    <member refid="structnovaphy_1_1_articulation_1af2f575cc176a957d338348fb5d136037" kind="function"><name>total_qd</name></member>
+    <member refid="structnovaphy_1_1_articulation_1ab8a15318d11e2a2252b08d8907f44135" kind="function"><name>q_start</name></member>
+    <member refid="structnovaphy_1_1_articulation_1a4a8ee23fc680e861bc068e9f76da167e" kind="function"><name>qd_start</name></member>
+    <member refid="structnovaphy_1_1_articulation_1aed6ed61a2e7eaefb58d164f413ce18e5" kind="function"><name>build_spatial_inertias</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_box_shape" kind="struct"><name>novaphy::BoxShape</name>
+    <member refid="structnovaphy_1_1_box_shape_1a40bf0c6151226c0509e34b9d4c7bbee1" kind="variable"><name>half_extents</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_broad_phase_pair" kind="struct"><name>novaphy::BroadPhasePair</name>
+    <member refid="structnovaphy_1_1_broad_phase_pair_1a67bdaf17aa2e7cb0f4de606f1e4b4862" kind="variable"><name>body_a</name></member>
+    <member refid="structnovaphy_1_1_broad_phase_pair_1ac32b0bf00f5e85129bca204c3535405c" kind="variable"><name>body_b</name></member>
+    <member refid="structnovaphy_1_1_broad_phase_pair_1aafe85e8bd57d7d04c0839ab426f0a4d6" kind="function"><name>operator==</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_collision_shape" kind="struct"><name>novaphy::CollisionShape</name>
+    <member refid="structnovaphy_1_1_collision_shape_1a26781106192b8ded52ef622cc686cf8b" kind="variable"><name>type</name></member>
+    <member refid="structnovaphy_1_1_collision_shape_1a5875fad0082ee71245fa5f8d364adc3f" kind="variable"><name>box</name></member>
+    <member refid="structnovaphy_1_1_collision_shape_1a06b5ecb75e0f5fc460e432ef90259bf8" kind="variable"><name>sphere</name></member>
+    <member refid="structnovaphy_1_1_collision_shape_1a299592657513434aa799ea7126a3f22f" kind="variable"><name>plane</name></member>
+    <member refid="structnovaphy_1_1_collision_shape_1ad652128cbbc4d588ca540a7af5233d2b" kind="variable"><name>local_transform</name></member>
+    <member refid="structnovaphy_1_1_collision_shape_1af59f3a069af558e4f318343ea4ee2046" kind="variable"><name>friction</name></member>
+    <member refid="structnovaphy_1_1_collision_shape_1a4832fcca3a8e93cef0b1c95d2cb161da" kind="variable"><name>restitution</name></member>
+    <member refid="structnovaphy_1_1_collision_shape_1a9a334459be2f732c1270bb65f7dca4b0" kind="variable"><name>body_index</name></member>
+    <member refid="structnovaphy_1_1_collision_shape_1a265fb555011a3a9cdc14e993229f61a6" kind="function"><name>compute_aabb</name></member>
+    <member refid="structnovaphy_1_1_collision_shape_1af2a0f55b8cc4f01eb6a069b8da7f4b0a" kind="function"><name>make_box</name></member>
+    <member refid="structnovaphy_1_1_collision_shape_1a7d9ac52a738ae09ac603305e199ff55f" kind="function"><name>make_sphere</name></member>
+    <member refid="structnovaphy_1_1_collision_shape_1af6e69bd49a3f0ad594a7f2963dc25e05" kind="function"><name>make_plane</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data" kind="struct"><name>novaphy::FreeBodySolver::ConstraintData</name>
+    <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1ac831837aa20169d882c133646a9e628b" kind="variable"><name>r_a</name></member>
+    <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a7940e9ce264c44ae93753715f24a5731" kind="variable"><name>r_b</name></member>
+    <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a10f4dac796eec25c8e7877cdf8a9977a" kind="variable"><name>effective_mass_n</name></member>
+    <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1aa0cd82301be14727b3200340bd7e2dc9" kind="variable"><name>effective_mass_t1</name></member>
+    <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a026f7f48906b7ee40baafdebe217aa3c" kind="variable"><name>effective_mass_t2</name></member>
+    <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a3f5bb5918a5792a702b7d981f358511e" kind="variable"><name>tangent1</name></member>
+    <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1ad6fbded9647b75ebf261376b6fd569fc" kind="variable"><name>tangent2</name></member>
+    <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1abc7cafdbabacfd1316553abc66795b5e" kind="variable"><name>bias</name></member>
+    <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a8e0cd3502e90e2a4321579dd3d0aad98" kind="variable"><name>inv_I_a_world</name></member>
+    <member refid="structnovaphy_1_1_free_body_solver_1_1_constraint_data_1a763c350895c40adc4d99ecdc9f4b904a" kind="variable"><name>inv_I_b_world</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_contact_manifold" kind="struct"><name>novaphy::ContactManifold</name>
+    <member refid="structnovaphy_1_1_contact_manifold_1a942939c352eda95cfa04534237df9733" kind="variable"><name>shape_a</name></member>
+    <member refid="structnovaphy_1_1_contact_manifold_1a19649ac02d2a971a5577d99821af6a29" kind="variable"><name>shape_b</name></member>
+    <member refid="structnovaphy_1_1_contact_manifold_1ab10fc96abcac74bfb8a563a5568fa000" kind="variable"><name>body_a</name></member>
+    <member refid="structnovaphy_1_1_contact_manifold_1a1951c1294a35cfcf92ad3a04491322a4" kind="variable"><name>body_b</name></member>
+    <member refid="structnovaphy_1_1_contact_manifold_1aa213022f5804bf5063969e022e8b4b23" kind="variable"><name>points</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_contact_point" kind="struct"><name>novaphy::ContactPoint</name>
+    <member refid="structnovaphy_1_1_contact_point_1a0853a227e917277ccff0913e471b47d8" kind="variable"><name>position</name></member>
+    <member refid="structnovaphy_1_1_contact_point_1a20f3f881c9f3536de5a67c4ecc1c9597" kind="variable"><name>normal</name></member>
+    <member refid="structnovaphy_1_1_contact_point_1a1fb19edee8dd6cc4d71e7cb446b2b873" kind="variable"><name>penetration</name></member>
+    <member refid="structnovaphy_1_1_contact_point_1add0c208cb4c419fb78a708ea10568cd0" kind="variable"><name>body_a</name></member>
+    <member refid="structnovaphy_1_1_contact_point_1ac2c53ff182680de80abb955dd48b45b9" kind="variable"><name>body_b</name></member>
+    <member refid="structnovaphy_1_1_contact_point_1a93002bf853f7db720b2d1adf66e9265a" kind="variable"><name>shape_a</name></member>
+    <member refid="structnovaphy_1_1_contact_point_1ae445e1d532e545048f0a0edb999235e1" kind="variable"><name>shape_b</name></member>
+    <member refid="structnovaphy_1_1_contact_point_1a56aeed6c4d1d2166905659c455dce085" kind="variable"><name>friction</name></member>
+    <member refid="structnovaphy_1_1_contact_point_1a0e7344dd307e996b2f48bfb5f8decafb" kind="variable"><name>restitution</name></member>
+    <member refid="structnovaphy_1_1_contact_point_1ad1d238cd0947380bd13aeedb8c3260b8" kind="variable"><name>accumulated_normal_impulse</name></member>
+    <member refid="structnovaphy_1_1_contact_point_1ab832cea6e71a99ed55b27387ad02cce8" kind="variable"><name>accumulated_tangent_impulse_1</name></member>
+    <member refid="structnovaphy_1_1_contact_point_1ad35e7f0efc4c5d1d9743c40675da5585" kind="variable"><name>accumulated_tangent_impulse_2</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_sweep_and_prune_1_1_endpoint" kind="struct"><name>novaphy::SweepAndPrune::Endpoint</name>
+    <member refid="structnovaphy_1_1_sweep_and_prune_1_1_endpoint_1a47158230567c7aaa2f3cff103cc20a1b" kind="variable"><name>value</name></member>
+    <member refid="structnovaphy_1_1_sweep_and_prune_1_1_endpoint_1ad3381c2bc5f5db048bbf92a55eb3dfab" kind="variable"><name>body_index</name></member>
+    <member refid="structnovaphy_1_1_sweep_and_prune_1_1_endpoint_1a9f8964b94192f137225f11b42842cc80" kind="variable"><name>is_min</name></member>
+  </compound>
+  <compound refid="classnovaphy_1_1_free_body_solver" kind="class"><name>novaphy::FreeBodySolver</name>
+    <member refid="classnovaphy_1_1_free_body_solver_1ab7d543884088e407e24b41bfc177f5e2" kind="variable"><name>settings_</name></member>
+    <member refid="classnovaphy_1_1_free_body_solver_1a668515315668ef6558c5cc45e93c3986" kind="variable"><name>constraint_data_</name></member>
+    <member refid="classnovaphy_1_1_free_body_solver_1aa6eaa8fe99160b40b470de9aaa735c62" kind="function"><name>FreeBodySolver</name></member>
+    <member refid="classnovaphy_1_1_free_body_solver_1a41235442c6b9f0809f97e04cd4b1e180" kind="function"><name>solve</name></member>
+    <member refid="classnovaphy_1_1_free_body_solver_1a40b701b8676b4199c5b1896018adcc2c" kind="function"><name>settings</name></member>
+    <member refid="classnovaphy_1_1_free_body_solver_1a917421829933de096e8666fd930ec6f2" kind="function"><name>pre_step</name></member>
+    <member refid="classnovaphy_1_1_free_body_solver_1aaaf6449124cda9fd8de3834ebcfb2480" kind="function"><name>solve_velocity</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_joint" kind="struct"><name>novaphy::Joint</name>
+    <member refid="structnovaphy_1_1_joint_1a8ef8bd2887657521bba54a9c0a17410a" kind="variable"><name>type</name></member>
+    <member refid="structnovaphy_1_1_joint_1aa18db99137a52ac50ba4611e7bd2c1cd" kind="variable"><name>axis</name></member>
+    <member refid="structnovaphy_1_1_joint_1a875e8c9ffec82f910303b8f98bcfaab0" kind="variable"><name>parent</name></member>
+    <member refid="structnovaphy_1_1_joint_1a991dcc9b08902a127a32dd0b6cd95cc4" kind="variable"><name>parent_to_joint</name></member>
+    <member refid="structnovaphy_1_1_joint_1a7623d2eb9f83c408254722f1d24a6288" kind="function"><name>num_q</name></member>
+    <member refid="structnovaphy_1_1_joint_1a2105e94ddf6bcbe5072ff4ce24654bd8" kind="function"><name>num_qd</name></member>
+    <member refid="structnovaphy_1_1_joint_1a7a9310ebd1a8e2688bd12c28c9a74cf9" kind="function"><name>joint_transform</name></member>
+    <member refid="structnovaphy_1_1_joint_1a33c6ab405cb743ad094017ed88ba3adf" kind="function"><name>motion_subspace</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_model" kind="struct"><name>novaphy::Model</name>
+    <member refid="structnovaphy_1_1_model_1a95b75cce70741092ddd0df717454ed4a" kind="variable"><name>bodies</name></member>
+    <member refid="structnovaphy_1_1_model_1a5fa6564ad266689b5010ca02278144da" kind="variable"><name>initial_transforms</name></member>
+    <member refid="structnovaphy_1_1_model_1ad3d0bd0d69a77296f4ae1ef8143e9289" kind="variable"><name>shapes</name></member>
+    <member refid="structnovaphy_1_1_model_1ae2ef0d6246938d1a5bf0d152b33f39a5" kind="function"><name>num_bodies</name></member>
+    <member refid="structnovaphy_1_1_model_1acb8cbd85157a1e94d2999160d87e3951" kind="function"><name>num_shapes</name></member>
+  </compound>
+  <compound refid="classnovaphy_1_1_model_builder" kind="class"><name>novaphy::ModelBuilder</name>
+    <member refid="classnovaphy_1_1_model_builder_1acc40462363f84af2049b19109517e75b" kind="variable"><name>bodies_</name></member>
+    <member refid="classnovaphy_1_1_model_builder_1a8853de110021301454d64b655a94e18d" kind="variable"><name>initial_transforms_</name></member>
+    <member refid="classnovaphy_1_1_model_builder_1a74066a120c1973a0d4425d3a6f5551b3" kind="variable"><name>shapes_</name></member>
+    <member refid="classnovaphy_1_1_model_builder_1a18a63787a9cd3f7b28dc8f95e739fa0c" kind="function"><name>ModelBuilder</name></member>
+    <member refid="classnovaphy_1_1_model_builder_1a0211a6cb36609ef082320846a7f2a53f" kind="function"><name>add_body</name></member>
+    <member refid="classnovaphy_1_1_model_builder_1a33f0c3c4a060e3ea433f3e119112dadf" kind="function"><name>add_shape</name></member>
+    <member refid="classnovaphy_1_1_model_builder_1a248f512e3fbab17a40ec5ff1bf910627" kind="function"><name>add_ground_plane</name></member>
+    <member refid="classnovaphy_1_1_model_builder_1a701cb1f422ee12eaf5f2da43abb8fc6b" kind="function"><name>build</name></member>
+    <member refid="classnovaphy_1_1_model_builder_1a86288224e44c588411b84b1e55312589" kind="function"><name>num_bodies</name></member>
+    <member refid="classnovaphy_1_1_model_builder_1ad9d35b2367a1a89623981ad3565f44e5" kind="function"><name>num_shapes</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_plane_shape" kind="struct"><name>novaphy::PlaneShape</name>
+    <member refid="structnovaphy_1_1_plane_shape_1ad1947ccd8615373d16c1cdf394fc3935" kind="variable"><name>normal</name></member>
+    <member refid="structnovaphy_1_1_plane_shape_1a7a85e1872ff281519bed5ba736a79297" kind="variable"><name>offset</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_rigid_body" kind="struct"><name>novaphy::RigidBody</name>
+    <member refid="structnovaphy_1_1_rigid_body_1a4a55d7beadfbc6d08dd44c5727585962" kind="variable"><name>mass</name></member>
+    <member refid="structnovaphy_1_1_rigid_body_1a6260dd28637dcf2c2a07c01240c360a0" kind="variable"><name>inertia</name></member>
+    <member refid="structnovaphy_1_1_rigid_body_1a602e45796d16a5d13c979ae80f1b9d5c" kind="variable"><name>com</name></member>
+    <member refid="structnovaphy_1_1_rigid_body_1a65ea7f745251e5494811c8734b95359d" kind="function"><name>inv_mass</name></member>
+    <member refid="structnovaphy_1_1_rigid_body_1aae8faf551aa75b76c7d3746405216d84" kind="function"><name>inv_inertia</name></member>
+    <member refid="structnovaphy_1_1_rigid_body_1a126fd8a4a8f26672728160a8d2689744" kind="function"><name>is_static</name></member>
+    <member refid="structnovaphy_1_1_rigid_body_1aa3b13f19f6bbf060c8e64cd9effdebe9" kind="function"><name>spatial_inertia</name></member>
+    <member refid="structnovaphy_1_1_rigid_body_1a79004be9129aad62aeaf9f1d84dff054" kind="function"><name>from_box</name></member>
+    <member refid="structnovaphy_1_1_rigid_body_1a7644cf6fe9f375ed3e09888f140632bd" kind="function"><name>from_sphere</name></member>
+    <member refid="structnovaphy_1_1_rigid_body_1a590034bde697e581ac0e9daabcfa30c5" kind="function"><name>make_static</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_sim_state" kind="struct"><name>novaphy::SimState</name>
+    <member refid="structnovaphy_1_1_sim_state_1ae6b299eaa8225eae8d59ace327fc21f1" kind="variable"><name>transforms</name></member>
+    <member refid="structnovaphy_1_1_sim_state_1afb62ebe17edc136a94ff00a1b693e85c" kind="variable"><name>linear_velocities</name></member>
+    <member refid="structnovaphy_1_1_sim_state_1a0621403b5efc9336391324bce4085395" kind="variable"><name>angular_velocities</name></member>
+    <member refid="structnovaphy_1_1_sim_state_1a72d60a061e349121d090c163bf637e99" kind="variable"><name>forces</name></member>
+    <member refid="structnovaphy_1_1_sim_state_1a591be39d02fc2522c22083077481171c" kind="variable"><name>torques</name></member>
+    <member refid="structnovaphy_1_1_sim_state_1a493e653253ab6aeb84843a1b837efc6a" kind="function"><name>init</name></member>
+    <member refid="structnovaphy_1_1_sim_state_1a4f739212c01ab815312b73299355c060" kind="function"><name>clear_forces</name></member>
+    <member refid="structnovaphy_1_1_sim_state_1a9ee9f5a5ba4ec31766d67ee4b890b4a6" kind="function"><name>set_linear_velocity</name></member>
+    <member refid="structnovaphy_1_1_sim_state_1a94c9d89abc48ea3dc40662a89e42cc2a" kind="function"><name>set_angular_velocity</name></member>
+    <member refid="structnovaphy_1_1_sim_state_1a8831df49aecc6ffb15288a53818f3f40" kind="function"><name>apply_force</name></member>
+    <member refid="structnovaphy_1_1_sim_state_1a6a61ef450532803ed09ebb3462a9b1b8" kind="function"><name>apply_torque</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_solver_settings" kind="struct"><name>novaphy::SolverSettings</name>
+    <member refid="structnovaphy_1_1_solver_settings_1ad4defdbc236d98d829d81238d67a8ed9" kind="variable"><name>velocity_iterations</name></member>
+    <member refid="structnovaphy_1_1_solver_settings_1a6a2db2b246b0cea4e95c008ec8e2a508" kind="variable"><name>baumgarte</name></member>
+    <member refid="structnovaphy_1_1_solver_settings_1a01ba436c107b609ebad0a8d3a9f79f3d" kind="variable"><name>slop</name></member>
+    <member refid="structnovaphy_1_1_solver_settings_1ac2331b22629e3fc5e4d0274276251f8e" kind="variable"><name>warm_starting</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_spatial_transform" kind="struct"><name>novaphy::SpatialTransform</name>
+    <member refid="structnovaphy_1_1_spatial_transform_1adf9370a843aa6049798c28aaa5752d03" kind="variable"><name>E</name></member>
+    <member refid="structnovaphy_1_1_spatial_transform_1ae53da5bc4b7e4961df7090cea0bcfd27" kind="variable"><name>r</name></member>
+    <member refid="structnovaphy_1_1_spatial_transform_1a01d761e4b6ba73da0bb6c7012e998348" kind="function"><name>SpatialTransform</name></member>
+    <member refid="structnovaphy_1_1_spatial_transform_1a027d0e5f185d9f2e4f26308920f6b456" kind="function"><name>SpatialTransform</name></member>
+    <member refid="structnovaphy_1_1_spatial_transform_1ad23b35d19fd4c4bb32a62c6c9854004a" kind="function"><name>apply_motion</name></member>
+    <member refid="structnovaphy_1_1_spatial_transform_1adb1820b2d0e0d069647f73a0ac6e96d8" kind="function"><name>apply_force</name></member>
+    <member refid="structnovaphy_1_1_spatial_transform_1a69c43270b9ced9f2a511c129899c1777" kind="function"><name>to_matrix</name></member>
+    <member refid="structnovaphy_1_1_spatial_transform_1aab88d993b84c724e452c9d8e8ce0c25c" kind="function"><name>inverse</name></member>
+    <member refid="structnovaphy_1_1_spatial_transform_1a364ae938903a065dfcc6a40bc38f238a" kind="function"><name>operator*</name></member>
+    <member refid="structnovaphy_1_1_spatial_transform_1a8e638cee0c56c1e2f342b0e554930fb5" kind="function"><name>from_transform</name></member>
+    <member refid="structnovaphy_1_1_spatial_transform_1a652a2e16bdf05a0410196c0c548b2c90" kind="function"><name>identity</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_sphere_shape" kind="struct"><name>novaphy::SphereShape</name>
+    <member refid="structnovaphy_1_1_sphere_shape_1a1e7dd194ab087068798c42e82a518cb8" kind="variable"><name>radius</name></member>
+  </compound>
+  <compound refid="classnovaphy_1_1_sweep_and_prune" kind="class"><name>novaphy::SweepAndPrune</name>
+    <member refid="classnovaphy_1_1_sweep_and_prune_1a1d297acca4d7bdfa16d55afedc6d5bea" kind="variable"><name>endpoints_x_</name></member>
+    <member refid="classnovaphy_1_1_sweep_and_prune_1aee6ed446b9a80ab5609dea563135a407" kind="variable"><name>endpoints_y_</name></member>
+    <member refid="classnovaphy_1_1_sweep_and_prune_1a8847d3c6f359b443772c9d8ba605f843" kind="variable"><name>endpoints_z_</name></member>
+    <member refid="classnovaphy_1_1_sweep_and_prune_1a758ac26f5fa3d7c1474311a99731323d" kind="variable"><name>pairs_</name></member>
+    <member refid="classnovaphy_1_1_sweep_and_prune_1a5684c3fecb0da7e704e4a52e3596fae9" kind="variable"><name>initialized_</name></member>
+    <member refid="classnovaphy_1_1_sweep_and_prune_1a7a26ec2a54a8cfeb5cb762980c7607d9" kind="function"><name>SweepAndPrune</name></member>
+    <member refid="classnovaphy_1_1_sweep_and_prune_1a2611c0c7fe869ce61f0174f215ee2301" kind="function"><name>update</name></member>
+    <member refid="classnovaphy_1_1_sweep_and_prune_1ab611c0928aeb064445dfbac945612e51" kind="function"><name>get_pairs</name></member>
+    <member refid="classnovaphy_1_1_sweep_and_prune_1a0666ce11643a039604cf5b8683b0723e" kind="function"><name>rebuild</name></member>
+    <member refid="classnovaphy_1_1_sweep_and_prune_1a026b0b9ece76793f775c09cefe659b92" kind="function"><name>insertion_sort</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_symplectic_euler" kind="struct"><name>novaphy::SymplecticEuler</name>
+    <member refid="structnovaphy_1_1_symplectic_euler_1a60fc2b758fa080e645631eb5bf75302a" kind="function"><name>integrate_velocity</name></member>
+    <member refid="structnovaphy_1_1_symplectic_euler_1a94d67c264ce2d5c1fb766777c679ff4a" kind="function"><name>integrate_position</name></member>
+  </compound>
+  <compound refid="structnovaphy_1_1_transform" kind="struct"><name>novaphy::Transform</name>
+    <member refid="structnovaphy_1_1_transform_1a074b6b85886aacd125ea8db47cc25f80" kind="variable"><name>position</name></member>
+    <member refid="structnovaphy_1_1_transform_1a1a88b660d881eab306cb61d9a3218707" kind="variable"><name>rotation</name></member>
+    <member refid="structnovaphy_1_1_transform_1a0493937b0441b675435096a2f02912f9" kind="function"><name>Transform</name></member>
+    <member refid="structnovaphy_1_1_transform_1a9a8a952a1c2061ab6432fde64500cf7f" kind="function"><name>Transform</name></member>
+    <member refid="structnovaphy_1_1_transform_1a4a6f80dd0da43d1152d1cae551103f06" kind="function"><name>operator*</name></member>
+    <member refid="structnovaphy_1_1_transform_1a2506c2d754772882891d7a118630d880" kind="function"><name>inverse</name></member>
+    <member refid="structnovaphy_1_1_transform_1ab65d8c0cfd3a5c72e1d928e3da4b7573" kind="function"><name>transform_point</name></member>
+    <member refid="structnovaphy_1_1_transform_1a8275cc9b4000bf0fe6b222f29a73876a" kind="function"><name>transform_vector</name></member>
+    <member refid="structnovaphy_1_1_transform_1a15091736eca0a5250c4c19de64476ad4" kind="function"><name>rotation_matrix</name></member>
+    <member refid="structnovaphy_1_1_transform_1a44c81dcd76ab81961d385a30b95db3d8" kind="function"><name>identity</name></member>
+    <member refid="structnovaphy_1_1_transform_1a105b726c1889f56ed02f4a869e60b1db" kind="function"><name>from_translation</name></member>
+    <member refid="structnovaphy_1_1_transform_1a4613bcb81c364ccce1934b7abfe5adc7" kind="function"><name>from_rotation</name></member>
+    <member refid="structnovaphy_1_1_transform_1acd6592af62991b48f9ac382d7cdf8968" kind="function"><name>from_axis_angle</name></member>
+  </compound>
+  <compound refid="classnovaphy_1_1_world" kind="class"><name>novaphy::World</name>
+    <member refid="classnovaphy_1_1_world_1a019a38c2ae9e6515d1faac18fe78deeb" kind="variable"><name>model_</name></member>
+    <member refid="classnovaphy_1_1_world_1ac8fca7365c15a82db768cf7dea9baa13" kind="variable"><name>state_</name></member>
+    <member refid="classnovaphy_1_1_world_1ac218c405fca65bbc74eab8b4e76c23e6" kind="variable"><name>broadphase_</name></member>
+    <member refid="classnovaphy_1_1_world_1a8b1a3475d616dce763980a8e9e41b946" kind="variable"><name>solver_</name></member>
+    <member refid="classnovaphy_1_1_world_1a508b236c59540287f2cc96241e315e4a" kind="variable"><name>gravity_</name></member>
+    <member refid="classnovaphy_1_1_world_1a1cb3ef58f802a580db4c84d0a2f6b5f2" kind="variable"><name>contacts_</name></member>
+    <member refid="classnovaphy_1_1_world_1af7b041fe333923310dbcb9f27d11292e" kind="function"><name>World</name></member>
+    <member refid="classnovaphy_1_1_world_1abc197156cc4e9344e6a90f2df07c577d" kind="function"><name>step</name></member>
+    <member refid="classnovaphy_1_1_world_1a8b2d23b579252bd278d741b51cce54d6" kind="function"><name>set_gravity</name></member>
+    <member refid="classnovaphy_1_1_world_1a71408e92a6d0fceada751d0ab1087cda" kind="function"><name>gravity</name></member>
+    <member refid="classnovaphy_1_1_world_1a59d5373069aa3bd499bf0d99079fd2de" kind="function"><name>state</name></member>
+    <member refid="classnovaphy_1_1_world_1a1197eb4ca0e8043a554970a1fde2e515" kind="function"><name>state</name></member>
+    <member refid="classnovaphy_1_1_world_1af6f1a10e8ff40a7c661e3f3954bf9eb9" kind="function"><name>model</name></member>
+    <member refid="classnovaphy_1_1_world_1aebdf447ce8d58807338d1ce78e4b154e" kind="function"><name>solver_settings</name></member>
+    <member refid="classnovaphy_1_1_world_1a7adebe1cec37f0a47e25a57423c4c82f" kind="function"><name>contacts</name></member>
+    <member refid="classnovaphy_1_1_world_1abcbb90e077101d600671a65e0b89e675" kind="function"><name>apply_force</name></member>
+    <member refid="classnovaphy_1_1_world_1ae3ae5e79bcd64dfc6104a438a332272e" kind="function"><name>apply_torque</name></member>
+  </compound>
+  <compound refid="namespacenovaphy" kind="namespace"><name>novaphy</name>
+    <member refid="joint_8h_1abb6e7b9c78afb2eed01673fb22b92f21" kind="enum"><name>JointType</name></member>
+    <member refid="joint_8h_1abb6e7b9c78afb2eed01673fb22b92f21a358561ac4d41f41d479b7c54b19b639e" kind="enumvalue"><name>Revolute</name></member>
+    <member refid="joint_8h_1abb6e7b9c78afb2eed01673fb22b92f21a4457d440870ad6d42bab9082d9bf9b61" kind="enumvalue"><name>Fixed</name></member>
+    <member refid="joint_8h_1abb6e7b9c78afb2eed01673fb22b92f21ab24ce0cd392a5b0b8dedc66c25213594" kind="enumvalue"><name>Free</name></member>
+    <member refid="joint_8h_1abb6e7b9c78afb2eed01673fb22b92f21a6160a53ece50ce6d4f5ef4452549835e" kind="enumvalue"><name>Slide</name></member>
+    <member refid="joint_8h_1abb6e7b9c78afb2eed01673fb22b92f21a353df421c4fc976e2637061d7a83f601" kind="enumvalue"><name>Ball</name></member>
+    <member refid="shape_8h_1a58f6e36a882ce724a3480a3d09522638" kind="enum"><name>ShapeType</name></member>
+    <member refid="shape_8h_1a58f6e36a882ce724a3480a3d09522638a3cfce651e667ab85486dd42a8185f98a" kind="enumvalue"><name>Box</name></member>
+    <member refid="shape_8h_1a58f6e36a882ce724a3480a3d09522638ab7095f057db3fefa7325ad93a04e14fd" kind="enumvalue"><name>Sphere</name></member>
+    <member refid="shape_8h_1a58f6e36a882ce724a3480a3d09522638a0d3adee051531c15b3509b4d4d75ce7b" kind="enumvalue"><name>Plane</name></member>
+    <member refid="math__types_8h_1aba9ca6dfc894871ef878920bd302e2b2" kind="typedef"><name>Vec2f</name></member>
+    <member refid="math__types_8h_1a5a3d921b05ad73dcd9a6d9465cc2d753" kind="typedef"><name>Vec3f</name></member>
+    <member refid="math__types_8h_1af48405afff5bae7ad43ca5e72ac29076" kind="typedef"><name>Vec4f</name></member>
+    <member refid="math__types_8h_1a47d9c43d823dcd6477bfc9c84fa5d2cd" kind="typedef"><name>VecXf</name></member>
+    <member refid="math__types_8h_1a515d9bca5e8960b27986822e7deba6ad" kind="typedef"><name>Mat3f</name></member>
+    <member refid="math__types_8h_1a9cc9c47fa53a21f570d7947159b2176e" kind="typedef"><name>Mat4f</name></member>
+    <member refid="math__types_8h_1a902335209fa016fe78f95abbe02b4075" kind="typedef"><name>MatXf</name></member>
+    <member refid="math__types_8h_1aa4898bfe527cf7e4ae7c069b8ef8d27a" kind="typedef"><name>Mat6f</name></member>
+    <member refid="math__types_8h_1af91acecebf7ade4f7f1893ddb306a747" kind="typedef"><name>Quatf</name></member>
+    <member refid="spatial_8h_1aab805d833d403fcb5450832746dbf337" kind="typedef"><name>SpatialVector</name></member>
+    <member refid="spatial_8h_1a954142263a7e621bebd4acc4f45ef7dc" kind="typedef"><name>SpatialMatrix</name></member>
+    <member refid="novaphy__types_8h_1a18eace0825d817d15bc5348416edd454" kind="typedef"><name>Scalar</name></member>
+    <member refid="math__utils_8h_1a02086bb870bf1cf48fdd194a2106d8af" kind="variable"><name>PI</name></member>
+    <member refid="narrowphase_8h_1a37a3b2596c41b8c21d5843c867833d34" kind="function"><name>collide_shapes</name></member>
+    <member refid="contact_8h_1a5f72c9f5a72671a51ad4bceee4ea6dc8" kind="function"><name>combine_friction</name></member>
+    <member refid="contact_8h_1ac884b10a2e89172f28966f10747fce29" kind="function"><name>combine_restitution</name></member>
+    <member refid="math__utils_8h_1aafc0422674142ec676fe8128699de175" kind="function"><name>skew</name></member>
+    <member refid="math__utils_8h_1a1f6eda194ee9e8fd41db9b68a951840d" kind="function"><name>quat_from_axis_angle</name></member>
+    <member refid="math__utils_8h_1a7549d887d83063f84414ee27e642761f" kind="function"><name>clampf</name></member>
+    <member refid="math__utils_8h_1a13560e024204599fa407055d811a02e8" kind="function"><name>lerpf</name></member>
+    <member refid="math__utils_8h_1a3ef81f1ee5f6cc4877816b43ca0091f2" kind="function"><name>deg2rad</name></member>
+    <member refid="math__utils_8h_1a18ec1e482b25df281f0ea8aeb30b1121" kind="function"><name>rad2deg</name></member>
+    <member refid="spatial_8h_1a05b383d3034454a60b34b8b6109729cc" kind="function"><name>spatial_angular</name></member>
+    <member refid="spatial_8h_1a073897c64331ff0408444c3d5f5b152a" kind="function"><name>spatial_linear</name></member>
+    <member refid="spatial_8h_1a0e60343d0ff8e7a3a2de239a18a72069" kind="function"><name>make_spatial</name></member>
+    <member refid="spatial_8h_1a4266150b9e25658bc20532c0d5a0c80e" kind="function"><name>spatial_cross_motion</name></member>
+    <member refid="spatial_8h_1a8f587237327ba63177ffe279ab29a4cd" kind="function"><name>spatial_cross_force</name></member>
+    <member refid="spatial_8h_1a9f196922686e1aad71ba68287412ec18" kind="function"><name>spatial_inertia_matrix</name></member>
+    <member refid="spatial_8h_1a4215451751e10c4dfd37e5bb635df8ab" kind="function"><name>transform_spatial_inertia</name></member>
+    <member refid="novaphy_8h_1a3e5aeb111d4b37e11e5505ef92cf02ca" kind="function"><name>version</name></member>
+  </compound>
+  <compound refid="namespacenovaphy_1_1featherstone" kind="namespace"><name>novaphy::featherstone</name>
+    <member refid="namespacenovaphy_1_1featherstone_1a81fede8c2599e86900042c6e37323256" kind="function"><name>forward_kinematics</name></member>
+    <member refid="namespacenovaphy_1_1featherstone_1a1304eda4890f645ebdd6e78c6aedbfcd" kind="function"><name>inverse_dynamics</name></member>
+    <member refid="namespacenovaphy_1_1featherstone_1a010f7ded3d737a60216318841dc15914" kind="function"><name>mass_matrix</name></member>
+    <member refid="namespacenovaphy_1_1featherstone_1a0fbb3f2e208778bfe14a97c6aeadf858" kind="function"><name>forward_dynamics</name></member>
+  </compound>
+  <compound refid="namespacenovaphy_1_1narrowphase" kind="namespace"><name>novaphy::narrowphase</name>
+    <member refid="narrowphase_8h_1ae7936adf426cc03fc0c827db38aea9f3" kind="function"><name>collide_sphere_sphere</name></member>
+    <member refid="narrowphase_8h_1a115bc4a07ad5b7da65018479501ddf5f" kind="function"><name>collide_sphere_plane</name></member>
+    <member refid="narrowphase_8h_1ad31cf400a221e92df9c23a1af6b63ce1" kind="function"><name>collide_box_sphere</name></member>
+    <member refid="narrowphase_8h_1ab13120065bd7426207d4a92fdce334b9" kind="function"><name>collide_box_plane</name></member>
+    <member refid="narrowphase_8h_1ad3f37e6704d55af35256367212fc01d1" kind="function"><name>collide_box_box</name></member>
+  </compound>
+  <compound refid="broadphase_8h" kind="file"><name>broadphase.h</name>
+  </compound>
+  <compound refid="narrowphase_8h" kind="file"><name>narrowphase.h</name>
+  </compound>
+  <compound refid="aabb_8h" kind="file"><name>aabb.h</name>
+  </compound>
+  <compound refid="articulation_8h" kind="file"><name>articulation.h</name>
+  </compound>
+  <compound refid="body_8h" kind="file"><name>body.h</name>
+  </compound>
+  <compound refid="contact_8h" kind="file"><name>contact.h</name>
+  </compound>
+  <compound refid="joint_8h" kind="file"><name>joint.h</name>
+  </compound>
+  <compound refid="model_8h" kind="file"><name>model.h</name>
+  </compound>
+  <compound refid="model__builder_8h" kind="file"><name>model_builder.h</name>
+  </compound>
+  <compound refid="shape_8h" kind="file"><name>shape.h</name>
+  </compound>
+  <compound refid="articulated__solver_8h" kind="file"><name>articulated_solver.h</name>
+  </compound>
+  <compound refid="featherstone_8h" kind="file"><name>featherstone.h</name>
+  </compound>
+  <compound refid="free__body__solver_8h" kind="file"><name>free_body_solver.h</name>
+  </compound>
+  <compound refid="integrator_8h" kind="file"><name>integrator.h</name>
+  </compound>
+  <compound refid="math__types_8h" kind="file"><name>math_types.h</name>
+  </compound>
+  <compound refid="math__utils_8h" kind="file"><name>math_utils.h</name>
+  </compound>
+  <compound refid="spatial_8h" kind="file"><name>spatial.h</name>
+  </compound>
+  <compound refid="novaphy_8h" kind="file"><name>novaphy.h</name>
+  </compound>
+  <compound refid="novaphy__types_8h" kind="file"><name>novaphy_types.h</name>
+  </compound>
+  <compound refid="state_8h" kind="file"><name>state.h</name>
+  </compound>
+  <compound refid="world_8h" kind="file"><name>world.h</name>
+  </compound>
+  <compound refid="broadphase_8cpp" kind="file"><name>broadphase.cpp</name>
+  </compound>
+  <compound refid="narrowphase_8cpp" kind="file"><name>narrowphase.cpp</name>
+  </compound>
+  <compound refid="body_8cpp" kind="file"><name>body.cpp</name>
+  </compound>
+  <compound refid="joint_8cpp" kind="file"><name>joint.cpp</name>
+  </compound>
+  <compound refid="model__builder_8cpp" kind="file"><name>model_builder.cpp</name>
+  </compound>
+  <compound refid="shape_8cpp" kind="file"><name>shape.cpp</name>
+  </compound>
+  <compound refid="articulated__solver_8cpp" kind="file"><name>articulated_solver.cpp</name>
+  </compound>
+  <compound refid="featherstone_8cpp" kind="file"><name>featherstone.cpp</name>
+  </compound>
+  <compound refid="free__body__solver_8cpp" kind="file"><name>free_body_solver.cpp</name>
+  </compound>
+  <compound refid="integrator_8cpp" kind="file"><name>integrator.cpp</name>
+  </compound>
+  <compound refid="math__utils_8cpp" kind="file"><name>math_utils.cpp</name>
+  </compound>
+  <compound refid="spatial_8cpp" kind="file"><name>spatial.cpp</name>
+  </compound>
+  <compound refid="state_8cpp" kind="file"><name>state.cpp</name>
+  </compound>
+  <compound refid="world_8cpp" kind="file"><name>world.cpp</name>
+  </compound>
+  <compound refid="stub_8cpp" kind="file"><name>stub.cpp</name>
+  </compound>
+  <compound refid="dir_2ccc68ca8175d70750b98e0f976c7ed2" kind="dir"><name>include/novaphy/collision</name>
+  </compound>
+  <compound refid="dir_7bdefc09624a65e4879833850a61ce04" kind="dir"><name>src/collision</name>
+  </compound>
+  <compound refid="dir_ca9936b2faf1d1f2a00e07a666739a67" kind="dir"><name>include/novaphy/core</name>
+  </compound>
+  <compound refid="dir_aebb8dcc11953d78e620bbef0b9e2183" kind="dir"><name>src/core</name>
+  </compound>
+  <compound refid="dir_d6c42e0b394a83cf4bbed1cce046d53b" kind="dir"><name>include/novaphy/dynamics</name>
+  </compound>
+  <compound refid="dir_261425c25055ac4a48b7253766e15e1a" kind="dir"><name>src/dynamics</name>
+  </compound>
+  <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
+  </compound>
+  <compound refid="dir_3995826e9882df94a148087f8d8cd71c" kind="dir"><name>include/novaphy/math</name>
+  </compound>
+  <compound refid="dir_ae9a93452e2a84339148a16bcf2eb561" kind="dir"><name>src/math</name>
+  </compound>
+  <compound refid="dir_657289c220be95c6081988be87b2c7d5" kind="dir"><name>include/novaphy</name>
+  </compound>
+  <compound refid="dir_83df8c34d8cc15dda9331044e56817ef" kind="dir"><name>include/novaphy/sim</name>
+  </compound>
+  <compound refid="dir_5ba998bec3831bd658c4991b03a0da20" kind="dir"><name>src/sim</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+</doxygenindex>

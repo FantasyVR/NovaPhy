@@ -5,25 +5,35 @@
 
 namespace novaphy {
 
-/// Joint types for articulated bodies (MuJoCo-compatible naming)
+/**
+ * @brief Joint types supported by articulation dynamics.
+ */
 enum class JointType {
-    Revolute,  // 1 DOF: rotation about a single axis (MuJoCo: hinge)
-    Fixed,     // 0 DOF: rigid attachment (MuJoCo: weld)
-    Free,      // 6 DOF: free-floating (MuJoCo: free)
-    Slide,     // 1 DOF: translation along an axis (MuJoCo: slide)
-    Ball,      // 3 DOF: spherical rotation (MuJoCo: ball)
+    Revolute,  /**< 1 DOF rotation about a single axis (hinge). */
+    Fixed,     /**< 0 DOF rigid attachment (weld). */
+    Free,      /**< 6 DOF free-floating base with quaternion position state. */
+    Slide,     /**< 1 DOF translation along a single axis. */
+    Ball,      /**< 3 rotational DOFs represented by quaternion state. */
 };
 
-/// Joint definition for an articulated body link.
+/**
+ * @brief Joint descriptor connecting one link to its parent.
+ *
+ * @details Defines joint kinematics and motion subspace used by Featherstone
+ * forward/inverse dynamics. Axes are expressed in the joint-local frame.
+ */
 struct Joint {
-    JointType type = JointType::Revolute;
-    Vec3f axis = Vec3f(0, 0, 1);  // rotation/translation axis (for revolute/slide)
-    int parent = -1;               // parent link index (-1 = world)
+    JointType type = JointType::Revolute;  /**< Joint type. */
+    Vec3f axis = Vec3f(0, 0, 1);           /**< Joint axis for revolute/slide joints. */
+    int parent = -1;                       /**< Parent link index, or -1 for world root. */
 
-    /// Transform from parent body frame to joint frame (constant offset)
-    Transform parent_to_joint = Transform::identity();
+    Transform parent_to_joint = Transform::identity();  /**< Constant transform from parent frame to joint frame. */
 
-    /// Number of position DOFs for this joint type
+    /**
+     * @brief Get number of generalized position coordinates for this joint.
+     *
+     * @return Position DOF count.
+     */
     int num_q() const {
         switch (type) {
             case JointType::Revolute: return 1;
@@ -35,7 +45,11 @@ struct Joint {
         return 0;
     }
 
-    /// Number of velocity DOFs for this joint type
+    /**
+     * @brief Get number of generalized velocity coordinates for this joint.
+     *
+     * @return Velocity DOF count.
+     */
     int num_qd() const {
         switch (type) {
             case JointType::Revolute: return 1;
@@ -47,20 +61,25 @@ struct Joint {
         return 0;
     }
 
-    /// Compute the joint transform X_J(q) given joint coordinates.
-    /// For revolute: rotation about axis by angle q[0]
-    /// For fixed: identity
-    /// For free: translation + rotation from q
-    /// For slide: translation along axis by q[0]
-    /// For ball: rotation from quaternion q[0:4]
+    /**
+     * @brief Compute joint transform from generalized position coordinates.
+     *
+     * @param [in] q Pointer to this joint's coordinate block in the global q vector.
+     * @return Joint transform from joint frame to child-link frame.
+     *
+     * @note `q` layout depends on joint type:
+     * revolute/slide: scalar, ball: quaternion, free: translation + quaternion.
+     */
     Transform joint_transform(const float* q) const;
 
-    /// Compute the motion subspace matrix S (6 x nv).
-    /// Returns columns as spatial vectors.
-    /// For revolute: single column [axis; 0]
-    /// For free: 6x6 identity
-    /// For slide: single column [0; axis]
-    /// For ball: 3 columns [I_3x3; 0]
+    /**
+     * @brief Compute motion subspace columns for this joint.
+     *
+     * @param [out] S_cols Output array of spatial motion columns, length = num_qd().
+     * @return void
+     *
+     * @details Columns follow Featherstone convention [angular; linear].
+     */
     void motion_subspace(SpatialVector* S_cols) const;
 };
 

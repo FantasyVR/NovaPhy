@@ -1,0 +1,54 @@
+\doxysection{broadphase.\+h}
+\hypertarget{broadphase_8h_source}{}\label{broadphase_8h_source}\index{include/novaphy/collision/broadphase.h@{include/novaphy/collision/broadphase.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}novaphy/core/aabb.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }novaphy\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair}{BroadPhasePair}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair_a67bdaf17aa2e7cb0f4de606f1e4b4862}{body\_a}};\ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair_ac32b0bf00f5e85129bca204c3535405c}{body\_b}};\ \ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair_aafe85e8bd57d7d04c0839ab426f0a4d6}{operator==}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair}{BroadPhasePair}}\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair_a67bdaf17aa2e7cb0f4de606f1e4b4862}{body\_a}}\ ==\ other.\doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair_a67bdaf17aa2e7cb0f4de606f1e4b4862}{body\_a}}\ \&\&\ \doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair_ac32b0bf00f5e85129bca204c3535405c}{body\_b}}\ ==\ other.\doxymbox{\hyperlink{structnovaphy_1_1_broad_phase_pair_ac32b0bf00f5e85129bca204c3535405c}{body\_b}};}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classnovaphy_1_1_sweep_and_prune_a7a26ec2a54a8cfeb5cb762980c7607d9}{SweepAndPrune}}\ \{}
+\DoxyCodeLine{00040\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \ \ \doxymbox{\hyperlink{classnovaphy_1_1_sweep_and_prune_a7a26ec2a54a8cfeb5cb762980c7607d9}{SweepAndPrune}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classnovaphy_1_1_sweep_and_prune_a2611c0c7fe869ce61f0174f215ee2301}{update}}(\textcolor{keyword}{const}\ std::vector<AABB>\&\ body\_aabbs,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<bool>\&\ static\_mask);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<BroadPhasePair>\&\ \doxymbox{\hyperlink{classnovaphy_1_1_sweep_and_prune_ab611c0928aeb064445dfbac945612e51}{get\_pairs}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ pairs\_;\ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{struct\ }Endpoint\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ value;\ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ body\_index;\ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_min;\ \ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ std::vector<Endpoint>\ endpoints\_x\_;}
+\DoxyCodeLine{00074\ \ \ \ \ std::vector<Endpoint>\ endpoints\_y\_;}
+\DoxyCodeLine{00075\ \ \ \ \ std::vector<Endpoint>\ endpoints\_z\_;}
+\DoxyCodeLine{00076\ \ \ \ \ std::vector<BroadPhasePair>\ pairs\_;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{bool}\ initialized\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ rebuild(\textcolor{keyword}{const}\ std::vector<AABB>\&\ aabbs,\ \textcolor{keyword}{const}\ std::vector<bool>\&\ static\_mask);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ insertion\_sort(std::vector<Endpoint>\&\ eps);}
+\DoxyCodeLine{00096\ \};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \}\ \ \textcolor{comment}{//\ namespace\ novaphy}}
+
+\end{DoxyCode}

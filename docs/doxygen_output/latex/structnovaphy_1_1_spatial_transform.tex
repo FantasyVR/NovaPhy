@@ -1,0 +1,208 @@
+\doxysection{novaphy::\+Spatial\+Transform Struct Reference}
+\hypertarget{structnovaphy_1_1_spatial_transform}{}\label{structnovaphy_1_1_spatial_transform}\index{novaphy::SpatialTransform@{novaphy::SpatialTransform}}
+
+
+Spatial rigid transform between coordinate frames.  
+
+
+
+
+{\ttfamily \+\#include $<$spatial.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}\label{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348} 
+{\bfseries Spatial\+Transform} ()=default
+\begin{DoxyCompactList}\small\item\em Construct identity spatial transform. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a027d0e5f185d9f2e4f26308920f6b456}{Spatial\+Transform}} (const Mat3f \&rot, const Vec3f \&trans)
+\begin{DoxyCompactList}\small\item\em Construct spatial transform from rotation and translation. \end{DoxyCompactList}\item 
+Spatial\+Vector \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_ad23b35d19fd4c4bb32a62c6c9854004a}{apply\+\_\+motion}} (const Spatial\+Vector \&v) const
+\begin{DoxyCompactList}\small\item\em Apply transform to a spatial motion vector. \end{DoxyCompactList}\item 
+Spatial\+Vector \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adb1820b2d0e0d069647f73a0ac6e96d8}{apply\+\_\+force}} (const Spatial\+Vector \&f) const
+\begin{DoxyCompactList}\small\item\em Apply dual transform to a spatial force vector. \end{DoxyCompactList}\item 
+Spatial\+Matrix \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a69c43270b9ced9f2a511c129899c1777}{to\+\_\+matrix}} () const
+\begin{DoxyCompactList}\small\item\em Convert to 6x6 matrix representation. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{Spatial\+Transform}} \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_aab88d993b84c724e452c9d8e8ce0c25c}{inverse}} () const
+\begin{DoxyCompactList}\small\item\em Compute inverse spatial transform. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{Spatial\+Transform}} \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a364ae938903a065dfcc6a40bc38f238a}{operator\texorpdfstring{$\ast$}{*}}} (const \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{Spatial\+Transform}} \&other) const
+\begin{DoxyCompactList}\small\item\em Compose two spatial transforms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{Spatial\+Transform}} \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a8e638cee0c56c1e2f342b0e554930fb5}{from\+\_\+transform}} (const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&t)
+\begin{DoxyCompactList}\small\item\em Create spatial transform from rigid transform. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{Spatial\+Transform}} \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a652a2e16bdf05a0410196c0c548b2c90}{identity}} ()
+\begin{DoxyCompactList}\small\item\em Create identity spatial transform. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Mat3f \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}} = Mat3f::\+\+Identity()
+\item 
+Vec3f \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_ae53da5bc4b7e4961df7090cea0bcfd27}{r}} = Vec3f::\+\+Zero()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Spatial rigid transform between coordinate frames. 
+
+Represents X\+\_\+\{A\texorpdfstring{$<$}{<}-\/B\} with rotation {\ttfamily \doxylink{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}{E}} (B to A) and translation {\ttfamily \doxylink{structnovaphy_1_1_spatial_transform_ae53da5bc4b7e4961df7090cea0bcfd27}{r}} (origin of B expressed in A, in meters). 
+
+\label{doc-constructors}
+\Hypertarget{structnovaphy_1_1_spatial_transform_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structnovaphy_1_1_spatial_transform_a027d0e5f185d9f2e4f26308920f6b456}\index{novaphy::SpatialTransform@{novaphy::SpatialTransform}!SpatialTransform@{SpatialTransform}}
+\index{SpatialTransform@{SpatialTransform}!novaphy::SpatialTransform@{novaphy::SpatialTransform}}
+\doxysubsubsection{\texorpdfstring{SpatialTransform()}{SpatialTransform()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_spatial_transform_a027d0e5f185d9f2e4f26308920f6b456} 
+novaphy::\+\+Spatial\+Transform::\+\+Spatial\+Transform (\begin{DoxyParamCaption}\item[{const Mat3f \&}]{rot}{, }\item[{const Vec3f \&}]{trans}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct spatial transform from rotation and translation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em rot} & Rotation from B to A. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em trans} & Origin of B expressed in A (m). \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{structnovaphy_1_1_spatial_transform_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structnovaphy_1_1_spatial_transform_adb1820b2d0e0d069647f73a0ac6e96d8}\index{novaphy::SpatialTransform@{novaphy::SpatialTransform}!apply\_force@{apply\_force}}
+\index{apply\_force@{apply\_force}!novaphy::SpatialTransform@{novaphy::SpatialTransform}}
+\doxysubsubsection{\texorpdfstring{apply\_force()}{apply\_force()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_spatial_transform_adb1820b2d0e0d069647f73a0ac6e96d8} 
+Spatial\+Vector novaphy::\+\+Spatial\+Transform::\+apply\+\_\+force (\begin{DoxyParamCaption}\item[{const Spatial\+Vector \&}]{f}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Apply dual transform to a spatial force vector. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em f} & Force vector in frame A dual space. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Force vector mapped consistently with frame transform. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_spatial_transform_ad23b35d19fd4c4bb32a62c6c9854004a}\index{novaphy::SpatialTransform@{novaphy::SpatialTransform}!apply\_motion@{apply\_motion}}
+\index{apply\_motion@{apply\_motion}!novaphy::SpatialTransform@{novaphy::SpatialTransform}}
+\doxysubsubsection{\texorpdfstring{apply\_motion()}{apply\_motion()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_spatial_transform_ad23b35d19fd4c4bb32a62c6c9854004a} 
+Spatial\+Vector novaphy::\+\+Spatial\+Transform::\+apply\+\_\+motion (\begin{DoxyParamCaption}\item[{const Spatial\+Vector \&}]{v}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Apply transform to a spatial motion vector. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em v} & Motion vector in frame B. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Motion vector expressed in frame A. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_spatial_transform_a8e638cee0c56c1e2f342b0e554930fb5}\index{novaphy::SpatialTransform@{novaphy::SpatialTransform}!from\_transform@{from\_transform}}
+\index{from\_transform@{from\_transform}!novaphy::SpatialTransform@{novaphy::SpatialTransform}}
+\doxysubsubsection{\texorpdfstring{from\_transform()}{from\_transform()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_spatial_transform_a8e638cee0c56c1e2f342b0e554930fb5} 
+\doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{Spatial\+Transform}} novaphy::\+\+Spatial\+Transform::\+from\+\_\+transform (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Create spatial transform from rigid transform. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em t} & Rigid transform with quaternion rotation and translation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Spatial transform with matching pose. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_spatial_transform_a652a2e16bdf05a0410196c0c548b2c90}\index{novaphy::SpatialTransform@{novaphy::SpatialTransform}!identity@{identity}}
+\index{identity@{identity}!novaphy::SpatialTransform@{novaphy::SpatialTransform}}
+\doxysubsubsection{\texorpdfstring{identity()}{identity()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_spatial_transform_a652a2e16bdf05a0410196c0c548b2c90} 
+\doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{Spatial\+Transform}} novaphy::\+\+Spatial\+Transform::\+identity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Create identity spatial transform. 
+
+\begin{DoxyReturn}{Returns}
+Identity transform. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_spatial_transform_aab88d993b84c724e452c9d8e8ce0c25c}\index{novaphy::SpatialTransform@{novaphy::SpatialTransform}!inverse@{inverse}}
+\index{inverse@{inverse}!novaphy::SpatialTransform@{novaphy::SpatialTransform}}
+\doxysubsubsection{\texorpdfstring{inverse()}{inverse()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_spatial_transform_aab88d993b84c724e452c9d8e8ce0c25c} 
+\doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{Spatial\+Transform}} novaphy::\+\+Spatial\+Transform::\+inverse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute inverse spatial transform. 
+
+\begin{DoxyReturn}{Returns}
+Inverse transform X\+\_\+\{B\texorpdfstring{$<$}{<}-\/A\}. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_spatial_transform_a364ae938903a065dfcc6a40bc38f238a}\index{novaphy::SpatialTransform@{novaphy::SpatialTransform}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!novaphy::SpatialTransform@{novaphy::SpatialTransform}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_spatial_transform_a364ae938903a065dfcc6a40bc38f238a} 
+\doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{Spatial\+Transform}} novaphy::\+\+Spatial\+Transform::\+operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_spatial_transform_a01d761e4b6ba73da0bb6c7012e998348}{Spatial\+Transform}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compose two spatial transforms. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em other} & Right-\/side transform. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Composed transform. 
+\end{DoxyReturn}
+\Hypertarget{structnovaphy_1_1_spatial_transform_a69c43270b9ced9f2a511c129899c1777}\index{novaphy::SpatialTransform@{novaphy::SpatialTransform}!to\_matrix@{to\_matrix}}
+\index{to\_matrix@{to\_matrix}!novaphy::SpatialTransform@{novaphy::SpatialTransform}}
+\doxysubsubsection{\texorpdfstring{to\_matrix()}{to\_matrix()}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_spatial_transform_a69c43270b9ced9f2a511c129899c1777} 
+Spatial\+Matrix novaphy::\+\+Spatial\+Transform::\+to\+\_\+matrix (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convert to 6x6 matrix representation. 
+
+\begin{DoxyReturn}{Returns}
+Spatial transform matrix. 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{structnovaphy_1_1_spatial_transform_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03}\index{novaphy::SpatialTransform@{novaphy::SpatialTransform}!E@{E}}
+\index{E@{E}!novaphy::SpatialTransform@{novaphy::SpatialTransform}}
+\doxysubsubsection{\texorpdfstring{E}{E}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_spatial_transform_adf9370a843aa6049798c28aaa5752d03} 
+Mat3f novaphy::\+\+Spatial\+Transform::\+E = Mat3f::\+\+Identity()}
+
+Rotation from frame B to frame A. \Hypertarget{structnovaphy_1_1_spatial_transform_ae53da5bc4b7e4961df7090cea0bcfd27}\index{novaphy::SpatialTransform@{novaphy::SpatialTransform}!r@{r}}
+\index{r@{r}!novaphy::SpatialTransform@{novaphy::SpatialTransform}}
+\doxysubsubsection{\texorpdfstring{r}{r}}
+{\footnotesize\ttfamily \label{structnovaphy_1_1_spatial_transform_ae53da5bc4b7e4961df7090cea0bcfd27} 
+Vec3f novaphy::\+\+Spatial\+Transform::\+r = Vec3f::\+\+Zero()}
+
+Translation from A origin to B origin, expressed in A (m). 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+math/\+spatial.\+h\end{DoxyCompactItemize}

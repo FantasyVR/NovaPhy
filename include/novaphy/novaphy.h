@@ -4,7 +4,10 @@
 
 namespace novaphy {
 
-/// Returns the version string of NovaPhy.
+/**
+ * @brief Returns the semantic version string of the NovaPhy library.
+ * @return Version string in the form `major.minor.patch`.
+ */
 inline std::string version() { return "0.1.0"; }
 
 }  // namespace novaphy

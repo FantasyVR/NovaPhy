@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_2ccc68ca8175d70750b98e0f976c7ed2" kind="dir">
+    <compoundname>include/novaphy/collision</compoundname>
+    <innerfile refid="broadphase_8h">broadphase.h</innerfile>
+    <innerfile refid="narrowphase_8h">narrowphase.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/novaphy/collision/"/>
+  </compounddef>
+</doxygen>

@@ -15,9 +15,15 @@ from demos.demo_utils import DemoApp
 
 class FrictionRampDemo(DemoApp):
     def __init__(self):
+        """Initializes the friction ramp demo configuration."""
         super().__init__(title="NovaPhy - Friction Ramp", dt=1.0/120.0)
 
     def build_scene(self):
+        """Builds an inclined ramp scene with three friction variants.
+
+        Returns:
+            None
+        """
         builder = novaphy.ModelBuilder()
         builder.add_ground_plane(y=-2.0, friction=0.5)
 

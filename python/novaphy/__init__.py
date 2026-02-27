@@ -1,4 +1,9 @@
-"""NovaPhy: A 3D physics engine for embodied intelligence."""
+"""Python package entrypoint for NovaPhy.
+
+Exports pybind11-backed physics engine APIs, including rigid-body simulation,
+collision detection, articulated-body dynamics, and math/spatial utilities.
+All physical quantities follow SI units (MKS) unless otherwise noted.
+"""
 
 from novaphy._core import (
     version,

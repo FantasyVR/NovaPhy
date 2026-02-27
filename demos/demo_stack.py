@@ -18,9 +18,15 @@ from demos.demo_utils import DemoApp
 
 class BoxStackDemo(DemoApp):
     def __init__(self):
+        """Initializes the box stacking demo configuration."""
         super().__init__(title="NovaPhy - Box Stack", dt=1.0/120.0)
 
     def build_scene(self):
+        """Builds a 3-box stack on a static ground plane.
+
+        Returns:
+            None
+        """
         builder = novaphy.ModelBuilder()
 
         # Ground plane

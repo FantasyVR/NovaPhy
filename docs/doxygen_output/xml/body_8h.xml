@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="body_8h" kind="file" language="C++">
+    <compoundname>body.h</compoundname>
+    <includes refid="math__types_8h" local="yes">novaphy/math/math_types.h</includes>
+    <includes refid="spatial_8h" local="yes">novaphy/math/spatial.h</includes>
+    <includedby refid="articulation_8h" local="yes">include/novaphy/core/articulation.h</includedby>
+    <includedby refid="model_8h" local="yes">include/novaphy/core/model.h</includedby>
+    <includedby refid="model__builder_8h" local="yes">include/novaphy/core/model_builder.h</includedby>
+    <includedby refid="free__body__solver_8h" local="yes">include/novaphy/dynamics/free_body_solver.h</includedby>
+    <includedby refid="body_8cpp" local="yes">src/core/body.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/novaphy/core/body.h</label>
+        <link refid="body_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>novaphy/math/math_types.h</label>
+        <link refid="math__types_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>novaphy/math/math_utils.h</label>
+        <link refid="math__utils_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>novaphy/math/spatial.h</label>
+        <link refid="spatial_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>novaphy/novaphy_types.h</label>
+        <link refid="novaphy__types_8h_source"/>
+      </node>
+      <node id="3">
+        <label>Eigen/Core</label>
+      </node>
+      <node id="4">
+        <label>Eigen/Geometry</label>
+      </node>
+      <node id="5">
+        <label>cmath</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/novaphy/core/articulation.h</label>
+        <link refid="articulation_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/novaphy/core/body.h</label>
+        <link refid="body_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>include/novaphy/core/model.h</label>
+        <link refid="model_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>include/novaphy/core/model_builder.h</label>
+        <link refid="model__builder_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/novaphy/dynamics/articulated_solver.h</label>
+        <link refid="articulated__solver_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/novaphy/dynamics/featherstone.h</label>
+        <link refid="featherstone_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>include/novaphy/dynamics/free_body_solver.h</label>
+        <link refid="free__body__solver_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/novaphy/sim/world.h</label>
+        <link refid="world_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/core/body.cpp</label>
+        <link refid="body_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/core/model_builder.cpp</label>
+        <link refid="model__builder_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/dynamics/articulated_solver.cpp</label>
+        <link refid="articulated__solver_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/dynamics/featherstone.cpp</label>
+        <link refid="featherstone_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/dynamics/free_body_solver.cpp</label>
+        <link refid="free__body__solver_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/sim/world.cpp</label>
+        <link refid="world_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structnovaphy_1_1_rigid_body" prot="public">novaphy::RigidBody</innerclass>
+    <innernamespace refid="namespacenovaphy">novaphy</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/math/math_types.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;novaphy/math/spatial.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">novaphy<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="structnovaphy_1_1_rigid_body" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref><sp/>{</highlight></codeline>
+<codeline lineno="16" refid="structnovaphy_1_1_rigid_body_1a4a55d7beadfbc6d08dd44c5727585962" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_rigid_body_1a4a55d7beadfbc6d08dd44c5727585962" kindref="member">mass</ref><sp/>=<sp/>1.0f;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="17" refid="structnovaphy_1_1_rigid_body_1a6260dd28637dcf2c2a07c01240c360a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Mat3f<sp/><ref refid="structnovaphy_1_1_rigid_body_1a6260dd28637dcf2c2a07c01240c360a0" kindref="member">inertia</ref><sp/>=<sp/>Mat3f::Identity();<sp/><sp/></highlight></codeline>
+<codeline lineno="18" refid="structnovaphy_1_1_rigid_body_1a602e45796d16a5d13c979ae80f1b9d5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Vec3f<sp/><ref refid="structnovaphy_1_1_rigid_body_1a602e45796d16a5d13c979ae80f1b9d5c" kindref="member">com</ref><sp/>=<sp/>Vec3f::Zero();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="structnovaphy_1_1_rigid_body_1a65ea7f745251e5494811c8734b95359d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_rigid_body_1a65ea7f745251e5494811c8734b95359d" kindref="member">inv_mass</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_rigid_body_1a4a55d7beadfbc6d08dd44c5727585962" kindref="member">mass</ref><sp/>&gt;<sp/>0.0f<sp/>?<sp/>1.0f<sp/>/<sp/><ref refid="structnovaphy_1_1_rigid_body_1a4a55d7beadfbc6d08dd44c5727585962" kindref="member">mass</ref><sp/>:<sp/>0.0f;<sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="structnovaphy_1_1_rigid_body_1aae8faf551aa75b76c7d3746405216d84" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Mat3f<sp/><ref refid="structnovaphy_1_1_rigid_body_1aae8faf551aa75b76c7d3746405216d84" kindref="member">inv_inertia</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structnovaphy_1_1_rigid_body_1a4a55d7beadfbc6d08dd44c5727585962" kindref="member">mass</ref><sp/>&lt;=<sp/>0.0f)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Mat3f::Zero();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_rigid_body_1a6260dd28637dcf2c2a07c01240c360a0" kindref="member">inertia</ref>.inverse();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="structnovaphy_1_1_rigid_body_1a126fd8a4a8f26672728160a8d2689744" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_rigid_body_1a126fd8a4a8f26672728160a8d2689744" kindref="member">is_static</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_rigid_body_1a4a55d7beadfbc6d08dd44c5727585962" kindref="member">mass</ref><sp/>&lt;=<sp/>0.0f;<sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="structnovaphy_1_1_rigid_body_1aa3b13f19f6bbf060c8e64cd9effdebe9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>SpatialMatrix<sp/><ref refid="structnovaphy_1_1_rigid_body_1aa3b13f19f6bbf060c8e64cd9effdebe9" kindref="member">spatial_inertia</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>spatial_inertia_matrix(<ref refid="structnovaphy_1_1_rigid_body_1a4a55d7beadfbc6d08dd44c5727585962" kindref="member">mass</ref>,<sp/><ref refid="structnovaphy_1_1_rigid_body_1a602e45796d16a5d13c979ae80f1b9d5c" kindref="member">com</ref>,<sp/><ref refid="structnovaphy_1_1_rigid_body_1a6260dd28637dcf2c2a07c01240c360a0" kindref="member">inertia</ref>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="structnovaphy_1_1_rigid_body_1a79004be9129aad62aeaf9f1d84dff054" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref><sp/><ref refid="structnovaphy_1_1_rigid_body_1a79004be9129aad62aeaf9f1d84dff054" kindref="member">from_box</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>m,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vec3f&amp;<sp/>half_extents)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref><sp/>b;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b.<ref refid="structnovaphy_1_1_rigid_body_1a4a55d7beadfbc6d08dd44c5727585962" kindref="member">mass</ref><sp/>=<sp/>m;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>w<sp/>=<sp/>2.0f<sp/>*<sp/>half_extents.x();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>h<sp/>=<sp/>2.0f<sp/>*<sp/>half_extents.y();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>d<sp/>=<sp/>2.0f<sp/>*<sp/>half_extents.z();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>m<sp/>/<sp/>12.0f;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b.<ref refid="structnovaphy_1_1_rigid_body_1a6260dd28637dcf2c2a07c01240c360a0" kindref="member">inertia</ref><sp/>=<sp/>Mat3f::Zero();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b.<ref refid="structnovaphy_1_1_rigid_body_1a6260dd28637dcf2c2a07c01240c360a0" kindref="member">inertia</ref>(0,<sp/>0)<sp/>=<sp/>c<sp/>*<sp/>(h<sp/>*<sp/>h<sp/>+<sp/>d<sp/>*<sp/>d);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b.<ref refid="structnovaphy_1_1_rigid_body_1a6260dd28637dcf2c2a07c01240c360a0" kindref="member">inertia</ref>(1,<sp/>1)<sp/>=<sp/>c<sp/>*<sp/>(w<sp/>*<sp/>w<sp/>+<sp/>d<sp/>*<sp/>d);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b.<ref refid="structnovaphy_1_1_rigid_body_1a6260dd28637dcf2c2a07c01240c360a0" kindref="member">inertia</ref>(2,<sp/>2)<sp/>=<sp/>c<sp/>*<sp/>(w<sp/>*<sp/>w<sp/>+<sp/>h<sp/>*<sp/>h);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>b;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="structnovaphy_1_1_rigid_body_1a7644cf6fe9f375ed3e09888f140632bd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref><sp/><ref refid="structnovaphy_1_1_rigid_body_1a7644cf6fe9f375ed3e09888f140632bd" kindref="member">from_sphere</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>m,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius)<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref><sp/>b;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b.<ref refid="structnovaphy_1_1_rigid_body_1a4a55d7beadfbc6d08dd44c5727585962" kindref="member">mass</ref><sp/>=<sp/>m;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>I<sp/>=<sp/>(2.0f<sp/>/<sp/>5.0f)<sp/>*<sp/>m<sp/>*<sp/>radius<sp/>*<sp/>radius;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b.<ref refid="structnovaphy_1_1_rigid_body_1a6260dd28637dcf2c2a07c01240c360a0" kindref="member">inertia</ref><sp/>=<sp/>Mat3f::Identity()<sp/>*<sp/>I;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>b;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="structnovaphy_1_1_rigid_body_1a590034bde697e581ac0e9daabcfa30c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref><sp/><ref refid="structnovaphy_1_1_rigid_body_1a590034bde697e581ac0e9daabcfa30c5" kindref="member">make_static</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structnovaphy_1_1_rigid_body" kindref="compound">RigidBody</ref><sp/>b;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b.<ref refid="structnovaphy_1_1_rigid_body_1a4a55d7beadfbc6d08dd44c5727585962" kindref="member">mass</ref><sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b.<ref refid="structnovaphy_1_1_rigid_body_1a6260dd28637dcf2c2a07c01240c360a0" kindref="member">inertia</ref><sp/>=<sp/>Mat3f::Zero();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>b;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>novaphy</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/novaphy/core/body.h"/>
+  </compounddef>
+</doxygen>

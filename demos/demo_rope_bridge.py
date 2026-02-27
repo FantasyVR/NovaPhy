@@ -20,6 +20,16 @@ from novaphy.viz import make_box_mesh, quat_to_rotation_matrix
 
 
 def build_rope_bridge(num_segments=10, seg_length=0.5, seg_mass=0.2):
+    """Builds a serial revolute chain approximating a rope bridge.
+
+    Args:
+        num_segments (int): Number of bridge segments.
+        seg_length (float): Segment length in meters.
+        seg_mass (float): Segment mass in kilograms.
+
+    Returns:
+        novaphy.Articulation: Configured articulated model.
+    """
     art = novaphy.Articulation()
     joints = []
     bodies = []
@@ -56,6 +66,14 @@ def build_rope_bridge(num_segments=10, seg_length=0.5, seg_mass=0.2):
 
 
 def run_headless(steps=600):
+    """Runs the rope-bridge demo without visualization and logs tip state.
+
+    Args:
+        steps (int): Number of simulation steps.
+
+    Returns:
+        None
+    """
     num_seg = 10
     seg_len = 0.5
     art = build_rope_bridge(num_seg, seg_len)
@@ -77,6 +95,11 @@ def run_headless(steps=600):
 
 
 def run_visual():
+    """Runs the interactive Polyscope rope-bridge visualization.
+
+    Returns:
+        None
+    """
     if not HAS_POLYSCOPE:
         run_headless()
         return

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_ca9936b2faf1d1f2a00e07a666739a67" kind="dir">
+    <compoundname>include/novaphy/core</compoundname>
+    <innerfile refid="aabb_8h">aabb.h</innerfile>
+    <innerfile refid="articulation_8h">articulation.h</innerfile>
+    <innerfile refid="body_8h">body.h</innerfile>
+    <innerfile refid="contact_8h">contact.h</innerfile>
+    <innerfile refid="joint_8h">joint.h</innerfile>
+    <innerfile refid="model_8h">model.h</innerfile>
+    <innerfile refid="model__builder_8h">model_builder.h</innerfile>
+    <innerfile refid="shape_8h">shape.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/novaphy/core/"/>
+  </compounddef>
+</doxygen>

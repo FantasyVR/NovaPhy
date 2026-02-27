@@ -1,0 +1,184 @@
+\doxysection{novaphy::\+Model\+Builder Class Reference}
+\hypertarget{classnovaphy_1_1_model_builder}{}\label{classnovaphy_1_1_model_builder}\index{novaphy::ModelBuilder@{novaphy::ModelBuilder}}
+
+
+Builder utility for constructing immutable free-\/body scene models.  
+
+
+
+
+{\ttfamily \+\#include $<$model\+\_\+builder.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classnovaphy_1_1_model_builder_a18a63787a9cd3f7b28dc8f95e739fa0c}\label{classnovaphy_1_1_model_builder_a18a63787a9cd3f7b28dc8f95e739fa0c} 
+{\bfseries Model\+Builder} ()=default
+\begin{DoxyCompactList}\small\item\em Construct an empty model builder. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{classnovaphy_1_1_model_builder_a0211a6cb36609ef082320846a7f2a53f}{add\+\_\+body}} (const \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{Rigid\+Body}} \&body, const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&transform=\doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::\+identity}}())
+\begin{DoxyCompactList}\small\item\em Add a rigid body with initial world transform. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{classnovaphy_1_1_model_builder_a33f0c3c4a060e3ea433f3e119112dadf}{add\+\_\+shape}} (const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&shape)
+\begin{DoxyCompactList}\small\item\em Add a collision shape. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{classnovaphy_1_1_model_builder_a248f512e3fbab17a40ec5ff1bf910627}{add\+\_\+ground\+\_\+plane}} (float y=0.\+0f, float friction=0.\+5f, float restitution=0.\+0f)
+\begin{DoxyCompactList}\small\item\em Add infinite horizontal ground plane. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structnovaphy_1_1_model}{Model}} \doxymbox{\hyperlink{classnovaphy_1_1_model_builder_a701cb1f422ee12eaf5f2da43abb8fc6b}{build}} () const
+\begin{DoxyCompactList}\small\item\em Build immutable {\ttfamily \doxylink{structnovaphy_1_1_model}{Model}} from accumulated entities. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{classnovaphy_1_1_model_builder_a86288224e44c588411b84b1e55312589}{num\+\_\+bodies}} () const
+\begin{DoxyCompactList}\small\item\em Get current number of added bodies. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{classnovaphy_1_1_model_builder_ad9d35b2367a1a89623981ad3565f44e5}{num\+\_\+shapes}} () const
+\begin{DoxyCompactList}\small\item\em Get current number of added shapes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Builder utility for constructing immutable free-\/body scene models. 
+
+Collects rigid bodies, their initial transforms, and collision shapes, then emits a {\ttfamily \doxylink{structnovaphy_1_1_model}{Model}} snapshot suitable for simulation. 
+
+\label{doc-func-members}
+\Hypertarget{classnovaphy_1_1_model_builder_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classnovaphy_1_1_model_builder_a0211a6cb36609ef082320846a7f2a53f}\index{novaphy::ModelBuilder@{novaphy::ModelBuilder}!add\_body@{add\_body}}
+\index{add\_body@{add\_body}!novaphy::ModelBuilder@{novaphy::ModelBuilder}}
+\doxysubsubsection{\texorpdfstring{add\_body()}{add\_body()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_model_builder_a0211a6cb36609ef082320846a7f2a53f} 
+int novaphy::\+\+Model\+Builder::\+add\+\_\+body (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_rigid_body}{Rigid\+Body}} \&}]{body}{, }\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_transform}{Transform}} \&}]{transform}{ = {\ttfamily \doxymbox{\hyperlink{structnovaphy_1_1_transform_a44c81dcd76ab81961d385a30b95db3d8}{Transform::\+identity}}()}}\end{DoxyParamCaption})}
+
+
+
+Add a rigid body with initial world transform. 
+
+Adds a rigid body with an initial world transform.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em body} & Body inertial properties. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em transform} & Initial world transform. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of inserted body.
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em body} & Body inertial and kinematic properties in SI units. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em transform} & Initial world transform of the body frame. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the inserted body in the model body array. 
+\end{DoxyReturn}
+\Hypertarget{classnovaphy_1_1_model_builder_a248f512e3fbab17a40ec5ff1bf910627}\index{novaphy::ModelBuilder@{novaphy::ModelBuilder}!add\_ground\_plane@{add\_ground\_plane}}
+\index{add\_ground\_plane@{add\_ground\_plane}!novaphy::ModelBuilder@{novaphy::ModelBuilder}}
+\doxysubsubsection{\texorpdfstring{add\_ground\_plane()}{add\_ground\_plane()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_model_builder_a248f512e3fbab17a40ec5ff1bf910627} 
+int novaphy::\+\+Model\+Builder::\+add\+\_\+ground\+\_\+plane (\begin{DoxyParamCaption}\item[{float}]{y}{ = {\ttfamily 0.0f}, }\item[{float}]{friction}{ = {\ttfamily 0.5f}, }\item[{float}]{restitution}{ = {\ttfamily 0.0f}}\end{DoxyParamCaption})}
+
+
+
+Add infinite horizontal ground plane. 
+
+Creates and adds an infinite horizontal ground plane.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em y} & Plane offset along +Y world axis in meters. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em friction} & Friction coefficient. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em restitution} & Restitution coefficient. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of inserted plane shape.
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em y} & Plane offset along world Y in meters. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em friction} & Coulomb friction coefficient. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em restitution} & Coefficient of restitution in {\ttfamily \+[0, 1]\+}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the inserted plane shape. 
+\end{DoxyReturn}
+\Hypertarget{classnovaphy_1_1_model_builder_a33f0c3c4a060e3ea433f3e119112dadf}\index{novaphy::ModelBuilder@{novaphy::ModelBuilder}!add\_shape@{add\_shape}}
+\index{add\_shape@{add\_shape}!novaphy::ModelBuilder@{novaphy::ModelBuilder}}
+\doxysubsubsection{\texorpdfstring{add\_shape()}{add\_shape()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_model_builder_a33f0c3c4a060e3ea433f3e119112dadf} 
+int novaphy::\+\+Model\+Builder::\+add\+\_\+shape (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structnovaphy_1_1_collision_shape}{Collision\+Shape}} \&}]{shape}{}\end{DoxyParamCaption})}
+
+
+
+Add a collision shape. 
+
+Adds a collision shape descriptor to the model.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em shape} & Collision shape descriptor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of inserted shape.
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em shape} & Shape geometry and contact material parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the inserted shape in the model shape array. 
+\end{DoxyReturn}
+\Hypertarget{classnovaphy_1_1_model_builder_a701cb1f422ee12eaf5f2da43abb8fc6b}\index{novaphy::ModelBuilder@{novaphy::ModelBuilder}!build@{build}}
+\index{build@{build}!novaphy::ModelBuilder@{novaphy::ModelBuilder}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_model_builder_a701cb1f422ee12eaf5f2da43abb8fc6b} 
+\doxymbox{\hyperlink{structnovaphy_1_1_model}{Model}} novaphy::\+\+Model\+Builder::\+build (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Build immutable {\ttfamily \doxylink{structnovaphy_1_1_model}{Model}} from accumulated entities. 
+
+Materializes a {\ttfamily \doxylink{structnovaphy_1_1_model}{Model}} from the accumulated builder state.
+
+\begin{DoxyReturn}{Returns}
+Immutable scene model.
+
+Copy of all configured bodies, transforms, and shapes. 
+\end{DoxyReturn}
+\Hypertarget{classnovaphy_1_1_model_builder_a86288224e44c588411b84b1e55312589}\index{novaphy::ModelBuilder@{novaphy::ModelBuilder}!num\_bodies@{num\_bodies}}
+\index{num\_bodies@{num\_bodies}!novaphy::ModelBuilder@{novaphy::ModelBuilder}}
+\doxysubsubsection{\texorpdfstring{num\_bodies()}{num\_bodies()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_model_builder_a86288224e44c588411b84b1e55312589} 
+int novaphy::\+\+Model\+Builder::\+num\+\_\+bodies (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get current number of added bodies. 
+
+\begin{DoxyReturn}{Returns}
+Body count. 
+\end{DoxyReturn}
+\Hypertarget{classnovaphy_1_1_model_builder_ad9d35b2367a1a89623981ad3565f44e5}\index{novaphy::ModelBuilder@{novaphy::ModelBuilder}!num\_shapes@{num\_shapes}}
+\index{num\_shapes@{num\_shapes}!novaphy::ModelBuilder@{novaphy::ModelBuilder}}
+\doxysubsubsection{\texorpdfstring{num\_shapes()}{num\_shapes()}}
+{\footnotesize\ttfamily \label{classnovaphy_1_1_model_builder_ad9d35b2367a1a89623981ad3565f44e5} 
+int novaphy::\+\+Model\+Builder::\+num\+\_\+shapes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get current number of added shapes. 
+
+\begin{DoxyReturn}{Returns}
+Shape count. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+novaphy/\+core/\+model\+\_\+builder.\+h\item 
+src/\+core/\+\doxymbox{\hyperlink{model__builder_8cpp}{model\+\_\+builder.\+cpp}}\end{DoxyCompactItemize}

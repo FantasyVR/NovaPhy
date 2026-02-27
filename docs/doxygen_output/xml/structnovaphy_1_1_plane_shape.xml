@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structnovaphy_1_1_plane_shape" kind="struct" language="C++" prot="public">
+    <compoundname>novaphy::PlaneShape</compoundname>
+    <includes refid="shape_8h" local="no">shape.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnovaphy_1_1_plane_shape_1ad1947ccd8615373d16c1cdf394fc3935" prot="public" static="no" mutable="no">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::PlaneShape::normal</definition>
+        <argsstring></argsstring>
+        <name>normal</name>
+        <qualifiedname>novaphy::PlaneShape::normal</qualifiedname>
+        <initializer>= Vec3f(0.0f, 1.0f, 0.0f)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Unit normal in world/local frame according to usage. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="33" column="11" bodyfile="include/novaphy/core/shape.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnovaphy_1_1_plane_shape_1a7a85e1872ff281519bed5ba736a79297" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::PlaneShape::offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <qualifiedname>novaphy::PlaneShape::offset</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Signed distance from origin along normal (m). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="34" column="11" bodyfile="include/novaphy/core/shape.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Infinite plane primitive in Hessian form. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Plane equation is n.dot(x) = offset where n is unit length. </para>
+    </detaileddescription>
+    <location file="include/novaphy/core/shape.h" line="32" column="1" bodyfile="include/novaphy/core/shape.h" bodystart="32" bodyend="35"/>
+    <listofallmembers>
+      <member refid="structnovaphy_1_1_plane_shape_1ad1947ccd8615373d16c1cdf394fc3935" prot="public" virt="non-virtual"><scope>novaphy::PlaneShape</scope><name>normal</name></member>
+      <member refid="structnovaphy_1_1_plane_shape_1a7a85e1872ff281519bed5ba736a79297" prot="public" virt="non-virtual"><scope>novaphy::PlaneShape</scope><name>offset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -14,9 +14,15 @@ from demos.demo_utils import DemoApp
 
 class PyramidDemo(DemoApp):
     def __init__(self):
+        """Initializes the pyramid stacking demo configuration."""
         super().__init__(title="NovaPhy - Pyramid", dt=1.0/120.0)
 
     def build_scene(self):
+        """Builds a 4-3-2-1 box pyramid over a ground plane.
+
+        Returns:
+            None
+        """
         builder = novaphy.ModelBuilder()
         builder.add_ground_plane(y=0.0, friction=0.6)
 

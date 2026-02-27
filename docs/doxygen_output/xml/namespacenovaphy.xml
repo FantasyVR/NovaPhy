@@ -1,0 +1,1096 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="namespacenovaphy" kind="namespace" language="C++">
+    <compoundname>novaphy</compoundname>
+    <innerclass refid="structnovaphy_1_1_broad_phase_pair" prot="public">novaphy::BroadPhasePair</innerclass>
+    <innerclass refid="classnovaphy_1_1_sweep_and_prune" prot="public">novaphy::SweepAndPrune</innerclass>
+    <innerclass refid="structnovaphy_1_1_a_a_b_b" prot="public">novaphy::AABB</innerclass>
+    <innerclass refid="structnovaphy_1_1_articulation" prot="public">novaphy::Articulation</innerclass>
+    <innerclass refid="structnovaphy_1_1_rigid_body" prot="public">novaphy::RigidBody</innerclass>
+    <innerclass refid="structnovaphy_1_1_contact_point" prot="public">novaphy::ContactPoint</innerclass>
+    <innerclass refid="structnovaphy_1_1_contact_manifold" prot="public">novaphy::ContactManifold</innerclass>
+    <innerclass refid="structnovaphy_1_1_joint" prot="public">novaphy::Joint</innerclass>
+    <innerclass refid="structnovaphy_1_1_model" prot="public">novaphy::Model</innerclass>
+    <innerclass refid="classnovaphy_1_1_model_builder" prot="public">novaphy::ModelBuilder</innerclass>
+    <innerclass refid="structnovaphy_1_1_box_shape" prot="public">novaphy::BoxShape</innerclass>
+    <innerclass refid="structnovaphy_1_1_sphere_shape" prot="public">novaphy::SphereShape</innerclass>
+    <innerclass refid="structnovaphy_1_1_plane_shape" prot="public">novaphy::PlaneShape</innerclass>
+    <innerclass refid="structnovaphy_1_1_collision_shape" prot="public">novaphy::CollisionShape</innerclass>
+    <innerclass refid="classnovaphy_1_1_articulated_solver" prot="public">novaphy::ArticulatedSolver</innerclass>
+    <innerclass refid="structnovaphy_1_1_solver_settings" prot="public">novaphy::SolverSettings</innerclass>
+    <innerclass refid="classnovaphy_1_1_free_body_solver" prot="public">novaphy::FreeBodySolver</innerclass>
+    <innerclass refid="structnovaphy_1_1_symplectic_euler" prot="public">novaphy::SymplecticEuler</innerclass>
+    <innerclass refid="structnovaphy_1_1_transform" prot="public">novaphy::Transform</innerclass>
+    <innerclass refid="structnovaphy_1_1_spatial_transform" prot="public">novaphy::SpatialTransform</innerclass>
+    <innerclass refid="structnovaphy_1_1_sim_state" prot="public">novaphy::SimState</innerclass>
+    <innerclass refid="classnovaphy_1_1_world" prot="public">novaphy::World</innerclass>
+    <innernamespace refid="namespacenovaphy_1_1narrowphase">novaphy::narrowphase</innernamespace>
+    <innernamespace refid="namespacenovaphy_1_1featherstone">novaphy::featherstone</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="joint_8h_1abb6e7b9c78afb2eed01673fb22b92f21" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>JointType</name>
+        <qualifiedname>novaphy::JointType</qualifiedname>
+        <enumvalue id="joint_8h_1abb6e7b9c78afb2eed01673fb22b92f21a358561ac4d41f41d479b7c54b19b639e" prot="public">
+          <name>Revolute</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>1 DOF rotation about a single axis (hinge). </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="joint_8h_1abb6e7b9c78afb2eed01673fb22b92f21a4457d440870ad6d42bab9082d9bf9b61" prot="public">
+          <name>Fixed</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>0 DOF rigid attachment (weld). </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="joint_8h_1abb6e7b9c78afb2eed01673fb22b92f21ab24ce0cd392a5b0b8dedc66c25213594" prot="public">
+          <name>Free</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>6 DOF free-floating base with quaternion position state. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="joint_8h_1abb6e7b9c78afb2eed01673fb22b92f21a6160a53ece50ce6d4f5ef4452549835e" prot="public">
+          <name>Slide</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>1 DOF translation along a single axis. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="joint_8h_1abb6e7b9c78afb2eed01673fb22b92f21a353df421c4fc976e2637061d7a83f601" prot="public">
+          <name>Ball</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>3 rotational DOFs represented by quaternion state. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para><ref refid="structnovaphy_1_1_joint" kindref="compound">Joint</ref> types supported by articulation dynamics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/joint.h" line="11" column="1" bodyfile="include/novaphy/core/joint.h" bodystart="11" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="enum" id="shape_8h_1a58f6e36a882ce724a3480a3d09522638" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>ShapeType</name>
+        <qualifiedname>novaphy::ShapeType</qualifiedname>
+        <enumvalue id="shape_8h_1a58f6e36a882ce724a3480a3d09522638a3cfce651e667ab85486dd42a8185f98a" prot="public">
+          <name>Box</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="shape_8h_1a58f6e36a882ce724a3480a3d09522638ab7095f057db3fefa7325ad93a04e14fd" prot="public">
+          <name>Sphere</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="shape_8h_1a58f6e36a882ce724a3480a3d09522638a0d3adee051531c15b3509b4d4d75ce7b" prot="public">
+          <name>Plane</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Supported collision-shape primitives. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/shape.h" line="11" column="1" bodyfile="include/novaphy/core/shape.h" bodystart="11" bodyend="11"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="math__types_8h_1aba9ca6dfc894871ef878920bd302e2b2" prot="public" static="no">
+        <type>Eigen::Vector2f</type>
+        <definition>using novaphy::Vec2f = Eigen::Vector2f</definition>
+        <argsstring></argsstring>
+        <name>Vec2f</name>
+        <qualifiedname>novaphy::Vec2f</qualifiedname>
+        <briefdescription>
+<para>2D float vector type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="12" column="1" bodyfile="include/novaphy/math/math_types.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="math__types_8h_1a5a3d921b05ad73dcd9a6d9465cc2d753" prot="public" static="no">
+        <type>Eigen::Vector3f</type>
+        <definition>using novaphy::Vec3f = Eigen::Vector3f</definition>
+        <argsstring></argsstring>
+        <name>Vec3f</name>
+        <qualifiedname>novaphy::Vec3f</qualifiedname>
+        <briefdescription>
+<para>3D float vector type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="14" column="1" bodyfile="include/novaphy/math/math_types.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="math__types_8h_1af48405afff5bae7ad43ca5e72ac29076" prot="public" static="no">
+        <type>Eigen::Vector4f</type>
+        <definition>using novaphy::Vec4f = Eigen::Vector4f</definition>
+        <argsstring></argsstring>
+        <name>Vec4f</name>
+        <qualifiedname>novaphy::Vec4f</qualifiedname>
+        <briefdescription>
+<para>4D float vector type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="16" column="1" bodyfile="include/novaphy/math/math_types.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="math__types_8h_1a47d9c43d823dcd6477bfc9c84fa5d2cd" prot="public" static="no">
+        <type>Eigen::VectorXf</type>
+        <definition>using novaphy::VecXf = Eigen::VectorXf</definition>
+        <argsstring></argsstring>
+        <name>VecXf</name>
+        <qualifiedname>novaphy::VecXf</qualifiedname>
+        <briefdescription>
+<para>Dynamic-size float vector type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="18" column="1" bodyfile="include/novaphy/math/math_types.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="math__types_8h_1a515d9bca5e8960b27986822e7deba6ad" prot="public" static="no">
+        <type>Eigen::Matrix3f</type>
+        <definition>using novaphy::Mat3f = Eigen::Matrix3f</definition>
+        <argsstring></argsstring>
+        <name>Mat3f</name>
+        <qualifiedname>novaphy::Mat3f</qualifiedname>
+        <briefdescription>
+<para>3x3 float matrix type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="21" column="1" bodyfile="include/novaphy/math/math_types.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="math__types_8h_1a9cc9c47fa53a21f570d7947159b2176e" prot="public" static="no">
+        <type>Eigen::Matrix4f</type>
+        <definition>using novaphy::Mat4f = Eigen::Matrix4f</definition>
+        <argsstring></argsstring>
+        <name>Mat4f</name>
+        <qualifiedname>novaphy::Mat4f</qualifiedname>
+        <briefdescription>
+<para>4x4 float matrix type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="23" column="1" bodyfile="include/novaphy/math/math_types.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="math__types_8h_1a902335209fa016fe78f95abbe02b4075" prot="public" static="no">
+        <type>Eigen::MatrixXf</type>
+        <definition>using novaphy::MatXf = Eigen::MatrixXf</definition>
+        <argsstring></argsstring>
+        <name>MatXf</name>
+        <qualifiedname>novaphy::MatXf</qualifiedname>
+        <briefdescription>
+<para>Dynamic-size float matrix type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="25" column="1" bodyfile="include/novaphy/math/math_types.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="math__types_8h_1aa4898bfe527cf7e4ae7c069b8ef8d27a" prot="public" static="no">
+        <type>Eigen::Matrix&lt; float, 6, 6 &gt;</type>
+        <definition>using novaphy::Mat6f = Eigen::Matrix&lt;float, 6, 6&gt;</definition>
+        <argsstring></argsstring>
+        <name>Mat6f</name>
+        <qualifiedname>novaphy::Mat6f</qualifiedname>
+        <briefdescription>
+<para>6x6 float matrix type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="27" column="1" bodyfile="include/novaphy/math/math_types.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="math__types_8h_1af91acecebf7ade4f7f1893ddb306a747" prot="public" static="no">
+        <type>Eigen::Quaternionf</type>
+        <definition>using novaphy::Quatf = Eigen::Quaternionf</definition>
+        <argsstring></argsstring>
+        <name>Quatf</name>
+        <qualifiedname>novaphy::Quatf</qualifiedname>
+        <briefdescription>
+<para>Unit quaternion type used for 3D orientation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_types.h" line="30" column="1" bodyfile="include/novaphy/math/math_types.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="spatial_8h_1aab805d833d403fcb5450832746dbf337" prot="public" static="no">
+        <type>Eigen::Matrix&lt; float, 6, 1 &gt;</type>
+        <definition>using novaphy::SpatialVector = Eigen::Matrix&lt;float, 6, 1&gt;</definition>
+        <argsstring></argsstring>
+        <name>SpatialVector</name>
+        <qualifiedname>novaphy::SpatialVector</qualifiedname>
+        <briefdescription>
+<para>6D spatial vector using Featherstone ordering [angular; linear]. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="11" column="1" bodyfile="include/novaphy/math/spatial.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="spatial_8h_1a954142263a7e621bebd4acc4f45ef7dc" prot="public" static="no">
+        <type>Eigen::Matrix&lt; float, 6, 6 &gt;</type>
+        <definition>using novaphy::SpatialMatrix = Eigen::Matrix&lt;float, 6, 6&gt;</definition>
+        <argsstring></argsstring>
+        <name>SpatialMatrix</name>
+        <qualifiedname>novaphy::SpatialMatrix</qualifiedname>
+        <briefdescription>
+<para>6x6 spatial matrix used for inertia and spatial transforms. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="15" column="1" bodyfile="include/novaphy/math/spatial.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="novaphy__types_8h_1a18eace0825d817d15bc5348416edd454" prot="public" static="no">
+        <type>float</type>
+        <definition>using novaphy::Scalar = float</definition>
+        <argsstring></argsstring>
+        <name>Scalar</name>
+        <qualifiedname>novaphy::Scalar</qualifiedname>
+        <briefdescription>
+<para>Scalar floating-point type used across NovaPhy. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>NovaPhy currently assumes single-precision floating point (<computeroutput>float</computeroutput>) for all simulation math to balance performance and memory use. <simplesect kind="warning"><para>Mixing <computeroutput>double</computeroutput> with engine APIs may cause implicit conversions and inconsistent numerical behavior. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/novaphy_types.h" line="12" column="1" bodyfile="include/novaphy/novaphy_types.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="math__utils_8h_1a02086bb870bf1cf48fdd194a2106d8af" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>float</type>
+        <definition>float novaphy::PI</definition>
+        <argsstring></argsstring>
+        <name>PI</name>
+        <qualifiedname>novaphy::PI</qualifiedname>
+        <initializer>= 3.14159265358979323846f</initializer>
+        <briefdescription>
+<para>Mathematical constant pi in single precision. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_utils.h" line="53" column="17" bodyfile="include/novaphy/math/math_utils.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="narrowphase_8h_1a37a3b2596c41b8c21d5843c867833d34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool novaphy::collide_shapes</definition>
+        <argsstring>(const CollisionShape &amp;a, const Transform &amp;ta, const CollisionShape &amp;b, const Transform &amp;tb, std::vector&lt; ContactPoint &gt; &amp;contacts)</argsstring>
+        <name>collide_shapes</name>
+        <qualifiedname>novaphy::collide_shapes</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>ta</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_collision_shape" kindref="compound">CollisionShape</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>tb</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structnovaphy_1_1_contact_point" kindref="compound">ContactPoint</ref> &gt; &amp;</type>
+          <declname>contacts</declname>
+        </param>
+        <briefdescription>
+<para>Dispatch collision test based on shape type pair. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Dispatches narrowphase collision routines by shape-type pair.</para>
+<para>Routes to the corresponding narrowphase routine and appends generated world-space contact points for subsequent constraint solving.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First collision shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of first shape parent body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second collision shape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of second shape parent body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Generated contact points. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if a collision is detected.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Shape A. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of A&apos;s parent body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Shape B. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classnovaphy_1_1_world" kindref="compound">World</ref> transform of B&apos;s parent body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">contacts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appended world-space contact manifold entries. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if at least one contact is generated. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/collision/narrowphase.cpp" line="393" column="6" bodyfile="src/collision/narrowphase.cpp" bodystart="393" bodyend="435" declfile="include/novaphy/collision/narrowphase.h" declline="97" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="contact_8h_1a5f72c9f5a72671a51ad4bceee4ea6dc8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float novaphy::combine_friction</definition>
+        <argsstring>(float a, float b)</argsstring>
+        <name>combine_friction</name>
+        <qualifiedname>novaphy::combine_friction</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Combine two friction coefficients. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Friction coefficient from material A. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Friction coefficient from material B. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Geometric-mean combined friction coefficient. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="53" column="14" bodyfile="include/novaphy/core/contact.h" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="contact_8h_1ac884b10a2e89172f28966f10747fce29" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float novaphy::combine_restitution</definition>
+        <argsstring>(float a, float b)</argsstring>
+        <name>combine_restitution</name>
+        <qualifiedname>novaphy::combine_restitution</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Combine two restitution coefficients. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Restitution coefficient from material A. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Restitution coefficient from material B. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Maximum of both coefficients. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/core/contact.h" line="64" column="14" bodyfile="include/novaphy/core/contact.h" bodystart="64" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="math__utils_8h_1aafc0422674142ec676fe8128699de175" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Mat3f</type>
+        <definition>Mat3f novaphy::skew</definition>
+        <argsstring>(const Vec3f &amp;v)</argsstring>
+        <name>skew</name>
+        <qualifiedname>novaphy::skew</qualifiedname>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Builds the skew-symmetric cross-product matrix from a 3D vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns <computeroutput>[v]x</computeroutput> such that <computeroutput>skew(a) * b == a.cross(b)</computeroutput>, which is commonly used in rigid-body spatial algebra. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input vector in either local or world coordinates. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>3x3 skew-symmetric matrix representing the cross-product operator. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_utils.h" line="14" column="14" bodyfile="include/novaphy/math/math_utils.h" bodystart="14" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="math__utils_8h_1a1f6eda194ee9e8fd41db9b68a951840d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Quatf</type>
+        <definition>Quatf novaphy::quat_from_axis_angle</definition>
+        <argsstring>(const Vec3f &amp;axis, float angle)</argsstring>
+        <name>quat_from_axis_angle</name>
+        <qualifiedname>novaphy::quat_from_axis_angle</qualifiedname>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+<para>Creates a unit quaternion from axis-angle representation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rotation axis (direction only; normalized internally). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rotation magnitude in radians. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Quaternion representing the same 3D orientation increment. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_utils.h" line="28" column="14" bodyfile="include/novaphy/math/math_utils.h" bodystart="28" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="math__utils_8h_1a7549d887d83063f84414ee27e642761f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float novaphy::clampf</definition>
+        <argsstring>(float val, float lo, float hi)</argsstring>
+        <name>clampf</name>
+        <qualifiedname>novaphy::clampf</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>lo</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>hi</declname>
+        </param>
+        <briefdescription>
+<para>Clamps a scalar to the closed interval <computeroutput>[lo, hi]</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input scalar value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">lo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Lower bound. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">hi</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Upper bound. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Clamped value within <computeroutput>[lo, hi]</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_utils.h" line="39" column="14" bodyfile="include/novaphy/math/math_utils.h" bodystart="39" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="math__utils_8h_1a13560e024204599fa407055d811a02e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float novaphy::lerpf</definition>
+        <argsstring>(float a, float b, float t)</argsstring>
+        <name>lerpf</name>
+        <qualifiedname>novaphy::lerpf</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>Linearly interpolates between two scalar values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start value at <computeroutput>t = 0</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>End value at <computeroutput>t = 1</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Interpolation parameter, typically in <computeroutput>[0, 1]</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Interpolated scalar <computeroutput>a + t * (b - a)</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_utils.h" line="50" column="14" bodyfile="include/novaphy/math/math_utils.h" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="math__utils_8h_1a3ef81f1ee5f6cc4877816b43ca0091f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float novaphy::deg2rad</definition>
+        <argsstring>(float deg)</argsstring>
+        <name>deg2rad</name>
+        <qualifiedname>novaphy::deg2rad</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>deg</declname>
+        </param>
+        <briefdescription>
+<para>Converts an angle from degrees to radians. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">deg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Angle in degrees. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Angle in radians. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_utils.h" line="60" column="14" bodyfile="include/novaphy/math/math_utils.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="math__utils_8h_1a18ec1e482b25df281f0ea8aeb30b1121" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float novaphy::rad2deg</definition>
+        <argsstring>(float rad)</argsstring>
+        <name>rad2deg</name>
+        <qualifiedname>novaphy::rad2deg</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>rad</declname>
+        </param>
+        <briefdescription>
+<para>Converts an angle from radians to degrees. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">rad</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Angle in radians. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Angle in degrees. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/math_utils.h" line="67" column="14" bodyfile="include/novaphy/math/math_utils.h" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="spatial_8h_1a05b383d3034454a60b34b8b6109729cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::spatial_angular</definition>
+        <argsstring>(const SpatialVector &amp;v)</argsstring>
+        <name>spatial_angular</name>
+        <qualifiedname>novaphy::spatial_angular</qualifiedname>
+        <param>
+          <type>const SpatialVector &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Extract angular component from a spatial vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Spatial vector [w; v]. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Angular part (top 3). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="23" column="14" bodyfile="include/novaphy/math/spatial.h" bodystart="23" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="spatial_8h_1a073897c64331ff0408444c3d5f5b152a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Vec3f</type>
+        <definition>Vec3f novaphy::spatial_linear</definition>
+        <argsstring>(const SpatialVector &amp;v)</argsstring>
+        <name>spatial_linear</name>
+        <qualifiedname>novaphy::spatial_linear</qualifiedname>
+        <param>
+          <type>const SpatialVector &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Extract linear component from a spatial vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Spatial vector [w; v]. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Linear part (bottom 3). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="30" column="14" bodyfile="include/novaphy/math/spatial.h" bodystart="30" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="spatial_8h_1a0e60343d0ff8e7a3a2de239a18a72069" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>SpatialVector</type>
+        <definition>SpatialVector novaphy::make_spatial</definition>
+        <argsstring>(const Vec3f &amp;angular, const Vec3f &amp;linear)</argsstring>
+        <name>make_spatial</name>
+        <qualifiedname>novaphy::make_spatial</qualifiedname>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>angular</declname>
+        </param>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>linear</declname>
+        </param>
+        <briefdescription>
+<para>Construct a spatial vector from angular and linear components. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">angular</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Angular component. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">linear</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Linear component. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Spatial vector [angular; linear]. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="39" column="22" bodyfile="include/novaphy/math/spatial.h" bodystart="39" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="spatial_8h_1a4266150b9e25658bc20532c0d5a0c80e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>SpatialVector</type>
+        <definition>SpatialVector novaphy::spatial_cross_motion</definition>
+        <argsstring>(const SpatialVector &amp;v, const SpatialVector &amp;u)</argsstring>
+        <name>spatial_cross_motion</name>
+        <qualifiedname>novaphy::spatial_cross_motion</qualifiedname>
+        <param>
+          <type>const SpatialVector &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>const SpatialVector &amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+<para>Spatial cross product for motion vectors. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For v=[w; v_l] and u=[w&apos;; v&apos;], returns [w x w&apos;; w x v&apos; + v_l x w&apos;].</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Left motion vector. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">u</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Right motion vector. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Motion cross product. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="56" column="22" bodyfile="include/novaphy/math/spatial.h" bodystart="56" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="spatial_8h_1a8f587237327ba63177ffe279ab29a4cd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>SpatialVector</type>
+        <definition>SpatialVector novaphy::spatial_cross_force</definition>
+        <argsstring>(const SpatialVector &amp;v, const SpatialVector &amp;f)</argsstring>
+        <name>spatial_cross_force</name>
+        <qualifiedname>novaphy::spatial_cross_force</qualifiedname>
+        <param>
+          <type>const SpatialVector &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>const SpatialVector &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Spatial cross product for force vectors. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For motion v=[w; v_l] and force f=[n; f_l], returns [w x n + v_l x f_l; w x f_l].</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Motion vector. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Force vector. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Force cross product. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="74" column="22" bodyfile="include/novaphy/math/spatial.h" bodystart="74" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="spatial_8h_1a9f196922686e1aad71ba68287412ec18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>SpatialMatrix</type>
+        <definition>SpatialMatrix novaphy::spatial_inertia_matrix</definition>
+        <argsstring>(float mass, const Vec3f &amp;com, const Mat3f &amp;I_rot)</argsstring>
+        <name>spatial_inertia_matrix</name>
+        <qualifiedname>novaphy::spatial_inertia_matrix</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>mass</declname>
+        </param>
+        <param>
+          <type>const Vec3f &amp;</type>
+          <declname>com</declname>
+        </param>
+        <param>
+          <type>const Mat3f &amp;</type>
+          <declname>I_rot</declname>
+        </param>
+        <briefdescription>
+<para>Build a 6x6 spatial inertia matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Inputs are body mass, center of mass in body frame, and rotational inertia about CoM in body frame.</para>
+<para>I_spatial = [ I_rot + m * [c]_x^T * [c]_x, m * [c]_x^T ] [ m * [c]_x, m * I_3 ]</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body mass in kilograms. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">com</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Center of mass in body coordinates (m). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">I_rot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rotational inertia about CoM in body coordinates (kg*m^2). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Spatial inertia matrix in body coordinates. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="198" column="22" bodyfile="include/novaphy/math/spatial.h" bodystart="198" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="spatial_8h_1a4215451751e10c4dfd37e5bb635df8ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>SpatialMatrix</type>
+        <definition>SpatialMatrix novaphy::transform_spatial_inertia</definition>
+        <argsstring>(const SpatialTransform &amp;X, const SpatialMatrix &amp;I)</argsstring>
+        <name>transform_spatial_inertia</name>
+        <qualifiedname>novaphy::transform_spatial_inertia</qualifiedname>
+        <param>
+          <type>const <ref refid="structnovaphy_1_1_spatial_transform" kindref="compound">SpatialTransform</ref> &amp;</type>
+          <declname>X</declname>
+        </param>
+        <param>
+          <type>const SpatialMatrix &amp;</type>
+          <declname>I</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="structnovaphy_1_1_transform" kindref="compound">Transform</ref> spatial inertia matrix by spatial transform. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">X</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Spatial transform. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">I</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input spatial inertia matrix. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Transformed spatial inertia matrix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/math/spatial.h" line="216" column="22" bodyfile="include/novaphy/math/spatial.h" bodystart="216" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="novaphy_8h_1a3e5aeb111d4b37e11e5505ef92cf02ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string novaphy::version</definition>
+        <argsstring>()</argsstring>
+        <name>version</name>
+        <qualifiedname>novaphy::version</qualifiedname>
+        <briefdescription>
+<para>Returns the semantic version string of the NovaPhy library. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Version string in the form <computeroutput>major.minor.patch</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/novaphy/novaphy.h" line="11" column="20" bodyfile="include/novaphy/novaphy.h" bodystart="11" bodyend="11"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/novaphy/collision/broadphase.h" line="9" column="1"/>
+  </compounddef>
+</doxygen>
