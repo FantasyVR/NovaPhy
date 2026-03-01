@@ -125,16 +125,9 @@ void IPCWorld::Impl::init() {
         module_dir = ".";
     }
 
-    {
-        auto uipc_cfg = uipc::default_config();
-        uipc_cfg["module_dir"] = module_dir;
-        uipc::init(uipc_cfg);
-    }
-
-    // Temporarily add the module directory to the DLL search path so that
-    // LoadLibrary can resolve transitive dependencies (e.g. uipc_sanity_check
-    // depends on uipc_core, spdlog, fmt, etc. in the same directory).
-    // Must remain set through world->init() which triggers backend loading.
+    // Set the DLL search path before uipc::init() so that any DLLs loaded
+    // during initialization (sanity checks, backends with sibling deps) can
+    // resolve their transitive dependencies.
 #ifdef _WIN32
     char prev_dll_dir[MAX_PATH] = {};
     GetDllDirectoryA(MAX_PATH, prev_dll_dir);
@@ -142,6 +135,12 @@ void IPCWorld::Impl::init() {
         SetDllDirectoryA(module_dir.c_str());
     }
 #endif
+
+    {
+        auto uipc_cfg = uipc::default_config();
+        uipc_cfg["module_dir"] = module_dir;
+        uipc::init(uipc_cfg);
+    }
 
     // Create engine
     engine = std::make_unique<Engine>(config.backend, config.workspace);
