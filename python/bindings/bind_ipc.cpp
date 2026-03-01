@@ -22,21 +22,21 @@ void bind_ipc(py::module_& m) {
         .def_readwrite("gravity", &IPCConfig::gravity,
             "Gravity acceleration vector in m/s^2")
         .def_readwrite("d_hat", &IPCConfig::d_hat,
-            "Contact distance threshold in meters (default: 0.01)")
+            "Contact distance threshold in meters, mapped to scene contact/d_hat (default: 0.01)")
         .def_readwrite("kappa", &IPCConfig::kappa,
-            "Barrier stiffness in Pa (default: 1e8)")
+            "Barrier/contact stiffness in Pa used for default contact resistance (default: 1e8)")
         .def_readwrite("friction", &IPCConfig::friction,
             "Default friction coefficient (default: 0.5)")
         .def_readwrite("contact_resistance", &IPCConfig::contact_resistance,
-            "Contact resistance in Pa (default: 1e9)")
+            "Optional contact-resistance override in Pa (default: 1e9)")
         .def_readwrite("body_kappa", &IPCConfig::body_kappa,
             "Affine body stiffness in Pa (default: 1e8)")
         .def_readwrite("mass_density", &IPCConfig::mass_density,
             "Default mass density in kg/m^3 (default: 1e3)")
         .def_readwrite("newton_max_iter", &IPCConfig::newton_max_iter,
-            "Max Newton iterations per step (default: 100)")
+            "Max Newton iterations per step, mapped to scene newton/max_iter (default: 100)")
         .def_readwrite("newton_tol", &IPCConfig::newton_tol,
-            "Newton convergence tolerance (default: 1e-2)")
+            "Newton tolerance mapped to scene newton/velocity_tol and newton/transrate_tol (default: 1e-2)")
         .def("__repr__", [](const IPCConfig& c) {
             return "<IPCConfig dt=" + std::to_string(c.dt) +
                    " friction=" + std::to_string(c.friction) +

@@ -9,6 +9,8 @@
 
 #include <stdexcept>
 #include <filesystem>
+#include <cmath>
+#include <algorithm>
 
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
@@ -30,11 +32,12 @@ struct IPCWorld::Impl {
     std::unique_ptr<uipc::core::World> world;
     std::unique_ptr<uipc::core::Scene> scene;
 
-    // Track which NovaPhy body index maps to which libuipc object ID,
-    // and which geometry slot IDs to read back from.
+    // Resolved contact resistance, computed once during init().
+    uipc::Float resolved_kappa = 0.0;
+
+    // Track which NovaPhy body index maps to which libuipc geometry slot ID.
     struct BodyMapping {
         int novaphy_body_idx;
-        uipc::IndexT object_id;
         uipc::IndexT geometry_id;
     };
     std::vector<BodyMapping> body_mappings;
@@ -71,6 +74,36 @@ static Transform from_uipc_transform(const uipc::Matrix4x4& m) {
     return Transform(pos, qf);
 }
 
+static bool is_positive_finite(float v) {
+    return std::isfinite(v) && v > 0.0f;
+}
+
+// Backward-compatible contact stiffness resolution:
+// - `kappa` is the primary IPC barrier/contact stiffness knob.
+// - `contact_resistance` is treated as an explicit override when customized.
+static uipc::Float resolve_contact_resistance(const IPCConfig& cfg) {
+    using uipc::Float;
+    constexpr float kDefaultContactResistance = 1e9f;
+    constexpr float kDefaultKappa = 1e8f;
+    constexpr float kRelEps = 1e-5f;
+
+    const bool has_custom_contact_resistance =
+        is_positive_finite(cfg.contact_resistance) &&
+        std::abs(cfg.contact_resistance - kDefaultContactResistance) >
+            (kDefaultContactResistance * kRelEps);
+
+    if (has_custom_contact_resistance) {
+        return static_cast<Float>(cfg.contact_resistance);
+    }
+    if (is_positive_finite(cfg.kappa)) {
+        return static_cast<Float>(cfg.kappa);
+    }
+    if (is_positive_finite(cfg.contact_resistance)) {
+        return static_cast<Float>(cfg.contact_resistance);
+    }
+    return static_cast<Float>(kDefaultKappa);
+}
+
 void IPCWorld::Impl::init() {
     using namespace uipc;
     using namespace uipc::core;
@@ -78,34 +111,37 @@ void IPCWorld::Impl::init() {
 
     // Initialize libuipc with module_dir pointing to backend DLLs.
     // Find the directory containing uipc_core by querying the loaded DLL path.
+    std::string module_dir;
+#ifdef _WIN32
+    HMODULE hmod = GetModuleHandleA("uipc_core.dll");
+    if (hmod) {
+        char path[MAX_PATH];
+        if (GetModuleFileNameA(hmod, path, MAX_PATH) > 0) {
+            module_dir = std::filesystem::path(path).parent_path().string();
+        }
+    }
+#endif
+    if (module_dir.empty()) {
+        module_dir = ".";
+    }
+
     {
         auto uipc_cfg = uipc::default_config();
-        std::string module_dir;
-#ifdef _WIN32
-        HMODULE hmod = GetModuleHandleA("uipc_core.dll");
-        if (hmod) {
-            char path[MAX_PATH];
-            if (GetModuleFileNameA(hmod, path, MAX_PATH) > 0) {
-                module_dir = std::filesystem::path(path).parent_path().string();
-            }
-        }
-#endif
-        if (module_dir.empty()) {
-            // Fallback: use workspace or current directory
-            module_dir = ".";
-        }
         uipc_cfg["module_dir"] = module_dir;
-
-        // Ensure the module directory is in the DLL search path so that
-        // LoadLibrary can resolve transitive dependencies (e.g. uipc_sanity_check
-        // depends on uipc_core, spdlog, fmt, etc. in the same directory).
-#ifdef _WIN32
-        if (!module_dir.empty() && module_dir != ".") {
-            SetDllDirectoryA(module_dir.c_str());
-        }
-#endif
         uipc::init(uipc_cfg);
     }
+
+    // Temporarily add the module directory to the DLL search path so that
+    // LoadLibrary can resolve transitive dependencies (e.g. uipc_sanity_check
+    // depends on uipc_core, spdlog, fmt, etc. in the same directory).
+    // Must remain set through world->init() which triggers backend loading.
+#ifdef _WIN32
+    char prev_dll_dir[MAX_PATH] = {};
+    GetDllDirectoryA(MAX_PATH, prev_dll_dir);
+    if (!module_dir.empty() && module_dir != ".") {
+        SetDllDirectoryA(module_dir.c_str());
+    }
+#endif
 
     // Create engine
     engine = std::make_unique<Engine>(config.backend, config.workspace);
@@ -121,6 +157,20 @@ void IPCWorld::Impl::init() {
         static_cast<double>(config.gravity.z())
     };
     scene_config["dt"] = static_cast<double>(config.dt);
+    scene_config["contact"]["d_hat"] = static_cast<Float>(
+        is_positive_finite(config.d_hat) ? config.d_hat : 0.01f);
+
+    resolved_kappa = resolve_contact_resistance(config);
+    scene_config["contact"]["adaptive"]["min_kappa"] = resolved_kappa;
+    scene_config["contact"]["adaptive"]["init_kappa"] = resolved_kappa;
+    scene_config["contact"]["adaptive"]["max_kappa"] = resolved_kappa;
+
+    scene_config["newton"]["max_iter"] =
+        static_cast<IndexT>(std::max(1, config.newton_max_iter));
+    const Float newton_tol = static_cast<Float>(
+        is_positive_finite(config.newton_tol) ? config.newton_tol : 1e-2f);
+    scene_config["newton"]["velocity_tol"] = newton_tol;
+    scene_config["newton"]["transrate_tol"] = newton_tol;
 
     scene = std::make_unique<Scene>(scene_config);
 
@@ -132,6 +182,11 @@ void IPCWorld::Impl::init() {
 
     // Init the libuipc world with the scene
     world->init(*scene);
+
+#ifdef _WIN32
+    // Restore previous DLL search directory to avoid leaking global state.
+    SetDllDirectoryA(prev_dll_dir[0] ? prev_dll_dir : nullptr);
+#endif
 }
 
 void IPCWorld::Impl::convert_bodies() {
@@ -145,10 +200,8 @@ void IPCWorld::Impl::convert_bodies() {
     scene->constitution_tabular().insert(abd);
 
     // Setup default contact model
-    scene->contact_tabular().default_model(
-        static_cast<Float>(config.friction),
-        static_cast<Float>(config.contact_resistance)
-    );
+    scene->contact_tabular().default_model(static_cast<Float>(config.friction),
+                                           resolved_kappa);
     auto default_element = scene->contact_tabular().default_element();
 
     // Group shapes by body_index
@@ -218,12 +271,36 @@ void IPCWorld::Impl::convert_bodies() {
 
         if (verts.empty()) continue;  // all shapes were unsupported types
 
+        // Compute merged tetmesh volume in body-local space so we can map each
+        // body's mass to density before applying the IPC constitution.
+        double mesh_volume = 0.0;
+        for (const auto& t : tets) {
+            const Vector3& p0 = verts[t[0]];
+            const Vector3& p1 = verts[t[1]];
+            const Vector3& p2 = verts[t[2]];
+            const Vector3& p3 = verts[t[3]];
+            const double signed_volume =
+                (p1 - p0).dot((p2 - p0).cross(p3 - p0)) / 6.0;
+            mesh_volume += std::abs(signed_volume);
+        }
+
         // Create simplicial complex
         SimplicialComplex mesh = tetmesh(verts, tets);
 
         // Apply constitution (affine body)
-        Float body_kappa = static_cast<Float>(config.body_kappa);
-        Float density = static_cast<Float>(config.mass_density);
+        const Float body_kappa = static_cast<Float>(config.body_kappa);
+        float density_value = is_positive_finite(config.mass_density)
+                                  ? config.mass_density
+                                  : 1e3f;
+
+        if (!body.is_static()) {
+            constexpr double kVolumeEps = 1e-12;
+            if (mesh_volume > kVolumeEps && is_positive_finite(body.mass)) {
+                density_value = static_cast<float>(
+                    static_cast<double>(body.mass) / mesh_volume);
+            }
+        }
+        const Float density = static_cast<Float>(density_value);
         abd.apply_to(mesh, body_kappa, density);
 
         // Apply contact model
@@ -255,7 +332,6 @@ void IPCWorld::Impl::convert_bodies() {
         // Record mapping for state retrieval
         BodyMapping mapping;
         mapping.novaphy_body_idx = bi;
-        mapping.object_id = obj->id();
         mapping.geometry_id = obj->geometries().ids()[0];
         body_mappings.push_back(mapping);
     }
@@ -276,7 +352,7 @@ void IPCWorld::Impl::advance_and_retrieve() {
     float inv_dt = 1.0f / config.dt;
 
     for (const auto& mapping : body_mappings) {
-        auto geo_slots = scene->geometries().find(mapping.object_id);
+        auto geo_slots = scene->geometries().find(mapping.geometry_id);
         if (!geo_slots.geometry) continue;
 
         auto* sc = dynamic_cast<SimplicialComplex*>(&geo_slots.geometry->geometry());
