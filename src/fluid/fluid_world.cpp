@@ -49,40 +49,27 @@ void FluidWorld::step(float dt) {
     float h = pbf_solver_.settings().kernel_radius;
 
     if (n_fluid > 0) {
-        // 1. Apply gravity to fluid velocities and predict positions
-        Vec3f g = gravity();
-        for (int i = 0; i < n_fluid; ++i) {
-            fluid_state_.velocities[i] += g * dt;
-            fluid_state_.predicted_positions[i] =
-                fluid_state_.positions[i] + fluid_state_.velocities[i] * dt;
-        }
-
-        // 2. Get boundary world positions (updated from rigid body poses)
+        // 1. Get boundary world positions (updated from rigid body poses)
         std::vector<Vec3f> boundary_pos;
         if (n_boundary > 0) {
             boundary_pos = boundary_world_positions(boundary_particles_, state().transforms);
         }
 
-        // 3. Run PBF solver (just the constraint iterations, not the full step)
-        //    We already predicted positions above, so call the solver directly
-        pbf_solver_.step(fluid_state_, dt, Vec3f::Zero(), particle_mass_);
-        // Note: we passed zero gravity to PBF step because we already applied gravity above.
-        // The PBF step will re-predict (adding zero gravity), then do constraint iters.
-        // This is slightly redundant but correct since predict = pos + vel * dt
-        // and vel already has gravity.
+        // 2. Run full PBF step (applies gravity, predicts, solves constraints, updates)
+        pbf_solver_.step(fluid_state_, dt, gravity(), particle_mass_);
 
-        // 4. Apply boundary density contribution
+        // 3. Apply boundary density contribution
         if (n_boundary > 0) {
             apply_boundary_density(boundary_pos);
         }
 
-        // 5. Compute coupling forces (fluid pressure on rigid bodies)
+        // 4. Compute coupling forces (fluid pressure on rigid bodies)
         if (n_boundary > 0) {
             apply_coupling_forces(boundary_pos, dt);
         }
     }
 
-    // 6. Step rigid bodies (with any accumulated coupling forces)
+    // 5. Step rigid bodies (with any accumulated coupling forces)
     World::step(dt);
 }
 

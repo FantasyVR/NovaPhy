@@ -49,10 +49,16 @@ void PBFSolver::step(ParticleState& state, float dt, const Vec3f& gravity,
         }
     }
 
-    // 5. Update velocities from position change
+    // 5. Update velocities from position change (with max speed clamp)
     float inv_dt = 1.0f / dt;
+    float max_speed = h / dt;  // CFL-inspired limit: one kernel radius per step
+    float max_speed_sq = max_speed * max_speed;
     for (int i = 0; i < n; ++i) {
         state.velocities[i] = (state.predicted_positions[i] - state.positions[i]) * inv_dt;
+        float speed_sq = state.velocities[i].squaredNorm();
+        if (speed_sq > max_speed_sq) {
+            state.velocities[i] *= max_speed / std::sqrt(speed_sq);
+        }
     }
 
     // 6. Apply XSPH viscosity
@@ -155,10 +161,16 @@ void PBFSolver::compute_delta_position(ParticleState& state, float particle_mass
             Vec3f r = state.predicted_positions[i] - state.predicted_positions[j];
             float r_sq = r.squaredNorm();
 
-            // Tensile instability correction (s_corr)
+            float lambda_sum = state.lambdas[i] + state.lambdas[j];
+
+            // Tensile instability correction (s_corr) — only active when
+            // constraint is engaged (at least one lambda non-zero)
             float s_corr = 0.0f;
-            if (w_delta_q > 1e-10f) {
+            if (lambda_sum < -1e-10f && w_delta_q > 1e-10f) {
                 float ratio = SPHKernels::poly6(r_sq, h) / w_delta_q;
+                // Clamp ratio to [0, 1] to prevent explosive corrections
+                // when particles are much closer than delta_q
+                ratio = std::min(ratio, 1.0f);
                 float ratio_pow = ratio * ratio;  // ratio^2
                 if (settings_.corr_n == 4) {
                     ratio_pow = ratio_pow * ratio_pow;  // ratio^4
@@ -167,7 +179,7 @@ void PBFSolver::compute_delta_position(ParticleState& state, float particle_mass
             }
 
             // delta_p_i = (1/rho0) * sum_j (lambda_i + lambda_j + s_corr) * m_j * grad W
-            delta_p += (state.lambdas[i] + state.lambdas[j] + s_corr) *
+            delta_p += (lambda_sum + s_corr) *
                        particle_mass * SPHKernels::spiky_grad(r, h);
         }
 
@@ -179,6 +191,7 @@ void PBFSolver::apply_xsph_viscosity(ParticleState& state, float particle_mass) 
     int n = state.num_particles();
     float h = settings_.kernel_radius;
     float c = settings_.xsph_viscosity;
+    float rho0 = settings_.rest_density;
 
     // Compute velocity corrections (use delta_positions as temp buffer)
     for (int i = 0; i < n; ++i) {
@@ -189,7 +202,8 @@ void PBFSolver::apply_xsph_viscosity(ParticleState& state, float particle_mass) 
             Vec3f r = state.predicted_positions[i] - state.predicted_positions[j];
             float r_sq = r.squaredNorm();
             float w = SPHKernels::poly6(r_sq, h);
-            v_corr += v_ij * w;
+            float rho_j = (state.densities[j] > 1e-6f) ? state.densities[j] : rho0;
+            v_corr += (particle_mass / rho_j) * v_ij * w;
         }
         state.delta_positions[i] = v_corr;  // temp storage
     }
