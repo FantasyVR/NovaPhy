@@ -1,17 +1,22 @@
 /**
  * @file fluid_world.cpp
- * @brief Extended simulation world with PBF fluid support.
+ * @brief Extended simulation world with PBF fluid and rigid-fluid coupling.
  */
 #include "novaphy/fluid/fluid_world.h"
+
+#include "novaphy/fluid/sph_kernel.h"
 
 namespace novaphy {
 
 FluidWorld::FluidWorld(const Model& model,
                        const std::vector<FluidBlockDef>& fluid_blocks,
                        SolverSettings solver_settings,
-                       PBFSettings pbf_settings)
-    : World(model, solver_settings), pbf_solver_(pbf_settings) {
-    // Generate particles from all fluid blocks
+                       PBFSettings pbf_settings,
+                       float boundary_extent)
+    : World(model, solver_settings),
+      pbf_solver_(pbf_settings),
+      boundary_grid_(pbf_settings.kernel_radius) {
+    // Generate fluid particles from all blocks
     std::vector<Vec3f> all_positions;
     Vec3f initial_vel = Vec3f::Zero();
 
@@ -19,7 +24,6 @@ FluidWorld::FluidWorld(const Model& model,
         auto block_positions = generate_fluid_block(block);
         all_positions.insert(all_positions.end(),
                              block_positions.begin(), block_positions.end());
-        // Use last block's velocity (simplified; could per-block later)
         initial_vel = block.initial_velocity;
         particle_spacing_ = block.particle_spacing;
     }
@@ -28,15 +32,135 @@ FluidWorld::FluidWorld(const Model& model,
         fluid_state_.init(all_positions, initial_vel);
         particle_mass_ = pbf_settings.particle_mass(particle_spacing_);
     }
+
+    // Generate boundary particles from rigid body shapes
+    boundary_particles_ = sample_model_boundaries(model, particle_spacing_, boundary_extent);
+
+    // Compute initial boundary volumes (Akinci)
+    if (!boundary_particles_.empty()) {
+        auto bpos = boundary_world_positions(boundary_particles_, state().transforms);
+        compute_boundary_volumes(boundary_particles_, bpos, pbf_settings.kernel_radius);
+    }
 }
 
 void FluidWorld::step(float dt) {
-    // Step rigid bodies
-    World::step(dt);
+    int n_fluid = fluid_state_.num_particles();
+    int n_boundary = static_cast<int>(boundary_particles_.size());
+    float h = pbf_solver_.settings().kernel_radius;
 
-    // Step fluid particles
-    if (fluid_state_.num_particles() > 0) {
-        pbf_solver_.step(fluid_state_, dt, gravity(), particle_mass_);
+    if (n_fluid > 0) {
+        // 1. Apply gravity to fluid velocities and predict positions
+        Vec3f g = gravity();
+        for (int i = 0; i < n_fluid; ++i) {
+            fluid_state_.velocities[i] += g * dt;
+            fluid_state_.predicted_positions[i] =
+                fluid_state_.positions[i] + fluid_state_.velocities[i] * dt;
+        }
+
+        // 2. Get boundary world positions (updated from rigid body poses)
+        std::vector<Vec3f> boundary_pos;
+        if (n_boundary > 0) {
+            boundary_pos = boundary_world_positions(boundary_particles_, state().transforms);
+        }
+
+        // 3. Run PBF solver (just the constraint iterations, not the full step)
+        //    We already predicted positions above, so call the solver directly
+        pbf_solver_.step(fluid_state_, dt, Vec3f::Zero(), particle_mass_);
+        // Note: we passed zero gravity to PBF step because we already applied gravity above.
+        // The PBF step will re-predict (adding zero gravity), then do constraint iters.
+        // This is slightly redundant but correct since predict = pos + vel * dt
+        // and vel already has gravity.
+
+        // 4. Apply boundary density contribution
+        if (n_boundary > 0) {
+            apply_boundary_density(boundary_pos);
+        }
+
+        // 5. Compute coupling forces (fluid pressure on rigid bodies)
+        if (n_boundary > 0) {
+            apply_coupling_forces(boundary_pos, dt);
+        }
+    }
+
+    // 6. Step rigid bodies (with any accumulated coupling forces)
+    World::step(dt);
+}
+
+void FluidWorld::apply_boundary_density(const std::vector<Vec3f>& boundary_world_pos) {
+    int n_fluid = fluid_state_.num_particles();
+    int n_boundary = static_cast<int>(boundary_particles_.size());
+    float h = pbf_solver_.settings().kernel_radius;
+
+    // Build grid for boundary particles
+    boundary_grid_.set_cell_size(h);
+    boundary_grid_.build(boundary_world_pos);
+
+    float rho0 = pbf_solver_.settings().rest_density;
+    std::vector<int> neighbors;
+
+    for (int i = 0; i < n_fluid; ++i) {
+        float boundary_density = 0.0f;
+        boundary_grid_.query_neighbors(fluid_state_.positions[i], h, neighbors);
+        for (int j : neighbors) {
+            Vec3f r = fluid_state_.positions[i] - boundary_world_pos[j];
+            float r_sq = r.squaredNorm();
+            // Akinci density contribution: rho0 * psi_b * W
+            boundary_density += rho0 * boundary_particles_[j].volume *
+                                SPHKernels::poly6(r_sq, h);
+        }
+        fluid_state_.densities[i] += boundary_density;
+    }
+}
+
+void FluidWorld::apply_coupling_forces(const std::vector<Vec3f>& boundary_world_pos,
+                                        float dt) {
+    int n_fluid = fluid_state_.num_particles();
+    int n_boundary = static_cast<int>(boundary_particles_.size());
+    float h = pbf_solver_.settings().kernel_radius;
+    float rho0 = pbf_solver_.settings().rest_density;
+
+    // Build grid for fluid particles
+    SpatialHashGrid fluid_grid(h);
+    fluid_grid.build(fluid_state_.positions);
+
+    std::vector<int> neighbors;
+
+    // For each boundary particle, compute pressure force from nearby fluid
+    for (int b = 0; b < n_boundary; ++b) {
+        int body_idx = boundary_particles_[b].body_index;
+        if (body_idx < 0) continue;  // skip world-owned (planes)
+        if (model().bodies[body_idx].is_static()) continue;
+
+        Vec3f force = Vec3f::Zero();
+        float psi_b = boundary_particles_[b].volume;
+
+        fluid_grid.query_neighbors(boundary_world_pos[b], h, neighbors);
+        for (int f : neighbors) {
+            Vec3f r = boundary_world_pos[b] - fluid_state_.positions[f];
+            float r_sq = r.squaredNorm();
+            if (r_sq >= h * h) continue;
+
+            // Akinci pressure force: f_b = -m_f * (p_f / rho_f^2) * rho0 * psi_b * grad W
+            // Simplified using PBF lambda: use density-based pressure
+            float rho_f = std::max(fluid_state_.densities[f], 1.0f);
+            float pressure = std::max(0.0f, rho_f - rho0);
+            float pressure_coeff = particle_mass_ * pressure / (rho_f * rho_f);
+
+            Vec3f grad = SPHKernels::spiky_grad(r, h);
+            force += pressure_coeff * rho0 * psi_b * grad;
+        }
+
+        // Apply accumulated force to rigid body
+        if (force.squaredNorm() > 1e-20f) {
+            // Force at boundary particle position (creates torque about CoM)
+            World::apply_force(body_idx, force);
+
+            // Torque from off-center force application
+            Vec3f body_com = state().transforms[body_idx].position;
+            Vec3f r_arm = boundary_world_pos[b] - body_com;
+            Vec3f torque = r_arm.cross(force);
+            World::apply_torque(body_idx, torque);
+        }
     }
 }
 

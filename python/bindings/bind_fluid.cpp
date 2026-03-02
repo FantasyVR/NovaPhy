@@ -2,6 +2,7 @@
 #include <pybind11/eigen.h>
 #include <pybind11/stl.h>
 
+#include "novaphy/fluid/boundary.h"
 #include "novaphy/fluid/fluid_world.h"
 #include "novaphy/fluid/neighbor_search.h"
 #include "novaphy/fluid/particle_state.h"
@@ -238,24 +239,41 @@ void bind_fluid(py::module_& m) {
                  PBFSettings: Solver settings (reference).
              )pbdoc");
 
+    // --- BoundaryParticle ---
+    py::class_<BoundaryParticle>(m, "BoundaryParticle", R"pbdoc(
+        A boundary particle sampled from a rigid body surface.
+    )pbdoc")
+        .def(py::init<>())
+        .def_readwrite("local_position", &BoundaryParticle::local_position, R"pbdoc(
+            Vector3: Position in body-local frame (m).
+        )pbdoc")
+        .def_readwrite("body_index", &BoundaryParticle::body_index, R"pbdoc(
+            int: Owning rigid body index (-1 = world-owned).
+        )pbdoc")
+        .def_readwrite("volume", &BoundaryParticle::volume, R"pbdoc(
+            float: Akinci volume psi for density contribution.
+        )pbdoc");
+
     // --- FluidWorld ---
     py::class_<FluidWorld, World>(m, "FluidWorld", R"pbdoc(
-        Extended simulation world with PBF fluid support.
+        Extended simulation world with PBF fluid and rigid-fluid coupling.
     )pbdoc")
         .def(py::init<const Model&, const std::vector<FluidBlockDef>&,
-                       SolverSettings, PBFSettings>(),
+                       SolverSettings, PBFSettings, float>(),
              py::arg("model"),
              py::arg("fluid_blocks") = std::vector<FluidBlockDef>{},
              py::arg("solver_settings") = SolverSettings{},
              py::arg("pbf_settings") = PBFSettings{},
+             py::arg("boundary_extent") = 1.0f,
              R"pbdoc(
-                 Creates a fluid simulation world.
+                 Creates a fluid simulation world with rigid-fluid coupling.
 
                  Args:
                      model (Model): Rigid-body model.
                      fluid_blocks (list[FluidBlockDef]): Fluid block definitions.
                      solver_settings (SolverSettings): Contact solver settings.
                      pbf_settings (PBFSettings): PBF solver settings.
+                     boundary_extent (float): Half-extent for plane boundary sampling (m).
              )pbdoc")
         .def("step", &FluidWorld::step, py::arg("dt"),
              R"pbdoc(
@@ -273,6 +291,15 @@ void bind_fluid(py::module_& m) {
         .def_property_readonly("num_particles", &FluidWorld::num_particles, R"pbdoc(
             int: Number of fluid particles.
         )pbdoc")
+        .def_property_readonly("num_boundary_particles", &FluidWorld::num_boundary_particles,
+             R"pbdoc(
+                 int: Number of boundary particles.
+             )pbdoc")
+        .def_property_readonly("boundary_particles", &FluidWorld::boundary_particles,
+             py::return_value_policy::reference_internal,
+             R"pbdoc(
+                 list[BoundaryParticle]: Boundary particles for rigid-fluid coupling.
+             )pbdoc")
         .def_property_readonly("pbf_settings",
              py::overload_cast<>(&FluidWorld::pbf_settings),
              py::return_value_policy::reference_internal,
@@ -291,5 +318,20 @@ void bind_fluid(py::module_& m) {
 
               Returns:
                   list[Vector3]: Generated particle positions.
+          )pbdoc");
+
+    m.def("sample_model_boundaries", &sample_model_boundaries,
+          py::arg("model"), py::arg("spacing"),
+          py::arg("plane_extent") = 1.0f,
+          R"pbdoc(
+              Sample boundary particles from all shapes in a model.
+
+              Args:
+                  model (Model): Scene model.
+                  spacing (float): Boundary particle spacing (m).
+                  plane_extent (float): Half-extent for plane boundaries (m).
+
+              Returns:
+                  list[BoundaryParticle]: Boundary particles.
           )pbdoc");
 }

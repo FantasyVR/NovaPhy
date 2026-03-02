@@ -81,6 +81,8 @@ from novaphy._core import (
     PBFSettings,
     PBFSolver,
     FluidWorld,
+    BoundaryParticle,
+    sample_model_boundaries,
 )
 
 # Optional IPC support (requires CUDA + libuipc)
@@ -131,6 +133,8 @@ __all__ = [
     "PBFSettings",
     "PBFSolver",
     "FluidWorld",
+    "BoundaryParticle",
+    "sample_model_boundaries",
 ]
 
 # Conditionally export IPC symbols

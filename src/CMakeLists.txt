@@ -19,6 +19,7 @@ add_library(novaphy_core STATIC
     fluid/neighbor_search.cpp
     fluid/pbf_solver.cpp
     fluid/fluid_world.cpp
+    fluid/boundary.cpp
 )
 
 target_include_directories(novaphy_core PUBLIC
