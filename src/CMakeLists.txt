@@ -15,6 +15,8 @@ add_library(novaphy_core STATIC
     dynamics/articulated_solver.cpp
     sim/state.cpp
     sim/world.cpp
+    fluid/particle_state.cpp
+    fluid/neighbor_search.cpp
 )
 
 target_include_directories(novaphy_core PUBLIC

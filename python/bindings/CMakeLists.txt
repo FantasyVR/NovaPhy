@@ -7,6 +7,7 @@ set(BIND_SOURCES
     bind_collision.cpp
     bind_sim.cpp
     bind_dynamics.cpp
+    bind_fluid.cpp
 )
 
 if(NOVAPHY_WITH_IPC)

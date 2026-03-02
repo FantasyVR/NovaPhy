@@ -10,6 +10,7 @@ void bind_core(py::module_& m);
 void bind_collision(py::module_& m);
 void bind_sim(py::module_& m);
 void bind_dynamics(py::module_& m);
+void bind_fluid(py::module_& m);
 
 #ifdef NOVAPHY_HAS_IPC
 void bind_ipc(py::module_& m);
@@ -35,6 +36,7 @@ PYBIND11_MODULE(_core, m) {
     bind_collision(m);
     bind_sim(m);
     bind_dynamics(m);
+    bind_fluid(m);
 
 #ifdef NOVAPHY_HAS_IPC
     bind_ipc(m);
