@@ -19,7 +19,7 @@ A C++17/Python 3D physics engine for embodied intelligence (robotics, RL, sim-to
 ### Prerequisites
 
 - [Conda](https://docs.conda.io/) (Miniconda or Anaconda)
-- [vcpkg](https://vcpkg.io/) installed (default: `F:/vcpkg`)
+- [vcpkg](https://vcpkg.io/) installed
 - C++17 compiler (MSVC 2019+, GCC 9+, Clang 10+)
 - *(Optional for IPC)* CUDA ≥ 12.4
 
@@ -36,6 +36,8 @@ pip install -e .
 # (Optional) Install with IPC support
 CMAKE_ARGS="-DNOVAPHY_WITH_IPC=ON -DCMAKE_TOOLCHAIN_FILE=F:/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_CUDA_COMPILER=/path/to/nvcc" pip install -e .
 ```
+
+See [build.md](compat/build.md) for details.
 
 ### Verify
 

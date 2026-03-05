@@ -7,7 +7,7 @@
             "cacheVariables": {
                 "CMAKE_TOOLCHAIN_FILE": {
                     "type": "FILEPATH",
-                    "value": "F:/vcpkg/scripts/buildsystems/vcpkg.cmake"
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
                 },
                 "CMAKE_BUILD_TYPE": "Release"
             }
@@ -18,7 +18,7 @@
             "cacheVariables": {
                 "CMAKE_TOOLCHAIN_FILE": {
                     "type": "FILEPATH",
-                    "value": "F:/vcpkg/scripts/buildsystems/vcpkg.cmake"
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
                 },
                 "CMAKE_BUILD_TYPE": "Debug"
             }
@@ -30,7 +30,7 @@
             "cacheVariables": {
                 "CMAKE_TOOLCHAIN_FILE": {
                     "type": "FILEPATH",
-                    "value": "F:/vcpkg/scripts/buildsystems/vcpkg.cmake"
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
                 },
                 "CMAKE_BUILD_TYPE": "Release",
                 "NOVAPHY_WITH_IPC": "ON"
