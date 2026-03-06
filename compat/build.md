@@ -23,7 +23,7 @@ conda env create -f environment.yml
 conda activate novaphy
 
 # Install NovaPhy
-pip install -e .
+CMKAE_ARGS="--preset=default" pip install -e .
 
 # Then you can access NovaPhy from Python in the virtual environment.
 python
@@ -47,6 +47,7 @@ Thus, the prerequisites are more specific.
 conda activate novaphy
 
 # Before this step, make sure your environment variables are set, such as VCPKG_ROOT.
+git submodule update --init --recursive # Update submodule directory.
 CMAKE_ARGS="--preset=ipc" pip install -e .
 ```
 
@@ -59,9 +60,11 @@ Here are some common reasons for crashes with specific compilers:
 |:---:|:---|:---:|
 | `gcc-9` | **libuipc** needs `<span>` which was implemented in GCC 10. | Unfixable |
 | `gcc-10` | The pstl of `libstdc++ 10` isn't compatible with `onetbb` in the current baseline. (See also [vcpkg.json](../vcpkg.json)). | Unfixable |
-| almost all GCC tested | `urdfdom` expects a non-standard import for `uint32_t` which is removed from `libstdc++` (may be earlier). | TODO |
+| `gcc-15` | `urdfdom` expects a non-standard import for `uint32_t` which is removed from `libstdc++`. | Fixed  [^1] |
 | `gcc14, gcc-15` | `gcc>13` is not compatible with `nvcc-12` | Unfixable |
-| `nvcc-13` | **muda** expects an unstrict dependent name lookup. | TODO |
+| `nvcc-13` | **muda** expects an unstrict dependent name resolve. | TODO |
+
+[^1] : The issue has been fixed by upstream maintainers with a patch. However, the patch may fail in certain cases. If it does, adding `-include cstdint` to your `CXXFLAGS` environment variable should resolve the problem.
 
 > [!note] Clang with libstdc++
 > Clang uses `libstdc++` as the default standard library. Any crash caused by `libstdc++` also affects Clang.

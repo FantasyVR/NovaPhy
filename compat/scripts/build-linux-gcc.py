@@ -64,10 +64,6 @@ def main():
     if enable_ipc:
         cmake_args = ["--preset=ipc"]
 
-        # Add header flag for IPC support
-        # TODO Need another method to process urdfdom.
-        cxxflags = os.environ.get("CXXFLAGS", "")
-        os.environ["CXXFLAGS"] = (cxxflags + " -include cstdint").strip()
     else:
         cmake_args = ["--preset=default"]
 
@@ -93,7 +89,7 @@ def main():
             nvcc_flags = f"--system-include {cuda_include},{gcc_include}"
             cmake_args.append(f"-DCMAKE_CUDA_FLAGS=\"{nvcc_flags}\"")
 
-    os.environ["CMAKE_BUILD_PARALLEL_LEVEL"] = "16"
+    os.environ["CMAKE_BUILD_PARALLEL_LEVEL"] = "8"
     print("Running CMake with arguments:", " ".join(cmake_args))
     os.environ["CMAKE_ARGS"] = " ".join(cmake_args)
 
