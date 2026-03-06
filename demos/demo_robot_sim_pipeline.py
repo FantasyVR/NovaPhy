@@ -122,6 +122,16 @@ def write_ee_pose_csv(path: Path, rows: List[Dict[str, float]]) -> None:
     write_joint_trajectory_csv(path, rows)
 
 
+def _seed_free_joint_quaternions(art: novaphy.Articulation, q: np.ndarray) -> np.ndarray:
+    if q.size == 0:
+        return q
+    for link_idx, joint in enumerate(art.joints):
+        if joint.type == novaphy.JointType.Free:
+            qi = art.q_start(link_idx)
+            q[qi + 6] = 1.0
+    return q
+
+
 def _parse_tuple3(text: str, fallback: np.ndarray) -> np.ndarray:
     m = re.search(r"\(([-+0-9eE\.]+)\s*,\s*([-+0-9eE\.]+)\s*,\s*([-+0-9eE\.]+)\)", text)
     if not m:
@@ -281,7 +291,11 @@ def run_demo(config: DemoConfig) -> Dict[str, str]:
     exporter = novaphy.SimulationExporter()
     art = robot_scene.articulation if robot_scene is not None else novaphy.Articulation()
     has_art = len(art.joints) > 0 and len(art.bodies) > 0
-    q = np.zeros(art.total_q(), dtype=np.float32) if has_art else np.zeros(0, dtype=np.float32)
+    q = (
+        _seed_free_joint_quaternions(art, np.zeros(art.total_q(), dtype=np.float32))
+        if has_art
+        else np.zeros(0, dtype=np.float32)
+    )
     qd = np.zeros(art.total_qd(), dtype=np.float32) if has_art else np.zeros(0, dtype=np.float32)
     solver = novaphy.ArticulatedSolver() if has_art else None
 

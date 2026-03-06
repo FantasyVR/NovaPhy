@@ -99,7 +99,8 @@ std::string to_geometry_xml(const UrdfGeometry& geometry) {
 }
 
 std::string transform_to_origin_xml(const Transform& t) {
-    Vec3f rpy = t.rotation.toRotationMatrix().eulerAngles(0, 1, 2);
+    Vec3f zyx = t.rotation.toRotationMatrix().eulerAngles(2, 1, 0);
+    Vec3f rpy(zyx.z(), zyx.y(), zyx.x());
     std::ostringstream out;
     out << "<origin xyz=\""
         << t.position.x() << " " << t.position.y() << " " << t.position.z()

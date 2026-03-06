@@ -31,6 +31,11 @@ def test_robot_demo_headless_outputs(tmp_path):
     ]:
         assert Path(outputs[key]).exists()
 
+    joint_traj = Path(outputs["joint_trajectory_csv"]).read_text(encoding="utf-8").lower()
+    ee_pose = Path(outputs["end_effector_pose_csv"]).read_text(encoding="utf-8").lower()
+    assert "nan" not in joint_traj
+    assert "nan" not in ee_pose
+
     content = Path(outputs["scene_meta"]).read_text(encoding="utf-8")
     assert "robot_links" in content
 
