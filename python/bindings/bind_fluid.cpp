@@ -157,7 +157,7 @@ void bind_fluid(py::module_& m) {
             Clear all grid data.
         )pbdoc")
         .def("query_neighbors",
-             &SpatialHashGrid::query_neighbors,
+             py::overload_cast<const Vec3f&, float>(&SpatialHashGrid::query_neighbors, py::const_),
              py::arg("point"), py::arg("radius"),
              R"pbdoc(
                  Query neighbor particle indices within radius.

@@ -42,6 +42,19 @@ public:
      *
      * @param[in] point Query point.
      * @param[in] radius Search radius.
+     * @param[out] out Candidate neighbor indices (cleared then filled).
+     */
+    void query_neighbors(const Vec3f& point, float radius,
+                         std::vector<int>& out) const;
+
+    /**
+     * @brief Query all neighbor particle indices within radius of a point.
+     *
+     * Convenience overload that returns a new vector.  Prefer the
+     * output-parameter overload in tight loops to avoid per-call allocation.
+     *
+     * @param[in] point Query point.
+     * @param[in] radius Search radius.
      * @return Candidate neighbor particle indices from nearby occupied cells.
      */
     std::vector<int> query_neighbors(const Vec3f& point, float radius) const;

@@ -25,9 +25,10 @@ void SpatialHashGrid::clear() {
     cells_.clear();
 }
 
-std::vector<int> SpatialHashGrid::query_neighbors(const Vec3f& point, float radius) const {
+void SpatialHashGrid::query_neighbors(const Vec3f& point, float radius,
+                                       std::vector<int>& out) const {
     (void)radius;
-    std::vector<int> neighbors;
+    out.clear();
 
     int cx, cy, cz;
     world_to_cell(point, cx, cy, cz);
@@ -40,12 +41,16 @@ std::vector<int> SpatialHashGrid::query_neighbors(const Vec3f& point, float radi
                 auto it = cells_.find(key);
                 if (it == cells_.end()) continue;
                 for (int idx : it->second) {
-                    neighbors.push_back(idx);
+                    out.push_back(idx);
                 }
             }
         }
     }
+}
 
+std::vector<int> SpatialHashGrid::query_neighbors(const Vec3f& point, float radius) const {
+    std::vector<int> neighbors;
+    query_neighbors(point, radius, neighbors);
     return neighbors;
 }
 

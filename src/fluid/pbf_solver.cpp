@@ -43,8 +43,10 @@ void PBFSolver::step(ParticleState& state, float dt, const Vec3f& gravity,
     {
         detail::PerformancePhaseScope phase_scope(monitor, "fluid.pbf.neighbor_query");
         neighbors_.resize(n);
+        std::vector<int> scratch;
         for (int i = 0; i < n; ++i) {
-            neighbors_[i] = grid_.query_neighbors(state.predicted_positions[i], h);
+            grid_.query_neighbors(state.predicted_positions[i], h, scratch);
+            neighbors_[i] = scratch;
         }
     }
 

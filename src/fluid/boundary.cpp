@@ -162,10 +162,11 @@ void compute_boundary_volumes(std::span<BoundaryParticle> particles,
     SpatialHashGrid grid(kernel_radius);
     grid.build(world_positions);
 
+    std::vector<int> scratch;
     for (int i = 0; i < n; ++i) {
         float sum_w = 0.0f;
-        const std::vector<int> neighbors = grid.query_neighbors(world_positions[i], kernel_radius);
-        for (int j : neighbors) {
+        grid.query_neighbors(world_positions[i], kernel_radius, scratch);
+        for (int j : scratch) {
             Vec3f r = world_positions[i] - world_positions[j];
             float r_sq = r.squaredNorm();
             sum_w += SPHKernels::poly6(r_sq, kernel_radius);

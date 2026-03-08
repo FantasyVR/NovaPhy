@@ -107,11 +107,11 @@ void FluidWorld::apply_boundary_density(const std::vector<Vec3f>& boundary_world
     boundary_grid_.build(boundary_world_pos);
 
     float rho0 = pbf_solver_.settings().rest_density;
+    std::vector<int> scratch;
     for (int i = 0; i < n_fluid; ++i) {
         float boundary_density = 0.0f;
-        const std::vector<int> neighbors =
-            boundary_grid_.query_neighbors(fluid_state_.positions[i], h);
-        for (int j : neighbors) {
+        boundary_grid_.query_neighbors(fluid_state_.positions[i], h, scratch);
+        for (int j : scratch) {
             Vec3f r = fluid_state_.positions[i] - boundary_world_pos[j];
             float r_sq = r.squaredNorm();
             // Akinci density contribution: rho0 * psi_b * W
@@ -134,6 +134,7 @@ void FluidWorld::apply_coupling_forces(const std::vector<Vec3f>& boundary_world_
     fluid_grid.build(fluid_state_.positions);
 
     // For each boundary particle, compute pressure force from nearby fluid
+    std::vector<int> scratch;
     for (int b = 0; b < n_boundary; ++b) {
         int body_idx = boundary_particles_[b].body_index;
         if (body_idx < 0) continue;  // skip world-owned (planes)
@@ -142,9 +143,8 @@ void FluidWorld::apply_coupling_forces(const std::vector<Vec3f>& boundary_world_
         Vec3f force = Vec3f::Zero();
         float psi_b = boundary_particles_[b].volume;
 
-        const std::vector<int> neighbors =
-            fluid_grid.query_neighbors(boundary_world_pos[b], h);
-        for (int f : neighbors) {
+        fluid_grid.query_neighbors(boundary_world_pos[b], h, scratch);
+        for (int f : scratch) {
             Vec3f r = boundary_world_pos[b] - fluid_state_.positions[f];
             float r_sq = r.squaredNorm();
             if (r_sq >= h * h) continue;
