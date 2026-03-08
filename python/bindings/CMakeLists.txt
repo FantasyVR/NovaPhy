@@ -33,12 +33,14 @@ target_compile_definitions(_core PRIVATE
     VERSION_INFO=${PROJECT_VERSION}
 )
 
-if (SKBUILD)
-    # With scikit-build, the Python extension module is built in-place and should not be installed by CMake.
-    install(TARGETS _core 
-        COMPONENT pybind
-        DESTINATION novaphy
-    )
-else()
-    # TODO Without scikit-build, we need to generate a simple setup.py and related files.
+if (NOVAPHY_ENABLE_INSTALL)
+    if (SKBUILD)
+        # With scikit-build, the Python extension module is built in-place and should not be installed by CMake.
+        install(TARGETS _core 
+            COMPONENT pybind
+            DESTINATION novaphy
+        )
+    else()
+        # TODO Without scikit-build, we need to generate a simple setup.py and related files.
+    endif()
 endif()

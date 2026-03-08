@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 3.15...4.0)
 # Must be declared before project() so vcpkg installs the 'ipc' feature deps.
 option(NOVAPHY_WITH_IPC "Build with libuipc IPC support (requires CUDA >= 12.4)" OFF)
 option(NOVAPHY_BUNDLE_UIPC "Bundle libuipc with NovaPhy package. If disabled, novaphy will attempt to find it system-wide." ON)
+option(NOVAPHY_ENABLE_INSTALL "Enable installation of NovaPhy targets and CMake config files" ON)
 
 if(NOVAPHY_WITH_IPC)
     list(APPEND VCPKG_MANIFEST_FEATURES "ipc")
@@ -24,6 +25,12 @@ else()
     set(NOVAPHY_PROJECT_NAME "NovaPhy")
     # TODO There are too many version strings floating around (setup.py, CMakeLists.txt, __init__.py).
     set(NOVAPHY_PROJECT_VERSION "0.1.0")
+endif()
+
+# Disable install and test when building as a subproject.
+if (NOT CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+    set(NOVAPHY_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
+    # TODO NovaPhy doesn't have any C++ tests for now.
 endif()
 
 include(compat/compat.cmake)
@@ -110,7 +117,10 @@ if(NOT DEFINED SKBUILD)
         add_subdirectory(tests)
     endif()
 
-    # Install CMake config files
+endif()
+
+# Install CMake config files
+if (NOVAPHY_ENABLE_INSTALL AND NOT SKBUILD)
     include(CMakePackageConfigHelpers)
     write_basic_package_version_file(
         "${CMAKE_CURRENT_BINARY_DIR}/novaphyConfigVersion.cmake"
