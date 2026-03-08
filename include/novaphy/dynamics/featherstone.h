@@ -1,5 +1,6 @@
 #pragma once
 
+#include <span>
 #include <vector>
 
 #include "novaphy/core/articulation.h"
@@ -20,6 +21,12 @@ namespace novaphy {
  */
 namespace featherstone {
 
+struct ForwardKinematicsResult {
+    std::vector<SpatialTransform> joint_transforms;
+    std::vector<SpatialTransform> parent_transforms;
+    std::vector<Transform> world_transforms;
+};
+
 /**
  * @brief Compute per-link poses from generalized positions.
  *
@@ -29,20 +36,15 @@ namespace featherstone {
  *
  * @param [in] model Articulation graph and joint definitions.
  * @param [in] q Generalized position vector, length = model.total_q().
- * @param [out] X_J Joint-motion transforms, one per link.
- * @param [out] X_up Parent-to-child spatial transforms, one per link.
- * @param [out] X_world World-frame rigid transforms (position + quaternion), one per link.
- * @return void
+ * @return Joint transforms, parent-relative spatial transforms, and world-frame
+ * rigid transforms for every articulation link.
  *
  * @note Output transforms are expressed in world coordinates for rendering
  * and downstream dynamics calls.
  * @warning Input dimensions must match model topology.
  */
-void forward_kinematics(const Articulation& model,
-                        const VecXf& q,
-                        std::vector<SpatialTransform>& X_J,
-                        std::vector<SpatialTransform>& X_up,
-                        std::vector<Transform>& X_world);
+ForwardKinematicsResult forward_kinematics(const Articulation& model,
+                                           const VecXf& q);
 
 /**
  * @brief Compute generalized forces using RNEA (inverse dynamics).
@@ -67,7 +69,7 @@ VecXf inverse_dynamics(const Articulation& model,
                        const VecXf& qd,
                        const VecXf& qdd,
                        const Vec3f& gravity,
-                       const std::vector<SpatialVector>& f_ext = {});
+                       std::span<const SpatialVector> f_ext = {});
 
 /**
  * @brief Assemble the joint-space inertia matrix using CRBA.
@@ -106,7 +108,7 @@ VecXf forward_dynamics(const Articulation& model,
                        const VecXf& qd,
                        const VecXf& tau,
                        const Vec3f& gravity,
-                       const std::vector<SpatialVector>& f_ext = {});
+                       std::span<const SpatialVector> f_ext = {});
 
 }  // namespace featherstone
 

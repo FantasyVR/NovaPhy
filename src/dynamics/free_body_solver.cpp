@@ -26,12 +26,12 @@ FreeBodySolver::FreeBodySolver(SolverSettings settings) : settings_(settings) {}
  * @param[in,out] angular_velocities Body angular velocities in world frame (rad/s).
  * @param[in] dt Fixed simulation time step in seconds.
  */
-void FreeBodySolver::solve(std::vector<ContactPoint>& contacts,
-                            const std::vector<RigidBody>& bodies,
-                            const std::vector<Transform>& transforms,
-                            std::vector<Vec3f>& linear_velocities,
-                            std::vector<Vec3f>& angular_velocities,
-                            float dt) {
+void FreeBodySolver::solve(std::span<ContactPoint> contacts,
+                           std::span<const RigidBody> bodies,
+                           std::span<const Transform> transforms,
+                           std::span<Vec3f> linear_velocities,
+                           std::span<Vec3f> angular_velocities,
+                           float dt) {
     if (contacts.empty()) return;
 
     PerformanceMonitor* monitor = detail::current_performance_monitor();
@@ -80,12 +80,12 @@ void FreeBodySolver::solve(std::vector<ContactPoint>& contacts,
  * @param[in] angular_velocities Body angular velocities in world frame (rad/s).
  * @param[in] dt Fixed simulation time step in seconds.
  */
-void FreeBodySolver::pre_step(std::vector<ContactPoint>& contacts,
-                               const std::vector<RigidBody>& bodies,
-                               const std::vector<Transform>& transforms,
-                               const std::vector<Vec3f>& linear_velocities,
-                               const std::vector<Vec3f>& angular_velocities,
-                               float dt) {
+void FreeBodySolver::pre_step(std::span<ContactPoint> contacts,
+                              std::span<const RigidBody> bodies,
+                              std::span<const Transform> transforms,
+                              std::span<const Vec3f> linear_velocities,
+                              std::span<const Vec3f> angular_velocities,
+                              float dt) {
     constraint_data_.resize(contacts.size());
 
     for (size_t i = 0; i < contacts.size(); ++i) {
@@ -188,10 +188,10 @@ void FreeBodySolver::pre_step(std::vector<ContactPoint>& contacts,
  * @param[in,out] linear_velocities Body linear velocities in world frame (m/s).
  * @param[in,out] angular_velocities Body angular velocities in world frame (rad/s).
  */
-void FreeBodySolver::solve_velocity(std::vector<ContactPoint>& contacts,
-                                     const std::vector<RigidBody>& bodies,
-                                     std::vector<Vec3f>& linear_velocities,
-                                     std::vector<Vec3f>& angular_velocities) {
+void FreeBodySolver::solve_velocity(std::span<ContactPoint> contacts,
+                                    std::span<const RigidBody> bodies,
+                                    std::span<Vec3f> linear_velocities,
+                                    std::span<Vec3f> angular_velocities) {
     for (size_t i = 0; i < contacts.size(); ++i) {
         auto& cp = contacts[i];
         auto& cd = constraint_data_[i];

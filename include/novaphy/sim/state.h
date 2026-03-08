@@ -1,5 +1,6 @@
 #pragma once
 
+#include <span>
 #include <vector>
 
 #include "novaphy/math/math_types.h"
@@ -21,13 +22,12 @@ struct SimState {
     std::vector<Vec3f> torques;               /**< Accumulated external torques in world frame (N*m). */
 
     /**
-     * @brief Initialize all state arrays for a model with n bodies.
+     * @brief Initialize all state arrays from the model's initial transforms.
      *
-     * @param [in] n Number of bodies.
      * @param [in] initial_transforms Initial world transforms, one per body.
      * @return void
      */
-    void init(int n, const std::vector<Transform>& initial_transforms);
+    void init(std::span<const Transform> initial_transforms);
 
     /**
      * @brief Clear accumulated external forces and torques.

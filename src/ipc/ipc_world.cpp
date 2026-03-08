@@ -188,7 +188,7 @@ void IPCWorld::Impl::init() {
     scene = std::make_unique<Scene>(scene_config);
 
     // Initialize NovaPhy SimState
-    state.init(model.num_bodies(), model.initial_transforms);
+    state.init(model.initial_transforms);
 
     // Convert bodies to libuipc
     convert_bodies();

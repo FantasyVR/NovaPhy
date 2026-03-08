@@ -1,6 +1,8 @@
 #pragma once
 
 #include <cstdint>
+#include <span>
+#include <utility>
 #include <unordered_map>
 #include <vector>
 
@@ -28,7 +30,7 @@ public:
      *
      * @param[in] positions Particle positions to insert.
      */
-    void build(const std::vector<Vec3f>& positions);
+    void build(std::span<const Vec3f> positions);
 
     /**
      * @brief Clear all grid data.
@@ -40,20 +42,19 @@ public:
      *
      * @param[in] point Query point.
      * @param[in] radius Search radius.
-     * @param[out] neighbors Output vector of neighbor particle indices.
+     * @return Candidate neighbor particle indices from nearby occupied cells.
      */
-    void query_neighbors(const Vec3f& point, float radius,
-                         std::vector<int>& neighbors) const;
+    std::vector<int> query_neighbors(const Vec3f& point, float radius) const;
 
     /**
      * @brief Query all neighbor pairs. Each pair (i, j) with i < j and distance < radius.
      *
      * @param[in] positions Particle positions.
      * @param[in] radius Search radius.
-     * @param[out] pairs Output pairs of particle indices.
+     * @return All pairs of particle indices whose distance is smaller than `radius`.
      */
-    void query_all_pairs(const std::vector<Vec3f>& positions, float radius,
-                         std::vector<std::pair<int, int>>& pairs) const;
+    std::vector<std::pair<int, int>> query_all_pairs(std::span<const Vec3f> positions,
+                                                     float radius) const;
 
     /**
      * @brief Get cell size.

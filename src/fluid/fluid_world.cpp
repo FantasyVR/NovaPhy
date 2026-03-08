@@ -100,7 +100,6 @@ void FluidWorld::step(float dt) {
 
 void FluidWorld::apply_boundary_density(const std::vector<Vec3f>& boundary_world_pos) {
     int n_fluid = fluid_state_.num_particles();
-    int n_boundary = static_cast<int>(boundary_particles_.size());
     float h = pbf_solver_.settings().kernel_radius;
 
     // Build grid for boundary particles
@@ -108,11 +107,10 @@ void FluidWorld::apply_boundary_density(const std::vector<Vec3f>& boundary_world
     boundary_grid_.build(boundary_world_pos);
 
     float rho0 = pbf_solver_.settings().rest_density;
-    std::vector<int> neighbors;
-
     for (int i = 0; i < n_fluid; ++i) {
         float boundary_density = 0.0f;
-        boundary_grid_.query_neighbors(fluid_state_.positions[i], h, neighbors);
+        const std::vector<int> neighbors =
+            boundary_grid_.query_neighbors(fluid_state_.positions[i], h);
         for (int j : neighbors) {
             Vec3f r = fluid_state_.positions[i] - boundary_world_pos[j];
             float r_sq = r.squaredNorm();
@@ -135,8 +133,6 @@ void FluidWorld::apply_coupling_forces(const std::vector<Vec3f>& boundary_world_
     SpatialHashGrid fluid_grid(h);
     fluid_grid.build(fluid_state_.positions);
 
-    std::vector<int> neighbors;
-
     // For each boundary particle, compute pressure force from nearby fluid
     for (int b = 0; b < n_boundary; ++b) {
         int body_idx = boundary_particles_[b].body_index;
@@ -146,7 +142,8 @@ void FluidWorld::apply_coupling_forces(const std::vector<Vec3f>& boundary_world_
         Vec3f force = Vec3f::Zero();
         float psi_b = boundary_particles_[b].volume;
 
-        fluid_grid.query_neighbors(boundary_world_pos[b], h, neighbors);
+        const std::vector<int> neighbors =
+            fluid_grid.query_neighbors(boundary_world_pos[b], h);
         for (int f : neighbors) {
             Vec3f r = boundary_world_pos[b] - fluid_state_.positions[f];
             float r_sq = r.squaredNorm();

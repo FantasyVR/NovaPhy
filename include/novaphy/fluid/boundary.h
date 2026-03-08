@@ -1,5 +1,6 @@
 #pragma once
 
+#include <span>
 #include <vector>
 
 #include "novaphy/core/model.h"
@@ -73,8 +74,8 @@ std::vector<BoundaryParticle> sample_model_boundaries(const Model& model, float 
  * @param[in] world_positions World-frame positions of boundary particles.
  * @param[in] kernel_radius SPH kernel support radius (m).
  */
-void compute_boundary_volumes(std::vector<BoundaryParticle>& particles,
-                              const std::vector<Vec3f>& world_positions,
+void compute_boundary_volumes(std::span<BoundaryParticle> particles,
+                              std::span<const Vec3f> world_positions,
                               float kernel_radius);
 
 /**
@@ -85,7 +86,7 @@ void compute_boundary_volumes(std::vector<BoundaryParticle>& particles,
  * @return World-frame positions.
  */
 std::vector<Vec3f> boundary_world_positions(
-    const std::vector<BoundaryParticle>& particles,
-    const std::vector<Transform>& transforms);
+    std::span<const BoundaryParticle> particles,
+    std::span<const Transform> transforms);
 
 }  // namespace novaphy

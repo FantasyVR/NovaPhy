@@ -1,5 +1,6 @@
 #pragma once
 
+#include <span>
 #include <vector>
 
 #include "novaphy/math/math_types.h"
@@ -26,7 +27,7 @@ struct ParticleState {
      * @param[in] initial_positions Starting positions for all particles.
      * @param[in] initial_velocity Initial velocity for all particles.
      */
-    void init(const std::vector<Vec3f>& initial_positions,
+    void init(std::span<const Vec3f> initial_positions,
               const Vec3f& initial_velocity = Vec3f::Zero());
 
     /**

@@ -13,7 +13,7 @@ namespace novaphy {
  */
 World::World(const Model& model, SolverSettings solver_settings)
     : model_(model), solver_(solver_settings) {
-    state_.init(model_.num_bodies(), model_.initial_transforms);
+    state_.init(model_.initial_transforms);
 }
 
 /**
