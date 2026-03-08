@@ -15,7 +15,12 @@ def _add_dll_directories():
     _build_root = _pkg_dir.parent.parent / "build"
 
     if _sys.platform == "win32":
-        for _d in sorted(_build_root.glob("cp*-win_amd64"), reverse=True):
+        # Search scikit-build-core dirs AND standalone build dirs (e.g. local-ipc-cxx20)
+        _candidates = list(sorted(_build_root.glob("cp*-win_amd64"), reverse=True))
+        for _d in _build_root.iterdir():
+            if _d.is_dir() and not _d.name.startswith("cp") and (_d / "Release" / "bin").is_dir():
+                _candidates.append(_d)
+        for _d in _candidates:
             _bin_dir = _d / "Release" / "bin"
             if _bin_dir.is_dir():
                 _os.add_dll_directory(str(_bin_dir))
