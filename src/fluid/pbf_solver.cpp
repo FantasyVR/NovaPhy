@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <cmath>
 
+#include "novaphy/sim/performance_monitor.h"
 #include "novaphy/fluid/sph_kernel.h"
 
 namespace novaphy {
@@ -19,33 +20,58 @@ void PBFSolver::step(ParticleState& state, float dt, const Vec3f& gravity,
     int n = state.num_particles();
     if (n == 0) return;
 
+    PerformanceMonitor* monitor = detail::current_performance_monitor();
     float h = settings_.kernel_radius;
     grid_.set_cell_size(h);
 
     // 1. Apply external forces and predict positions
-    for (int i = 0; i < n; ++i) {
-        state.velocities[i] += gravity * dt;
-        state.predicted_positions[i] = state.positions[i] + state.velocities[i] * dt;
+    {
+        detail::PerformancePhaseScope phase_scope(monitor, "fluid.pbf.predict");
+        for (int i = 0; i < n; ++i) {
+            state.velocities[i] += gravity * dt;
+            state.predicted_positions[i] = state.positions[i] + state.velocities[i] * dt;
+        }
     }
 
     // 2. Build spatial hash grid from predicted positions
-    grid_.build(state.predicted_positions);
+    {
+        detail::PerformancePhaseScope phase_scope(monitor, "fluid.pbf.grid_build");
+        grid_.build(state.predicted_positions);
+    }
 
     // 3. Find neighbors for all particles
-    neighbors_.resize(n);
-    for (int i = 0; i < n; ++i) {
-        grid_.query_neighbors(state.predicted_positions[i], h, neighbors_[i]);
+    {
+        detail::PerformancePhaseScope phase_scope(monitor, "fluid.pbf.neighbor_query");
+        neighbors_.resize(n);
+        for (int i = 0; i < n; ++i) {
+            grid_.query_neighbors(state.predicted_positions[i], h, neighbors_[i]);
+        }
     }
 
     // 4. Iterative constraint solving
     for (int iter = 0; iter < settings_.solver_iterations; ++iter) {
-        compute_density(state, particle_mass);
-        compute_lambda(state, particle_mass);
-        compute_delta_position(state, particle_mass);
+        {
+            detail::PerformancePhaseScope phase_scope(monitor,
+                                                      "fluid.pbf.iteration.compute_density");
+            compute_density(state, particle_mass);
+        }
+        {
+            detail::PerformancePhaseScope phase_scope(monitor,
+                                                      "fluid.pbf.iteration.compute_lambda");
+            compute_lambda(state, particle_mass);
+        }
+        {
+            detail::PerformancePhaseScope phase_scope(monitor,
+                                                      "fluid.pbf.iteration.compute_delta_position");
+            compute_delta_position(state, particle_mass);
+        }
 
-        // Apply position corrections
-        for (int i = 0; i < n; ++i) {
-            state.predicted_positions[i] += state.delta_positions[i];
+        {
+            detail::PerformancePhaseScope phase_scope(monitor,
+                                                      "fluid.pbf.iteration.apply_delta");
+            for (int i = 0; i < n; ++i) {
+                state.predicted_positions[i] += state.delta_positions[i];
+            }
         }
     }
 
@@ -53,40 +79,47 @@ void PBFSolver::step(ParticleState& state, float dt, const Vec3f& gravity,
     float inv_dt = 1.0f / dt;
     float max_speed = h / dt;  // CFL-inspired limit: one kernel radius per step
     float max_speed_sq = max_speed * max_speed;
-    for (int i = 0; i < n; ++i) {
-        state.velocities[i] = (state.predicted_positions[i] - state.positions[i]) * inv_dt;
-        float speed_sq = state.velocities[i].squaredNorm();
-        if (speed_sq > max_speed_sq) {
-            state.velocities[i] *= max_speed / std::sqrt(speed_sq);
+    {
+        detail::PerformancePhaseScope phase_scope(monitor, "fluid.pbf.update_velocities");
+        for (int i = 0; i < n; ++i) {
+            state.velocities[i] = (state.predicted_positions[i] - state.positions[i]) * inv_dt;
+            float speed_sq = state.velocities[i].squaredNorm();
+            if (speed_sq > max_speed_sq) {
+                state.velocities[i] *= max_speed / std::sqrt(speed_sq);
+            }
         }
     }
 
     // 6. Apply XSPH viscosity
     if (settings_.xsph_viscosity > 0.0f) {
+        detail::PerformancePhaseScope phase_scope(monitor, "fluid.pbf.xsph_viscosity");
         apply_xsph_viscosity(state, particle_mass);
     }
 
     // 7. Update positions (with optional domain clamping)
-    if (settings_.use_domain_bounds) {
-        float pr = settings_.particle_radius;
-        Vec3f lo = settings_.domain_lower + Vec3f(pr, pr, pr);
-        Vec3f hi = settings_.domain_upper - Vec3f(pr, pr, pr);
-        for (int i = 0; i < n; ++i) {
-            Vec3f& p = state.predicted_positions[i];
-            for (int d = 0; d < 3; ++d) {
-                if (p[d] < lo[d]) {
-                    p[d] = lo[d];
-                    state.velocities[i][d] = 0.0f;
-                } else if (p[d] > hi[d]) {
-                    p[d] = hi[d];
-                    state.velocities[i][d] = 0.0f;
+    {
+        detail::PerformancePhaseScope phase_scope(monitor, "fluid.pbf.commit_positions");
+        if (settings_.use_domain_bounds) {
+            float pr = settings_.particle_radius;
+            Vec3f lo = settings_.domain_lower + Vec3f(pr, pr, pr);
+            Vec3f hi = settings_.domain_upper - Vec3f(pr, pr, pr);
+            for (int i = 0; i < n; ++i) {
+                Vec3f& p = state.predicted_positions[i];
+                for (int d = 0; d < 3; ++d) {
+                    if (p[d] < lo[d]) {
+                        p[d] = lo[d];
+                        state.velocities[i][d] = 0.0f;
+                    } else if (p[d] > hi[d]) {
+                        p[d] = hi[d];
+                        state.velocities[i][d] = 0.0f;
+                    }
                 }
+                state.positions[i] = p;
             }
-            state.positions[i] = p;
-        }
-    } else {
-        for (int i = 0; i < n; ++i) {
-            state.positions[i] = state.predicted_positions[i];
+        } else {
+            for (int i = 0; i < n; ++i) {
+                state.positions[i] = state.predicted_positions[i];
+            }
         }
     }
 }

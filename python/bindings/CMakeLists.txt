@@ -5,6 +5,7 @@ set(BIND_SOURCES
     bind_math.cpp
     bind_core.cpp
     bind_collision.cpp
+    bind_performance.cpp
     bind_sim.cpp
     bind_dynamics.cpp
     bind_fluid.cpp

@@ -60,6 +60,40 @@ python demos/demo_ball_in_water.py
 python demos/demo_ipc_stack.py
 ```
 
+## Profiling
+
+NovaPhy now includes an opt-in runtime performance monitor on `World` and
+`FluidWorld`. It captures aggregate per-phase timings in the C++ stepping
+pipeline and can optionally export a Chrome/Perfetto trace for deeper
+investigation.
+
+```python
+import novaphy
+
+world = novaphy.World(builder.build())
+monitor = world.performance_monitor
+monitor.enabled = True
+monitor.trace_enabled = True
+
+for _ in range(120):
+    world.step(1.0 / 120.0)
+
+slowest = sorted(monitor.phase_stats(), key=lambda s: s.avg_ms, reverse=True)
+for stat in slowest[:5]:
+    print(stat.name, stat.avg_ms, stat.max_ms)
+
+for metric in monitor.last_frame_metrics():
+    print(metric.name, metric.value)
+
+monitor.write_trace_json("build/novaphy_trace.json")
+```
+
+Open the exported `build/novaphy_trace.json` in [Perfetto](https://ui.perfetto.dev/)
+or Chrome tracing. Use aggregate stats first to find the hot subsystem, then use
+trace export for short focused captures. Disable visualization when diagnosing
+engine cost because Polyscope and Python-side rendering are not included in these
+engine timings.
+
 ## Demos
 
 ### Rigid Body

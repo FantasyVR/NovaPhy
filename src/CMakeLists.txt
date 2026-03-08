@@ -13,6 +13,7 @@ add_library(novaphy_core STATIC
     dynamics/free_body_solver.cpp
     dynamics/featherstone.cpp
     dynamics/articulated_solver.cpp
+    sim/performance_monitor.cpp
     sim/state.cpp
     sim/world.cpp
     fluid/particle_state.cpp

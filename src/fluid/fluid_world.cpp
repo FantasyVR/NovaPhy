@@ -44,33 +44,58 @@ FluidWorld::FluidWorld(const Model& model,
 }
 
 void FluidWorld::step(float dt) {
-    int n_fluid = fluid_state_.num_particles();
-    int n_boundary = static_cast<int>(boundary_particles_.size());
-    float h = pbf_solver_.settings().kernel_radius;
+    PerformanceMonitor& monitor = performance_monitor();
+    monitor.begin_frame();
+    detail::ScopedPerformanceCaptureContext capture_context(&monitor);
 
-    if (n_fluid > 0) {
-        // 1. Get boundary world positions (updated from rigid body poses)
-        std::vector<Vec3f> boundary_pos;
-        if (n_boundary > 0) {
-            boundary_pos = boundary_world_positions(boundary_particles_, state().transforms);
+    {
+        detail::PerformancePhaseScope total_scope(&monitor, "fluid.total");
+
+        int n_fluid = fluid_state_.num_particles();
+        int n_boundary = static_cast<int>(boundary_particles_.size());
+
+        if (n_fluid > 0) {
+            std::vector<Vec3f> boundary_pos;
+            if (n_boundary > 0) {
+                detail::PerformancePhaseScope phase_scope(&monitor,
+                                                          "fluid.boundary.positions");
+                boundary_pos =
+                    boundary_world_positions(boundary_particles_, state().transforms);
+            }
+
+            {
+                detail::PerformancePhaseScope phase_scope(&monitor, "fluid.pbf.total");
+                pbf_solver_.step(fluid_state_, dt, gravity(), particle_mass_);
+            }
+
+            if (n_boundary > 0) {
+                detail::PerformancePhaseScope phase_scope(&monitor,
+                                                          "fluid.boundary_density");
+                apply_boundary_density(boundary_pos);
+            }
+
+            if (n_boundary > 0) {
+                detail::PerformancePhaseScope phase_scope(&monitor, "fluid.coupling.total");
+                apply_coupling_forces(boundary_pos, dt);
+            }
         }
 
-        // 2. Run full PBF step (applies gravity, predicts, solves constraints, updates)
-        pbf_solver_.step(fluid_state_, dt, gravity(), particle_mass_);
-
-        // 3. Apply boundary density contribution
-        if (n_boundary > 0) {
-            apply_boundary_density(boundary_pos);
+        {
+            detail::PerformancePhaseScope phase_scope(&monitor, "fluid.rigid_step");
+            step_rigid_pipeline(dt);
         }
 
-        // 4. Compute coupling forces (fluid pressure on rigid bodies)
-        if (n_boundary > 0) {
-            apply_coupling_forces(boundary_pos, dt);
-        }
+        monitor.record_metric("fluid_particles",
+                              static_cast<double>(fluid_state_.num_particles()));
+        monitor.record_metric("boundary_particles",
+                              static_cast<double>(boundary_particles_.size()));
+        monitor.record_metric("pbf_solver_iterations",
+                              static_cast<double>(pbf_solver_.settings().solver_iterations));
+        monitor.record_metric("kernel_radius",
+                              static_cast<double>(pbf_solver_.settings().kernel_radius));
     }
 
-    // 5. Step rigid bodies (with any accumulated coupling forces)
-    World::step(dt);
+    monitor.end_frame();
 }
 
 void FluidWorld::apply_boundary_density(const std::vector<Vec3f>& boundary_world_pos) {

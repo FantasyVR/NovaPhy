@@ -222,6 +222,12 @@ void bind_sim(py::module_& m) {
              R"pbdoc(
                  list[ContactPoint]: Contact points generated during last step.
              )pbdoc")
+        .def_property_readonly("performance_monitor",
+             py::overload_cast<>(&World::performance_monitor),
+             py::return_value_policy::reference_internal,
+             R"pbdoc(
+                 PerformanceMonitor: Runtime performance monitor for this world.
+             )pbdoc")
         .def("apply_force", &World::apply_force,
              py::arg("body_index"), py::arg("force"),
              R"pbdoc(

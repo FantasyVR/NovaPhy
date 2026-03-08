@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <cmath>
 
+#include "novaphy/sim/performance_monitor.h"
+
 namespace novaphy {
 
 /**
@@ -32,10 +34,16 @@ void FreeBodySolver::solve(std::vector<ContactPoint>& contacts,
                             float dt) {
     if (contacts.empty()) return;
 
-    pre_step(contacts, bodies, transforms, linear_velocities, angular_velocities, dt);
+    PerformanceMonitor* monitor = detail::current_performance_monitor();
+
+    {
+        detail::PerformancePhaseScope phase_scope(monitor, "world.solver.pre_step");
+        pre_step(contacts, bodies, transforms, linear_velocities, angular_velocities, dt);
+    }
 
     // Warm start: apply accumulated impulses from previous frame
     if (settings_.warm_starting) {
+        detail::PerformancePhaseScope phase_scope(monitor, "world.solver.warm_start");
         for (size_t i = 0; i < contacts.size(); ++i) {
             auto& cp = contacts[i];
             auto& cd = constraint_data_[i];
@@ -57,6 +65,8 @@ void FreeBodySolver::solve(std::vector<ContactPoint>& contacts,
 
     // Iterative velocity solving
     for (int iter = 0; iter < settings_.velocity_iterations; ++iter) {
+        detail::PerformancePhaseScope phase_scope(monitor,
+                                                  "world.solver.iteration.solve_velocity");
         solve_velocity(contacts, bodies, linear_velocities, angular_velocities);
     }
 }

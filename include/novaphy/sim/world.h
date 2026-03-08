@@ -8,6 +8,7 @@
 #include "novaphy/core/model.h"
 #include "novaphy/dynamics/free_body_solver.h"
 #include "novaphy/dynamics/integrator.h"
+#include "novaphy/sim/performance_monitor.h"
 #include "novaphy/sim/state.h"
 
 namespace novaphy {
@@ -88,6 +89,20 @@ public:
     const std::vector<ContactPoint>& contacts() const { return contacts_; }
 
     /**
+     * @brief Access the runtime performance monitor for this world.
+     *
+     * @return Reference to performance monitor state and controls.
+     */
+    PerformanceMonitor& performance_monitor() { return performance_monitor_; }
+
+    /**
+     * @brief Read-only access to the runtime performance monitor.
+     *
+     * @return Const reference to performance monitor state and controls.
+     */
+    const PerformanceMonitor& performance_monitor() const { return performance_monitor_; }
+
+    /**
      * @brief Accumulate an external force for the next integration step.
      *
      * @param [in] body_index Body index.
@@ -105,13 +120,35 @@ public:
      */
     void apply_torque(int body_index, const Vec3f& torque);
 
+protected:
+    /**
+     * @brief Run the rigid-body stepping pipeline and record detailed timings.
+     *
+     * @param [in] dt Time step in seconds.
+     * @return void
+     */
+    void step_rigid_pipeline(float dt);
+
 private:
+    /**
+     * @brief Record per-frame world metrics for the current profiled step.
+     *
+     * @param [in] dynamic_body_count Number of non-static bodies in the model.
+     * @param [in] candidate_pair_count Broadphase candidate pair count.
+     * @param [in] contact_count Narrowphase contact count.
+     * @return void
+     */
+    void record_world_metrics(int dynamic_body_count,
+                              int candidate_pair_count,
+                              int contact_count);
+
     Model model_;
     SimState state_;
     SweepAndPrune broadphase_;
     FreeBodySolver solver_;
     Vec3f gravity_ = Vec3f(0.0f, -9.81f, 0.0f);
     std::vector<ContactPoint> contacts_;
+    PerformanceMonitor performance_monitor_;
 };
 
 }  // namespace novaphy
