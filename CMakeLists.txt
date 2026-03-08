@@ -6,6 +6,8 @@ option(NOVAPHY_WITH_IPC "Build with libuipc IPC support (requires CUDA >= 12.4)"
 option(NOVAPHY_BUNDLE_UIPC "Bundle libuipc with NovaPhy package. If disabled, novaphy will attempt to find it system-wide." ON)
 option(NOVAPHY_ENABLE_INSTALL "Enable installation of NovaPhy targets and CMake config files" ON)
 
+# Processing options
+
 if(NOVAPHY_WITH_IPC)
     list(APPEND VCPKG_MANIFEST_FEATURES "ipc")
 endif()
@@ -15,7 +17,6 @@ if (NOVAPHY_BUNDLE_UIPC AND NOT NOVAPHY_WITH_IPC)
     set(NOVAPHY_BUNDLE_UIPC OFF CACHE BOOL "" FORCE)
 endif()
 
-# ---------- Project setup ----------
 set(NOVAPHY_PROJECT_NAME "")
 set(NOVAPHY_PROJECT_VERSION "")
 if (SKBUILD)
@@ -27,12 +28,6 @@ else()
     set(NOVAPHY_PROJECT_VERSION "0.1.0")
 endif()
 
-# Disable install and test when building as a subproject.
-if (NOT CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-    set(NOVAPHY_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
-    # TODO NovaPhy doesn't have any C++ tests for now.
-endif()
-
 include(compat/compat.cmake)
 
 project(
@@ -40,6 +35,13 @@ project(
     VERSION ${NOVAPHY_PROJECT_VERSION}
     LANGUAGES CXX
 )
+
+# Disable install and test when building as a subproject.
+if (NOT (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME))
+    set(NOVAPHY_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
+    # TODO NovaPhy doesn't have any C++ tests for now.
+endif()
+
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
