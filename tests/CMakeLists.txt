@@ -3,15 +3,14 @@
 find_package(GTest CONFIG REQUIRED)
 include(GoogleTest)
 
-# Will add test files as they are created in later stages
-# Example pattern:
-# file(GLOB TEST_SOURCES cpp/test_*.cpp)
-# foreach(test_source ${TEST_SOURCES})
-#     get_filename_component(test_name ${test_source} NAME_WE)
-#     add_executable(${test_name} ${test_source})
-#     target_link_libraries(${test_name} PRIVATE
-#         novaphy_core
-#         GTest::gtest_main
-#     )
-#     gtest_discover_tests(${test_name})
-# endforeach()
+add_executable(novaphy_cpp_tests
+    cpp/test_io_path_apis.cpp
+    cpp/test_core_span_apis.cpp
+)
+
+target_link_libraries(novaphy_cpp_tests PRIVATE
+    novaphy_core
+    GTest::gtest_main
+)
+
+gtest_discover_tests(novaphy_cpp_tests)

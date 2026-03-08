@@ -11,14 +11,13 @@ namespace novaphy {
 SpatialHashGrid::SpatialHashGrid(float cell_size)
     : cell_size_(cell_size) {}
 
-void SpatialHashGrid::build(const std::vector<Vec3f>& positions) {
+void SpatialHashGrid::build(std::span<const Vec3f> positions) {
     cells_.clear();
-    int n = static_cast<int>(positions.size());
-    for (int i = 0; i < n; ++i) {
+    for (size_t i = 0; i < positions.size(); ++i) {
         int cx, cy, cz;
         world_to_cell(positions[i], cx, cy, cz);
-        uint64_t key = hash_cell(cx, cy, cz);
-        cells_[key].push_back(i);
+        const uint64_t key = hash_cell(cx, cy, cz);
+        cells_[key].push_back(static_cast<int>(i));
     }
 }
 
@@ -27,9 +26,9 @@ void SpatialHashGrid::clear() {
 }
 
 void SpatialHashGrid::query_neighbors(const Vec3f& point, float radius,
-                                       std::vector<int>& neighbors) const {
-    neighbors.clear();
-    float radius_sq = radius * radius;
+                                       std::vector<int>& out) const {
+    (void)radius;
+    out.clear();
 
     int cx, cy, cz;
     world_to_cell(point, cx, cy, cz);
@@ -42,22 +41,26 @@ void SpatialHashGrid::query_neighbors(const Vec3f& point, float radius,
                 auto it = cells_.find(key);
                 if (it == cells_.end()) continue;
                 for (int idx : it->second) {
-                    neighbors.push_back(idx);
+                    out.push_back(idx);
                 }
             }
         }
     }
 }
 
-void SpatialHashGrid::query_all_pairs(const std::vector<Vec3f>& positions,
-                                       float radius,
-                                       std::vector<std::pair<int, int>>& pairs) const {
-    pairs.clear();
-    float radius_sq = radius * radius;
-    int n = static_cast<int>(positions.size());
-
+std::vector<int> SpatialHashGrid::query_neighbors(const Vec3f& point, float radius) const {
     std::vector<int> neighbors;
-    for (int i = 0; i < n; ++i) {
+    query_neighbors(point, radius, neighbors);
+    return neighbors;
+}
+
+std::vector<std::pair<int, int>> SpatialHashGrid::query_all_pairs(
+    std::span<const Vec3f> positions,
+    float radius) const {
+    std::vector<std::pair<int, int>> pairs;
+    const float radius_sq = radius * radius;
+
+    for (size_t i = 0; i < positions.size(); ++i) {
         int cx, cy, cz;
         world_to_cell(positions[i], cx, cy, cz);
 
@@ -68,16 +71,19 @@ void SpatialHashGrid::query_all_pairs(const std::vector<Vec3f>& positions,
                     auto it = cells_.find(key);
                     if (it == cells_.end()) continue;
                     for (int j : it->second) {
-                        if (j <= i) continue;  // only i < j pairs
-                        float dist_sq = (positions[i] - positions[j]).squaredNorm();
+                        if (j <= static_cast<int>(i)) continue;  // only i < j pairs
+                        const float dist_sq =
+                            (positions[i] - positions[static_cast<size_t>(j)]).squaredNorm();
                         if (dist_sq < radius_sq) {
-                            pairs.emplace_back(i, j);
+                            pairs.emplace_back(static_cast<int>(i), j);
                         }
                     }
                 }
             }
         }
     }
+
+    return pairs;
 }
 
 uint64_t SpatialHashGrid::hash_cell(int cx, int cy, int cz) {

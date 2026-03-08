@@ -253,17 +253,19 @@ def _extract_stage_gravity(config: DemoConfig) -> np.ndarray:
 
 
 def run_demo(config: DemoConfig) -> Dict[str, str]:
+    urdf_path = Path(config.urdf_path)
+    usd_path = Path(config.usd_path)
     urdf_parser = novaphy.UrdfParser()
     usd_importer = novaphy.OpenUsdImporter(float(config.usd_min_supported_version))
     builder = novaphy.SceneBuilderEngine()
-    usd_stage = usd_importer.import_file(config.usd_path)
+    usd_stage = usd_importer.import_file(usd_path)
     materials, lights = extract_materials_and_lights(usd_stage)
 
     urdf_model = None
     robot_scene = None
     robot_body_count = 0
     if not config.usd_only:
-        urdf_model = urdf_parser.parse_file(config.urdf_path)
+        urdf_model = urdf_parser.parse_file(urdf_path)
         robot_scene = builder.build_from_urdf(urdf_model)
         robot_body_count = robot_scene.model.num_bodies
 
@@ -414,12 +416,12 @@ def run_demo(config: DemoConfig) -> Dict[str, str]:
     scene_meta = export_dir / "scene_meta.json"
     contact_trace_csv = export_dir / "contact_trace.csv"
 
-    exporter.write_keyframes_csv(str(keyframe_csv))
-    exporter.write_collision_log_csv(str(collision_csv))
-    exporter.write_constraint_reactions_csv(str(reaction_csv))
+    exporter.write_keyframes_csv(keyframe_csv)
+    exporter.write_collision_log_csv(collision_csv)
+    exporter.write_constraint_reactions_csv(reaction_csv)
     if urdf_model is not None:
-        exporter.write_urdf(urdf_model, str(out_urdf))
-    exporter.write_openusd_animation_layer(str(out_usda))
+        exporter.write_urdf(urdf_model, out_urdf)
+    exporter.write_openusd_animation_layer(out_usda)
     write_joint_trajectory_csv(joint_csv, joint_rows)
     write_ee_pose_csv(ee_csv, ee_rows)
     write_joint_trajectory_csv(contact_trace_csv, contact_rows)

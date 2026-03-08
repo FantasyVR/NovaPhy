@@ -112,14 +112,15 @@ std::string transform_to_origin_xml(const Transform& t) {
 
 }  // namespace
 
-UrdfModelData UrdfParser::parse_file(const std::string& urdf_path) const {
+UrdfModelData UrdfParser::parse_file(const std::filesystem::path& urdf_path) const {
     tinyxml2::XMLDocument doc;
-    if (doc.LoadFile(urdf_path.c_str()) != tinyxml2::XML_SUCCESS) {
-        throw std::runtime_error("Failed to load URDF file: " + urdf_path);
+    const std::string urdf_path_string = urdf_path.string();
+    if (doc.LoadFile(urdf_path_string.c_str()) != tinyxml2::XML_SUCCESS) {
+        throw std::runtime_error("Failed to load URDF file: " + urdf_path_string);
     }
     const tinyxml2::XMLElement* robot_elem = doc.FirstChildElement("robot");
     if (robot_elem == nullptr) {
-        throw std::runtime_error("Invalid URDF, missing <robot>: " + urdf_path);
+        throw std::runtime_error("Invalid URDF, missing <robot>: " + urdf_path_string);
     }
 
     UrdfModelData model;
@@ -242,14 +243,13 @@ std::string UrdfParser::write_string(const UrdfModelData& model) const {
     return out.str();
 }
 
-void UrdfParser::write_file(const UrdfModelData& model, const std::string& urdf_path) const {
-    const std::filesystem::path path(urdf_path);
-    if (path.has_parent_path()) {
-        std::filesystem::create_directories(path.parent_path());
+void UrdfParser::write_file(const UrdfModelData& model, const std::filesystem::path& urdf_path) const {
+    if (urdf_path.has_parent_path()) {
+        std::filesystem::create_directories(urdf_path.parent_path());
     }
     std::ofstream out(urdf_path, std::ios::out | std::ios::trunc);
     if (!out.is_open()) {
-        throw std::runtime_error("Failed to open output URDF file: " + urdf_path);
+        throw std::runtime_error("Failed to open output URDF file: " + urdf_path.string());
     }
     out << write_string(model);
 }

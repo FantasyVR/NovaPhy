@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-NovaPhy is a C++17/Python 3D physics engine for embodied intelligence (robotics, RL, sim-to-real).
+NovaPhy is a C++20/Python 3D physics engine for embodied intelligence (robotics, RL, sim-to-real).
 Working directory: `E:\NovaPhy`
 
 ## Architecture
@@ -18,7 +18,7 @@ Working directory: `E:\NovaPhy`
 ### C++
 - **float32 only** - never use `double`. Use Eigen `*f` types: `Vec3f`, `Mat3f`, `Quatf`, `VecXf`, `MatXf`
 - `using Scalar = float;` defined in `novaphy_types.h`
-- Modern C++17: RAII, `std::unique_ptr` for ownership, `std::vector` for collections
+- Modern C++20: RAII, `std::unique_ptr` for ownership, `std::vector` for collections
 - Header files in `include/novaphy/`, source files in `src/`
 - Header-only for simple utilities (AABB, math typedefs)
 - `.h` for headers, `.cpp` for sources
@@ -51,7 +51,8 @@ Working directory: `E:\NovaPhy`
 ```bash
 # Development install (set CMAKE_ARGS to point to your vcpkg)
 conda activate novaphy
-CMAKE_ARGS="-DCMAKE_TOOLCHAIN_FILE=F:/vcpkg/scripts/buildsystems/vcpkg.cmake" pip install -e .
+$env:CMAKE_TOOLCHAIN_FILE="C:/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake"
+pip install -e .
 
 # Python tests
 pytest tests/python/ -v

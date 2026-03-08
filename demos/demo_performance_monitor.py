@@ -180,7 +180,7 @@ def run_demo(config: DemoConfig) -> Dict[str, str]:
     outputs = {"summary_json": str(summary_path)}
     if config.trace_enabled:
         trace_path = output_dir / f"{config.scene}_profile_trace.json"
-        monitor.write_trace_json(str(trace_path))
+        monitor.write_trace_json(trace_path)
         outputs["trace_json"] = str(trace_path)
 
     return outputs

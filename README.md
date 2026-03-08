@@ -1,6 +1,6 @@
 # NovaPhy
 
-A C++17/Python 3D physics engine for embodied intelligence (robotics, RL, sim-to-real).
+A C++20/Python 3D physics engine for embodied intelligence (robotics, RL, sim-to-real).
 
 ## Features
 
@@ -12,15 +12,15 @@ A C++17/Python 3D physics engine for embodied intelligence (robotics, RL, sim-to
 - **Rigid-Fluid Coupling** — Akinci et al. 2012 boundary particle method for two-way fluid-solid interaction
 - **IPC Contact** *(optional)* — GPU-accelerated Incremental Potential Contact via [libuipc](https://github.com/spiriMirror/libuipc) with mathematically guaranteed penetration-free contact (requires CUDA ≥ 12.4)
 - **Python API** via pybind11 with Polyscope visualization
-- **pip-installable** C++17 core via scikit-build-core
+- **pip-installable** C++20 core via scikit-build-core
 
 ## Quick Start
 
 ### Prerequisites
 
 - [Conda](https://docs.conda.io/) (Miniconda or Anaconda)
-- [vcpkg](https://vcpkg.io/) installed (default: `F:/vcpkg`)
-- C++17 compiler (MSVC 2019+, GCC 9+, Clang 10+)
+- [vcpkg](https://vcpkg.io/) installed
+- C++20 compiler (MSVC 2022, GCC 11+, Clang 14+)
 - *(Optional for IPC)* CUDA ≥ 12.4
 
 ### Setup
@@ -30,11 +30,14 @@ A C++17/Python 3D physics engine for embodied intelligence (robotics, RL, sim-to
 conda env create -f environment.yml
 conda activate novaphy
 
+# Make your vcpkg toolchain visible to CMake
+$env:CMAKE_TOOLCHAIN_FILE="C:/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake"
+
 # Install NovaPhy
 pip install -e .
 
 # (Optional) Install with IPC support
-CMAKE_ARGS="-DNOVAPHY_WITH_IPC=ON -DCMAKE_TOOLCHAIN_FILE=F:/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_CUDA_COMPILER=/path/to/nvcc" pip install -e .
+CMAKE_ARGS="-DNOVAPHY_WITH_IPC=ON -DCMAKE_CUDA_COMPILER=/path/to/nvcc" pip install -e .
 ```
 
 ### Verify
@@ -229,7 +232,7 @@ if novaphy.has_ipc():
 
 | Component | Technology |
 |-----------|-----------|
-| Core | C++17 (float32 only) |
+| Core | C++20 (float32 only) |
 | Math | Eigen3 |
 | Bindings | pybind11 |
 | Build | CMake + scikit-build-core |

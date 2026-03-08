@@ -1,7 +1,8 @@
 #include "novaphy/ipc/ipc_world.h"
 #include "novaphy/ipc/shape_converter.h"
 
-// libuipc headers (C++20)
+// libuipc headers stay in the implementation file to avoid leaking them into
+// public NovaPhy headers.
 #include <uipc/uipc.h>
 #include <uipc/constitution/affine_body_constitution.h>
 #include <uipc/geometry/utils.h>
@@ -187,7 +188,7 @@ void IPCWorld::Impl::init() {
     scene = std::make_unique<Scene>(scene_config);
 
     // Initialize NovaPhy SimState
-    state.init(model.num_bodies(), model.initial_transforms);
+    state.init(model.initial_transforms);
 
     // Convert bodies to libuipc
     convert_bodies();

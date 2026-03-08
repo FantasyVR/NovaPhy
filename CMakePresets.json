@@ -5,10 +5,6 @@
             "name": "default",
             "binaryDir": "${sourceDir}/build",
             "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": {
-                    "type": "FILEPATH",
-                    "value": "F:/vcpkg/scripts/buildsystems/vcpkg.cmake"
-                },
                 "CMAKE_BUILD_TYPE": "Release"
             }
         },
@@ -16,10 +12,6 @@
             "name": "debug",
             "binaryDir": "${sourceDir}/build-debug",
             "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": {
-                    "type": "FILEPATH",
-                    "value": "F:/vcpkg/scripts/buildsystems/vcpkg.cmake"
-                },
                 "CMAKE_BUILD_TYPE": "Debug"
             }
         },
@@ -28,10 +20,6 @@
             "displayName": "Release with IPC (libuipc + CUDA)",
             "binaryDir": "${sourceDir}/build-ipc",
             "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": {
-                    "type": "FILEPATH",
-                    "value": "F:/vcpkg/scripts/buildsystems/vcpkg.cmake"
-                },
                 "CMAKE_BUILD_TYPE": "Release",
                 "NOVAPHY_WITH_IPC": "ON"
             }

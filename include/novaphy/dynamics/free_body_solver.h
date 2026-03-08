@@ -1,5 +1,6 @@
 #pragma once
 
+#include <span>
 #include <vector>
 
 #include "novaphy/core/body.h"
@@ -59,11 +60,11 @@ public:
      * @param [in] dt Simulation time step in seconds.
      * @return void
      */
-    void solve(std::vector<ContactPoint>& contacts,
-               const std::vector<RigidBody>& bodies,
-               const std::vector<Transform>& transforms,
-               std::vector<Vec3f>& linear_velocities,
-               std::vector<Vec3f>& angular_velocities,
+    void solve(std::span<ContactPoint> contacts,
+               std::span<const RigidBody> bodies,
+               std::span<const Transform> transforms,
+               std::span<Vec3f> linear_velocities,
+               std::span<Vec3f> angular_velocities,
                float dt);
 
     /**
@@ -103,11 +104,11 @@ private:
      * @param [in] dt Simulation time step in seconds.
      * @return void
      */
-    void pre_step(std::vector<ContactPoint>& contacts,
-                  const std::vector<RigidBody>& bodies,
-                  const std::vector<Transform>& transforms,
-                  const std::vector<Vec3f>& linear_velocities,
-                  const std::vector<Vec3f>& angular_velocities,
+    void pre_step(std::span<ContactPoint> contacts,
+                  std::span<const RigidBody> bodies,
+                  std::span<const Transform> transforms,
+                  std::span<const Vec3f> linear_velocities,
+                  std::span<const Vec3f> angular_velocities,
                   float dt);
 
     /**
@@ -119,10 +120,10 @@ private:
      * @param [in,out] angular_velocities Body angular velocities in world frame (rad/s).
      * @return void
      */
-    void solve_velocity(std::vector<ContactPoint>& contacts,
-                        const std::vector<RigidBody>& bodies,
-                        std::vector<Vec3f>& linear_velocities,
-                        std::vector<Vec3f>& angular_velocities);
+    void solve_velocity(std::span<ContactPoint> contacts,
+                        std::span<const RigidBody> bodies,
+                        std::span<Vec3f> linear_velocities,
+                        std::span<Vec3f> angular_velocities);
 };
 
 }  // namespace novaphy

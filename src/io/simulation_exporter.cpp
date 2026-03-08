@@ -8,10 +8,9 @@
 namespace novaphy {
 namespace {
 
-void ensure_parent_directory(const std::string& output_path) {
-    const std::filesystem::path path(output_path);
-    if (path.has_parent_path()) {
-        std::filesystem::create_directories(path.parent_path());
+void ensure_parent_directory(const std::filesystem::path& output_path) {
+    if (output_path.has_parent_path()) {
+        std::filesystem::create_directories(output_path.parent_path());
     }
 }
 
@@ -58,10 +57,10 @@ const std::vector<RecordedConstraintReaction>& SimulationExporter::constraint_re
     return constraint_reactions_;
 }
 
-void SimulationExporter::write_keyframes_csv(const std::string& output_path) const {
+void SimulationExporter::write_keyframes_csv(const std::filesystem::path& output_path) const {
     ensure_parent_directory(output_path);
     std::ofstream out(output_path, std::ios::out | std::ios::trunc);
-    if (!out.is_open()) throw std::runtime_error("Failed to open output file: " + output_path);
+    if (!out.is_open()) throw std::runtime_error("Failed to open output file: " + output_path.string());
     out << "time,body_index,px,py,pz,qx,qy,qz,qw,vx,vy,vz,wx,wy,wz\n";
     for (const RecordedKeyframe& f : keyframes_) {
         out << f.time << "," << f.body_index << ","
@@ -72,10 +71,10 @@ void SimulationExporter::write_keyframes_csv(const std::string& output_path) con
     }
 }
 
-void SimulationExporter::write_collision_log_csv(const std::string& output_path) const {
+void SimulationExporter::write_collision_log_csv(const std::filesystem::path& output_path) const {
     ensure_parent_directory(output_path);
     std::ofstream out(output_path, std::ios::out | std::ios::trunc);
-    if (!out.is_open()) throw std::runtime_error("Failed to open output file: " + output_path);
+    if (!out.is_open()) throw std::runtime_error("Failed to open output file: " + output_path.string());
     out << "time,body_a,body_b,px,py,pz,nx,ny,nz,penetration\n";
     for (const RecordedCollisionEvent& e : collision_events_) {
         out << e.time << "," << e.body_a << "," << e.body_b << ","
@@ -85,10 +84,10 @@ void SimulationExporter::write_collision_log_csv(const std::string& output_path)
     }
 }
 
-void SimulationExporter::write_constraint_reactions_csv(const std::string& output_path) const {
+void SimulationExporter::write_constraint_reactions_csv(const std::filesystem::path& output_path) const {
     ensure_parent_directory(output_path);
     std::ofstream out(output_path, std::ios::out | std::ios::trunc);
-    if (!out.is_open()) throw std::runtime_error("Failed to open output file: " + output_path);
+    if (!out.is_open()) throw std::runtime_error("Failed to open output file: " + output_path.string());
     out << "time,joint_name,mx,my,mz,fx,fy,fz\n";
     for (const RecordedConstraintReaction& r : constraint_reactions_) {
         VecXf w = r.wrench;
@@ -103,15 +102,16 @@ void SimulationExporter::write_constraint_reactions_csv(const std::string& outpu
     }
 }
 
-void SimulationExporter::write_urdf(const UrdfModelData& model, const std::string& output_path) const {
+void SimulationExporter::write_urdf(const UrdfModelData& model,
+                                    const std::filesystem::path& output_path) const {
     UrdfParser parser;
     parser.write_file(model, output_path);
 }
 
-void SimulationExporter::write_openusd_animation_layer(const std::string& output_path) const {
+void SimulationExporter::write_openusd_animation_layer(const std::filesystem::path& output_path) const {
     ensure_parent_directory(output_path);
     std::ofstream out(output_path, std::ios::out | std::ios::trunc);
-    if (!out.is_open()) throw std::runtime_error("Failed to open output file: " + output_path);
+    if (!out.is_open()) throw std::runtime_error("Failed to open output file: " + output_path.string());
     out << "#usda 1.0\n(\n    upAxis = \"Y\"\n)\n\n";
     std::map<int, std::vector<RecordedKeyframe>> grouped;
     for (const RecordedKeyframe& frame : keyframes_) {

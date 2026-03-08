@@ -50,10 +50,9 @@ std::string escape_json(const std::string& value) {
     return out.str();
 }
 
-void ensure_parent_directory(const std::string& output_path) {
-    const std::filesystem::path path(output_path);
-    if (path.has_parent_path()) {
-        std::filesystem::create_directories(path.parent_path());
+void ensure_parent_directory(const std::filesystem::path& output_path) {
+    if (output_path.has_parent_path()) {
+        std::filesystem::create_directories(output_path.parent_path());
     }
 }
 
@@ -106,12 +105,12 @@ std::vector<PerformanceMetric> PerformanceMonitor::last_frame_metrics() const {
     return last_frame_metrics_;
 }
 
-void PerformanceMonitor::write_trace_json(const std::string& output_path) const {
+void PerformanceMonitor::write_trace_json(const std::filesystem::path& output_path) const {
     ensure_parent_directory(output_path);
 
     std::ofstream out(output_path, std::ios::out | std::ios::trunc);
     if (!out.is_open()) {
-        throw std::runtime_error("Failed to open output file: " + output_path);
+        throw std::runtime_error("Failed to open output file: " + output_path.string());
     }
 
     out << "{\n  \"traceEvents\": [\n";
@@ -210,15 +209,16 @@ void PerformanceMonitor::end_frame() {
     current_frame_active_ = false;
 }
 
-void PerformanceMonitor::record_metric(const std::string& name, double value) {
+void PerformanceMonitor::record_metric(std::string_view name, double value) {
     if (!current_frame_active_) {
         return;
     }
 
     auto it = current_metric_indices_.find(name);
     if (it == current_metric_indices_.end()) {
-        current_metric_indices_[name] = current_frame_metrics_.size();
-        current_frame_metrics_.push_back({name, value});
+        const size_t metric_index = current_frame_metrics_.size();
+        current_metric_indices_.emplace(name, metric_index);
+        current_frame_metrics_.push_back({std::string(name), value});
         return;
     }
 

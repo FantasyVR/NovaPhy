@@ -138,7 +138,7 @@ def test_urdf_parse_build_and_write(tmp_path):
     urdf_path.write_text(URDF_SAMPLE, encoding="utf-8")
 
     parser = novaphy.UrdfParser()
-    model_data = parser.parse_file(str(urdf_path))
+    model_data = parser.parse_file(urdf_path)
 
     assert model_data.name == "two_link"
     assert len(model_data.links) == 2
@@ -151,7 +151,7 @@ def test_urdf_parse_build_and_write(tmp_path):
     assert build_result.model.num_shapes >= 2
 
     output_urdf = tmp_path / "robot_out.urdf"
-    parser.write_file(model_data, str(output_urdf))
+    parser.write_file(model_data, output_urdf)
     assert output_urdf.exists()
     assert "two_link" in output_urdf.read_text(encoding="utf-8")
 
@@ -161,7 +161,7 @@ def test_usd_import_build_and_sim_export(tmp_path):
     usd_path.write_text(USDA_SAMPLE, encoding="utf-8")
 
     importer = novaphy.OpenUsdImporter()
-    stage = importer.import_file(str(usd_path))
+    stage = importer.import_file(usd_path)
 
     assert stage.up_axis == "Y"
     assert len(stage.prims) >= 2
@@ -183,9 +183,9 @@ def test_usd_import_build_and_sim_export(tmp_path):
     col_csv = tmp_path / "collisions.csv"
     usda_anim = tmp_path / "anim.usda"
 
-    exporter.write_keyframes_csv(str(key_csv))
-    exporter.write_collision_log_csv(str(col_csv))
-    exporter.write_openusd_animation_layer(str(usda_anim))
+    exporter.write_keyframes_csv(key_csv)
+    exporter.write_collision_log_csv(col_csv)
+    exporter.write_openusd_animation_layer(usda_anim)
 
     assert key_csv.exists()
     assert col_csv.exists()
@@ -198,7 +198,7 @@ def test_urdf_articulation_is_topologically_ordered(tmp_path):
     urdf_path.write_text(URDF_UNORDERED_LINKS_SAMPLE, encoding="utf-8")
 
     parser = novaphy.UrdfParser()
-    model_data = parser.parse_file(str(urdf_path))
+    model_data = parser.parse_file(urdf_path)
     assert [link.name for link in model_data.links] == ["tip", "base"]
 
     builder = novaphy.SceneBuilderEngine()
@@ -219,11 +219,11 @@ def test_urdf_rpy_roundtrip_preserves_orientation(tmp_path):
     urdf_path.write_text(URDF_RPY_ROUNDTRIP_SAMPLE, encoding="utf-8")
 
     parser = novaphy.UrdfParser()
-    model_before = parser.parse_file(str(urdf_path))
+    model_before = parser.parse_file(urdf_path)
 
     out_path = tmp_path / "rpy_roundtrip_out.urdf"
-    parser.write_file(model_before, str(out_path))
-    model_after = parser.parse_file(str(out_path))
+    parser.write_file(model_before, out_path)
+    model_after = parser.parse_file(out_path)
 
     _assert_same_rotation(model_before.links[0].inertial.origin.rotation, model_after.links[0].inertial.origin.rotation)
     _assert_same_rotation(model_before.links[0].collisions[0].origin.rotation, model_after.links[0].collisions[0].origin.rotation)

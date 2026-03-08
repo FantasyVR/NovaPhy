@@ -16,8 +16,8 @@ namespace novaphy {
  * resolution to libuipc's GPU-accelerated Incremental Potential Contact
  * solver, which mathematically guarantees no interpenetration.
  *
- * Implementation is hidden behind a pimpl to isolate libuipc (C++20) headers
- * from the rest of NovaPhy (C++17).
+ * Implementation is hidden behind a pimpl to keep libuipc headers out of the
+ * public NovaPhy interface.
  */
 class IPCWorld {
 public:

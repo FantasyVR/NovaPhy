@@ -96,7 +96,12 @@ void bind_fluid(py::module_& m) {
         .def(py::init<>(), R"pbdoc(
             Creates an empty particle state.
         )pbdoc")
-        .def("init", &ParticleState::init,
+        .def("init",
+             [](ParticleState& self,
+                const std::vector<Vec3f>& initial_positions,
+                const Vec3f& initial_velocity) {
+                 self.init(initial_positions, initial_velocity);
+             },
              py::arg("initial_positions"),
              py::arg("initial_velocity") = Vec3f::Zero(),
              R"pbdoc(
@@ -137,7 +142,11 @@ void bind_fluid(py::module_& m) {
                  Args:
                      cell_size (float): Grid cell size (should match kernel radius).
              )pbdoc")
-        .def("build", &SpatialHashGrid::build, py::arg("positions"),
+        .def("build",
+             [](SpatialHashGrid& grid, const std::vector<Vec3f>& positions) {
+                 grid.build(positions);
+             },
+             py::arg("positions"),
              R"pbdoc(
                  Build grid from particle positions.
 
@@ -148,11 +157,7 @@ void bind_fluid(py::module_& m) {
             Clear all grid data.
         )pbdoc")
         .def("query_neighbors",
-             [](const SpatialHashGrid& grid, const Vec3f& point, float radius) {
-                 std::vector<int> neighbors;
-                 grid.query_neighbors(point, radius, neighbors);
-                 return neighbors;
-             },
+             py::overload_cast<const Vec3f&, float>(&SpatialHashGrid::query_neighbors, py::const_),
              py::arg("point"), py::arg("radius"),
              R"pbdoc(
                  Query neighbor particle indices within radius.

@@ -14,56 +14,34 @@ namespace featherstone {
  * @brief Computes articulated link transforms from generalized positions.
  * @param[in] model Articulation model containing joint tree topology.
  * @param[in] q Generalized coordinates.
- * @param[out] X_J Per-link joint transforms.
- * @param[out] X_up Per-link parent transforms in spatial form.
- * @param[out] X_world Per-link world transforms for visualization/queries.
+ * @return Joint, parent-relative, and world transforms for all links.
  */
-void forward_kinematics(const Articulation& model,
-                        const VecXf& q,
-                        std::vector<SpatialTransform>& X_J,
-                        std::vector<SpatialTransform>& X_up,
-                        std::vector<Transform>& X_world) {
-    int n = model.num_links();
-    X_J.resize(n);
-    X_up.resize(n);
-    X_world.resize(n);
+ForwardKinematicsResult forward_kinematics(const Articulation& model,
+                                           const VecXf& q) {
+    const int n = model.num_links();
+    ForwardKinematicsResult result;
+    result.joint_transforms.resize(n);
+    result.parent_transforms.resize(n);
+    result.world_transforms.resize(n);
 
     for (int i = 0; i < n; ++i) {
         const auto& joint = model.joints[i];
-        int qi = model.q_start(i);
+        const int qi = model.q_start(i);
+        const Transform joint_transform = joint.joint_transform(q.data() + qi);
+        const Transform local_transform = joint.parent_to_joint * joint_transform;
 
-        // Joint transform
-        Transform T_J = joint.joint_transform(q.data() + qi);
-        X_J[i] = SpatialTransform::from_transform(T_J);
-
-        // Transform from link i's frame to parent's frame:
-        // X_up[i] = X_J[i] * X_tree[i]  where X_tree = parent_to_joint
-        SpatialTransform X_tree = SpatialTransform::from_transform(joint.parent_to_joint);
-        X_up[i] = X_J[i] * X_tree;
-
-        // World transform (for rendering/FK output)
-        Transform T_link = joint.parent_to_joint * T_J;
-        if (joint.parent >= 0) {
-            X_world[i] = X_world[joint.parent] * T_link.inverse();
-            // Actually we want the world-frame position of each link
-            // X_world[i] = parent_world * parent_to_joint * joint_transform
-            // But let's compute it from transforms directly
-        }
-    }
-
-    // Recompute world transforms from Transform chain (clearer)
-    for (int i = 0; i < n; ++i) {
-        const auto& joint = model.joints[i];
-        int qi = model.q_start(i);
-        Transform T_J = joint.joint_transform(q.data() + qi);
-        Transform T_local = joint.parent_to_joint * T_J;
+        result.joint_transforms[i] = SpatialTransform::from_transform(joint_transform);
+        result.parent_transforms[i] =
+            result.joint_transforms[i] * SpatialTransform::from_transform(joint.parent_to_joint);
 
         if (joint.parent < 0) {
-            X_world[i] = T_local;
+            result.world_transforms[i] = local_transform;
         } else {
-            X_world[i] = X_world[joint.parent] * T_local;
+            result.world_transforms[i] = result.world_transforms[joint.parent] * local_transform;
         }
     }
+
+    return result;
 }
 
 /**
@@ -81,15 +59,13 @@ VecXf inverse_dynamics(const Articulation& model,
                        const VecXf& qd,
                        const VecXf& qdd,
                        const Vec3f& gravity,
-                       const std::vector<SpatialVector>& f_ext) {
-    int n = model.num_links();
-    int nv = model.total_qd();
+                       std::span<const SpatialVector> f_ext) {
+    const int n = model.num_links();
+    const int nv = model.total_qd();
+    const auto kinematics = forward_kinematics(model, q);
 
     // Forward pass: compute velocities and accelerations
-    std::vector<SpatialTransform> X_J(n), X_up(n);
-    std::vector<Transform> X_world(n);
     std::vector<SpatialVector> v(n), a(n);
-    std::vector<SpatialVector> S(n);  // motion subspace (stored as single column for revolute)
 
     // Spatial acceleration due to gravity (expressed in world frame)
     // a_gravity = [0; -g] (the base acceleration is -gravity for the recursive formulation)
@@ -97,15 +73,8 @@ VecXf inverse_dynamics(const Articulation& model,
 
     for (int i = 0; i < n; ++i) {
         const auto& joint = model.joints[i];
-        int qi = model.q_start(i);
-        int qdi = model.qd_start(i);
-        int nv_i = joint.num_qd();
-
-        // Joint transform
-        Transform T_J = joint.joint_transform(q.data() + qi);
-        X_J[i] = SpatialTransform::from_transform(T_J);
-        SpatialTransform X_tree = SpatialTransform::from_transform(joint.parent_to_joint);
-        X_up[i] = X_J[i] * X_tree;
+        const int qdi = model.qd_start(i);
+        const int nv_i = joint.num_qd();
 
         // Motion subspace
         SpatialVector S_cols[6];
@@ -119,10 +88,10 @@ VecXf inverse_dynamics(const Articulation& model,
 
         if (joint.parent < 0) {
             v[i] = vJ;
-            a[i] = X_up[i].apply_motion(a_grav);
+            a[i] = kinematics.parent_transforms[i].apply_motion(a_grav);
         } else {
-            v[i] = X_up[i].apply_motion(v[joint.parent]) + vJ;
-            a[i] = X_up[i].apply_motion(a[joint.parent]);
+            v[i] = kinematics.parent_transforms[i].apply_motion(v[joint.parent]) + vJ;
+            a[i] = kinematics.parent_transforms[i].apply_motion(a[joint.parent]);
         }
 
         // Joint acceleration
@@ -133,8 +102,6 @@ VecXf inverse_dynamics(const Articulation& model,
 
         a[i] += aJ + spatial_cross_motion(v[i], vJ);
 
-        // Store first motion subspace column for tau computation
-        if (nv_i > 0) S[i] = S_cols[0];
     }
 
     // Backward pass: compute forces and project onto joint axes
@@ -162,7 +129,7 @@ VecXf inverse_dynamics(const Articulation& model,
 
         // Propagate force to parent
         if (joint.parent >= 0) {
-            f[joint.parent] += X_up[i].apply_force(f[i]);
+            f[joint.parent] += kinematics.parent_transforms[i].apply_force(f[i]);
         }
     }
 
@@ -177,22 +144,9 @@ VecXf inverse_dynamics(const Articulation& model,
  */
 MatXf mass_matrix(const Articulation& model,
                   const VecXf& q) {
-    int n = model.num_links();
-    int nv = model.total_qd();
-
-    // Forward pass: compute transforms
-    std::vector<SpatialTransform> X_J(n), X_up(n);
-    std::vector<Transform> X_world(n);
-
-    for (int i = 0; i < n; ++i) {
-        const auto& joint = model.joints[i];
-        int qi = model.q_start(i);
-
-        Transform T_J = joint.joint_transform(q.data() + qi);
-        X_J[i] = SpatialTransform::from_transform(T_J);
-        SpatialTransform X_tree = SpatialTransform::from_transform(joint.parent_to_joint);
-        X_up[i] = X_J[i] * X_tree;
-    }
+    const int n = model.num_links();
+    const int nv = model.total_qd();
+    const auto kinematics = forward_kinematics(model, q);
 
     // Composite rigid body algorithm
     std::vector<SpatialMatrix> I_c(n);
@@ -204,7 +158,7 @@ MatXf mass_matrix(const Articulation& model,
     for (int i = n - 1; i >= 0; --i) {
         if (model.joints[i].parent >= 0) {
             // I_c[parent] += X_up[i]^T * I_c[i] * X_up[i]
-            SpatialMatrix Xm = X_up[i].to_matrix();
+            const SpatialMatrix Xm = kinematics.parent_transforms[i].to_matrix();
             I_c[model.joints[i].parent] += Xm.transpose() * I_c[i] * Xm;
         }
     }
@@ -234,7 +188,7 @@ MatXf mass_matrix(const Articulation& model,
             SpatialVector F_prop = F_k;
             int j = i;
             while (model.joints[j].parent >= 0) {
-                F_prop = X_up[j].apply_force(F_prop);
+                F_prop = kinematics.parent_transforms[j].apply_force(F_prop);
                 j = model.joints[j].parent;
 
                 const auto& joint_j = model.joints[j];
@@ -271,8 +225,8 @@ VecXf forward_dynamics(const Articulation& model,
                        const VecXf& qd,
                        const VecXf& tau,
                        const Vec3f& gravity,
-                       const std::vector<SpatialVector>& f_ext) {
-    int nv = model.total_qd();
+                       std::span<const SpatialVector> f_ext) {
+    const int nv = model.total_qd();
 
     // H = CRBA(q)
     MatXf H = mass_matrix(model, q);

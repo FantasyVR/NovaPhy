@@ -1,14 +1,8 @@
-# NovaPhy IPC adapter library (C++20, links libuipc)
+# NovaPhy IPC adapter library (links libuipc)
 
 add_library(novaphy_ipc STATIC
     ipc_world.cpp
     shape_converter.cpp
-)
-
-# This target must compile as C++20 to match libuipc
-set_target_properties(novaphy_ipc PROPERTIES
-    CXX_STANDARD 20
-    CXX_STANDARD_REQUIRED ON
 )
 
 target_include_directories(novaphy_ipc PUBLIC

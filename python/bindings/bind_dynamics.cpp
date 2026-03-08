@@ -121,10 +121,7 @@ void bind_dynamics(py::module_& m) {
 
     // --- Featherstone algorithms ---
     m.def("forward_kinematics", [](const Articulation& model, const VecXf& q) {
-        std::vector<SpatialTransform> X_J, X_up;
-        std::vector<Transform> X_world;
-        featherstone::forward_kinematics(model, q, X_J, X_up, X_world);
-        return X_world;
+        return featherstone::forward_kinematics(model, q).world_transforms;
     }, py::arg("model"), py::arg("q"),
     R"pbdoc(
         Computes world-frame transforms for all links from generalized positions.

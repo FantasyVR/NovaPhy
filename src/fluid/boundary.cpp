@@ -5,9 +5,10 @@
 #include "novaphy/fluid/boundary.h"
 
 #include <cmath>
+#include <numbers>
+#include <stdexcept>
 
 #include "novaphy/fluid/sph_kernel.h"
-#include "novaphy/math/math_utils.h"
 
 namespace novaphy {
 
@@ -61,11 +62,12 @@ std::vector<BoundaryParticle> sample_sphere_boundary(const CollisionShape& shape
 
     // Use Fibonacci sphere sampling for uniform distribution
     // Number of points based on surface area / spacing^2
-    float area = 4.0f * PI * r * r;
+    constexpr float pi = std::numbers::pi_v<float>;
+    const float area = 4.0f * pi * r * r;
     int n = std::max(12, static_cast<int>(area / (spacing * spacing)));
 
-    float golden_ratio = (1.0f + std::sqrt(5.0f)) / 2.0f;
-    float golden_angle = 2.0f * PI / (golden_ratio * golden_ratio);
+    const float golden_ratio = (1.0f + std::sqrt(5.0f)) / 2.0f;
+    const float golden_angle = 2.0f * pi / (golden_ratio * golden_ratio);
 
     for (int i = 0; i < n; ++i) {
         float theta = std::acos(1.0f - 2.0f * (i + 0.5f) / n);
@@ -147,20 +149,24 @@ std::vector<BoundaryParticle> sample_model_boundaries(const Model& model,
     return all;
 }
 
-void compute_boundary_volumes(std::vector<BoundaryParticle>& particles,
-                              const std::vector<Vec3f>& world_positions,
+void compute_boundary_volumes(std::span<BoundaryParticle> particles,
+                              std::span<const Vec3f> world_positions,
                               float kernel_radius) {
-    int n = static_cast<int>(particles.size());
+    if (particles.size() != world_positions.size()) {
+        throw std::invalid_argument("Boundary particle count must match world position count");
+    }
+
+    const int n = static_cast<int>(particles.size());
     if (n == 0) return;
 
     SpatialHashGrid grid(kernel_radius);
     grid.build(world_positions);
 
-    std::vector<int> neighbors;
+    std::vector<int> scratch;
     for (int i = 0; i < n; ++i) {
         float sum_w = 0.0f;
-        grid.query_neighbors(world_positions[i], kernel_radius, neighbors);
-        for (int j : neighbors) {
+        grid.query_neighbors(world_positions[i], kernel_radius, scratch);
+        for (int j : scratch) {
             Vec3f r = world_positions[i] - world_positions[j];
             float r_sq = r.squaredNorm();
             sum_w += SPHKernels::poly6(r_sq, kernel_radius);
@@ -170,13 +176,14 @@ void compute_boundary_volumes(std::vector<BoundaryParticle>& particles,
 }
 
 std::vector<Vec3f> boundary_world_positions(
-    const std::vector<BoundaryParticle>& particles,
-    const std::vector<Transform>& transforms) {
+    std::span<const BoundaryParticle> particles,
+    std::span<const Transform> transforms) {
     std::vector<Vec3f> positions(particles.size());
-    for (int i = 0; i < static_cast<int>(particles.size()); ++i) {
-        int bi = particles[i].body_index;
+    for (size_t i = 0; i < particles.size(); ++i) {
+        const int bi = particles[i].body_index;
         if (bi >= 0 && bi < static_cast<int>(transforms.size())) {
-            positions[i] = transforms[bi].transform_point(particles[i].local_position);
+            positions[i] = transforms[static_cast<size_t>(bi)]
+                               .transform_point(particles[i].local_position);
         } else {
             positions[i] = particles[i].local_position;  // world-owned
         }

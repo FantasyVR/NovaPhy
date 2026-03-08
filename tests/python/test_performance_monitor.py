@@ -111,7 +111,7 @@ def test_performance_monitor_reset_clears_state(tmp_path):
     assert monitor.last_frame_total_ms == 0.0
 
     output_path = Path(tmp_path) / "trace_after_reset.json"
-    monitor.write_trace_json(str(output_path))
+    monitor.write_trace_json(output_path)
     trace_data = json.loads(output_path.read_text(encoding="utf-8"))
     assert trace_data["traceEvents"] == []
 
@@ -147,7 +147,7 @@ def test_write_trace_json_exports_duration_and_counter_events(tmp_path):
     world.step(1.0 / 120.0)
 
     output_path = Path(tmp_path) / "perf_trace.json"
-    monitor.write_trace_json(str(output_path))
+    monitor.write_trace_json(output_path)
 
     data = json.loads(output_path.read_text(encoding="utf-8"))
     assert "traceEvents" in data

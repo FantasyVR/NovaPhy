@@ -8,14 +8,14 @@
 
 namespace novaphy {
 
-void ParticleState::init(const std::vector<Vec3f>& initial_positions,
+void ParticleState::init(std::span<const Vec3f> initial_positions,
                          const Vec3f& initial_velocity) {
-    int n = static_cast<int>(initial_positions.size());
-    positions = initial_positions;
+    const int n = static_cast<int>(initial_positions.size());
+    positions.assign(initial_positions.begin(), initial_positions.end());
     velocities.assign(n, initial_velocity);
     densities.assign(n, 0.0f);
     lambdas.assign(n, 0.0f);
-    predicted_positions = initial_positions;
+    predicted_positions = positions;
     delta_positions.assign(n, Vec3f::Zero());
 }
 

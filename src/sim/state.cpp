@@ -7,12 +7,12 @@
 namespace novaphy {
 
 /**
- * @brief Initializes state arrays for a fixed number of bodies.
- * @param[in] n Number of bodies in the simulation model.
+ * @brief Initializes state arrays from the model's initial transforms.
  * @param[in] initial_transforms Initial world transforms for each body.
  */
-void SimState::init(int n, const std::vector<Transform>& initial_transforms) {
-    transforms = initial_transforms;
+void SimState::init(std::span<const Transform> initial_transforms) {
+    const int n = static_cast<int>(initial_transforms.size());
+    transforms.assign(initial_transforms.begin(), initial_transforms.end());
     linear_velocities.assign(n, Vec3f::Zero());
     angular_velocities.assign(n, Vec3f::Zero());
     forces.assign(n, Vec3f::Zero());
