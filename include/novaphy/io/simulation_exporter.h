@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <filesystem>
 #include <vector>
 
 #include "novaphy/io/scene_types.h"
@@ -18,11 +18,11 @@ public:
     const std::vector<RecordedCollisionEvent>& collision_events() const;
     const std::vector<RecordedConstraintReaction>& constraint_reactions() const;
 
-    void write_keyframes_csv(const std::string& output_path) const;
-    void write_collision_log_csv(const std::string& output_path) const;
-    void write_constraint_reactions_csv(const std::string& output_path) const;
-    void write_urdf(const UrdfModelData& model, const std::string& output_path) const;
-    void write_openusd_animation_layer(const std::string& output_path) const;
+    void write_keyframes_csv(const std::filesystem::path& output_path) const;
+    void write_collision_log_csv(const std::filesystem::path& output_path) const;
+    void write_constraint_reactions_csv(const std::filesystem::path& output_path) const;
+    void write_urdf(const UrdfModelData& model, const std::filesystem::path& output_path) const;
+    void write_openusd_animation_layer(const std::filesystem::path& output_path) const;
 
 private:
     std::vector<RecordedKeyframe> keyframes_;

@@ -1,4 +1,5 @@
 #include <pybind11/pybind11.h>
+#include <pybind11/stl/filesystem.h>
 #include <pybind11/stl.h>
 
 #include "novaphy/sim/performance_monitor.h"

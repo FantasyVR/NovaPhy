@@ -58,10 +58,10 @@ int find_prim_by_path(const std::vector<UsdPrim>& prims, const std::string& path
 OpenUsdImporter::OpenUsdImporter(float min_supported_version)
     : min_supported_version_(min_supported_version) {}
 
-UsdStageData OpenUsdImporter::import_file(const std::string& usd_path) const {
+UsdStageData OpenUsdImporter::import_file(const std::filesystem::path& usd_path) const {
     std::ifstream in(usd_path);
     if (!in.is_open()) {
-        throw std::runtime_error("Failed to open USD file: " + usd_path);
+        throw std::runtime_error("Failed to open USD file: " + usd_path.string());
     }
 
     std::vector<std::string> scope_paths;
@@ -78,7 +78,8 @@ UsdStageData OpenUsdImporter::import_file(const std::string& usd_path) const {
 
     while (std::getline(in, line)) {
         const std::string t = trim(line);
-        if (t.empty()) continue;
+        const std::string_view text = t;
+        if (text.empty()) continue;
 
         std::smatch vm;
         if (std::regex_search(t, vm, version_re)) {
@@ -89,7 +90,7 @@ UsdStageData OpenUsdImporter::import_file(const std::string& usd_path) const {
             continue;
         }
 
-        if (t == "}") {
+        if (text == "}") {
             if (in_time_samples) {
                 in_time_samples = false;
                 active_time_sample_property.clear();
@@ -140,11 +141,11 @@ UsdStageData OpenUsdImporter::import_file(const std::string& usd_path) const {
         }
 
         if (active_prim_index < 0) {
-            if (t.rfind("defaultPrim", 0) == 0) {
+            if (text.starts_with("defaultPrim")) {
                 stage.default_prim = parse_quoted(t);
-            } else if (t.rfind("upAxis", 0) == 0) {
+            } else if (text.starts_with("upAxis")) {
                 stage.up_axis = parse_quoted(t);
-            } else if (t.rfind("metersPerUnit", 0) == 0) {
+            } else if (text.starts_with("metersPerUnit")) {
                 const size_t eq = t.find('=');
                 if (eq != std::string::npos) stage.meters_per_unit = std::stof(trim(t.substr(eq + 1)));
             }
@@ -152,19 +153,21 @@ UsdStageData OpenUsdImporter::import_file(const std::string& usd_path) const {
         }
 
         UsdPrim& prim = stage.prims[active_prim_index];
-        if (t.rfind("float physics:mass", 0) == 0) {
+        if (text.starts_with("float physics:mass")) {
             prim.mass = std::stof(trim(t.substr(t.find('=') + 1)));
-        } else if (t.rfind("float physics:density", 0) == 0) {
+        } else if (text.starts_with("float physics:density")) {
             prim.density = std::stof(trim(t.substr(t.find('=') + 1)));
-        } else if (t.rfind("rel material:binding", 0) == 0) {
+        } else if (text.starts_with("rel material:binding")) {
             prim.material_binding = parse_quoted(t);
-        } else if (t.rfind("float3 novaphy:boxHalfExtents", 0) == 0) {
+        } else if (text.starts_with("float3 novaphy:boxHalfExtents")) {
             prim.box_half_extents = parse_vec3_tuple(t, Vec3f::Zero());
-        } else if (t.rfind("float novaphy:sphereRadius", 0) == 0) {
+        } else if (text.starts_with("float novaphy:sphereRadius")) {
             prim.sphere_radius = std::stof(trim(t.substr(t.find('=') + 1)));
-        } else if (t.rfind("double3 xformOp:translate", 0) == 0 || t.rfind("float3 xformOp:translate", 0) == 0) {
+        } else if (text.starts_with("double3 xformOp:translate")
+                   || text.starts_with("float3 xformOp:translate")) {
             prim.local_transform.position = parse_vec3_tuple(t, Vec3f::Zero());
-        } else if (t.rfind("quatf xformOp:orient", 0) == 0 || t.rfind("quatd xformOp:orient", 0) == 0) {
+        } else if (text.starts_with("quatf xformOp:orient")
+                   || text.starts_with("quatd xformOp:orient")) {
             const Vec4f q_wxyz = parse_vec4_tuple(t, Vec4f(1.0f, 0.0f, 0.0f, 0.0f));
             prim.local_transform.rotation = Quatf(q_wxyz.x(), q_wxyz.y(), q_wxyz.z(), q_wxyz.w()).normalized();
         } else if (t.find("timeSamples") != std::string::npos) {

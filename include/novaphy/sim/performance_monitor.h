@@ -2,7 +2,10 @@
 
 #include <chrono>
 #include <deque>
+#include <filesystem>
+#include <functional>
 #include <string>
+#include <string_view>
 #include <unordered_map>
 #include <vector>
 
@@ -11,6 +14,22 @@ namespace novaphy {
 namespace detail {
 class PerformancePhaseScope;
 class ScopedPerformanceCaptureContext;
+
+struct StringKeyHash {
+    using is_transparent = void;
+
+    size_t operator()(std::string_view value) const noexcept {
+        return std::hash<std::string_view>{}(value);
+    }
+
+    size_t operator()(const std::string& value) const noexcept {
+        return (*this)(std::string_view(value));
+    }
+
+    size_t operator()(const char* value) const noexcept {
+        return (*this)(std::string_view(value));
+    }
+};
 }
 
 struct PerformancePhaseStat {
@@ -45,11 +64,11 @@ public:
     void reset();
     std::vector<PerformancePhaseStat> phase_stats() const;
     std::vector<PerformanceMetric> last_frame_metrics() const;
-    void write_trace_json(const std::string& output_path) const;
+    void write_trace_json(const std::filesystem::path& output_path) const;
 
     void begin_frame();
     void end_frame();
-    void record_metric(const std::string& name, double value);
+    void record_metric(std::string_view name, double value);
 
 private:
     friend class detail::PerformancePhaseScope;
@@ -95,12 +114,12 @@ private:
     Clock::time_point frame_start_{};
     bool current_frame_active_ = false;
 
-    std::unordered_map<std::string, double> current_frame_phase_totals_;
+    std::unordered_map<std::string, double, detail::StringKeyHash, std::equal_to<>> current_frame_phase_totals_;
     std::vector<PerformanceMetric> current_frame_metrics_;
-    std::unordered_map<std::string, size_t> current_metric_indices_;
+    std::unordered_map<std::string, size_t, detail::StringKeyHash, std::equal_to<>> current_metric_indices_;
     std::vector<TraceDurationEvent> current_trace_events_;
 
-    std::unordered_map<std::string, AggregatePhase> aggregate_phase_stats_;
+    std::unordered_map<std::string, AggregatePhase, detail::StringKeyHash, std::equal_to<>> aggregate_phase_stats_;
     std::vector<PerformanceMetric> last_frame_metrics_;
     std::deque<TraceFrame> trace_frames_;
 };
