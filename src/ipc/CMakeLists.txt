@@ -15,9 +15,11 @@ target_include_directories(novaphy_ipc PUBLIC
     ${CMAKE_SOURCE_DIR}/include
 )
 
-target_link_libraries(novaphy_ipc PUBLIC
-    novaphy_core
-    uipc::uipc
+target_link_libraries(novaphy_ipc 
+    PUBLIC
+        novaphy_core
+    PRIVATE
+        uipc::uipc
 )
 
 # Ensure libuipc backend DLLs are built (they are MODULE libraries

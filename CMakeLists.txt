@@ -4,7 +4,6 @@ cmake_minimum_required(VERSION 3.15...4.0)
 # Must be declared before project() so vcpkg installs the 'ipc' feature deps.
 option(NOVAPHY_WITH_IPC "Build with libuipc IPC support (requires CUDA >= 12.4)" OFF)
 option(NOVAPHY_BUNDLE_UIPC "Bundle libuipc with NovaPhy package. If disabled, novaphy will attempt to find it system-wide." ON)
-option(NOVAPHY_ENABLE_INSTALL "Enable installation of NovaPhy targets and CMake config files" ON)
 
 # Processing options
 
@@ -36,7 +35,10 @@ project(
     LANGUAGES CXX
 )
 
-# Disable install and test when building as a subproject.
+set(NOVAPHY_ENABLE_INSTALL ON 
+    "Control whether to enable install targets for NovaPhy. \
+    Should be OFF when building as subproject."
+)
 if (NOT (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME))
     set(NOVAPHY_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
     # TODO NovaPhy doesn't have any C++ tests for now.
@@ -132,7 +134,9 @@ if (NOVAPHY_ENABLE_INSTALL AND NOT SKBUILD)
 
     file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/novaphyConfig.cmake" 
     [====[
-        include(${CMAKE_CURRENT_LIST_DIR}/novaphyCoreTargets.cmake)
+        include(CMakeFindDependencyMacro)
+        find_dependency(Eigen3 CONFIG REQUIRED)
+        include("${CMAKE_CURRENT_LIST_DIR}/novaphyCoreTargets.cmake")
     ]====])
 
     install(FILES
