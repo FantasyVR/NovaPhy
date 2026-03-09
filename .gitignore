@@ -43,6 +43,7 @@ nul
 # Env
 .env
 *.egg
+.venv/
 
 # External dependencies build artifacts
 external/libuipc/build/
