@@ -314,11 +314,11 @@ bool collide_box_box(const CollisionShape& a, const Transform& ta,
         const Transform& ref_xform = a_is_reference ? wa : wb;
         const Transform& inc_xform = a_is_reference ? wb : wa;
         constexpr float inside_epsilon = 0.01f;
-        constexpr int max_face_contacts = 4;
+        constexpr int max_face_contacts = 8;  // 与 demo3d MAX_CONTACTS=8 一致，支撑更对称
         float contact_pen = std::max(0.0f, min_pen);
         int num_face_contacts = 0;
 
-        // Keep incident corners that project inside the reference box.
+        // Keep incident corners that project inside the reference box (up to 8).
         for (int i = 0; i < 8; ++i) {
             Vec3f corner(
                 (i & 1) ? inc_half.x() : -inc_half.x(),
@@ -344,6 +344,9 @@ bool collide_box_box(const CollisionShape& a, const Transform& ta,
                 cp.body_b = b.body_index;
                 cp.friction = combine_friction(a.friction, b.friction);
                 cp.restitution = combine_restitution(a.restitution, b.restitution);
+                // 对齐 demo3d 的“特征稳定性”诉求：此处用 -1 触发上层 contact_key 的锚点 UV 量化路径，
+                // 避免 corner/axis 抖动导致 warmstart 断裂与长期偏置。
+                cp.feature_id = -1;
                 contacts.push_back(cp);
                 ++num_face_contacts;
                 if (num_face_contacts >= max_face_contacts) break;
@@ -360,6 +363,7 @@ bool collide_box_box(const CollisionShape& a, const Transform& ta,
             cp.body_b = b.body_index;
             cp.friction = combine_friction(a.friction, b.friction);
             cp.restitution = combine_restitution(a.restitution, b.restitution);
+            cp.feature_id = -1;
             contacts.push_back(cp);
         }
     } else {
@@ -372,6 +376,7 @@ bool collide_box_box(const CollisionShape& a, const Transform& ta,
         cp.body_b = b.body_index;
         cp.friction = combine_friction(a.friction, b.friction);
         cp.restitution = combine_restitution(a.restitution, b.restitution);
+        cp.feature_id = -1;
         contacts.push_back(cp);
     }
 

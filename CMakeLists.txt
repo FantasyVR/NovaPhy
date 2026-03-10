@@ -27,6 +27,9 @@ find_package(pybind11 CONFIG REQUIRED)
 # Core C++ library
 add_subdirectory(src)
 
+# VBD/AVBD module (always built; currently CPU-only skeleton)
+add_subdirectory(src/vbd)
+
 if(NOVAPHY_WITH_IPC)
     # CUDA is required by libuipc
     include(CheckLanguage)

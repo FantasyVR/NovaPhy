@@ -14,6 +14,9 @@ if(NOVAPHY_WITH_IPC)
     list(APPEND BIND_SOURCES bind_ipc.cpp)
 endif()
 
+# VBD/AVBD bindings (always built; implementation currently为骨架)
+list(APPEND BIND_SOURCES bind_vbd.cpp)
+
 pybind11_add_module(_core ${BIND_SOURCES})
 
 target_link_libraries(_core PRIVATE
@@ -28,6 +31,11 @@ if(NOVAPHY_WITH_IPC)
     )
     target_compile_definitions(_core PRIVATE NOVAPHY_HAS_IPC=1)
 endif()
+
+# Link VBD/AVBD module into Python bindings
+target_link_libraries(_core PRIVATE
+    novaphy_vbd
+)
 
 target_compile_definitions(_core PRIVATE
     VERSION_INFO=${PROJECT_VERSION}

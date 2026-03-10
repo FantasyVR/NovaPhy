@@ -16,6 +16,9 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #endif
+#if defined(__linux__)
+#include <dlfcn.h>
+#endif
 
 namespace novaphy {
 
@@ -109,8 +112,8 @@ void IPCWorld::Impl::init() {
     using namespace uipc::core;
     using namespace uipc::geometry;
 
-    // Initialize libuipc with module_dir pointing to backend DLLs.
-    // Find the directory containing uipc_core by querying the loaded DLL path.
+    // Initialize libuipc with module_dir pointing to backend shared objects.
+    // Find the directory containing uipc_core by querying the loaded library path.
     std::string module_dir;
 #ifdef _WIN32
     HMODULE hmod = GetModuleHandleA("uipc_core.dll");
@@ -120,7 +123,17 @@ void IPCWorld::Impl::init() {
             module_dir = std::filesystem::path(path).parent_path().string();
         }
     }
+#elif defined(__linux__)
+    // On Linux use dladdr to find the shared object that contains
+    // the uipc symbols (e.g. libuipc_core.so) and use its directory.
+    Dl_info dlinfo;
+    // Get address of a uipc symbol (function) and query its shared object.
+    void* fn_addr = reinterpret_cast<void*>(reinterpret_cast<void (*)()>(&uipc::init));
+    if (dladdr(fn_addr, &dlinfo) != 0 && dlinfo.dli_fname) {
+        module_dir = std::filesystem::path(dlinfo.dli_fname).parent_path().string();
+    }
 #endif
+
     if (module_dir.empty()) {
         module_dir = ".";
     }
