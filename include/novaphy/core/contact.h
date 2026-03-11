@@ -21,14 +21,6 @@ struct ContactPoint {
     int shape_a = -1;  /**< Shape index for side A. */
     int shape_b = -1;  /**< Shape index for side B. */
 
-    /**
-     * @brief Optional narrowphase feature identifier for contact persistence.
-     *
-     * @details Encodes which face/edge/corner generated this contact (implementation-defined).
-     * AVBD uses this to build a stable warmstart key; other solvers may ignore it.
-     */
-    int feature_id = -1;
-
     float friction = 0.5f;     /**< Combined friction coefficient (dimensionless). */
     float restitution = 0.0f;  /**< Combined restitution coefficient (dimensionless). */
 

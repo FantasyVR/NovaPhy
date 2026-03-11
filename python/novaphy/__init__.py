@@ -35,26 +35,10 @@ def _add_dll_directories():
             if _cuda_bin.is_dir():
                 _os.add_dll_directory(str(_cuda_bin))
     elif _sys.platform.startswith("linux"):
-        # Only preload libuipc on-demand. Unconditional RTLD_GLOBAL preloading can
-        # crash Python at process exit due to global destructors inside libuipc,
-        # even when IPC is not enabled/used.
-        import importlib
-        try:
-            importlib.import_module("novaphy._core")
-            return
-        except Exception:
-            pass
-        # Preload libuipc .so files so the dynamic linker can find them
-        
         import ctypes
         import ctypes.util
-        # Prefer the build dir matching the current Python ABI tag (e.g. cp311-...).
-        _py_tag = f"cp{_sys.version_info.major}{_sys.version_info.minor}-cp{_sys.version_info.major}{_sys.version_info.minor}"
-        _preferred = list(sorted(_build_root.glob(f"{_py_tag}-linux_*"), reverse=True))
-        _fallback = list(sorted(_build_root.glob("cp*-linux_*"), reverse=True))
-        _candidates = _preferred + [d for d in _fallback if d not in _preferred]
-
-        for _d in _candidates:
+        # Find all Linux build dirs (scikit-build-core naming pattern)
+        for _d in sorted(_build_root.glob("cp*-linux_*"), reverse=True):
             _bin_dir = _d / "Release" / "bin"
             if not _bin_dir.is_dir():
                 continue
