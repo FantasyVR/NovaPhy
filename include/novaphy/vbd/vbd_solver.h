@@ -116,8 +116,10 @@ private:
     /** Main loop dual: update lambda and penalty. */
     void avbd_dual(const Model& model, const SimState& state);
 
+#if defined(NOVAPHY_VBD_CUDA)
     /// CUDA path entry point (implemented in vbd_solver_cuda.cu).
     void step_cuda(const Model& model, SimState& state);
+#endif
     /// Frees persistent CUDA device buffers (called from destructor); no-op if not using CUDA.
     void release_cuda_buffers();
 

@@ -1,8 +1,18 @@
-add_library(novaphy_vbd SHARED
-    vbd_collide.cpp
-    vbd_world.cpp
-    vbd_solver.cpp
-)
+# On Windows build as STATIC (like novaphy_ipc) so _core links it in without .lib path issues.
+# On Unix build as SHARED for runtime loading and RPATH/preload in Python.
+if(MSVC)
+    add_library(novaphy_vbd STATIC
+        vbd_collide.cpp
+        vbd_world.cpp
+        vbd_solver.cpp
+    )
+else()
+    add_library(novaphy_vbd SHARED
+        vbd_collide.cpp
+        vbd_world.cpp
+        vbd_solver.cpp
+    )
+endif()
 
 if(CMAKE_CUDA_COMPILER)
     target_sources(novaphy_vbd PRIVATE

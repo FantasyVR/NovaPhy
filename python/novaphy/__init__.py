@@ -31,6 +31,11 @@ def _vbd_so_candidates_linux():
     _spec = importlib.util.find_spec("novaphy._core")
     if _spec is not None and _spec.origin:
         _core_path = _Path(_spec.origin).resolve()
+        # same dir as _core (installed layout)
+        _same_dir = _core_path.parent / "libnovaphy_vbd.so"
+        if _same_dir.is_file():
+            yield _same_dir
+            return
         _search = _core_path.parent
         for _ in range(10):
             _vbd = _search / "src" / "vbd" / "libnovaphy_vbd.so"

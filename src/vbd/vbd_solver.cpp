@@ -918,12 +918,17 @@ void VbdSolver::build_contact_constraints_from_raw_contacts_warmstart(const Mode
  
 void VbdSolver::step(const Model& model, SimState& state) {
     // Dispatch to the selected backend. CUDA backend is implemented in
-    // vbd_solver_cuda.cu and currently mirrors the CPU path while we bring
-    // kernels online incrementally.
+    // vbd_solver_cuda.cu (only when NOVAPHY_VBD_CUDA is defined).
+#ifdef NOVAPHY_VBD_CUDA
     if (config_.backend == VbdBackend::CUDA) {
         step_cuda(model, state);
         return;
     }
+#else
+    if (config_.backend == VbdBackend::CUDA) {
+        // Built without CUDA; fall back to CPU step so CI / non-CUDA builds run.
+    }
+#endif
 
      const float dt = config_.dt;
      const Vec3f gravity = config_.gravity;
