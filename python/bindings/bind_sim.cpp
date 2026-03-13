@@ -105,6 +105,18 @@ void bind_sim(py::module_& m) {
         )pbdoc")
         .def_readwrite("warm_starting", &SolverSettings::warm_starting, R"pbdoc(
             bool: Reuse previous-frame impulses for faster convergence.
+        )pbdoc")
+        .def_readwrite("sleep_enabled", &SolverSettings::sleep_enabled, R"pbdoc(
+            bool: Enable sleep mechanism to freeze stationary bodies.
+        )pbdoc")
+        .def_readwrite("sleep_energy_threshold", &SolverSettings::sleep_energy_threshold, R"pbdoc(
+            float: Kinetic energy threshold for sleep (universal, all scenarios).
+        )pbdoc")
+        .def_readwrite("sleep_time_required", &SolverSettings::sleep_time_required, R"pbdoc(
+            float: Time below threshold before sleeping (seconds).
+        )pbdoc")
+        .def_readwrite("sleep_ema_alpha", &SolverSettings::sleep_ema_alpha, R"pbdoc(
+            float: EMA smoothing factor for energy (0-1).
         )pbdoc");
 
     // --- SimState ---
