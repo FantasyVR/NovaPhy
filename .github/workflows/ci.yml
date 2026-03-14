@@ -53,3 +53,58 @@ jobs:
 
       - name: Run Python tests
         run: pytest tests/python/ -v
+
+  build-self-hosted:
+    runs-on: [self-hosted, linux, x64]
+    
+    env:
+      CUDA_ROOT: /usr/local/cuda-12.8
+      VCPKG_ROOT: ~/vcpkg    
+    
+    defaults:
+      run:
+        shell: bash -el {0}
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Set up Conda environment
+        run: |
+          source ~/anaconda3/etc/profile.d/conda.sh
+          if conda env list | grep -q "novaphy"; then
+            echo "Updating environment..."
+            conda env update -f environment.yml --prune
+          else
+            echo "Creating environment..."
+            conda env create -f environment.yml
+          fi
+          conda activate novaphy
+
+      - name: Configure standalone CMake with CUDA
+        run: |
+          conda activate novaphy
+          cmake -S . -B build/standalone \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DNOVAPHY_WITH_IPC=ON \
+            -DCMAKE_CUDA_COMPILER=$CUDA_ROOT/bin/nvcc \
+            -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake \
+            -Dpybind11_DIR=$(python -m pybind11 --cmakedir)
+
+      - name: Build standalone CMake
+        run: cmake --build build/standalone --config Release --parallel 4
+
+      - name: Run C++ tests
+        run: ctest --test-dir build/standalone -C Release --output-on-failure
+      
+      - name: Build and install Python package
+        run: |
+          conda activate novaphy
+          CMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake pip install -e .
+
+      - name: Run Python tests
+        run: |
+          conda activate novaphy
+          pytest tests/python/ -v
