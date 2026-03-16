@@ -19,6 +19,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+# Enable CUDA when a compiler is available (for VBD and/or IPC). VBD can use
+# CUDA without IPC; IPC requires CUDA.
+include(CheckLanguage)
+check_language(CUDA)
+if(CMAKE_CUDA_COMPILER)
+    enable_language(CUDA)
+endif()
+
 # Find Eigen3 via vcpkg
 find_package(Eigen3 CONFIG REQUIRED)
 find_package(tinyxml2 CONFIG REQUIRED)
@@ -29,17 +37,16 @@ find_package(pybind11 CONFIG REQUIRED)
 # Core C++ library
 add_subdirectory(src)
 
+# VBD/AVBD module (always built; uses CUDA when CMAKE_CUDA_COMPILER is set)
+add_subdirectory(src/vbd)
+
 if(NOVAPHY_WITH_IPC)
-    # CUDA is required by libuipc
-    include(CheckLanguage)
-    check_language(CUDA)
-    if(CMAKE_CUDA_COMPILER)
-        enable_language(CUDA)
-        if(CMAKE_CUDA_COMPILER_VERSION VERSION_LESS "12.4")
-            message(FATAL_ERROR "NOVAPHY_WITH_IPC requires CUDA >= 12.4, found ${CMAKE_CUDA_COMPILER_VERSION}")
-        endif()
-    else()
+    # IPC requires CUDA and version >= 12.4 (enable_language already done above if compiler found)
+    if(NOT CMAKE_CUDA_COMPILER)
         message(FATAL_ERROR "NOVAPHY_WITH_IPC requires CUDA, but no CUDA compiler was found")
+    endif()
+    if(CMAKE_CUDA_COMPILER_VERSION VERSION_LESS "12.4")
+        message(FATAL_ERROR "NOVAPHY_WITH_IPC requires CUDA >= 12.4, found ${CMAKE_CUDA_COMPILER_VERSION}")
     endif()
 
     # Configure libuipc: disable components we don't need
