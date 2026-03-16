@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "novaphy/math/math_types.h"
+#include "novaphy/core/contact.h"
 
 namespace novaphy {
 
@@ -20,6 +21,10 @@ struct SimState {
     std::vector<Vec3f> angular_velocities;    /**< Body angular velocities in world frame (rad/s). */
     std::vector<Vec3f> forces;                /**< Accumulated external forces at CoM in world frame (N). */
     std::vector<Vec3f> torques;               /**< Accumulated external torques in world frame (N*m). */
+    std::vector<int> sleeping;                /**< Per-body sleep flag (1 if body is frozen, 0 otherwise). */
+    std::vector<float> sleep_timer;           /**< Time accumulated below threshold for each body (seconds). */
+    std::vector<float> smoothed_energy;       /**< Per-body EMA-smoothed kinetic energy. */
+    std::vector<int> island_id;               /**< Island assignment for each body (-1 if not assigned). */
 
     /**
      * @brief Initialize all state arrays from the model's initial transforms.
@@ -73,6 +78,76 @@ struct SimState {
      * @return void
      */
     void apply_torque(int body_index, const Vec3f& torque);
+
+    /**
+     * @brief Wake a sleeping body, making it dynamic again.
+     *
+     * @details Clears sleep flag and resets sleep timer. Also zeros velocities
+     * to ensure clean start from rest. Propagates wake to all bodies in the
+     * same island.
+     *
+     * @param [in] body_index Body index.
+     * @return void
+     */
+    void wake_body(int body_index);
+
+    /**
+     * @brief Check if a body is currently sleeping.
+     *
+     * @param [in] body_index Body index.
+     * @return true if body is sleeping, false otherwise.
+     */
+    bool is_sleeping(int body_index) const;
+
+    /**
+     * @brief Update smoothed kinetic energy for a body using EMA.
+     *
+     * @param [in] body_index Body index.
+     * @param [in] energy Current kinetic energy (unsmoothed).
+     * @param [in] alpha EMA smoothing factor (0-1).
+     * @return void
+     */
+    void update_energy(int body_index, float energy, float alpha);
+
+    /**
+     * @brief Get smoothed kinetic energy for a body.
+     *
+     * @param [in] body_index Body index.
+     * @return Smoothed energy value.
+     */
+    float get_smoothed_energy(int body_index) const;
+
+    /**
+     * @brief Build islands from contact points using Union-Find.
+     *
+     * @details Constructs connected components of bodies via contacts.
+     * Each island is assigned a unique ID in island_id array.
+     *
+     * @param [in] contacts Contact points for the current step.
+     * @return void
+     */
+    void build_islands(const std::vector<ContactPoint>& contacts);
+
+    /**
+     * @brief Evaluate sleep state based on energy thresholds.
+     *
+     * @details Uses island-level logic: all bodies in an island must have
+     * low energy for the duration threshold before sleeping together.
+     *
+     * @param [in] dt Time step in seconds.
+     * @param [in] energy_threshold Energy threshold for sleep consideration.
+     * @param [in] time_threshold Time below threshold before sleeping (seconds).
+     * @return void
+     */
+    void evaluate_sleep(float dt, float energy_threshold, float time_threshold);
+
+    /**
+     * @brief Propagate wake state to all bodies in the same island.
+     *
+     * @param [in] body_index Body that was woken up.
+     * @return void
+     */
+    void propagate_wake_through_island(int body_index);
 };
 
 }  // namespace novaphy

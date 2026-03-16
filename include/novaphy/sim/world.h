@@ -131,6 +131,14 @@ protected:
 
 private:
     /**
+     * @brief Calculate kinetic energy for a body (translational + rotational).
+     *
+     * @param [in] body_index Body index.
+     * @return Kinetic energy value (relative, not absolute).
+     */
+    float calculate_kinetic_energy(int body_index) const;
+
+    /**
      * @brief Record per-frame world metrics for the current profiled step.
      *
      * @param [in] dynamic_body_count Number of non-static bodies in the model.

@@ -1,5 +1,6 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/eigen.h>
+#include <pybind11/numpy.h>
 #include <pybind11/stl.h>
 
 #include "novaphy/core/model.h"
@@ -105,6 +106,18 @@ void bind_sim(py::module_& m) {
         )pbdoc")
         .def_readwrite("warm_starting", &SolverSettings::warm_starting, R"pbdoc(
             bool: Reuse previous-frame impulses for faster convergence.
+        )pbdoc")
+        .def_readwrite("sleep_enabled", &SolverSettings::sleep_enabled, R"pbdoc(
+            bool: Enable sleep mechanism to freeze stationary bodies.
+        )pbdoc")
+        .def_readwrite("sleep_energy_threshold", &SolverSettings::sleep_energy_threshold, R"pbdoc(
+            float: Kinetic energy threshold for sleep (universal, all scenarios).
+        )pbdoc")
+        .def_readwrite("sleep_time_required", &SolverSettings::sleep_time_required, R"pbdoc(
+            float: Time below threshold before sleeping (seconds).
+        )pbdoc")
+        .def_readwrite("sleep_ema_alpha", &SolverSettings::sleep_ema_alpha, R"pbdoc(
+            float: EMA smoothing factor for energy (0-1).
         )pbdoc");
 
     // --- SimState ---
@@ -168,7 +181,101 @@ void bind_sim(py::module_& m) {
 
                  Returns:
                      None
-             )pbdoc");
+             )pbdoc")
+        .def("get_transforms_numpy",
+             [](const SimState& s) -> py::tuple {
+                 const int N = static_cast<int>(s.transforms.size());
+                 // Allocate (N,3) positions and (N,4) quaternions xyzw
+                 py::array_t<float> pos({N, 3});
+                 py::array_t<float> quat({N, 4});
+                 auto p = pos.mutable_unchecked<2>();
+                 auto q = quat.mutable_unchecked<2>();
+                 for (int i = 0; i < N; ++i) {
+                     const auto& t = s.transforms[i];
+                     p(i, 0) = t.position.x();
+                     p(i, 1) = t.position.y();
+                     p(i, 2) = t.position.z();
+                     q(i, 0) = t.rotation.x();
+                     q(i, 1) = t.rotation.y();
+                     q(i, 2) = t.rotation.z();
+                     q(i, 3) = t.rotation.w();
+                 }
+                 return py::make_tuple(pos, quat);
+             },
+             R"pbdoc(
+                 Returns all body transforms as a pair of NumPy arrays in one
+                 C++ call, avoiding per-body Python↔C++ boundary crossings.
+
+                 Returns:
+                     tuple[np.ndarray, np.ndarray]:
+                         positions ``(N, 3)`` float32 and
+                         quaternions ``(N, 4)`` float32 in ``[x, y, z, w]`` order.
+             )pbdoc")
+        .def("get_transforms_into",
+             [](const SimState& s,
+                py::array_t<float, py::array::c_style | py::array::forcecast> pos_arr,
+                py::array_t<float, py::array::c_style | py::array::forcecast> quat_arr) {
+                 const int N = static_cast<int>(s.transforms.size());
+                 auto p = pos_arr.mutable_unchecked<2>();
+                 auto q = quat_arr.mutable_unchecked<2>();
+                 for (int i = 0; i < N; ++i) {
+                     const auto& t = s.transforms[i];
+                     p(i,0)=t.position.x(); p(i,1)=t.position.y(); p(i,2)=t.position.z();
+                     q(i,0)=t.rotation.x(); q(i,1)=t.rotation.y();
+                     q(i,2)=t.rotation.z(); q(i,3)=t.rotation.w();
+                 }
+             },
+             py::arg("out_positions"), py::arg("out_quats"),
+             R"pbdoc(Fills pre-allocated (N,3) and (N,4) float32 arrays in-place.)pbdoc");
+
+    // --- Module-level batch transform ---
+    m.def("batch_transform_vertices",
+        [](py::array_t<float,   py::array::c_style | py::array::forcecast> positions,
+           py::array_t<float,   py::array::c_style | py::array::forcecast> quats,
+           py::array_t<int32_t, py::array::c_style | py::array::forcecast> body_indices,
+           py::array_t<float,   py::array::c_style | py::array::forcecast> local_verts,
+           py::array_t<float,   py::array::c_style | py::array::forcecast> out_verts) {
+             const int N = static_cast<int>(body_indices.shape(0));
+             const int V = static_cast<int>(local_verts.shape(1));
+             auto p   = positions.unchecked<2>();
+             auto q   = quats.unchecked<2>();
+             auto idx = body_indices.unchecked<1>();
+             auto lv  = local_verts.unchecked<3>();
+             auto out = out_verts.mutable_unchecked<2>();
+             for (int i = 0; i < N; ++i) {
+                 const int bi = idx(i);
+                 const float qx=q(bi,0), qy=q(bi,1), qz=q(bi,2), qw=q(bi,3);
+                 const float R00=1-2*(qy*qy+qz*qz), R01=2*(qx*qy-qz*qw), R02=2*(qx*qz+qy*qw);
+                 const float R10=2*(qx*qy+qz*qw),   R11=1-2*(qx*qx+qz*qz), R12=2*(qy*qz-qx*qw);
+                 const float R20=2*(qx*qz-qy*qw),   R21=2*(qy*qz+qx*qw),   R22=1-2*(qx*qx+qy*qy);
+                 const float px=p(bi,0), py_=p(bi,1), pz=p(bi,2);
+                 const int base = i * V;
+                 for (int j = 0; j < V; ++j) {
+                     const float vx=lv(i,j,0), vy=lv(i,j,1), vz=lv(i,j,2);
+                     out(base+j,0) = R00*vx + R01*vy + R02*vz + px;
+                     out(base+j,1) = R10*vx + R11*vy + R12*vz + py_;
+                     out(base+j,2) = R20*vx + R21*vy + R22*vz + pz;
+                 }
+             }
+        },
+        py::arg("positions"), py::arg("quats"),
+        py::arg("body_indices"), py::arg("local_verts"), py::arg("out_vertices"),
+        py::call_guard<py::gil_scoped_release>(),
+        R"pbdoc(
+            Fused batched vertex transform from snapshot pos/quat arrays.
+
+            For each body i, reads position and quaternion by body_indices[i], builds the
+            3x3 rotation matrix inline, applies it to local_verts[i], and writes world
+            vertices into out_vertices[i*V .. (i+1)*V].  Single C++ pass: no intermediate
+            rotation-matrix array, no Python overhead, GIL released.
+
+            Args:
+                positions (np.ndarray): (N_bodies, 3) float32 world positions (snapshot).
+                quats (np.ndarray): (N_bodies, 4) float32 quaternions [x,y,z,w] (snapshot).
+                body_indices (np.ndarray): (N,) int32 indices into positions/quats.
+                local_verts (np.ndarray): (N, V, 3) float32 local-space vertices.
+                out_vertices (np.ndarray): (N*V, 3) float32 pre-allocated output buffer.
+        )pbdoc");
 
     // --- World ---
     py::class_<World>(m, "World", R"pbdoc(
@@ -185,6 +292,7 @@ void bind_sim(py::module_& m) {
                      solver_settings (SolverSettings): Contact solver parameters.
              )pbdoc")
         .def("step", &World::step, py::arg("dt"),
+             py::call_guard<py::gil_scoped_release>(),
              R"pbdoc(
                  Advances simulation by one fixed time step.
 

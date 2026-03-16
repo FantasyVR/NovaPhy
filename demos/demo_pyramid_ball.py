@@ -1,6 +1,7 @@
-"""Demo: 4-3-2-1 box pyramid on a ground plane.
+"""Demo: 4-3-2-1 box pyramid on a ground plane with a sphere projectile.
 
-Demonstrates stable stacking with multiple contact constraints.
+Demonstrates stable stacking with multiple contact constraints,
+and dynamic collision response when a sphere hits the pyramid.
 """
 
 import sys
@@ -16,6 +17,8 @@ class PyramidDemo(DemoApp):
     def __init__(self):
         """Initializes the pyramid stacking demo configuration."""
         super().__init__(title="NovaPhy - Pyramid", dt=1.0/120.0)
+
+        self.ball_idx = None  # Will be set in build_scene
 
     def build_scene(self):
         """Builds a 4-3-2-1 box pyramid over a ground plane.
@@ -46,6 +49,19 @@ class PyramidDemo(DemoApp):
                     half, idx, novaphy.Transform.identity(), 0.5, 0.0)
                 builder.add_shape(shape)
 
+        # Sphere projectile to hit the pyramid
+        sphere_radius = 0.4
+        sphere_mass = 3.0
+        sphere_body = novaphy.RigidBody.from_sphere(sphere_mass, sphere_radius)
+        sphere_t = novaphy.Transform.from_translation(
+            np.array([-4.0, 0.4, 0.0], dtype=np.float32))
+        self.ball_idx = builder.add_body(sphere_body, sphere_t)
+
+        sphere_shape = novaphy.CollisionShape.make_sphere(
+            sphere_radius, self.ball_idx,
+            novaphy.Transform.identity())
+        builder.add_shape(sphere_shape)
+
         model = builder.build()
         settings = novaphy.SolverSettings()
         settings.velocity_iterations = 30
@@ -58,6 +74,10 @@ class PyramidDemo(DemoApp):
         settings.sleep_ema_alpha = 0.8          # EMA smoothing factor
 
         self.world = novaphy.World(model, settings)
+
+        # Give the ball an initial velocity toward the pyramid
+        self.world.state.set_linear_velocity(
+            self.ball_idx, np.array([5.0, 0, 0.0], dtype=np.float32))
 
 
 if __name__ == "__main__":

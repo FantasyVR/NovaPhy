@@ -180,6 +180,7 @@ from novaphy._core import (
     SceneBuilderEngine,
     SimulationExporter,
     FeatureCompletenessChecker,
+    batch_transform_vertices,
     # VBD/AVBD
     VBDConfig,
     VBDWorld,
@@ -261,6 +262,7 @@ __all__ = [
     "SceneBuilderEngine",
     "SimulationExporter",
     "FeatureCompletenessChecker",
+    "batch_transform_vertices",
     # VBD/AVBD
     "VBDConfig",
     "VBDWorld",
